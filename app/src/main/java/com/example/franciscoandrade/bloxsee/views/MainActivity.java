@@ -1,7 +1,9 @@
-package com.example.franciscoandrade.bloxsee;
+package com.example.franciscoandrade.bloxsee.views;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.franciscoandrade.bloxsee.R;
 
 public class MainActivity extends AppCompatActivity {
 
