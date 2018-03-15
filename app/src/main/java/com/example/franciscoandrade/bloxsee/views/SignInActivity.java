@@ -2,6 +2,7 @@ package com.example.franciscoandrade.bloxsee.views;
 
 import android.annotation.SuppressLint;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.FragmentTransaction;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.franciscoandrade.bloxsee.R;
+import com.example.franciscoandrade.bloxsee.views.teacher.TeacherMainPageActivity;
 
 public class SignInActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -23,6 +25,9 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+
+        Intent intent = new Intent(this, TeacherMainPageActivity.class);
+        startActivity(intent);
 
         setUpViews();
 
