@@ -41,7 +41,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
                 android.support.v4.app.FragmentManager fragmentManager= getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.main_container, new TeacherSignInFragment())
+                fragmentTransaction.replace(R.id.main_content, new TeacherSignInFragment()).addToBackStack("backToActivity")
                         .commit();
                 break;
             }
@@ -49,7 +49,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
                 android.support.v4.app.FragmentManager fragmentManager1= getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction1= fragmentManager1.beginTransaction();
-                fragmentTransaction1.replace(R.id.main_container, new StudentSignInFragment())
+                fragmentTransaction1.replace(R.id.main_content, new StudentSignInFragment()).addToBackStack("backToActivity")
                         .commit();
                 break;
             }
