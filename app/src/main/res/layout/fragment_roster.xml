@@ -1,13 +1,49 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="20dp"
     tools:context="com.example.franciscoandrade.bloxsee.views.teacher.RosterFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Roster" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/name_roster"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:layout_marginRight="50dp"
+        android:text="Name"
+        app:layout_constraintRight_toLeftOf="@+id/password_roster"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/password_roster"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="50dp"
+        android:layout_weight="1"
+        android:text="Password"
+        app:layout_constraintLeft_toRightOf="@+id/name_roster"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/actions_roster"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="50dp"
+        android:layout_weight="1"
+        android:text="Actions"
+        app:layout_constraintLeft_toRightOf="@+id/password_roster"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.RecyclerView
+        app:layout_constraintTop_toBottomOf="@id/name_roster"
+        android:id="@+id/recycler_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
+
+</android.support.constraint.ConstraintLayout>
