@@ -1,10 +1,13 @@
 package com.example.franciscoandrade.bloxsee.views;
 
+import android.annotation.SuppressLint;
 import android.app.FragmentManager;
 import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
@@ -27,30 +30,47 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         student.setOnClickListener(this);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     public void setUpViews() {
         View bottomSheet = findViewById(R.id.bottom_sheet);
         teacher= findViewById(R.id.teacherBtn);
         student= findViewById(R.id.studentBtn);
         mBottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
+        setBottomSheetBehavior();
+
+    }
+
+    private void setBottomSheetBehavior() {
+        mBottomSheetBehavior.setPeekHeight(300);
+        mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        mBottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(View bottomSheet, int newState) {
+                if (newState == BottomSheetBehavior.STATE_HIDDEN) {
+                    mBottomSheetBehavior.setPeekHeight(70);
+                }
+            }
+
+            @Override
+            public void onSlide(View bottomSheet, float slideOffset) {
+            }
+
+        });
     }
 
     @Override
     public void onClick(View v) {
+        mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+        android.support.v4.app.FragmentManager fragmentManager= getSupportFragmentManager();
         switch( v.getId() ) {
+                    // TODO: Fragments are being added to stack, make fragments not to be added to stack
             case R.id.teacherBtn: {
-                mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-                android.support.v4.app.FragmentManager fragmentManager= getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.main_content, new TeacherSignInFragment()).addToBackStack("backToActivity")
-                        .commit();
+
+                fragmentManager.beginTransaction().replace(R.id.loginContainer, new TeacherSignInFragment()).addToBackStack("backToActivity").addToBackStack(null).commit();
                 break;
             }
             case R.id.studentBtn: {
-                mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-                android.support.v4.app.FragmentManager fragmentManager1= getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction1= fragmentManager1.beginTransaction();
-                fragmentTransaction1.replace(R.id.main_content, new StudentSignInFragment()).addToBackStack("backToActivity")
-                        .commit();
+                fragmentManager.beginTransaction().replace(R.id.loginContainer, new StudentSignInFragment()).addToBackStack("backToActivity").addToBackStack(null).commit();
                 break;
             }
         }
