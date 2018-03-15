@@ -26,9 +26,6 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-//        Intent intent = new Intent(this, TeacherMainPageActivity.class);
-//        startActivity(intent);
-
         setUpViews();
 
         teacher.setOnClickListener(this);

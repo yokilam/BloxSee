@@ -28,7 +28,6 @@ public class TeacherMainPageActivity extends AppCompatActivity {
         tabLayout.getTabAt(1).setText("Progress");
         tabLayout.getTabAt(2).setText("Questions");
 
-        //PagerAdapterTeacher pagerAdapterTeacher = new PagerAdapterTeacher(getSupportFragmentManager(),tabLayout.getTabCount());
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
