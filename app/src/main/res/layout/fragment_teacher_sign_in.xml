@@ -7,20 +7,20 @@
     android:gravity="center"
     tools:context="com.example.franciscoandrade.bloxsee.views.TeacherSignInFragment">
 
-    <!-- TODO: Update blank fragment layout -->
 
+    <LinearLayout
+        android:id="@+id/signIn_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="visible"
+        android:gravity="center"
+        android:orientation="vertical">
     <EditText
         android:id="@+id/email_edittext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Enter Email"
-        />
-
-    <EditText
-        android:id="@+id/name_edittext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Teacher's name"
+        android:hint="Teacher's  Email"
         />
 
     <EditText
@@ -38,9 +38,59 @@
 
     <Button
         android:layout_marginTop="8dp"
-        android:id="@+id/SignUp"
+        android:id="@+id/signUp_Btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign Up" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/signUp_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:visibility="gone"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/email_ET"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Teacher's  Email"
+            />
+
+        <EditText
+            android:id="@+id/name_ET"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Teacher's name"
+            />
+
+        <EditText
+            android:id="@+id/password_ET"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Enter Password"
+            />
+
+
+        <Button
+            android:layout_marginTop="8dp"
+            android:id="@+id/signUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign Up" />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+
+
+
+    </LinearLayout>
 
 </LinearLayout>
