@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +24,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import static android.content.ContentValues.TAG;
 
 public class TeacherSignInFragment extends Fragment {
     private View view;
@@ -90,7 +94,7 @@ public class TeacherSignInFragment extends Fragment {
 
     /**
      * Handles User Creation if not exist
-     * Adds User to Db if succesfully added as user
+     * Adds User to Db if successfully added as user
      */
     private void startRegister() {
         progress.setVisibility(View.VISIBLE);
@@ -139,14 +143,30 @@ public class TeacherSignInFragment extends Fragment {
 
     /**
      * Method checks if user has valid credentials
-     * If user aproved, user can access their account
+     * If user approved, user can access their account
      */
     private void login() {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), TeacherMainPageActivity.class);
-                startActivity(intent);
+                mAuth.signInWithEmailAndPassword(emailText, passwordText)
+                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                               if (!task.isSuccessful()){
+                                   Log.w(TAG, "signInWithEmail:failure", task.getException());
+                                   Toast.makeText(getActivity(), "Authentication failed.",
+                                           Toast.LENGTH_SHORT).show();
+                                   emptyEditText();
+
+                                } else {
+                                   Intent intent = new Intent(TeacherSignInFragment.this, TeacherMainPageActivity.class);
+                                   startActivity(intent);
+                                }
+
+
+                            }
+                        });
             }
         });
     }
