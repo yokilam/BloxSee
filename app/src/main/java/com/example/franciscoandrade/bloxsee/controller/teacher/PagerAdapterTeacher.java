@@ -12,7 +12,7 @@ import com.example.franciscoandrade.bloxsee.views.teacher.RosterFragment;
  * Created by joannesong on 3/15/18.
  */
 
-public class PagerAdapterTeacher extends FragmentStatePagerAdapter{
+public class PagerAdapterTeacher extends FragmentStatePagerAdapter {
 
     public PagerAdapterTeacher(FragmentManager fm) {
         super(fm);
@@ -25,16 +25,16 @@ public class PagerAdapterTeacher extends FragmentStatePagerAdapter{
 
     @Override
     public Fragment getItem(int position) {
-            switch (position) {
-                case 0:
-                    return new RosterFragment();
-                case 1:
-                    return new ProgressFragment();
-                case 2:
-                    return new QuestionsFragment();
-                default:
-                    return null;
-            }
+        switch (position) {
+            case 0:
+                return new RosterFragment();
+            case 1:
+                return new ProgressFragment();
+            case 2:
+                return new QuestionsFragment();
+            default:
+                return null;
+        }
     }
 
     @Override

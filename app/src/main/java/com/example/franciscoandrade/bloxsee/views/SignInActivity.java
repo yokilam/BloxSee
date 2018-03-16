@@ -1,21 +1,15 @@
 package com.example.franciscoandrade.bloxsee.views;
 
 import android.annotation.SuppressLint;
-import android.app.FragmentManager;
-import android.content.Intent;
-import android.support.design.widget.BottomSheetBehavior;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MotionEvent;
+import android.support.design.widget.BottomSheetBehavior;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.franciscoandrade.bloxsee.R;
-import com.example.franciscoandrade.bloxsee.views.teacher.TeacherMainPageActivity;
 
-public class SignInActivity extends AppCompatActivity implements View.OnClickListener{
+public class SignInActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button teacher;
     private Button student;
@@ -35,11 +29,10 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     @SuppressLint("ClickableViewAccessibility")
     public void setUpViews() {
         View bottomSheet = findViewById(R.id.bottom_sheet);
-        teacher= findViewById(R.id.teacherBtn);
-        student= findViewById(R.id.studentBtn);
+        teacher = findViewById(R.id.teacherBtn);
+        student = findViewById(R.id.studentBtn);
         mBottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
         setBottomSheetBehavior();
-
     }
 
     private void setBottomSheetBehavior() {
@@ -56,18 +49,16 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onSlide(View bottomSheet, float slideOffset) {
             }
-
         });
     }
 
     @Override
     public void onClick(View v) {
         mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-        android.support.v4.app.FragmentManager fragmentManager= getSupportFragmentManager();
-        switch( v.getId() ) {
-                    // TODO: Fragments are being added to stack, make fragments not to be added to stack
+        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+        switch (v.getId()) {
+            // TODO: Fragments are being added to stack, make fragments not to be added to stack
             case R.id.teacherBtn: {
-
                 fragmentManager.beginTransaction().replace(R.id.loginContainer, new TeacherSignInFragment()).addToBackStack("backToActivity").addToBackStack(null).commit();
                 break;
             }
@@ -76,6 +67,5 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             }
         }
-
     }
 }
