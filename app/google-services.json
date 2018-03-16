@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1068006089767",
+    "firebase_url": "https://bloxee-ade74.firebaseio.com",
+    "project_id": "bloxee-ade74",
+    "storage_bucket": "bloxee-ade74.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068006089767:android:dbb8ba8ca48c37b0",
+        "android_client_info": {
+          "package_name": "com.example.franciscoandrade.bloxsee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068006089767-uegrv5b203lv5ri6kmo2gaepmofbjp2t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDK0vBRYnuppyuHUrt3i3C1i7MoGzJCKtI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
