@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/roster_teacher"
+        android:title="Roster"
+        android:icon="@drawable/ic_people_black_24dp"/>
+    <item android:id="@+id/progress_teacher"
+        android:title="Progress"
+        android:icon="@drawable/ic_check_black_24dp"/>
+    <item android:id="@+id/questions_teacher"
+        android:title="Questions"
+        android:icon="@drawable/ic_question_answer_black_24dp"/>
+
+</menu>
