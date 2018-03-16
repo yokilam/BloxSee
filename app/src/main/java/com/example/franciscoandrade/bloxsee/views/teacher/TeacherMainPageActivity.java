@@ -1,12 +1,14 @@
 package com.example.franciscoandrade.bloxsee.views.teacher;
 
-import android.support.design.widget.TabLayout;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
 
 import com.example.franciscoandrade.bloxsee.R;
 import com.example.franciscoandrade.bloxsee.controller.teacher.PagerAdapterTeacher;
@@ -22,29 +24,32 @@ public class TeacherMainPageActivity extends AppCompatActivity {
         final ViewPager viewPager = findViewById(R.id.view_pager_teacher);
         viewPager.setAdapter(new PagerAdapterTeacher(getSupportFragmentManager()));
 
-        TabLayout tabLayout = findViewById(R.id.tab_layout_teacher);
-        tabLayout.setupWithViewPager(viewPager);
-        tabLayout.getTabAt(0).setText("Roster");
-        tabLayout.getTabAt(1).setText("Progress");
-        tabLayout.getTabAt(2).setText("Questions");
-
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_teacher);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-            }
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.roster_teacher:
+                        switchTeachFragments(R.id.fragment_container_teacher, new RosterFragment());
+                        break;
+                    case R.id.progress_teacher:
+                        switchTeachFragments(R.id.fragment_container_teacher, new ProgressFragment());
+                        break;
+                    case R.id.questions_teacher:
+                        switchTeachFragments(R.id.fragment_container_teacher, new QuestionsFragment());
+                        break;
+                }
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
+                return true;
             }
         });
 
     }
+
+    public void switchTeachFragments(int id, Fragment fragment){
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(id, fragment).commit();
+
+    }
+
 }
