@@ -16,50 +16,53 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.franciscoandrade.bloxsee.R;
+import com.example.franciscoandrade.bloxsee.model.Teacher;
 import com.example.franciscoandrade.bloxsee.views.teacher.TeacherMainPageActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class TeacherSignInFragment extends Fragment {
     private View view;
     private Button signInButton, signUp_Btn;
-
-    private EditText email_ET, name_ET, password_ET;
-    private EditText email_edittext, password_edittext;
+    private EditText email_ET, name_ET, password_ET, email_edittext, password_edittext;
     private Button signUp;
     private LinearLayout signUp_container, signIn_container;
     private String nameText, emailText, passwordText;
-
     //1.Firebase
     private FirebaseAuth mAuth;
     private ProgressBar progress;
+    private DatabaseReference ref;
+    private FirebaseDatabase database;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_teacher_sign_in, container, false);
-
+        database = FirebaseDatabase.getInstance();
+        ref = database.getReference();
         setUpViews();
         login();
         signUp();
-
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startRegister();
             }
         });
-
         return view;
     }
 
+
+    //setting all views
     private void setUpViews() {
         signInButton = view.findViewById(R.id.SignIn);
         signUp_Btn = view.findViewById(R.id.signUp_Btn);
-
         email_ET = view.findViewById(R.id.email_ET);
         name_ET = view.findViewById(R.id.name_ET);
         password_ET = view.findViewById(R.id.password_ET);
@@ -69,6 +72,10 @@ public class TeacherSignInFragment extends Fragment {
         signUp_container = view.findViewById(R.id.signUp_container);
     }
 
+    /**
+     * Hides Sign in container and shows Sign UP container
+     * gets instance of firebase to authenticate
+     */
     private void signUp() {
         signUp_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +88,10 @@ public class TeacherSignInFragment extends Fragment {
         });
     }
 
-    //Adding teacher's signUp to firebase
+    /**
+     * Handles User Creation if not exist
+     * Adds User to Db if succesfully added as user
+     */
     private void startRegister() {
         progress.setVisibility(View.VISIBLE);
         nameText = name_ET.getText().toString();
@@ -96,17 +106,41 @@ public class TeacherSignInFragment extends Fragment {
                                 progress.setVisibility(View.GONE);
                                 String user_id = mAuth.getCurrentUser().getUid();
                                 Toast.makeText(getActivity(), user_id, Toast.LENGTH_SHORT).show();
-                                name_ET.setText("");
-                                email_ET.setText("");
-                                password_ET.setText("");
                                 signIn_container.setVisibility(View.VISIBLE);
                                 signUp_container.setVisibility(View.GONE);
+                                createNewUser(nameText, emailText, user_id);
+                                emptyEditText();
                             }
+
+                            task.addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    progress.setVisibility(View.GONE);
+                                    Toast.makeText(getActivity(), "Login Failed User exist already", Toast.LENGTH_SHORT).show();
+                                    emptyEditText();
+                                }
+                            });
                         }
                     });
         }
     }
 
+    /**
+     * @param name
+     * @param email
+     * @param user_id Method Runs if user succesfully created a new account
+     *                Creates a new instance of Teacher which is added to the FireBase DataBase to teacher section
+     */
+    private void createNewUser(String name, String email, String user_id) {
+        Teacher teacher = new Teacher(name, email, user_id);
+        ref.child("teacher").child(name).setValue(teacher);
+    }
+
+
+    /**
+     * Method checks if user has valid credentials
+     * If user aproved, user can access their account
+     */
     private void login() {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,4 +150,14 @@ public class TeacherSignInFragment extends Fragment {
             }
         });
     }
+
+    /**
+     * Empty Editext Text
+     */
+    private void emptyEditText() {
+        name_ET.setText("");
+        email_ET.setText("");
+        password_ET.setText("");
+    }
+
 }
