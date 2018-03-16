@@ -51,6 +51,9 @@ public class TeacherSignInFragment extends Fragment {
         database = FirebaseDatabase.getInstance();
         ref = database.getReference();
         setUpViews();
+        nameText = name_ET.getText().toString();
+        emailText = email_ET.getText().toString();
+        passwordText = password_ET.getText().toString();
         login();
         signUp();
         signUp.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +77,7 @@ public class TeacherSignInFragment extends Fragment {
         progress = view.findViewById(R.id.progress);
         signIn_container = view.findViewById(R.id.signIn_container);
         signUp_container = view.findViewById(R.id.signUp_container);
+        mAuth = FirebaseAuth.getInstance();
     }
 
     /**
@@ -87,7 +91,6 @@ public class TeacherSignInFragment extends Fragment {
                 signIn_container.setVisibility(View.GONE);
                 signUp_container.setVisibility(View.VISIBLE);
                 progress.setVisibility(View.GONE);
-                mAuth = FirebaseAuth.getInstance();
             }
         });
     }
@@ -98,9 +101,9 @@ public class TeacherSignInFragment extends Fragment {
      */
     private void startRegister() {
         progress.setVisibility(View.VISIBLE);
-        nameText = name_ET.getText().toString();
-        emailText = email_ET.getText().toString();
-        passwordText = password_ET.getText().toString();
+//        nameText = name_ET.getText().toString();
+//        emailText = email_ET.getText().toString();
+//        passwordText = password_ET.getText().toString();
         if (!TextUtils.isEmpty(nameText) && !TextUtils.isEmpty(emailText) && !TextUtils.isEmpty(passwordText)) {
             mAuth.createUserWithEmailAndPassword(emailText, passwordText)
                     .addOnCompleteListener(new OnCompleteListener <AuthResult>() {
@@ -149,26 +152,32 @@ public class TeacherSignInFragment extends Fragment {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAuth.signInWithEmailAndPassword(emailText, passwordText)
-                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                               if (!task.isSuccessful()){
-                                   Log.w(TAG, "signInWithEmail:failure", task.getException());
-                                   Toast.makeText(getActivity(), "Authentication failed.",
-                                           Toast.LENGTH_SHORT).show();
-                                   emptyEditText();
-
-                                } else {
-                                   Intent intent = new Intent(TeacherSignInFragment.this, TeacherMainPageActivity.class);
-                                   startActivity(intent);
+                Log.d(TAG, "login: HELLLLLOOOOOOOO");
+                if (!TextUtils.isEmpty(emailText) && !TextUtils.isEmpty(passwordText)) {
+                    mAuth.signInWithEmailAndPassword(emailText, passwordText)
+                            .addOnCompleteListener(new OnCompleteListener <AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task <AuthResult> task) {
+                                    if (!task.isSuccessful()) {
+                                        Log.w(TAG, "signInWithEmail:failure", task.getException());
+                                        Toast.makeText(getActivity(), "Authentication failed.",
+                                                Toast.LENGTH_SHORT).show();
+                                        emptyEditText();
+                                    } else {
+                                        Log.d(TAG, "onComplete: It is working");
+                                        intentToTeacherMainPageActivity();
+                                        emptyEditText();
+                                    }
                                 }
-
-
-                            }
-                        });
+                            });
+                }
             }
         });
+    }
+
+    private void intentToTeacherMainPageActivity() {
+        Intent intent = new Intent(view.getContext(), TeacherMainPageActivity.class);
+        view.getContext().startActivity(intent);
     }
 
     /**
