@@ -99,7 +99,7 @@ public class TeacherMainPageActivity extends AppCompatActivity {
         Log.d(TAG, "getTeacherInfo: " + string);
     }
 
-    public void switchTeachFragments(Fragment fragment) {
+    public int switchTeachFragments(Fragment fragment) {
 
         FragmentManager manager = getSupportFragmentManager();
         Log.d("fragment", "switchTeachFragments: ");
