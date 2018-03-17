@@ -101,9 +101,9 @@ public class TeacherSignInFragment extends Fragment {
      */
     private void startRegister() {
         progress.setVisibility(View.VISIBLE);
-//        nameText = name_ET.getText().toString();
-//        emailText = email_ET.getText().toString();
-//        passwordText = password_ET.getText().toString();
+        nameText = name_ET.getText().toString();
+        emailText = email_ET.getText().toString();
+        passwordText = password_ET.getText().toString();
         if (!TextUtils.isEmpty(nameText) && !TextUtils.isEmpty(emailText) && !TextUtils.isEmpty(passwordText)) {
             mAuth.createUserWithEmailAndPassword(emailText, passwordText)
                     .addOnCompleteListener(new OnCompleteListener <AuthResult>() {
