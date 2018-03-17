@@ -99,7 +99,7 @@ public class TeacherMainPageActivity extends AppCompatActivity {
         Log.d(TAG, "getTeacherInfo: " + string);
     }
 
-    public void switchTeachFragments(Fragment fragment) {
+    public int switchTeachFragments(Fragment fragment) {
 
         FragmentManager manager = getSupportFragmentManager();
         Log.d("fragment", "switchTeachFragments: ");
@@ -107,12 +107,10 @@ public class TeacherMainPageActivity extends AppCompatActivity {
 
     }
     private void showToolBar(String title, boolean upButton) {
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(title);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
+//        Toolbar toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setTitle(title);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
     }
-
-
 
 }
