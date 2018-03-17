@@ -1,41 +1,118 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="20dp"
     android:orientation="vertical"
+    android:padding="20dp"
     tools:context="com.example.franciscoandrade.bloxsee.views.teacher.RosterFragment">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-
-    <TextView
-        android:id="@+id/name_roster"
-        android:layout_width="0dp"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Name" />
+        android:background="@color/material_red_500">
 
-    <TextView
-        android:id="@+id/password_roster"
-        android:layout_width="0dp"
+        <RelativeLayout
+            android:id="@+id/button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center">
+
+            <View
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:background="@drawable/triangle" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/add_student_textview"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@id/button"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Add Student To Roster"
+            android:background="@color/material_red_500"
+            android:textColor="@color/colorWhite"
+            android:textSize="12sp" />
+
+        <com.github.aakira.expandablelayout.ExpandableLinearLayout
+            android:id="@+id/expandableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_below="@id/add_student_textview"
+            android:orientation="vertical"
+            app:ael_duration="400"
+            app:ael_expanded="false">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="@+id/recycler_container">
+
+                <EditText
+                    android:id="@+id/studentName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Student Name" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pick password for student:" />
+
+                <Spinner
+                    android:id="@+id/passwordSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></Spinner>
+
+
+                <Button
+                    android:id="@+id/addStudent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Add Student" />
+
+            </LinearLayout>
+        </com.github.aakira.expandablelayout.ExpandableLinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Password"
-        />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/actions_roster"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Actions" />
+        <TextView
+            android:id="@+id/name_roster"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Name" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/password_roster"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Password" />
+
+        <TextView
+            android:id="@+id/actions_roster"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Actions" />
+
+    </LinearLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_container"
         android:layout_width="match_parent"
@@ -43,37 +120,5 @@
 
     </android.support.v7.widget.RecyclerView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/recycler_container">
-
-        <EditText
-            android:id="@+id/studentName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter Student Name"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pick password for student:"/>
-        <Spinner
-            android:id="@+id/passwordSpinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </Spinner>
-
-
-        <Button
-            android:id="@+id/addStudent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add Student" />
-
-    </LinearLayout>
 
 </LinearLayout>
