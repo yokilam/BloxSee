@@ -3,7 +3,6 @@ package com.example.franciscoandrade.bloxsee.views;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -41,7 +40,7 @@ public class TeacherSignInFragment extends Fragment {
     private View view;
     private Button signInButton, signUp_Btn;
     private EditText email_ET, name_ET, password_ET, email_edittext, password_edittext;
-    private Button signUp, goToTeache;
+    private Button signUp, goToTeacher;
     private LinearLayout signUp_container, signIn_container;
     private String nameText, emailText, passwordText;
     private SharedPreferences sharedPreferences;
@@ -74,14 +73,15 @@ public class TeacherSignInFragment extends Fragment {
             }
         });
 
-        goToTeache.setOnClickListener(new View.OnClickListener() {
+
+        goToTeacher.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 Intent view = new Intent(getActivity(), TeacherMainPageActivity.class);
                 startActivity(view);
             }
         });
-
         return view;
     }
 
@@ -106,6 +106,7 @@ public class TeacherSignInFragment extends Fragment {
         signUp_Btn = view.findViewById(R.id.signUp_Btn);
         email_ET = view.findViewById(R.id.email_ET);
         name_ET = view.findViewById(R.id.name_ET);
+        goToTeacher = view.findViewById(R.id.goToTeache);
         password_ET = view.findViewById(R.id.password_ET);
         signUp = view.findViewById(R.id.signUp);
         progress = view.findViewById(R.id.progress);
@@ -113,7 +114,6 @@ public class TeacherSignInFragment extends Fragment {
         signUp_container = view.findViewById(R.id.signUp_container);
         email_edittext = view.findViewById(R.id.email_edittext);
         password_edittext = view.findViewById(R.id.password_edittext);
-        goToTeache = view.findViewById(R.id.goToTeache);
         mAuth = FirebaseAuth.getInstance();
     }
 
@@ -193,8 +193,6 @@ public class TeacherSignInFragment extends Fragment {
             }
         });
     }
-
-
     private void signInLogic() {
         passwordLogin = password_edittext.getText().toString();
         emailLogin = email_edittext.getText().toString();
@@ -203,9 +201,10 @@ public class TeacherSignInFragment extends Fragment {
             mAuth.signInWithEmailAndPassword(emailLogin, passwordLogin)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        public void onComplete(@NonNull Task <AuthResult> task) {
                             if (task.isSuccessful()) {
-                                Log.d(TAG, "It is working");
+                                Log.d(TAG, "“onComplete: It is working”");
                                 intentToTeacherMainPageActivity();
 
                                 password_edittext.setText("");
@@ -229,9 +228,7 @@ public class TeacherSignInFragment extends Fragment {
 
         }
 
-
     }
-
 
     private void intentToTeacherMainPageActivity() {
         Intent intent = new Intent(view.getContext(), TeacherMainPageActivity.class);
