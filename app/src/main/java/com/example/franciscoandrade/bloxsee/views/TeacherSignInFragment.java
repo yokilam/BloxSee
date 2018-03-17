@@ -1,10 +1,12 @@
 package com.example.franciscoandrade.bloxsee.views;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
@@ -29,21 +31,28 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import static android.content.ContentValues.TAG;
+import android.content.SharedPreferences;
+
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class TeacherSignInFragment extends Fragment {
+    private final String TAG = "SAVED_INFO:";
     private View view;
     private Button signInButton, signUp_Btn;
     private EditText email_ET, name_ET, password_ET, email_edittext, password_edittext;
     private Button signUp, goToTeache;
     private LinearLayout signUp_container, signIn_container;
     private String nameText, emailText, passwordText;
+    private SharedPreferences sharedPreferences;
     String passwordLogin, emailLogin;
     //1.Firebase
     private FirebaseAuth mAuth;
     private ProgressBar progress;
     private DatabaseReference ref;
     private FirebaseDatabase database;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,9 +74,6 @@ public class TeacherSignInFragment extends Fragment {
             }
         });
 
-
-
-
         goToTeache.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,6 +85,20 @@ public class TeacherSignInFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+
+    }
+
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+
+    }
 
     //setting all views
     private void setUpViews() {
@@ -123,9 +143,9 @@ public class TeacherSignInFragment extends Fragment {
         passwordText = password_ET.getText().toString();
         if (!TextUtils.isEmpty(nameText) && !TextUtils.isEmpty(emailText) && !TextUtils.isEmpty(passwordText)) {
             mAuth.createUserWithEmailAndPassword(emailText, passwordText)
-                    .addOnCompleteListener(new OnCompleteListener <AuthResult>() {
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
-                        public void onComplete(@NonNull Task <AuthResult> task) {
+                        public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 progress.setVisibility(View.GONE);
                                 String user_id = mAuth.getCurrentUser().getUid();
@@ -175,20 +195,22 @@ public class TeacherSignInFragment extends Fragment {
     }
 
 
-    private void signInLogic(){
-        passwordLogin= password_edittext.getText().toString();
-        emailLogin= email_edittext.getText().toString();
+    private void signInLogic() {
+        passwordLogin = password_edittext.getText().toString();
+        emailLogin = email_edittext.getText().toString();
 
         if (!TextUtils.isEmpty(emailLogin) && !TextUtils.isEmpty(passwordLogin)) {
             mAuth.signInWithEmailAndPassword(emailLogin, passwordLogin)
-                    .addOnCompleteListener(new OnCompleteListener <AuthResult>() {
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
-                        public void onComplete(@NonNull Task <AuthResult> task) {
-                            if(task.isSuccessful()){
-                                Log.d(TAG, "onComplete: It is working");
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Log.d(TAG, "It is working");
                                 intentToTeacherMainPageActivity();
+
                                 password_edittext.setText("");
                                 email_edittext.setText("");
+                                saveTeacherDisplayInfo(task.getResult().getUser().getEmail());
                             }
 
                             task.addOnFailureListener(new OnFailureListener() {
@@ -200,9 +222,13 @@ public class TeacherSignInFragment extends Fragment {
                                     email_edittext.setText("");
                                 }
                             });
+
                         }
                     });
+
+
         }
+
 
     }
 
@@ -211,6 +237,15 @@ public class TeacherSignInFragment extends Fragment {
         Intent intent = new Intent(view.getContext(), TeacherMainPageActivity.class);
         view.getContext().startActivity(intent);
     }
+
+    private void saveTeacherDisplayInfo(String teacherEmail) {
+        SharedPreferences prefs = getActivity().getSharedPreferences("teacher_info", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("teacher_email", teacherEmail);
+        Log.d(TAG, "saveTeacherDisplayInfo: " + nameText);
+        editor.commit();
+    }
+
 
     /**
      * Empty Editext Text

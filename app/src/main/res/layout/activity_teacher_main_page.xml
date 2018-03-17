@@ -8,6 +8,8 @@
     android:layout_height="match_parent"
     tools:context="com.example.franciscoandrade.bloxsee.views.teacher.TeacherMainPageActivity">
 
+    <include layout="@layout/actionbar_toolbar" />
+
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager_teacher"
         android:layout_width="match_parent"
