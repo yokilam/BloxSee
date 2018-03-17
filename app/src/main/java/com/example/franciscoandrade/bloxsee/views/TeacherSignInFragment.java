@@ -170,16 +170,21 @@ public class TeacherSignInFragment extends Fragment {
                     .addOnCompleteListener(new OnCompleteListener <AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task <AuthResult> task) {
-                            if (!task.isSuccessful()) {
-                                Log.w(TAG, "signInWithEmail:failure", task.getException());
-                                Toast.makeText(getActivity(), "Authentication failed.",
-                                        Toast.LENGTH_SHORT).show();
-                                emptyEditText();
-                            } else {
+                            if(task.isSuccessful()){
                                 Log.d(TAG, "onComplete: It is working");
                                 intentToTeacherMainPageActivity();
                                 emptyEditText();
                             }
+
+                            task.addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(getActivity(), "Authentication failed.",
+                                            Toast.LENGTH_SHORT).show();
+                                    password_edittext.setText("");
+                                    email_edittext.setText("");
+                                }
+                            });
                         }
                     });
         }
