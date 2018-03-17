@@ -173,7 +173,8 @@ public class TeacherSignInFragment extends Fragment {
                             if(task.isSuccessful()){
                                 Log.d(TAG, "onComplete: It is working");
                                 intentToTeacherMainPageActivity();
-                                emptyEditText();
+                                password_edittext.setText("");
+                                email_edittext.setText("");
                             }
 
                             task.addOnFailureListener(new OnFailureListener() {
