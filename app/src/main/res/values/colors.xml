@@ -10,4 +10,8 @@
     <color name="colorFAB">#00bbff</color>
     <color name="bakground">#e3e3e3</color>
 
+    <color name="material_red_300">#ffe67c73</color>
+    <color name="material_red_400">#ffef5350</color>
+    <color name="material_red_500">#ffdb4437</color>
+
 </resources>
