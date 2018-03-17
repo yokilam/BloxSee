@@ -32,5 +32,6 @@ dependencies {
     compile 'com.google.firebase:firebase-database:11.8.0'
     compile 'com.google.firebase:firebase-auth:11.8.0'
     compile 'com.aurelhubert:ahbottomnavigation:2.0.4'
+    compile 'com.github.aakira:expandable-layout:1.6.0@aar'
 }
 apply plugin: 'com.google.gms.google-services'
