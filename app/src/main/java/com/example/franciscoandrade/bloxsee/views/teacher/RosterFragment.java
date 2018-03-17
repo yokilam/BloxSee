@@ -62,7 +62,6 @@ public class RosterFragment extends Fragment {
                 addStudent();
             }
         });
-
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         ref = database.getReference();
