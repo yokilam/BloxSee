@@ -37,6 +37,7 @@ public class TeacherSignInFragment extends Fragment {
     private Button signUp;
     private LinearLayout signUp_container, signIn_container;
     private String nameText, emailText, passwordText;
+    String passwordLogin, emailLogin;
     //1.Firebase
     private FirebaseAuth mAuth;
     private ProgressBar progress;
@@ -77,6 +78,8 @@ public class TeacherSignInFragment extends Fragment {
         progress = view.findViewById(R.id.progress);
         signIn_container = view.findViewById(R.id.signIn_container);
         signUp_container = view.findViewById(R.id.signUp_container);
+        email_edittext = view.findViewById(R.id.email_edittext);
+        password_edittext = view.findViewById(R.id.password_edittext);
         mAuth = FirebaseAuth.getInstance();
     }
 
@@ -152,28 +155,37 @@ public class TeacherSignInFragment extends Fragment {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "login: HELLLLLOOOOOOOO");
-                if (!TextUtils.isEmpty(emailText) && !TextUtils.isEmpty(passwordText)) {
-                    mAuth.signInWithEmailAndPassword(emailText, passwordText)
-                            .addOnCompleteListener(new OnCompleteListener <AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task <AuthResult> task) {
-                                    if (!task.isSuccessful()) {
-                                        Log.w(TAG, "signInWithEmail:failure", task.getException());
-                                        Toast.makeText(getActivity(), "Authentication failed.",
-                                                Toast.LENGTH_SHORT).show();
-                                        emptyEditText();
-                                    } else {
-                                        Log.d(TAG, "onComplete: It is working");
-                                        intentToTeacherMainPageActivity();
-                                        emptyEditText();
-                                    }
-                                }
-                            });
-                }
+                signInLogic();
             }
         });
     }
+
+
+    private void signInLogic(){
+        passwordLogin= password_edittext.getText().toString();
+        emailLogin= email_edittext.getText().toString();
+
+        if (!TextUtils.isEmpty(emailLogin) && !TextUtils.isEmpty(passwordLogin)) {
+            mAuth.signInWithEmailAndPassword(emailLogin, passwordLogin)
+                    .addOnCompleteListener(new OnCompleteListener <AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task <AuthResult> task) {
+                            if (!task.isSuccessful()) {
+                                Log.w(TAG, "signInWithEmail:failure", task.getException());
+                                Toast.makeText(getActivity(), "Authentication failed.",
+                                        Toast.LENGTH_SHORT).show();
+                                emptyEditText();
+                            } else {
+                                Log.d(TAG, "onComplete: It is working");
+                                intentToTeacherMainPageActivity();
+                                emptyEditText();
+                            }
+                        }
+                    });
+        }
+
+    }
+
 
     private void intentToTeacherMainPageActivity() {
         Intent intent = new Intent(view.getContext(), TeacherMainPageActivity.class);
