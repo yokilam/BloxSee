@@ -31,7 +31,7 @@ public class TeacherMainPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher_main_page);
-        showToolBar(" Admin Email ", true);
+        showToolBar(" Admin Email ", false);
         getTeacherInfo();
         topToolbar =  findViewById(R.id.toolbar);
         Log.d(TAG, "onCreate: " + getTitle());
@@ -107,12 +107,10 @@ public class TeacherMainPageActivity extends AppCompatActivity {
 
     }
     private void showToolBar(String title, boolean upButton) {
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(title);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
+//        Toolbar toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setTitle(title);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
     }
-
-
 
 }
