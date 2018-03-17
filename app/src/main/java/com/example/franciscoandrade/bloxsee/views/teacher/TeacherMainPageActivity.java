@@ -1,6 +1,8 @@
 package com.example.franciscoandrade.bloxsee.views.teacher;
 
+
 import android.content.SharedPreferences;
+
 import android.graphics.PorterDuff;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -110,6 +112,7 @@ public class TeacherMainPageActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
     }
+
 
 
 }

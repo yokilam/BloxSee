@@ -171,10 +171,12 @@ public class RosterFragment extends Fragment {
     private void listPassword() {
         listPassword = new ArrayList <>();
         listPassword.add("Select password");
-        listPassword.add("Bird");
-        listPassword.add("Monkey");
+        listPassword.add("Penguin");
+        listPassword.add("Ghost");
         listPassword.add("Dog");
         listPassword.add("Cat");
+        listPassword.add("Dragon");
+        listPassword.add("Octopus");
     }
 
     public void addStudent() {
