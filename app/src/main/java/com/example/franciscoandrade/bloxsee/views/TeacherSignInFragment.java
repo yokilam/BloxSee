@@ -34,7 +34,7 @@ public class TeacherSignInFragment extends Fragment {
     private View view;
     private Button signInButton, signUp_Btn;
     private EditText email_ET, name_ET, password_ET, email_edittext, password_edittext;
-    private Button signUp;
+    private Button signUp, goToTeacher;
     private LinearLayout signUp_container, signIn_container;
     private String nameText, emailText, passwordText;
     String passwordLogin, emailLogin;
@@ -63,6 +63,14 @@ public class TeacherSignInFragment extends Fragment {
                 startRegister();
             }
         });
+
+        goToTeacher.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent view = new Intent(getActivity(), TeacherMainPageActivity.class);
+                startActivity(view);
+            }
+        });
         return view;
     }
 
@@ -73,6 +81,7 @@ public class TeacherSignInFragment extends Fragment {
         signUp_Btn = view.findViewById(R.id.signUp_Btn);
         email_ET = view.findViewById(R.id.email_ET);
         name_ET = view.findViewById(R.id.name_ET);
+        goToTeacher = view.findViewById(R.id.goToTeache);
         password_ET = view.findViewById(R.id.password_ET);
         signUp = view.findViewById(R.id.signUp);
         progress = view.findViewById(R.id.progress);
