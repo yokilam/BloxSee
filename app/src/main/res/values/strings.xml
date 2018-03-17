@@ -3,4 +3,29 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- actionbar_toolbar xml Strings -->
+
+    <!-- sign in activity xml Strings -->
+
+    <!-- student activity xml Strings -->
+
+    <!-- teacher activity xml Strings -->
+
+    <!-- progress fragment xml Strings -->
+
+    <!-- questions fragment xml strings -->
+
+    <!-- roster fragment xml Strings -->
+
+    <!-- students sign-in fragment xml Strings -->
+
+    <!-- teacher sign in fragment xml Strings -->
+
+    <!-- spinner item xml Strings -->
+
+    <!-- teacher progress item xml Strings -->
+
+    <!-- teacher roster itemview xml Strings -->
 </resources>
