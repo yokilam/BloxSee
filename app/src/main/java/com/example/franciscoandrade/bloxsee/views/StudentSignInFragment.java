@@ -1,6 +1,8 @@
 package com.example.franciscoandrade.bloxsee.views;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.franciscoandrade.bloxsee.R;
 import com.example.franciscoandrade.bloxsee.model.Student;
+import com.example.franciscoandrade.bloxsee.views.student.BlocklyActivity;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -42,9 +45,12 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
     private DatabaseReference ref;
     private FirebaseDatabase database;
 
+    DatabaseReference messageRef;
+
 
     Student student;
     String animalPicked;
+    String pass;
 
 
     @Override
@@ -66,6 +72,7 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
         //getStudentsList();
         listStudents = new ArrayList <>();
         listStudents.add("Student Name");
+
         new AsyncClass().execute();
 
         return v;
@@ -185,7 +192,65 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
 
         if (!TextUtils.isEmpty(animalPicked) && !nameStudent.equals(listStudents.get(0)) && spinner.getSelectedItem().toString()!= null){
             Log.d("SPINNER==", "loginStudent: Animal: READY TO LOG IN");
+            String result= getPasswordOfUser(nameStudent, animalPicked);
+
+            Log.d("LOGIN====", "loginStudent: "+result);
+            Log.d("LOGIN====", "loginStudent: "+animalPicked);
+
+
+            Log.d("LOGIIN==", "loginStudent: "+ref.child("students").child(nameStudent).getKey());
+
+
+
+
         }
+
+    }
+
+    private String getPasswordOfUser(String student, final String password) {
+
+        messageRef= ref.child("students").child(student).child("password");
+        ref= database.getReference();
+        pass="";
+        messageRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.d("LOGIIN==", "loginStudent: 111"+dataSnapshot.getValue());
+                pass= dataSnapshot.getValue().toString();
+                Log.d("LOGIIN==", "loginStudent: 2222 "+dataSnapshot.getValue());
+
+                checkLoginCredentials(pass, password);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        Log.d("LOGIIN==", "loginStudent: 2222111 "+pass);
+
+        return pass;
+    }
+
+    private void checkLoginCredentials(String pass, String password) {
+        Log.d("CHECKING", "checkLoginCredentials: "+pass);
+        Log.d("CHECKING", "checkLoginCredentials: "+password);
+
+        if(pass.equals( password)){
+        Intent intent = new Intent(getActivity(), BlocklyActivity.class);
+            startActivity(intent);
+            Log.d("CHECKING", "checkLoginCredentials: PASSEED");
+            Toast.makeText(getActivity(), "PASSED", Toast.LENGTH_SHORT).show();
+
+        }
+        else {
+            Log.d("STUDENT", "loginStudent: password Doesnt match");
+            Toast.makeText(getActivity(), "loginStudent: password Doesnt match", Toast.LENGTH_SHORT).show();
+        }
+
+
 
     }
 

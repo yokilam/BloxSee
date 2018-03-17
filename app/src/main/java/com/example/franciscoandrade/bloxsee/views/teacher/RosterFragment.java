@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
@@ -28,8 +29,12 @@ import com.github.aakira.expandablelayout.ExpandableLayoutListenerAdapter;
 import com.github.aakira.expandablelayout.ExpandableLinearLayout;
 import com.github.aakira.expandablelayout.Utils;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +54,7 @@ public class RosterFragment extends Fragment {
     public RelativeLayout buttonLayout;
     public ExpandableLinearLayout expandableLayout;
     private List <Student> studentList = new ArrayList <>();
+    public Student student;
 
     //Firebase
     private FirebaseAuth mAuth;
@@ -60,9 +66,6 @@ public class RosterFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_roster, container, false);
         setUpViews(view);
-
-        recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(), DividerItemDecoration.VERTICAL));
-        recyclerView.setAdapter(new TeacherRosterAdapter(studentList));
 
         runExpandableLayoutLogic(view);
         listPassword();
@@ -78,6 +81,42 @@ public class RosterFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         ref = database.getReference();
+        student= new Student();
+
+        ChildEventListener childEventListener= new ChildEventListener(){
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                student=dataSnapshot.getValue(Student.class);
+                Log.d("CHILD", "onChildAdded: "+ student.getName());
+                studentList.add(student);
+                recyclerView.setAdapter(new TeacherRosterAdapter(studentList));
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+
+        ref.child("students").addChildEventListener(childEventListener);
+
+        recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(), DividerItemDecoration.VERTICAL));
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));
 
         return view;
     }
@@ -132,10 +171,12 @@ public class RosterFragment extends Fragment {
     private void listPassword() {
         listPassword = new ArrayList <>();
         listPassword.add("Select password");
-        listPassword.add("Bird");
-        listPassword.add("Monkey");
+        listPassword.add("Penguin");
+        listPassword.add("Ghost");
         listPassword.add("Dog");
         listPassword.add("Cat");
+        listPassword.add("Dragon");
+        listPassword.add("Octopus");
     }
 
     public void addStudent() {

@@ -16,11 +16,11 @@ import java.util.List;
 
 public class BlocklyActivity extends AbstractBlocklyActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_blockly);
-    }
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_blockly);
+//    }
 
     @NonNull
     @Override
