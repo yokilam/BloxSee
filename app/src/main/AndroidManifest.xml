@@ -18,9 +18,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".views.StudentActivity" />
-        <activity android:name=".views.teacher.TeacherMainPageActivity">
-
-        </activity>
+        <activity android:name=".views.teacher.TeacherMainPageActivity" />
+        <activity android:name=".views.student.mBlocklyActivity" />
+        <activity android:name=".views.student.BlocklyActivity"></activity>
     </application>
 
 </manifest>
