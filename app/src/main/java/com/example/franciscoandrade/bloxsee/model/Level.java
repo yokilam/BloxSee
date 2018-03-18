@@ -2,10 +2,6 @@ package com.example.franciscoandrade.bloxsee.model;
 
 import android.widget.TextView;
 
-/**
- * Created by yokilam on 3/18/18.
- */
-
 public class Level {
     private String level;
     private String problemOne;
