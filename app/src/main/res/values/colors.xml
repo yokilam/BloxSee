@@ -15,4 +15,21 @@
     <color name="material_red_500">#ffdb4437</color>
     <color name="transparent">#00FFFFFF</color>
 
+    <color name="material_deep_purple_50">#ffede7f6</color>
+    <color name="material_deep_purple_100">#ffd1c4e9</color>
+    <color name="material_deep_purple_200">#ffb39ddb</color>
+    <color name="material_deep_purple_300">#ff9575cd</color>
+
+    <color name="material_blue_50">#ffe3f2fd</color>
+    <color name="material_blue_100">#ffbbdefb</color>
+    <color name="material_blue_200">#ff90caf9</color>
+    <color name="material_blue_300">#ff64b5f6</color>
+    <color name="material_blue_400">#ff42a5f5</color>
+
+    <color name="material_orange_50">#fffff3e0</color>
+    <color name="material_orange_100">#ffffe0b2</color>
+    <color name="material_orange_200">#ffffcc80</color>
+    <color name="material_orange_300">#ffffb74d</color>
+    <color name="material_orange_400">#ffffa726</color>
+
 </resources>
