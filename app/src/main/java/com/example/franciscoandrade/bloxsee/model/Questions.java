@@ -3,9 +3,6 @@ package com.example.franciscoandrade.bloxsee.model;
 public class Questions {
     private String question;
 
-    public Questions(){
-    }
-
     public Questions(String question){
         this.question = question;
     }

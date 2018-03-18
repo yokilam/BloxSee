@@ -16,6 +16,10 @@ public class StudentQuestionAdapter extends RecyclerView.Adapter<StudentQuestion
 
     public List<Questions> questionsList = new ArrayList<>();
 
+    public StudentQuestionAdapter(List<Questions> questionsList) {
+        this.questionsList = questionsList;
+    }
+
     @Override
     public StudentQuestionViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.student_question_itemview, parent, false);
