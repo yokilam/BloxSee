@@ -125,7 +125,7 @@ public class RosterFragment extends Fragment {
     }
 
     private void runExpandableLayoutLogic(View view) {
-        expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation(view, expandableLayout,R.color.material_red_300 );
+        expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation(view, expandableLayout,R.color.material_red_300, expandState );
         //set Listener when the expandable layout expands
         expandableLayout.setListener(new ExpandableLayoutListenerAdapter() {
             @Override
