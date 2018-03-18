@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
+    android:orientation="vertical"
     tools:context="com.example.franciscoandrade.bloxsee.views.teacher.QuestionsFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -10,5 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Questions" />
+
+
 
 </LinearLayout>
