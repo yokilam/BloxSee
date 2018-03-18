@@ -12,13 +12,13 @@ import com.example.franciscoandrade.bloxsee.views.student.StudentQuestionViewHol
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by c4q on 3/18/18.
- */
-
 public class StudentQuestionAdapter extends RecyclerView.Adapter<StudentQuestionViewHolder> {
 
     public List<Questions> questionsList = new ArrayList<>();
+
+    public StudentQuestionAdapter(List<Questions> questionsList) {
+        this.questionsList = questionsList;
+    }
 
     @Override
     public StudentQuestionViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

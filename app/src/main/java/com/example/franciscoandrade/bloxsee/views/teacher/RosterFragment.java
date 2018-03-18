@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.example.franciscoandrade.bloxsee.R;
 import com.example.franciscoandrade.bloxsee.model.Student;
+import com.example.franciscoandrade.bloxsee.util.ExpandableLayoutAnimation;
 import com.github.aakira.expandablelayout.ExpandableLayout;
 import com.github.aakira.expandablelayout.ExpandableLayoutListenerAdapter;
 import com.github.aakira.expandablelayout.ExpandableLinearLayout;
@@ -55,6 +56,7 @@ public class RosterFragment extends Fragment {
     public ExpandableLinearLayout expandableLayout;
     private List <Student> studentList = new ArrayList <>();
     public Student student;
+    ExpandableLayoutAnimation expandableLayoutAnimation;
 
     //Firebase
     private FirebaseAuth mAuth;
@@ -66,6 +68,7 @@ public class RosterFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_roster, container, false);
         setUpViews(view);
+        expandableLayoutAnimation= new ExpandableLayoutAnimation();
 
         runExpandableLayoutLogic(view);
         listPassword();
@@ -122,23 +125,20 @@ public class RosterFragment extends Fragment {
     }
 
     private void runExpandableLayoutLogic(View view) {
-        //set up the background color for expandable layout
-        expandableLayout.setBackgroundColor(ContextCompat.getColor(view.getContext(), R.color.material_red_300));
-        //set up the animation when the layout expands
-        expandableLayout.setInterpolator(Utils.createInterpolator(Utils.ACCELERATE_DECELERATE_INTERPOLATOR));
+        expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation(view, expandableLayout,R.color.material_red_300, expandState );
         //set Listener when the expandable layout expands
         expandableLayout.setListener(new ExpandableLayoutListenerAdapter() {
             @Override
             //Before the expandable layout opens, the arrow button do the animation of spinning
             public void onPreOpen() {
-                createRotateAnimator(buttonLayout, 0f, 180f).start();
+                expandableLayoutAnimation.createRotateAnimator(buttonLayout, 0f, 180f).start();
                 expandState.put(0, true);
             }
 
             @Override
             //Before the expandable layout closes, the arrow button do the revert animation spinning
             public void onPreClose() {
-                createRotateAnimator(buttonLayout, 180f, 0f).start();
+                expandableLayoutAnimation.createRotateAnimator(buttonLayout, 180f, 0f).start();
                 expandState.put(0, false);
             }
         });
@@ -197,14 +197,6 @@ public class RosterFragment extends Fragment {
     //Starts animation to expand the layout
     private void onClickButton(final ExpandableLayout expandableLayout) {
         expandableLayout.toggle();
-    }
-
-    //Animation
-    public ObjectAnimator createRotateAnimator(final View target, final float from, final float to) {
-        ObjectAnimator animator = ObjectAnimator.ofFloat(target, "rotation", from, to);
-        animator.setDuration(300);
-        animator.setInterpolator(Utils.createInterpolator(Utils.LINEAR_INTERPOLATOR));
-        return animator;
     }
 }
 
