@@ -109,11 +109,6 @@ public class TeacherMainPageActivity extends AppCompatActivity {
         Log.d(TAG, "getTeacherInfo: " + string);
     }
 
-    public int switchTeachFragments(Fragment fragment) {
-        FragmentManager manager = getSupportFragmentManager();
-        Log.d("fragment", "switchTeachFragments: ");
-        return manager.beginTransaction().replace(R.id.fragment_container_teacher, fragment).commit();
-    }
 
     private void showToolBar(String title, boolean upButton) {
 //        Toolbar toolbar = findViewById(R.id.toolbar);
