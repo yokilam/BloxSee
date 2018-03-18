@@ -239,7 +239,7 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
         Log.d("CHECKING", "checkLoginCredentials: "+password);
 
         if(pass.equals( password)){
-        Intent intent = new Intent(getActivity(), BlocklyActivity.class);
+        Intent intent = new Intent(getActivity(), StudentActivity.class);
             startActivity(intent);
             Log.d("CHECKING", "checkLoginCredentials: PASSEED");
             Toast.makeText(getActivity(), "PASSED", Toast.LENGTH_SHORT).show();
