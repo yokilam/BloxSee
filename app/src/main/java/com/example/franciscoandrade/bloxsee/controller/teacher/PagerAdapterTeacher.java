@@ -8,11 +8,16 @@ import com.example.franciscoandrade.bloxsee.views.teacher.ProgressFragment;
 import com.example.franciscoandrade.bloxsee.views.teacher.QuestionsFragment;
 import com.example.franciscoandrade.bloxsee.views.teacher.RosterFragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by joannesong on 3/15/18.
  */
 
 public class PagerAdapterTeacher extends FragmentStatePagerAdapter {
+
+    private final List<Fragment> mFragmentList = new ArrayList<>();
 
     public PagerAdapterTeacher(FragmentManager fm) {
         super(fm);
@@ -25,20 +30,15 @@ public class PagerAdapterTeacher extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        switch (position) {
-            case 0:
-                return new RosterFragment();
-            case 1:
-                return new ProgressFragment();
-            case 2:
-                return new QuestionsFragment();
-            default:
-                return null;
-        }
+        return mFragmentList.get(position);
     }
 
     @Override
     public int getCount() {
         return 3;
+    }
+
+    public void addFragment(Fragment fragment) {
+        mFragmentList.add(fragment);
     }
 }
