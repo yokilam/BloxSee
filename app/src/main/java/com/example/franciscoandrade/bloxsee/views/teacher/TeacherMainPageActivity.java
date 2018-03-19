@@ -115,5 +115,6 @@ public class TeacherMainPageActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.colorBlack));
     }
 }
