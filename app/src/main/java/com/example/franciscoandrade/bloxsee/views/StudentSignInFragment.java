@@ -190,6 +190,7 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
     private void loginStudent() {
         String nameStudent= spinner.getSelectedItem().toString();
 
+
         if (!TextUtils.isEmpty(animalPicked) && !nameStudent.equals(listStudents.get(0)) && spinner.getSelectedItem().toString()!= null){
             Log.d("SPINNER==", "loginStudent: Animal: READY TO LOG IN");
             String result= getPasswordOfUser(nameStudent, animalPicked);
@@ -199,9 +200,6 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
 
 
             Log.d("LOGIIN==", "loginStudent: "+ref.child("students").child(nameStudent).getKey());
-
-
-
 
         }
 
@@ -266,13 +264,10 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
     }
 
     private class AsyncClass extends AsyncTask<Void, Void, Void>{
-
+        ArrayAdapter <String> adapter;
 
         @Override
         protected Void doInBackground(Void... voids) {
-
-
-
             database= FirebaseDatabase.getInstance();
             ref= database.getReference();
             student= new Student();
@@ -281,11 +276,11 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     student=dataSnapshot.getValue(Student.class);
-                    Log.d("CHILD", "onChildAdded: "+ student.getName());
-                    listStudents.add(student.getName());
-                    ArrayAdapter <String> adapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_itemtwo, listStudents);
+                    listStudents.add(dataSnapshot.getKey());
+                    Log.d("CHILDren==", "onChildAdded: "+ student.getName());
+                    Log.d("CHILD==", "onChildAdded: "+ student.getName());
                     // adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-                    spinner.setAdapter(adapter);
+
 
                 }
 
@@ -312,9 +307,17 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
 
 
             ref.child("students").addChildEventListener(childEventListener);
-
+            adapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item, listStudents);
             return null;
         }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+
+            spinner.setAdapter(adapter);
+        }
+
     }
 }
 
