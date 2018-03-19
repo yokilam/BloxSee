@@ -32,4 +32,10 @@
     <color name="material_orange_300">#ffffb74d</color>
     <color name="material_orange_400">#ffffa726</color>
 
+    <color name="material_green_200">#ffa5d6a7</color>
+    <color name="material_green_300">#ff81c784</color>
+    <color name="material_green_400">#ff66bb6a</color>
+    <color name="material_green_500">#ff4caf50</color>
+    <color name="material_green_600">#ff43a047</color>
+
 </resources>
