@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.example.franciscoandrade.bloxsee.R;
 import com.example.franciscoandrade.bloxsee.controller.StudentQuestionAdapter;
@@ -15,6 +16,7 @@ import java.util.List;
 
 public class StudentActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
+    private ImageView studentAvatar;
 
 
     @Override
@@ -22,6 +24,7 @@ public class StudentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
         setRecyclerView();
+
         //TODO: set listeners for problems to BloxSee student workspace activity
 
     }
