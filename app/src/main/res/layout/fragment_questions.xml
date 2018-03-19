@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,10 +6,52 @@
     android:orientation="vertical"
     tools:context="com.example.franciscoandrade.bloxsee.views.teacher.QuestionsFragment">
 
+
+    <Spinner
+        android:id="@+id/usersSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/question_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lesson 1"
+        />
+
+    <CheckBox
+        android:id="@+id/questionOne"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Question 1"/>
+
+    <CheckBox
+        android:id="@+id/questionTwo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Question 2"/>
+
+
+    <CheckBox
+        android:id="@+id/questionThree"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Question 3"/>
+    <CheckBox
+        android:id="@+id/questionFour"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Question 4"/>
+    <CheckBox
+        android:id="@+id/questionFive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Question 5"/>
+
     <Button
         android:id="@+id/send_button"
         android:layout_width="wrap_content"
@@ -20,5 +62,5 @@
         android:background="@color/material_orange_400"
         android:textColor="@color/white"/>
 
-</RelativeLayout>
+</LinearLayout>
 

@@ -31,7 +31,7 @@ public class TeacherQuestionAdapter extends RecyclerView.Adapter<TeacherQuestion
 
     @Override
     public void onBindViewHolder(TeacherQuestionViewHolder holder, int position) {
-        holder.onBind(getLevelList().get(position));
+        holder.onBind(getLevelList().get(position), position);
     }
 
     @Override

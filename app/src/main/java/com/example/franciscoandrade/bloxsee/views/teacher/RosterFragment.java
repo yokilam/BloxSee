@@ -1,10 +1,8 @@
 package com.example.franciscoandrade.bloxsee.views.teacher;
 
 
-import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,23 +17,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.franciscoandrade.bloxsee.R;
 import com.example.franciscoandrade.bloxsee.model.Student;
+import com.example.franciscoandrade.bloxsee.model.StudentQuestions;
 import com.example.franciscoandrade.bloxsee.util.ExpandableLayoutAnimation;
 import com.github.aakira.expandablelayout.ExpandableLayout;
 import com.github.aakira.expandablelayout.ExpandableLayoutListenerAdapter;
 import com.github.aakira.expandablelayout.ExpandableLinearLayout;
-import com.github.aakira.expandablelayout.Utils;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -182,6 +178,13 @@ public class RosterFragment extends Fragment {
     public void addStudent() {
         nameStudent = studentName.getText().toString();
         selectedPassword = passwordSpinner.getSelectedItem().toString();
+//        StudentQuestions studentQuestions= new StudentQuestions();
+//        studentQuestions.setQ1(false);
+//        studentQuestions.setQ2(false);
+//        studentQuestions.setQ3(false);
+//        studentQuestions.setQ4(false);
+//        studentQuestions.setQ5(false);
+
         if (!selectedPassword.equals(listPassword.get(0)) && !TextUtils.isEmpty(nameStudent)) {
             Log.d("ADDED==", "addStudent: " + nameStudent);
             Log.d("ADDED==", "addStudent: " + selectedPassword);
