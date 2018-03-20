@@ -1,11 +1,14 @@
 package com.example.franciscoandrade.bloxsee.views;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.franciscoandrade.bloxsee.R;
 import com.example.franciscoandrade.bloxsee.controller.StudentQuestionAdapter;
@@ -18,11 +21,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class StudentActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
+    private TextView studentName;
 
 
     private DatabaseReference ref;
@@ -41,6 +46,7 @@ public class StudentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
+
         database = FirebaseDatabase.getInstance();
         ref = database.getReference();
         studentQuestions= new StudentQuestions();
@@ -48,10 +54,10 @@ public class StudentActivity extends AppCompatActivity {
 
 
 
-        //TODO: set listeners for problems to BloxSee student workspace activity
 
     }
-    public void setRecyclerView(){
+
+    public void setRecyclerView() {
         recyclerView = findViewById(R.id.student_questions_rv);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -59,8 +65,16 @@ public class StudentActivity extends AppCompatActivity {
 
 
 
+
         studentQuestionAdapter= new StudentQuestionAdapter(this);
         recyclerView.setAdapter(studentQuestionAdapter);
+
+    }
+
+    public void setStudentName() {
+        Intent intent = getIntent();
+        String studentUser = intent.getStringExtra("studentName");
+        studentName.setText("Welcome, " + studentUser + "!");
 
     }
 
