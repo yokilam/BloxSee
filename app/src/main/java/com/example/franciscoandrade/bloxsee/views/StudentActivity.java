@@ -40,18 +40,17 @@ public class StudentActivity extends AppCompatActivity {
     StudentQuestionAdapter studentQuestionAdapter;
 
     //this string will contain the curren name of the logged in user
-    String user= "isco";
+    String user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
-
+        setStudentName();
         database = FirebaseDatabase.getInstance();
         ref = database.getReference();
         studentQuestions= new StudentQuestions();
         studentName = findViewById(R.id.student_name);
-        setStudentName();
         setRecyclerView();
 
 
@@ -71,8 +70,8 @@ public class StudentActivity extends AppCompatActivity {
 
     public void setStudentName() {
         Intent intent = getIntent();
-        String studentUser = intent.getStringExtra("studentName");
-        studentName.setText("Welcome, " + studentUser + "!");
+        user = intent.getStringExtra("studentName");
+//        studentName.setText("Welcome, " + studentUser + "!");
 
     }
 
