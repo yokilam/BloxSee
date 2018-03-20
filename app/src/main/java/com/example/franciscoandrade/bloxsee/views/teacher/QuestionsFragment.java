@@ -29,7 +29,7 @@ import static android.content.ContentValues.TAG;
 
 public class QuestionsFragment extends Fragment implements View.OnClickListener{
 
-    private List<Level> levelList= new ArrayList <>();
+    private List<Level> levelList;
     private RecyclerView recyclerView;
     private Button send;
 
@@ -62,7 +62,7 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
 
 
         setUpViews(view);
-
+        levelList= new ArrayList <>();
         database = FirebaseDatabase.getInstance();
         ref = database.getReference();
         listStudents= new ArrayList<>();

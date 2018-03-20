@@ -50,7 +50,7 @@ public class RosterFragment extends Fragment {
     private SparseBooleanArray expandState = new SparseBooleanArray();
     public RelativeLayout buttonLayout;
     public ExpandableLinearLayout expandableLayout;
-    private List <Student> studentList = new ArrayList <>();
+    private List <Student> studentList ;
     public Student student;
     ExpandableLayoutAnimation expandableLayoutAnimation;
 
@@ -81,6 +81,8 @@ public class RosterFragment extends Fragment {
         database = FirebaseDatabase.getInstance();
         ref = database.getReference();
         student= new Student();
+        studentList = new ArrayList <>();
+
 
         ChildEventListener childEventListener= new ChildEventListener(){
             @Override
