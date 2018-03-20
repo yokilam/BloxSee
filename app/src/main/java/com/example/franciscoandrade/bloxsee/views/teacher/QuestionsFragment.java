@@ -29,7 +29,7 @@ import static android.content.ContentValues.TAG;
 
 public class QuestionsFragment extends Fragment implements View.OnClickListener{
 
-    private List<Level> levelList= new ArrayList <>();
+    private List<Level> levelList;
     private RecyclerView recyclerView;
     private Button send;
 
@@ -41,6 +41,12 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
     HashMap<String, String> lista;
     CheckBox questionOne, questionTwo, questionThree, questionFour, questionFive;
     StudentQuestions studentQuestions1;
+    StudentQuestions studentQuestions2;
+    StudentQuestions studentQuestions3;
+    StudentQuestions studentQuestions4;
+    StudentQuestions studentQuestions5;
+    List<StudentQuestions>listStudentQuestions;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,7 +62,7 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
 
 
         setUpViews(view);
-
+        levelList= new ArrayList <>();
         database = FirebaseDatabase.getInstance();
         ref = database.getReference();
         listStudents= new ArrayList<>();
@@ -78,21 +84,39 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
         studentModel= new Student();
         studentQuestions= new StudentQuestions();
         lista= new HashMap<String, String>();
-        studentQuestions1= new StudentQuestions();
-        studentQuestions1.setQ1(questionOne.isChecked());
-        studentQuestions1.setQ2(questionTwo.isChecked());
-        studentQuestions1.setQ3(questionThree.isChecked());
-        studentQuestions1.setQ4(questionFour.isChecked());
-        studentQuestions1.setQ5(questionFive.isChecked());
+        studentQuestions1= new StudentQuestions(questionOne.isChecked(), "passed", "this is q1");
+        studentQuestions2= new StudentQuestions(questionTwo.isChecked(), "failed", "this is q2");
+        studentQuestions3= new StudentQuestions(questionThree.isChecked(), "failed", "this is q3");
+        studentQuestions4= new StudentQuestions(questionFour.isChecked(), "failed", "this is q4");
+        studentQuestions5= new StudentQuestions(questionFive.isChecked(), "passed", "this is q5");
+        listStudentQuestions= new ArrayList<>();
+        listStudentQuestions.add(studentQuestions1);
+        listStudentQuestions.add(studentQuestions2);
+        listStudentQuestions.add(studentQuestions3);
+        listStudentQuestions.add(studentQuestions4);
+        listStudentQuestions.add(studentQuestions5);
+
         ChildEventListener childEventListener= new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
                 Log.d("LISTA===", "child==: "+dataSnapshot.getValue());
                 Log.d("LISTA===", "child==: "+dataSnapshot.getKey());
-                ref.child("students").child(dataSnapshot.getKey()).child("lesson1").setValue(studentQuestions1);
+                for (int i = 0; i < 5; i++) {
 
+                    for (int j = 1; j <6 ; j++) {
+                        ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((i+1)+"").setValue(listStudentQuestions.get(i));
+                        ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((i+1)+"").setValue(listStudentQuestions.get(i));
 
+                    }
+
+                }
+//                ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child("Lesson1").child("1").setValue(studentQuestions1);
+//                ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child("Lesson2").child("2").setValue(studentQuestions1);
+//                ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child("Lesson3").child("3").setValue(studentQuestions1);
+//                ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child("Lesson4").child("4").setValue(studentQuestions1);
+//                ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child("Lesson5").child("5").setValue(studentQuestions1);
+//
             }
 
             @Override

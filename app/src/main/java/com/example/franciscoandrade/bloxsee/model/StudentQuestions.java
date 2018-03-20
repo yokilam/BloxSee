@@ -7,60 +7,42 @@ import java.util.HashMap;
  */
 
 public class StudentQuestions {
-   private Boolean q1;
-   private Boolean q2;
-   private Boolean q3;
-   private Boolean q4;
-   private Boolean q5;
+   private Boolean available;
+   private String state;
+   private String question;
+
+
 
     public StudentQuestions() {
     }
 
-    public StudentQuestions(Boolean q1, Boolean q2, Boolean q3, Boolean q4, Boolean q5) {
-        this.q1 = q1;
-        this.q2 = q2;
-        this.q3 = q3;
-        this.q4 = q4;
-        this.q5 = q5;
+    public StudentQuestions(Boolean available, String state, String question) {
+        this.available = available;
+        this.state = state;
+        this.question = question;
     }
 
-    public Boolean getQ1() {
-        return q1;
+    public Boolean getAvailable() {
+        return available;
     }
 
-    public void setQ1(Boolean q1) {
-        this.q1 = q1;
+    public void setAvailable(Boolean available) {
+        this.available = available;
     }
 
-    public Boolean getQ2() {
-        return q2;
+    public String getState() {
+        return state;
     }
 
-    public void setQ2(Boolean q2) {
-        this.q2 = q2;
+    public void setState(String state) {
+        this.state = state;
     }
 
-    public Boolean getQ3() {
-        return q3;
+    public String getQuestion() {
+        return question;
     }
 
-    public void setQ3(Boolean q3) {
-        this.q3 = q3;
-    }
-
-    public Boolean getQ4() {
-        return q4;
-    }
-
-    public void setQ4(Boolean q4) {
-        this.q4 = q4;
-    }
-
-    public Boolean getQ5() {
-        return q5;
-    }
-
-    public void setQ5(Boolean q5) {
-        this.q5 = q5;
+    public void setQuestion(String question) {
+        this.question = question;
     }
 }
