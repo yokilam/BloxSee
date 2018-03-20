@@ -7,24 +7,27 @@ import java.util.HashMap;
  */
 
 public class StudentQuestions {
-   private Boolean q1;
+   private Boolean available;
    private String state;
+   private String question;
+
+
 
     public StudentQuestions() {
     }
 
-    public StudentQuestions(Boolean q1, String state) {
-        this.q1 = q1;
+    public StudentQuestions(Boolean available, String state, String question) {
+        this.available = available;
         this.state = state;
+        this.question = question;
     }
 
-
-    public Boolean getQ1() {
-        return q1;
+    public Boolean getAvailable() {
+        return available;
     }
 
-    public void setQ1(Boolean q1) {
-        this.q1 = q1;
+    public void setAvailable(Boolean available) {
+        this.available = available;
     }
 
     public String getState() {
@@ -33,5 +36,13 @@ public class StudentQuestions {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
     }
 }

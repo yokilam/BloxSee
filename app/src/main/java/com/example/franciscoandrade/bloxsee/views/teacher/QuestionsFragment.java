@@ -84,11 +84,11 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
         studentModel= new Student();
         studentQuestions= new StudentQuestions();
         lista= new HashMap<String, String>();
-        studentQuestions1= new StudentQuestions(questionOne.isChecked(), "passed");
-        studentQuestions2= new StudentQuestions(questionTwo.isChecked(), "failed");
-        studentQuestions3= new StudentQuestions(questionThree.isChecked(), "failed");
-        studentQuestions4= new StudentQuestions(questionFour.isChecked(), "failed");
-        studentQuestions5= new StudentQuestions(questionFive.isChecked(), "passed");
+        studentQuestions1= new StudentQuestions(questionOne.isChecked(), "passed", "this is q1");
+        studentQuestions2= new StudentQuestions(questionTwo.isChecked(), "failed", "this is q2");
+        studentQuestions3= new StudentQuestions(questionThree.isChecked(), "failed", "this is q3");
+        studentQuestions4= new StudentQuestions(questionFour.isChecked(), "failed", "this is q4");
+        studentQuestions5= new StudentQuestions(questionFive.isChecked(), "passed", "this is q5");
         listStudentQuestions= new ArrayList<>();
         listStudentQuestions.add(studentQuestions1);
         listStudentQuestions.add(studentQuestions2);
