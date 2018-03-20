@@ -50,7 +50,10 @@ public class StudentActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         ref = database.getReference();
         studentQuestions= new StudentQuestions();
+        studentName = findViewById(R.id.student_name);
+        setStudentName();
         setRecyclerView();
+
 
 
 
