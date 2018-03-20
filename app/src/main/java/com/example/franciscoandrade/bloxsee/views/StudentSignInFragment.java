@@ -36,9 +36,9 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
     private View v;
     private Spinner spinner;
 
-    private ArrayList <String> listStudents;
+    private ArrayList<String> listStudents;
     private ImageView penguin, ghost, dog, cat, dragon, octopus;
-    private Button  studentLogInBtn;
+    private Button studentLogInBtn;
 
 
     //Firebase Setup
@@ -65,12 +65,12 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
         cat = v.findViewById(R.id.cat);
         dragon = v.findViewById(R.id.dragon);
         octopus = v.findViewById(R.id.octopus);
-        studentLogInBtn = v.findViewById(R.id. studentLogInBtn);
+        studentLogInBtn = v.findViewById(R.id.studentLogInBtn);
 
 
         imageSetClicks();
         //getStudentsList();
-        listStudents = new ArrayList <>();
+        listStudents = new ArrayList<>();
         listStudents.add("Student Name");
 
         new AsyncClass().execute();
@@ -87,7 +87,6 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
         octopus.setOnClickListener(this);
         studentLogInBtn.setOnClickListener(this);
     }
-
 
 
     private void getStudentsList() {
@@ -136,49 +135,48 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
     }
 
 
-
     @Override
     public void onClick(View v) {
         clearBackground();
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.penguin:
                 Toast.makeText(getActivity(), "Penguin", Toast.LENGTH_SHORT).show();
-                animalPicked="Penguin";
+                animalPicked = "Penguin";
                 penguin.setBackgroundResource(R.color.colorAccent);
                 break;
 
             case R.id.ghost:
                 ghost.setBackgroundResource(R.color.colorAccent);
-                animalPicked="Ghost";
+                animalPicked = "Ghost";
                 Toast.makeText(getActivity(), "ghost", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.dog:
                 dog.setBackgroundResource(R.color.colorAccent);
-                animalPicked="Dog";
+                animalPicked = "Dog";
                 Toast.makeText(getActivity(), "dog", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.cat:
                 cat.setBackgroundResource(R.color.colorAccent);
-                animalPicked="Cat";
+                animalPicked = "Cat";
                 Toast.makeText(getActivity(), "Cat", Toast.LENGTH_SHORT).show();
                 break;
 
 
             case R.id.dragon:
                 dragon.setBackgroundResource(R.color.colorAccent);
-                animalPicked="Dragon";
+                animalPicked = "Dragon";
                 Toast.makeText(getActivity(), "dragon", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.octopus:
                 octopus.setBackgroundResource(R.color.colorAccent);
-                animalPicked="Octopus";
+                animalPicked = "Octopus";
                 Toast.makeText(getActivity(), "Octopus", Toast.LENGTH_SHORT).show();
                 break;
 
-            case R.id. studentLogInBtn:
+            case R.id.studentLogInBtn:
                 loginStudent();
                 Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
                 break;
@@ -188,18 +186,18 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
     }
 
     private void loginStudent() {
-        String nameStudent= spinner.getSelectedItem().toString();
+        String nameStudent = spinner.getSelectedItem().toString();
 
 
-        if (!TextUtils.isEmpty(animalPicked) && !nameStudent.equals(listStudents.get(0)) && spinner.getSelectedItem().toString()!= null){
+        if (!TextUtils.isEmpty(animalPicked) && !nameStudent.equals(listStudents.get(0)) && spinner.getSelectedItem().toString() != null) {
             Log.d("SPINNER==", "loginStudent: Animal: READY TO LOG IN");
-            String result= getPasswordOfUser(nameStudent, animalPicked);
+            String result = getPasswordOfUser(nameStudent, animalPicked);
 
-            Log.d("LOGIN====", "loginStudent: "+result);
-            Log.d("LOGIN====", "loginStudent: "+animalPicked);
+            Log.d("LOGIN====", "loginStudent: " + result);
+            Log.d("LOGIN====", "loginStudent: " + animalPicked);
 
 
-            Log.d("LOGIIN==", "loginStudent: "+ref.child("students").child(nameStudent).getKey());
+            Log.d("LOGIIN==", "loginStudent: " + ref.child("students").child(nameStudent).getKey());
 
         }
 
@@ -207,15 +205,15 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
 
     private String getPasswordOfUser(String student, final String password) {
 
-        messageRef= ref.child("students").child(student).child("password");
-        ref= database.getReference();
-        pass="";
+        messageRef = ref.child("students").child(student).child("password");
+        ref = database.getReference();
+        pass = "";
         messageRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.d("LOGIIN==", "loginStudent: 111"+dataSnapshot.getValue());
-                pass= dataSnapshot.getValue().toString();
-                Log.d("LOGIIN==", "loginStudent: 2222 "+dataSnapshot.getValue());
+                Log.d("LOGIIN==", "loginStudent: 111" + dataSnapshot.getValue());
+                pass = dataSnapshot.getValue().toString();
+                Log.d("LOGIIN==", "loginStudent: 2222 " + dataSnapshot.getValue());
 
                 checkLoginCredentials(pass, password);
 
@@ -227,27 +225,27 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
             }
         });
 
-        Log.d("LOGIIN==", "loginStudent: 2222111 "+pass);
+        Log.d("LOGIIN==", "loginStudent: 2222111 " + pass);
 
         return pass;
     }
 
     private void checkLoginCredentials(String pass, String password) {
-        Log.d("CHECKING", "checkLoginCredentials: "+pass);
-        Log.d("CHECKING", "checkLoginCredentials: "+password);
+        Log.d("CHECKING", "checkLoginCredentials: " + pass);
+        Log.d("CHECKING", "checkLoginCredentials: " + password);
 
-        if(pass.equals( password)){
-        Intent intent = new Intent(getActivity(), StudentActivity.class);
+        if (pass.equals(password)) {
+            String studentName = spinner.getSelectedItem().toString();
+            Intent intent = new Intent(getActivity(), StudentActivity.class);
+            intent.putExtra("studentName", studentName);
             startActivity(intent);
             Log.d("CHECKING", "checkLoginCredentials: PASSEED");
             Toast.makeText(getActivity(), "PASSED", Toast.LENGTH_SHORT).show();
 
-        }
-        else {
+        } else {
             Log.d("STUDENT", "loginStudent: password Doesnt match");
             Toast.makeText(getActivity(), "loginStudent: password Doesnt match", Toast.LENGTH_SHORT).show();
         }
-
 
 
     }
@@ -263,22 +261,22 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
 
     }
 
-    private class AsyncClass extends AsyncTask<Void, Void, Void>{
-        ArrayAdapter <String> adapter;
+    private class AsyncClass extends AsyncTask<Void, Void, Void> {
+        ArrayAdapter<String> adapter;
 
         @Override
         protected Void doInBackground(Void... voids) {
-            database= FirebaseDatabase.getInstance();
-            ref= database.getReference();
-            student= new Student();
+            database = FirebaseDatabase.getInstance();
+            ref = database.getReference();
+            student = new Student();
 
-            ChildEventListener childEventListener= new ChildEventListener() {
+            ChildEventListener childEventListener = new ChildEventListener() {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                    student=dataSnapshot.getValue(Student.class);
+                    student = dataSnapshot.getValue(Student.class);
                     listStudents.add(dataSnapshot.getKey());
-                    Log.d("CHILDren==", "onChildAdded: "+ student.getName());
-                    Log.d("CHILD==", "onChildAdded: "+ student.getName());
+                    Log.d("CHILDren==", "onChildAdded: " + student.getName());
+                    Log.d("CHILD==", "onChildAdded: " + student.getName());
                     // adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
 
 
