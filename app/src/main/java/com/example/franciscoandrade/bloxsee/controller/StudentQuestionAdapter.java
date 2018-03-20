@@ -1,5 +1,6 @@
 package com.example.franciscoandrade.bloxsee.controller;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +15,13 @@ import java.util.List;
 
 public class StudentQuestionAdapter extends RecyclerView.Adapter<StudentQuestionViewHolder> {
 
-    public List<Questions> questionsList = new ArrayList<>();
+    private List<String> questionsList;
+    private Context context;
 
-    public StudentQuestionAdapter(List<Questions> questionsList) {
-        this.questionsList = questionsList;
+
+    public StudentQuestionAdapter(Context context) {
+        this.context=context;
+        questionsList= new ArrayList<>();
     }
 
     @Override
@@ -28,14 +32,16 @@ public class StudentQuestionAdapter extends RecyclerView.Adapter<StudentQuestion
 
     @Override
     public void onBindViewHolder(StudentQuestionViewHolder holder, int position) {
-        holder.onBind(getQuestionsList().get(position));
+        holder.onBind(questionsList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return getQuestionsList().size();
+        return questionsList.size();
     }
-    public List <Questions> getQuestionsList(){
-        return questionsList;
+
+    public void addQuestions(List<String> questions) {
+        questionsList.addAll(questions);
+        notifyDataSetChanged();
     }
 }

@@ -34,8 +34,8 @@ public class StudentQuestionViewHolder extends RecyclerView.ViewHolder {
             }
         });
     }
-    public void onBind(Questions questions){
-        studentQuestion.setText(questions.getQuestions());
+    public void onBind(String questions){
+        studentQuestion.setText(questions);
 
 
     }
