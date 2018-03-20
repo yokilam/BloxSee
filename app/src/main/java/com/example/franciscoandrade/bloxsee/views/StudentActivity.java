@@ -52,19 +52,12 @@ public class StudentActivity extends AppCompatActivity {
         studentQuestions= new StudentQuestions();
         setRecyclerView();
 
-
-
-
     }
 
     public void setRecyclerView() {
         recyclerView = findViewById(R.id.student_questions_rv);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
-
-
-
-
 
         studentQuestionAdapter= new StudentQuestionAdapter(this);
         recyclerView.setAdapter(studentQuestionAdapter);
