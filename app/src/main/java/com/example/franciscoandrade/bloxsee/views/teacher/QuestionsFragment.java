@@ -46,6 +46,8 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
     StudentQuestions studentQuestions4;
     StudentQuestions studentQuestions5;
     List<StudentQuestions>listStudentQuestions;
+    List<Boolean> isQuestionAvailable;
+    List<CheckBox> lessonOneCheckBox;
 
 
     @Override
@@ -59,6 +61,12 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
         questionThree= view.findViewById(R.id.questionThree);
         questionFour= view.findViewById(R.id.questionFour);
         questionFive= view.findViewById(R.id.questionFive);
+        lessonOneCheckBox= new ArrayList <>();
+        lessonOneCheckBox.add(questionOne);
+        lessonOneCheckBox.add(questionTwo);
+        lessonOneCheckBox.add(questionThree);
+        lessonOneCheckBox.add(questionFour);
+        lessonOneCheckBox.add(questionFive);
 
 
         setUpViews(view);
@@ -83,6 +91,7 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
 
         studentModel= new Student();
         studentQuestions= new StudentQuestions();
+        isQuestionAvailable= new ArrayList <>();
         lista= new HashMap<String, String>();
         studentQuestions1= new StudentQuestions(questionOne.isChecked(), "passed", "this is q1");
         studentQuestions2= new StudentQuestions(questionTwo.isChecked(), "failed", "this is q2");
@@ -100,6 +109,7 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
+                setUpCheckBoxes(dataSnapshot);
                 Log.d("LISTA===", "child==: "+dataSnapshot.getValue());
                 Log.d("LISTA===", "child==: "+dataSnapshot.getKey());
                 for (int i = 0; i < 5; i++) {
@@ -107,10 +117,13 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
                     for (int j = 1; j <6 ; j++) {
                         ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((i+1)+"").setValue(listStudentQuestions.get(i));
                         ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((i+1)+"").setValue(listStudentQuestions.get(i));
+//                        Log.d("AVAILABLE===", ""+ dataSnapshot.child("lesson1").child((i+1)+"").child("available").getValue());
 
                     }
 
                 }
+
+
 //                ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child("Lesson1").child("1").setValue(studentQuestions1);
 //                ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child("Lesson2").child("2").setValue(studentQuestions1);
 //                ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child("Lesson3").child("3").setValue(studentQuestions1);
@@ -143,6 +156,25 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
 
 
 
+    }
+
+    private void setUpCheckBoxes(DataSnapshot dataSnapshot) {
+        //getting lesson's question availability and add it to a list
+        for (int k = 0; k < 5; k++){
+            Log.d("AVAILABLE===", ""+ dataSnapshot.child("lesson1").child((k+1)+"").child("available").getValue().toString());
+            Boolean isAvailable= Boolean.valueOf(dataSnapshot.child("lesson1").child((k+1)+"").child("available").getValue().toString());
+            Log.d("Available2=== ", ""+isAvailable);
+            isQuestionAvailable.add(isAvailable);
+        }
+
+        //run the availability list and set the checkboxes
+        for (int h=0; h < 5; h++) {
+            if (isQuestionAvailable.get(h)) {
+                lessonOneCheckBox.get(h).setChecked(true);
+            } else {
+                lessonOneCheckBox.get(h).setChecked(false);
+            }
+        }
     }
 
     private void setUpViews(View view) {
