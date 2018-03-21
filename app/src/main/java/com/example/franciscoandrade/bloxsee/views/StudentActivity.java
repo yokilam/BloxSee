@@ -81,6 +81,7 @@ public class StudentActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        questionsList= new ArrayList<>();
          childEventListener= new ChildEventListener() {
              @Override
              public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -101,14 +102,35 @@ public class StudentActivity extends AppCompatActivity {
                      }
 
                  }
+                    studentQuestionAdapter.notifyDataSetChanged();
                      studentQuestionAdapter.addQuestions(questionsList);
-
+                     studentQuestionAdapter.notifyDataSetChanged();
                  }
              }
 
              @Override
              public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
+                 if (dataSnapshot.getKey().equals(user) ) {
+                     // studentQuestions= dataSnapshot.child("lesson1").child("1").getValue(StudentQuestions.class);
+                     questionsList= new ArrayList<>();
+                     for (int i = 1; i < 3; i++) {
+
+                         for (int j = 1; j < 6; j++) {
+                             lesson= "lesson"+i;
+                             studentQuestions= dataSnapshot.child(lesson).child(j+"").getValue(StudentQuestions.class);
+                             question=studentQuestions.getQuestion()+" - "+lesson;
+                             if(studentQuestions.getAvailable()){
+                                 Log.d("QUESTONS==", "onChildAdded: "+lesson+" - "+question);
+                                 questionsList.add(question);
+                             }
+                         }
+
+                     }
+                     studentQuestionAdapter.notifyDataSetChanged();
+                     studentQuestionAdapter.addQuestions(questionsList);
+                     studentQuestionAdapter.notifyDataSetChanged();
+                 }
              }
 
              @Override
@@ -130,5 +152,11 @@ public class StudentActivity extends AppCompatActivity {
         ref.child("students").addChildEventListener(childEventListener);
 
 
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        ref.child("students").removeEventListener(childEventListener);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.franciscoandrade.bloxsee.views.teacher;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,10 +14,12 @@ import java.util.List;
 
 public class TeacherProgressAdapter extends RecyclerView.Adapter<TeacherProgressViewHolder> {
 
-    private List<Progress> progressList= new ArrayList <>();
+    private List<Progress> progressLis;
+    Context context;
 
-    public TeacherProgressAdapter(List <Progress> progressList) {
-        this.progressList = progressList;
+    public TeacherProgressAdapter(Context context) {
+        this.context= context;
+        progressLis= new ArrayList<>();
     }
 
     @Override
@@ -27,15 +30,18 @@ public class TeacherProgressAdapter extends RecyclerView.Adapter<TeacherProgress
 
     @Override
     public void onBindViewHolder(TeacherProgressViewHolder holder, int position) {
-        holder.onBind(getProgressList().get(position));
+        holder.onBind(progressLis.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return getProgressList().size();
+        return progressLis.size();
     }
 
-    public List <Progress> getProgressList() {
-        return progressList;
+    public void addProgress(List<Progress> progressList) {
+        progressLis.clear();
+        notifyDataSetChanged();
+        progressLis.addAll(progressList);
+        notifyDataSetChanged();
     }
 }

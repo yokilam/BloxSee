@@ -14,11 +14,12 @@ import com.github.aakira.expandablelayout.ExpandableLinearLayout;
 
 public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     private TextView name;
-    private TextView lessonOne, lessonTwo, lessonThree, lessonFour, lessonFive;
+    private TextView lessonOne, lessonTwo;
     private TextView questionOne, questionTwo, questionThree, questionFour, questionFive;
     private ExpandableLinearLayout expandableLayout;
     ExpandableLayoutAnimation expandableLayoutAnimation;
     private SparseBooleanArray expandState = new SparseBooleanArray();
+    Progress progress1;
 
     public TeacherProgressViewHolder(View itemView) {
         super(itemView);
@@ -26,9 +27,6 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
         name = itemView.findViewById(R.id.name_progress);
         lessonOne = itemView.findViewById(R.id.lesson_one);
         lessonTwo = itemView.findViewById(R.id.lesson_two);
-        lessonThree = itemView.findViewById(R.id.lesson_three);
-        lessonFour = itemView.findViewById(R.id.lesson_four);
-        lessonFive = itemView.findViewById(R.id.lesson_five);
         questionOne= itemView.findViewById(R.id.question_one);
         questionTwo= itemView.findViewById(R.id.question_two);
         questionThree= itemView.findViewById(R.id.question_three);
@@ -40,18 +38,12 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
 
         lessonOne.setOnClickListener(this);
         lessonTwo.setOnClickListener(this);
-        lessonThree.setOnClickListener(this);
-        lessonFour.setOnClickListener(this);
-        lessonFive.setOnClickListener(this);
+
     }
 
     public void onBind(Progress progress) {
         name.setText(progress.getName());
-        changeColor(progress.getQuestionOne(), questionOne);
-        changeColor(progress.getQuestionTwo(), questionTwo);
-        changeColor(progress.getQuestionThree(), questionThree);
-        changeColor(progress.getQuestionFour(), questionFour);
-        changeColor(progress.getQuestionFive(), questionFive);
+        progress1= progress;
     }
 
     @Override
@@ -60,30 +52,42 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
             case R.id.lesson_one:
                 expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
                         (v, expandableLayout, R.color.material_orange_200, expandState);
+                changeColor(progress1.getLesson1().get(0), questionOne);
+                changeColor(progress1.getLesson1().get(1), questionTwo);
+                changeColor(progress1.getLesson1().get(2), questionThree);
+                changeColor(progress1.getLesson1().get(3), questionFour);
+                changeColor(progress1.getLesson1().get(4), questionFive);
+                Log.d("COLORS1==", "onClick: "+progress1.getLesson1().get(0));
+                Log.d("COLORS1==", "onClick: "+progress1.getLesson1().get(1));
+                Log.d("COLORS1==", "onClick: "+progress1.getLesson1().get(2));
+                Log.d("COLORS1==", "onClick: "+progress1.getLesson1().get(3));
+                Log.d("COLORS1==", "onClick: "+progress1.getLesson1().get(4));
                 break;
             case R.id.lesson_two:
                 expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
                         (v, expandableLayout, R.color.material_blue_50, expandState);
+                changeColor(progress1.getLesson2().get(0), questionOne);
+                changeColor(progress1.getLesson2().get(1), questionTwo);
+                changeColor(progress1.getLesson2().get(2), questionThree);
+                changeColor(progress1.getLesson2().get(3), questionFour);
+                changeColor(progress1.getLesson2().get(4), questionFive);
+                Log.d("COLORS2==", "onClick: "+progress1.getLesson2().get(0));
+                Log.d("COLORS2==", "onClick: "+progress1.getLesson2().get(1));
+                Log.d("COLORS2==", "onClick: "+progress1.getLesson2().get(2));
+                Log.d("COLORS2==", "onClick: "+progress1.getLesson2().get(3));
+                Log.d("COLORS2==", "onClick: "+progress1.getLesson2().get(4));
+
+
                 break;
-            case R.id.lesson_three:
-                expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
-                        (v, expandableLayout, R.color.material_deep_purple_100, expandState);
-                break;
-            case R.id.lesson_four:
-                expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
-                        (v, expandableLayout, R.color.material_orange_400 ,expandState);
-                break;
-            case R.id.lesson_five:
-                expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
-                        (v, expandableLayout, R.color.material_blue_400, expandState);
-                break;
+
         }
     }
 
     public void changeColor(String string, TextView textView){
-        if (string.equals("wrong")) {
+        if (string.equals("passed")) {
             textView.setBackgroundResource(R.color.material_red_500);
-        } else if (string.equals("right")) {
+        }
+        if (string.equals("failed")) {
             textView.setBackgroundResource(R.color.material_green_300);
         }
     }

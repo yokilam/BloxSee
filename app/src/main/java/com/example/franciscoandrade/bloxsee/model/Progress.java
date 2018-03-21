@@ -2,44 +2,44 @@ package com.example.franciscoandrade.bloxsee.model;
 
 import android.widget.TextView;
 
+import java.util.List;
+
 public class Progress {
     private String name;
-    private String questionOne;
-    private String questionTwo;
-    private String questionThree;
-    private String questionFour;
-    private String questionFive;
+    private List<String> lesson1;
+    private List<String> lesson2;
 
-    public Progress(String name, String questionOne, String questionTwo, String questionThree, String questionFour, String questionFive) {
+
+    public Progress() {
+    }
+
+    public Progress(String name, List<String> lesson1, List<String> lesson2) {
         this.name = name;
-        this.questionOne = questionOne;
-        this.questionTwo = questionTwo;
-        this.questionThree = questionThree;
-        this.questionFour = questionFour;
-        this.questionFive = questionFive;
+        this.lesson1 = lesson1;
+        this.lesson2 = lesson2;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getQuestionOne() {
-        return questionOne;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getQuestionTwo() {
-        return questionTwo;
+    public List<String> getLesson1() {
+        return lesson1;
     }
 
-    public String getQuestionThree() {
-        return questionThree;
+    public void setLesson1(List<String> lesson1) {
+        this.lesson1 = lesson1;
     }
 
-    public String getQuestionFour() {
-        return questionFour;
+    public List<String> getLesson2() {
+        return lesson2;
     }
 
-    public String getQuestionFive() {
-        return questionFive;
+    public void setLesson2(List<String> lesson2) {
+        this.lesson2 = lesson2;
     }
 }
