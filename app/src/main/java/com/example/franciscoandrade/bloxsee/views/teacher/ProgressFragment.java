@@ -1,7 +1,9 @@
 package com.example.franciscoandrade.bloxsee.views.teacher;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -57,6 +59,8 @@ public class ProgressFragment extends Fragment {
         return view;
     }
 
+
+
     @Override
     public void onStart() {
         super.onStart();
@@ -73,12 +77,12 @@ public class ProgressFragment extends Fragment {
                 lesson2= new ArrayList<>();
                 for (int i = 1; i < 3; i++) {
                     for (int j = 1; j < 6; j++) {
-                        if (i==1){
+                        if (i==1 && dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue()!= null){
                             String state= dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue().toString();
                             //Log.d("State==", "onChildAdded: "+state);
                             lesson1.add(state);
                         }
-                        if(i==2){
+                        if(i==2 && dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue()!= null){
                             lesson2.add(dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue().toString());
                         }
 //                            Log.d("ADDEEED", "onChildAdded: "+dataSnapshot.getKey()+" - "+dataSnapshot.child("lesson"+i).getKey()+" - "+dataSnapshot.child("lesson"+i).child(j+"").getKey()+" - "+dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue());
@@ -119,9 +123,9 @@ public class ProgressFragment extends Fragment {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i < progressList.size()-1; i++) {
-                    Log.d("ListaaaProgress", "onStart: "+ progressList.get(i).getName()+" lesson1: "+ progressList.get(i).getLesson1().get(i)+"lesson2: "+progressList.get(i).getLesson2().get(i));
-                }
+//                for (int i = 0; i < progressList.size()-1; i++) {
+//                    Log.d("ListaaaProgress", "onStart: "+ progressList.get(i).getName()+" lesson1: "+ progressList.get(i).getLesson1().get(i)+"lesson2: "+progressList.get(i).getLesson2().get(i));
+//                }
                 teacherProgressAdapter.addProgress(progressList);
 
             }
