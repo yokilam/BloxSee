@@ -46,11 +46,11 @@ public class StudentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
+        studentName = findViewById(R.id.student_name);
         setStudentName();
         database = FirebaseDatabase.getInstance();
         ref = database.getReference();
         studentQuestions= new StudentQuestions();
-        studentName = findViewById(R.id.student_name);
         setRecyclerView();
 
 
@@ -71,7 +71,7 @@ public class StudentActivity extends AppCompatActivity {
     public void setStudentName() {
         Intent intent = getIntent();
         user = intent.getStringExtra("studentName");
-//        studentName.setText("Welcome, " + studentUser + "!");
+        studentName.setText("Welcome, " + user + " !");
 
     }
 
