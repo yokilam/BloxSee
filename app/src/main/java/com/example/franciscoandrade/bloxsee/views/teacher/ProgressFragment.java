@@ -87,7 +87,6 @@ public class ProgressFragment extends Fragment {
                         }
 //                            Log.d("ADDEEED", "onChildAdded: "+dataSnapshot.getKey()+" - "+dataSnapshot.child("lesson"+i).getKey()+" - "+dataSnapshot.child("lesson"+i).child(j+"").getKey()+" - "+dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue());
                     }
-
                 }
 
                 progress.setLesson1(lesson1);
