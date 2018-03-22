@@ -1,6 +1,10 @@
 package com.example.franciscoandrade.bloxsee.views;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -28,7 +32,8 @@ import java.util.List;
 public class StudentActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TextView studentName;
-
+    private static final int NOTIFICATION_ID = 555;
+    private static final String NOTIFICATION_CHANNEL = "C4Q Notifications";
 
     private DatabaseReference ref;
     private FirebaseDatabase database;
@@ -53,9 +58,20 @@ public class StudentActivity extends AppCompatActivity {
         studentQuestions= new StudentQuestions();
         setRecyclerView();
 
+    }
 
-
-
+    private void setUpNotification() {
+        Notification notification = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL)
+                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setColor(getResources().getColor(R.color.colorPrimary))
+                .setContentTitle("New Question Added!")
+                .setContentText("A new question is posted!")
+                .setAutoCancel(true)
+                .setDefaults(Notification.DEFAULT_ALL)
+                .setPriority(NotificationManager.IMPORTANCE_HIGH)
+                .build();
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(NOTIFICATION_ID, notification);
     }
 
     public void setRecyclerView() {
@@ -130,6 +146,7 @@ public class StudentActivity extends AppCompatActivity {
                      studentQuestionAdapter.notifyDataSetChanged();
                      studentQuestionAdapter.addQuestions(questionsList);
                      studentQuestionAdapter.notifyDataSetChanged();
+                     setUpNotification();
                  }
              }
 
@@ -150,7 +167,6 @@ public class StudentActivity extends AppCompatActivity {
          };
 
         ref.child("students").addChildEventListener(childEventListener);
-
 
     }
 
