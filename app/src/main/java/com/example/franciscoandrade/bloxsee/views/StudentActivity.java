@@ -2,6 +2,7 @@ package com.example.franciscoandrade.bloxsee.views;
 
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
@@ -57,15 +58,25 @@ public class StudentActivity extends AppCompatActivity {
         ref = database.getReference();
         studentQuestions= new StudentQuestions();
         setRecyclerView();
+        setUpNotification();
 
     }
 
     private void setUpNotification() {
+        // Define an intent to trigger when notification is selected (in this case to open an activity)
+        Intent intent = new Intent(this, StudentActivity.class);
+
+        // Turn this into a PendingIntent
+        int requestID = (int) System.currentTimeMillis(); // Unique requestID to differentiate between various notification with same notification ID
+        int flags = PendingIntent.FLAG_CANCEL_CURRENT; // Cancel old intent and create new one
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, requestID, intent, flags);
+
         Notification notification = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL)
                 .setSmallIcon(R.drawable.ic_launcher_background)
                 .setColor(getResources().getColor(R.color.colorPrimary))
                 .setContentTitle("New Question Added!")
                 .setContentText("A new question is posted!")
+                .setContentIntent(pendingIntent)
                 .setAutoCancel(true)
                 .setDefaults(Notification.DEFAULT_ALL)
                 .setPriority(NotificationManager.IMPORTANCE_HIGH)
