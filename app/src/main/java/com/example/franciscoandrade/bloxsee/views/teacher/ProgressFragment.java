@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 
 import com.example.franciscoandrade.bloxsee.R;
 import com.example.franciscoandrade.bloxsee.model.Progress;
+import com.example.franciscoandrade.bloxsee.model.StudentQuestions;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,8 +35,8 @@ public class ProgressFragment extends Fragment {
     private FirebaseDatabase database;
     private ChildEventListener childEventListener;
 
-    List<String> lesson1;
-    List<String> lesson2;
+    List<StudentQuestions> lesson1;
+    List<StudentQuestions> lesson2;
     List<Progress> progressList;
     TeacherProgressAdapter teacherProgressAdapter;
     @Override
@@ -72,6 +73,7 @@ public class ProgressFragment extends Fragment {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
                 Progress progress= new Progress();
+                StudentQuestions studentQuestions= new StudentQuestions();
                 progress.setName(dataSnapshot.getKey());
                 lesson1= new ArrayList<>();
                 lesson2= new ArrayList<>();
@@ -80,11 +82,14 @@ public class ProgressFragment extends Fragment {
                         if (i==1 && dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue()!= null){
                             String state= dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue().toString();
                             //Log.d("State==", "onChildAdded: "+state);
-                            lesson1.add(state);
+                            studentQuestions.setState(state);
+                            lesson1.add(studentQuestions);
+
                         }
                         if(i==2 && dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue()!= null){
-                            lesson2.add(dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue().toString());
-                        }
+                            String state= dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue().toString();
+                            studentQuestions.setState(state);
+                            lesson2.add(studentQuestions);                        }
 //                            Log.d("ADDEEED", "onChildAdded: "+dataSnapshot.getKey()+" - "+dataSnapshot.child("lesson"+i).getKey()+" - "+dataSnapshot.child("lesson"+i).child(j+"").getKey()+" - "+dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue());
                     }
                 }

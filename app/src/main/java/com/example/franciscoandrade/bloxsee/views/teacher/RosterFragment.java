@@ -61,8 +61,8 @@ public class RosterFragment extends Fragment {
     private DatabaseReference ref;
     private FirebaseDatabase database;
     private ChildEventListener childEventListener;
-    List<String> lesson1;
-    List<String> lesson2;
+    List<StudentQuestions> lesson1;
+    List<StudentQuestions> lesson2;
     List<Progress> progressList;
     TeacherProgressAdapter teacherProgressAdapter;
 
@@ -215,6 +215,7 @@ public class RosterFragment extends Fragment {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
                 Progress progress= new Progress();
+                StudentQuestions studentQuestions= new StudentQuestions();
                 progress.setName(dataSnapshot.getKey());
                 lesson1= new ArrayList<>();
                 lesson2= new ArrayList<>();
@@ -223,10 +224,14 @@ public class RosterFragment extends Fragment {
                         if (i==1 && dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue()!= null){
                             String state= dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue().toString();
                             //Log.d("State==", "onChildAdded: "+state);
-                            lesson1.add(state);
+                            studentQuestions.setState(state);
+                            lesson1.add(studentQuestions);
+
                         }
                         if(i==2 && dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue()!= null){
-                            lesson2.add(dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue().toString());
+                            String state= dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue().toString();
+                            studentQuestions.setState(state);
+                            lesson2.add(studentQuestions);
                         }
 //                            Log.d("ADDEEED", "onChildAdded: "+dataSnapshot.getKey()+" - "+dataSnapshot.child("lesson"+i).getKey()+" - "+dataSnapshot.child("lesson"+i).child(j+"").getKey()+" - "+dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue());
                     }
