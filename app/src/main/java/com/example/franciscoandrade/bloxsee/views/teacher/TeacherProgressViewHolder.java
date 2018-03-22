@@ -52,11 +52,11 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
             case R.id.lesson_one:
                 expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
                         (v, expandableLayout, R.color.material_orange_200, expandState);
-                changeColor(progress1.getLesson1().get(0), questionOne);
-                changeColor(progress1.getLesson1().get(1), questionTwo);
-                changeColor(progress1.getLesson1().get(2), questionThree);
-                changeColor(progress1.getLesson1().get(3), questionFour);
-                changeColor(progress1.getLesson1().get(4), questionFive);
+                changeColor(progress1.getLesson1().get(0).getState(), questionOne);
+                changeColor(progress1.getLesson1().get(1).getState(), questionTwo);
+                changeColor(progress1.getLesson1().get(2).getState(), questionThree);
+                changeColor(progress1.getLesson1().get(3).getState(), questionFour);
+                changeColor(progress1.getLesson1().get(4).getState(), questionFive);
                 Log.d("COLORS1==", "onClick: "+progress1.getLesson1().get(0));
                 Log.d("COLORS1==", "onClick: "+progress1.getLesson1().get(1));
                 Log.d("COLORS1==", "onClick: "+progress1.getLesson1().get(2));
@@ -66,11 +66,11 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
             case R.id.lesson_two:
                 expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
                         (v, expandableLayout, R.color.material_blue_50, expandState);
-                changeColor(progress1.getLesson2().get(0), questionOne);
-                changeColor(progress1.getLesson2().get(1), questionTwo);
-                changeColor(progress1.getLesson2().get(2), questionThree);
-                changeColor(progress1.getLesson2().get(3), questionFour);
-                changeColor(progress1.getLesson2().get(4), questionFive);
+                changeColor(progress1.getLesson2().get(0).getState(), questionOne);
+                changeColor(progress1.getLesson2().get(1).getState(), questionTwo);
+                changeColor(progress1.getLesson2().get(2).getState(), questionThree);
+                changeColor(progress1.getLesson2().get(3).getState(), questionFour);
+                changeColor(progress1.getLesson2().get(4).getState(), questionFive);
                 Log.d("COLORS2==", "onClick: "+progress1.getLesson2().get(0));
                 Log.d("COLORS2==", "onClick: "+progress1.getLesson2().get(1));
                 Log.d("COLORS2==", "onClick: "+progress1.getLesson2().get(2));
