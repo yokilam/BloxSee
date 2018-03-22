@@ -2,6 +2,7 @@ package com.example.franciscoandrade.bloxsee.views.teacher;
 
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,6 +21,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.franciscoandrade.bloxsee.R;
+import com.example.franciscoandrade.bloxsee.model.Progress;
 import com.example.franciscoandrade.bloxsee.model.Student;
 import com.example.franciscoandrade.bloxsee.model.StudentQuestions;
 import com.example.franciscoandrade.bloxsee.util.ExpandableLayoutAnimation;
@@ -58,6 +60,11 @@ public class RosterFragment extends Fragment {
     private FirebaseAuth mAuth;
     private DatabaseReference ref;
     private FirebaseDatabase database;
+    private ChildEventListener childEventListener;
+    List<String> lesson1;
+    List<String> lesson2;
+    List<Progress> progressList;
+    TeacherProgressAdapter teacherProgressAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -191,6 +198,7 @@ public class RosterFragment extends Fragment {
             Log.d("ADDED==", "addStudent: " + nameStudent);
             Log.d("ADDED==", "addStudent: " + selectedPassword);
             Student student = new Student(nameStudent, selectedPassword);
+            setQuestions();
             ref.child("students").child(nameStudent).setValue(student);
             studentName.setText("");
         } else {
@@ -199,9 +207,67 @@ public class RosterFragment extends Fragment {
         }
     }
 
+    private void setQuestions() {
+        progressList= new ArrayList<>();
+
+        childEventListener= new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+                Progress progress= new Progress();
+                progress.setName(dataSnapshot.getKey());
+                lesson1= new ArrayList<>();
+                lesson2= new ArrayList<>();
+                for (int i = 1; i < 3; i++) {
+                    for (int j = 1; j < 6; j++) {
+                        if (i==1 && dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue()!= null){
+                            String state= dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue().toString();
+                            //Log.d("State==", "onChildAdded: "+state);
+                            lesson1.add(state);
+                        }
+                        if(i==2 && dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue()!= null){
+                            lesson2.add(dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue().toString());
+                        }
+//                            Log.d("ADDEEED", "onChildAdded: "+dataSnapshot.getKey()+" - "+dataSnapshot.child("lesson"+i).getKey()+" - "+dataSnapshot.child("lesson"+i).child(j+"").getKey()+" - "+dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue());
+                    }
+                }
+
+                progress.setLesson1(lesson1);
+                progress.setLesson2(lesson2);
+                progressList.add(progress);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+
+        ref.child("students").addChildEventListener(childEventListener);
+
+
+    }
+
     //Starts animation to expand the layout
     private void onClickButton(final ExpandableLayout expandableLayout) {
         expandableLayout.toggle();
     }
+
+
 }
 

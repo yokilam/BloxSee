@@ -46,6 +46,7 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_questions, container, false);
+        setUpViews(view);
         Log.d(TAG, "onCreateView: I am on question fragment");
         questionOne= view.findViewById(R.id.questionOne);
         questionTwo= view.findViewById(R.id.questionTwo);
@@ -59,7 +60,6 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
         listChckbox.add(true);
         listChckbox.add(true);
         listChckbox.add(true);
-        setUpViews(view);
         levelList= new ArrayList <>();
         database = FirebaseDatabase.getInstance();
         ref = database.getReference();
@@ -83,24 +83,28 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
         ChildEventListener childEventListener= new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Log.d("CURRENTUSER=", "onChildAdded: "+dataSnapshot.getKey());
-                Boolean q1=Boolean.parseBoolean(dataSnapshot.child("lesson1").child("1").child("available").getValue().toString());
-                Boolean q2=Boolean.parseBoolean(dataSnapshot.child("lesson1").child("2").child("available").getValue().toString());
-                Boolean q3=Boolean.parseBoolean(dataSnapshot.child("lesson1").child("3").child("available").getValue().toString());
-                Boolean q4=Boolean.parseBoolean(dataSnapshot.child("lesson1").child("4").child("available").getValue().toString());
-                Boolean q5=Boolean.parseBoolean(dataSnapshot.child("lesson1").child("5").child("available").getValue().toString());
 
-                listChckbox.set(0,q1);
-                listChckbox.set(1,q2);
-                listChckbox.set(2,q3);
-                listChckbox.set(3, q4);
-                listChckbox.set(4, q5);
+                if (dataSnapshot.child("lesson1").child("1").child("available").getValue()!=null) {
+                    Log.d("CURRENTUSER=", "onChildAdded: " + dataSnapshot.getKey());
+                    Boolean q1 = Boolean.parseBoolean(dataSnapshot.child("lesson1").child("1").child("available").getValue().toString());
+                    Boolean q2 = Boolean.parseBoolean(dataSnapshot.child("lesson1").child("2").child("available").getValue().toString());
+                    Boolean q3 = Boolean.parseBoolean(dataSnapshot.child("lesson1").child("3").child("available").getValue().toString());
+                    Boolean q4 = Boolean.parseBoolean(dataSnapshot.child("lesson1").child("4").child("available").getValue().toString());
+                    Boolean q5 = Boolean.parseBoolean(dataSnapshot.child("lesson1").child("5").child("available").getValue().toString());
 
-                questionOne.setChecked(listChckbox.get(0));
-                questionTwo.setChecked(listChckbox.get(1));
-                questionThree.setChecked(listChckbox.get(2));
-                questionFour.setChecked(listChckbox.get(3));
-                questionFive.setChecked(listChckbox.get(4));
+                    listChckbox.set(0, q1);
+                    listChckbox.set(1, q2);
+                    listChckbox.set(2, q3);
+                    listChckbox.set(3, q4);
+                    listChckbox.set(4, q5);
+
+                    questionOne.setChecked(listChckbox.get(0));
+                    questionTwo.setChecked(listChckbox.get(1));
+                    questionThree.setChecked(listChckbox.get(2));
+                    questionFour.setChecked(listChckbox.get(3));
+                    questionFive.setChecked(listChckbox.get(4));
+
+                }
             }
 
             @Override
