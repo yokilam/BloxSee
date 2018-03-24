@@ -1,7 +1,11 @@
 package com.example.franciscoandrade.bloxsee.views.student;
 
+import android.app.FragmentManager;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.view.View;
 
+import com.example.franciscoandrade.bloxsee.R;
 import com.google.blockly.android.AbstractBlocklyActivity;
 import com.google.blockly.android.codegen.CodeGenerationRequest;
 import com.google.blockly.android.codegen.LoggingCodeGeneratorCallback;
@@ -12,6 +16,17 @@ import java.util.Arrays;
 import java.util.List;
 
 public class BlocklyActivity extends AbstractBlocklyActivity {
+
+    private BlocklyRunFragment blocklyRunFragment = new BlocklyRunFragment();
+    private FragmentManager fragmentManager;
+
+
+    @Override
+    protected View onCreateContentView(int containerId) {
+        View root = getLayoutInflater().inflate(R.layout.activity_blockly, null);
+        return root;
+    }
+
     @NonNull
     @Override
     protected String getToolboxContentsXmlPath() {
