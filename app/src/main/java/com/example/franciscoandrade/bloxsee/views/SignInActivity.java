@@ -94,14 +94,14 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         switch (v.getId()) {
             // TODO: Fragments are being added to stack, make fragments not to be added to stack
             case R.id.teacherBtn: {
+                exit.setBackgroundColor(Color.parseColor("#FF6699"));
                 exit.setVisibility(View.VISIBLE);
-                exit.setBackgroundColor(Color.parseColor("#6699CC"));
                 fragmentManager.beginTransaction().replace(R.id.loginContainer, teacherSignInFragment).addToBackStack("backToActivity").addToBackStack(null).commit();
                 break;
             }
             case R.id.studentBtn: {
+                exit.setBackgroundColor(Color.parseColor("#6699CC"));
                 exit.setVisibility(View.VISIBLE);
-                exit.setBackgroundColor(Color.parseColor("#FF6699"));
                 fragmentManager.beginTransaction().replace(R.id.loginContainer, studentSignInFragment).addToBackStack("backToActivity").addToBackStack(null).commit();
                 break;
             }
