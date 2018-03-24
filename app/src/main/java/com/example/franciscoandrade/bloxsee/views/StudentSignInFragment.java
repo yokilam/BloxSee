@@ -39,15 +39,11 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
     private ArrayList<String> listStudents;
     private ImageView penguin, ghost, dog, cat, dragon, octopus;
     private Button studentLogInBtn;
-
-
     //Firebase Setup
     private DatabaseReference ref;
     private FirebaseDatabase database;
 
     DatabaseReference messageRef;
-
-
     Student student;
     String animalPicked;
     String pass;
@@ -66,8 +62,6 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
         dragon = v.findViewById(R.id.dragon);
         octopus = v.findViewById(R.id.octopus);
         studentLogInBtn = v.findViewById(R.id.studentLogInBtn);
-
-
         imageSetClicks();
         //getStudentsList();
         listStudents = new ArrayList<>();
