@@ -20,34 +20,34 @@
             android:id="@+id/email_edittext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Teacher's  Email" />
+            android:hint="@string/teacher_email" />
 
         <EditText
             android:id="@+id/password_edittext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Enter Password" />
+            android:hint="@string/enter_password" />
 
         <Button
             android:id="@+id/SignIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Sign In" />
+            android:text="@string/sign_in" />
 
         <Button
             android:id="@+id/signUp_Btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Sign Up" />
+            android:text="@string/sign_up" />
 
         <Button
             android:id="@+id/goToTeache"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Go to Teacher" />
+            android:text="@string/go_to_teacher" />
 
     </LinearLayout>
 
@@ -63,26 +63,26 @@
             android:id="@+id/email_ET"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Teacher's  Email" />
+            android:hint="@string/teacher_email_et" />
 
         <EditText
             android:id="@+id/name_ET"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Teacher's name" />
+            android:hint="@string/teacher_name_et" />
 
         <EditText
             android:id="@+id/password_ET"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Enter Password" />
+            android:hint="@string/enter_password_et" />
 
         <Button
             android:id="@+id/signUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Sign Up" />
+            android:text="@string/sign_up_button" />
 
         <ProgressBar
             android:id="@+id/progress"

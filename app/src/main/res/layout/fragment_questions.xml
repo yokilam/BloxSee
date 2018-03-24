@@ -20,43 +20,43 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Lesson 1"
+        android:text="@string/lesson_one"
         />
 
     <CheckBox
         android:id="@+id/questionOne"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Question 1"/>
+        android:text="@string/question_one"/>
 
     <CheckBox
         android:id="@+id/questionTwo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Question 2"/>
+        android:text="@string/question_two"/>
 
 
     <CheckBox
         android:id="@+id/questionThree"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Question 3"/>
+        android:text="@string/question_three"/>
     <CheckBox
         android:id="@+id/questionFour"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Question 4"/>
+        android:text="@string/question_four"/>
     <CheckBox
         android:id="@+id/questionFive"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Question 5"/>
+        android:text="@string/question_five"/>
 
     <Button
         android:id="@+id/send_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Send"
+        android:text="@string/send_button"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:background="@color/material_orange_400"

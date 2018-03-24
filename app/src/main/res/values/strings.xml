@@ -8,24 +8,78 @@
     <!-- actionbar_toolbar xml Strings -->
 
     <!-- sign in activity xml Strings -->
+    <string name="teacher_login_button">Teacher Login</string>
+    <string name="student_login_button">Student Login</string>
+    <string name="bottomsheet_login">Login</string>
 
     <!-- student activity xml Strings -->
+    <string name="student_name_textview">Student Name</string>
 
     <!-- teacher activity xml Strings -->
 
     <!-- progress fragment xml Strings -->
 
     <!-- questions fragment xml strings -->
+    <string name="lesson_one">Lesson 1</string>
+    <string name="question_one">Question 1</string>
+    <string name="question_two">Question 2</string>
+    <string name="question_three">Question 3</string>
+    <string name="question_four">Question 4</string>
+    <string name="question_five">Question 5</string>
+    <string name="send_button">Send</string>
 
     <!-- roster fragment xml Strings -->
+    <string name="add_student_to_roster">Add Student To Roster</string>
+    <string name="enter_student_name">Enter Student Name</string>
+    <string name="pick_student_password">Pick Student Password:</string>
+    <string name="add_student_button">Add Student</string>
+    <string name="student_name">Name</string>
+    <string name="student_password">Password</string>
+    <string name="student_actions">Actions</string>
+
 
     <!-- students sign-in fragment xml Strings -->
+    <string name="student_fragment_login">Login</string>
 
     <!-- teacher sign in fragment xml Strings -->
+    <string name="teacher_email">Teacher\'s Email</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="go_to_teacher">Go To Teacher</string>
+    <string name="teacher_email_et">Teacher\'s Email</string>
+    <string name="teacher_name_et">Teacher\'s Name</string>
+    <string name="enter_password_et">Enter Password</string>
+    <string name="sign_up_button">Sign Up</string>
 
     <!-- spinner item xml Strings -->
 
+    <!-- homework progress xml Strings-->
+    <string name="homework_one">HW 1</string>
+    <string name="homework_two">HW 2</string>
+    <string name="homework_three">HW 3</string>
+    <string name="homework_four">HW 4</string>
+    <string name="homework_five">HW 5</string>
+
     <!-- teacher progress item xml Strings -->
+    <string name="progress_name">Name</string>
+    <string name="lesson_one_iv">Lesson 1</string>
+    <string name="lesson_two_iv">Lesson 2</string>
+    <string name="q_one_tv">Question 1</string>
+    <string name="q_two_tv">Question 2</string>
+    <string name="q_three_tv">Question 3</string>
+    <string name="q_four_tv">Question 4</string>
+    <string name="q_five_tv">Question 5</string>
+
+    <!--  student question item xml Strings -->
+    <string name="questions">Questions</string>
 
     <!-- teacher roster itemview xml Strings -->
+    <string name="joanne_song">Joanne Song</string>
+
+    <!-- teacher question itemview xml Strings -->
+    <string name="level_one">Level One</string>
+
+    <!-- testing xml Strings -->
+    <string name="hello_i_work">HELLO, IT IS WORKING</string>
 </resources>
