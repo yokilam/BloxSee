@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.franciscoandrade.bloxsee.R;
@@ -38,9 +40,11 @@ import static android.content.Context.MODE_PRIVATE;
 public class TeacherSignInFragment extends Fragment {
     private final String TAG = "SAVED_INFO:";
     private View view;
-    private Button signInButton, signUp_Btn;
-    private EditText email_ET, name_ET, password_ET, email_edittext, password_edittext;
-    private Button signUp, goToTeacher;
+    private Button signInButton;
+    private EditText email_ET, name_ET, password_ET;
+    private TextInputEditText email_edittext, password_edittext;
+    private Button signUp;
+    private TextView signUp_Btn;
     private LinearLayout signUp_container, signIn_container;
     private String nameText, emailText, passwordText;
     private SharedPreferences sharedPreferences;
@@ -51,6 +55,7 @@ public class TeacherSignInFragment extends Fragment {
     private DatabaseReference ref;
     private FirebaseDatabase database;
     private FirebaseAuth.AuthStateListener mAuthListener;
+
 
 
     @Override
@@ -74,14 +79,11 @@ public class TeacherSignInFragment extends Fragment {
         });
 
 
-        goToTeacher.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                Intent view = new Intent(getActivity(), TeacherMainPageActivity.class);
-                startActivity(view);
-            }
-        });
+
+
+
+
         return view;
     }
 
@@ -106,7 +108,7 @@ public class TeacherSignInFragment extends Fragment {
         signUp_Btn = view.findViewById(R.id.signUp_Btn);
         email_ET = view.findViewById(R.id.email_ET);
         name_ET = view.findViewById(R.id.name_ET);
-        goToTeacher = view.findViewById(R.id.goToTeache);
+        //goToTeacher = view.findViewById(R.id.goToTeache);
         password_ET = view.findViewById(R.id.password_ET);
         signUp = view.findViewById(R.id.signUp);
         progress = view.findViewById(R.id.progress);

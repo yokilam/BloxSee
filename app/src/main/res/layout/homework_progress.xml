@@ -8,33 +8,33 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:text="HW 1"
+        android:text="@string/homework_one"
         />
 
     <TextView
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:text="HW 2"
+        android:text="@string/homework_two"
         />
 
     <TextView
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:text="HW 3"
+        android:text="@string/homework_three"
         />
     <TextView
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:text="HW 4"
+        android:text="@string/homework_four"
         />
     <TextView
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:text="HW 5"
+        android:text="@string/homework_five"
         />
 
 </LinearLayout>

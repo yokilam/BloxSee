@@ -11,7 +11,7 @@
         android:id="@+id/student_name"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:text="Joanne Song"
+        android:text="@string/joanne_song"
         android:paddingRight="50dp"
         android:layout_weight="1"/>
 
