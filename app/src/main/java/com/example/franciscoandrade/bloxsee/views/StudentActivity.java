@@ -120,18 +120,22 @@ public class StudentActivity extends AppCompatActivity {
 
                      for (int j = 1; j < 6; j++) {
                          lesson= "lesson"+i;
-                         studentQuestions= dataSnapshot.child(lesson).child(j+"").getValue(StudentQuestions.class);
-                         question=studentQuestions.getQuestion()+" - "+lesson;
-                         if(studentQuestions.getAvailable()){
-                             Log.d("QUESTONS==", "onChildAdded: "+lesson+" - "+question);
-                             questionsList.add(question);
+                         if(dataSnapshot.child(lesson).child(j+"").getValue(StudentQuestions.class)!=null) {
+                             studentQuestions = dataSnapshot.child(lesson).child(j + "").getValue(StudentQuestions.class);
+                             question = studentQuestions.getQuestion() + " - " + lesson;
+                             if (studentQuestions.getAvailable()) {
+                                 Log.d("QUESTONS==", "onChildAdded: " + lesson + " - " + question);
+                                 questionsList.add(question);
+                             }
                          }
                      }
 
                  }
-                    studentQuestionAdapter.notifyDataSetChanged();
-                     studentQuestionAdapter.addQuestions(questionsList);
-                     studentQuestionAdapter.notifyDataSetChanged();
+                     if(!questionsList.isEmpty()){
+                        studentQuestionAdapter.notifyDataSetChanged();
+                         studentQuestionAdapter.addQuestions(questionsList);
+                         studentQuestionAdapter.notifyDataSetChanged();
+                     }
                  }
              }
 
