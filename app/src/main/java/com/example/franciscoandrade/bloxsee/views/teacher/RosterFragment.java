@@ -219,11 +219,15 @@ public class RosterFragment extends Fragment {
                 progress.setName(dataSnapshot.getKey());
                 lesson1= new ArrayList<>();
                 lesson2= new ArrayList<>();
+
                 for (int i = 1; i < 3; i++) {
                     for (int j = 1; j < 6; j++) {
                         if (i==1 && dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue()!= null){
                             String state= dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue().toString();
                             //Log.d("State==", "onChildAdded: "+state);
+//                            if(i==1){
+//                                studentQuestions.setQuestion("JOANNES q's");
+//                            }
                             studentQuestions.setState(state);
                             lesson1.add(studentQuestions);
 
