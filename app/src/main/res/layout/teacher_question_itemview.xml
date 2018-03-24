@@ -12,7 +12,7 @@
         android:background="@color/material_deep_purple_300"
         android:gravity="center"
         android:padding="8dp"
-        android:text="Level One"
+        android:text="@string/level_one"
         android:textColor="@color/colorWhite"
         android:textSize="12sp" />
 

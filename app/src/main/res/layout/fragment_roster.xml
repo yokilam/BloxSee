@@ -36,7 +36,7 @@
             android:layout_toLeftOf="@id/button"
             android:gravity="center"
             android:padding="8dp"
-            android:text="Add Student To Roster"
+            android:text="@string/add_student_to_roster"
             android:background="@color/material_red_500"
             android:textColor="@color/colorWhite"
             android:textSize="12sp" />
@@ -61,12 +61,12 @@
                     android:id="@+id/studentName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter Student Name" />
+                    android:hint="@string/enter_student_name" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Pick password for student:" />
+                    android:text="@string/pick_student_password" />
 
                 <Spinner
                     android:id="@+id/passwordSpinner"
@@ -78,7 +78,7 @@
                     android:id="@+id/addStudent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Add Student" />
+                    android:text="@string/add_student_button" />
 
             </LinearLayout>
         </com.github.aakira.expandablelayout.ExpandableLinearLayout>
@@ -95,21 +95,21 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Name" />
+            android:text="@string/student_name" />
 
         <TextView
             android:id="@+id/password_roster"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Password" />
+            android:text="@string/student_password" />
 
         <TextView
             android:id="@+id/actions_roster"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Actions" />
+            android:text="@string/student_actions" />
 
     </LinearLayout>
 
