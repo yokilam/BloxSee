@@ -46,11 +46,6 @@ public class ProgressFragment extends Fragment {
         View view= inflater.inflate(R.layout.fragment_progress, container, false);
         database = FirebaseDatabase.getInstance();
         ref = database.getReference();
-
-
-
-
-
         recyclerView= view.findViewById(R.id.progress_recyclerview);
         recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(), DividerItemDecoration.VERTICAL));
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));
@@ -59,9 +54,6 @@ public class ProgressFragment extends Fragment {
 
         return view;
     }
-
-
-
     @Override
     public void onStart() {
         super.onStart();

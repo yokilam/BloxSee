@@ -1,0 +1,17 @@
+[
+  {
+    "type": "foreverloop",
+    "message0": "forever %1",
+    "args0": [
+      {
+        "type": "input_statement",
+        "name": "NAME"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 22,
+    "tooltip": "",
+    "helpUrl": ""
+  }
+]
