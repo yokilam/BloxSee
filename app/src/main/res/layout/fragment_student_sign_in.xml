@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite"
+    android:background="#FF6699"
     android:gravity="center"
     android:orientation="vertical"
     tools:context="com.example.franciscoandrade.bloxsee.views.StudentSignInFragment">
@@ -115,7 +115,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:gravity="center"
-        android:text="Login"
+        android:text="@string/student_fragment_login"
         android:theme="@style/RaisedButtonDark" />
 
 

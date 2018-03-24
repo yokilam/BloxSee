@@ -155,7 +155,8 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
                     ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((i)+"").child("question").setValue("Question1Test");
                     ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((i)+"").child("state").setValue("null");
                     ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((i)+"").child("available").setValue(listChckbox.get((i-1)));
-
+                    ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((i)+"").child("question").setValue("Question2Test");
+                    ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((i)+"").child("state").setValue("null");
                 }
                 questionOne.setChecked(listChckbox.get(0));
                 questionTwo.setChecked(listChckbox.get(1));
