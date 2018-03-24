@@ -1,56 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:fitsSystemWindows="true">
 
-    <ScrollView
+    <TextView
+        android:id="@+id/exit"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="wrap_content"
+        android:text="X"
+        android:visibility="gone"
+        android:textAlignment="textEnd"
+        android:textSize="30sp"/>
+
+    <FrameLayout
+        android:id="@+id/loginContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_gravity="center"
-            android:paddingTop="24dp">
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/teacherBtn"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
+                android:background="#6699CC"
+                android:layout_height="0dp"
                 android:gravity="center"
-                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1">
 
-                android:text="@string/teacher_login_button"
+                <Button
+                    android:id="@+id/studentBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    android:gravity="center"
 
-                android:background="@drawable/roundedbutton"
 
-                android:theme="@style/RaisedButtonDark" />
-
-            <Button
-                android:id="@+id/studentBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:gravity="center"
-                android:layout_gravity="center"
-
-                android:text="@string/student_login_button"
-
-                android:layout_marginTop="10dp"
-                android:background="@drawable/roundedbutton"
-
-                android:theme="@style/RaisedButtonDark" />
-
-        </LinearLayout>
+                    android:layout_gravity="center"
+                    android:text="Student"
+                    android:background="@drawable/rounded_button"
+                    android:theme="@style/RaisedButtonDark" />
 
     </ScrollView>
         <LinearLayout
@@ -77,14 +74,89 @@
                 android:textAlignment="center"
                 android:textSize="20sp"/>
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:src="@drawable/dragon"/>
+            </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/loginContainer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="#FF6699"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_gravity="center">
 
+                <Button
+                    android:id="@+id/teacherBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:text="Teacher Login"
+                    android:background="@drawable/rounded_button"
+                    android:theme="@style/RaisedButtonDark" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:src="@drawable/cat"/>
+
+            </LinearLayout>
 
 
         </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="bloxsee"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:textColor="@color/colorWhite"
+            android:textSize="50sp"
+            android:textStyle="italic"/>
 
-</android.support.design.widget.CoordinatorLayout>
+    </FrameLayout>
+
+
+
+
+        <!--<LinearLayout-->
+            <!--android:id="@+id/bottom_sheet"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="500dp"-->
+            <!--android:clipToPadding="true"-->
+            <!--android:orientation="vertical"-->
+            <!--android:background="@android:color/holo_red_light"-->
+            <!--app:layout_behavior="android.support.design.widget.BottomSheetBehavior">-->
+
+            <!--<TextView-->
+                <!--android:layout_width="50dp"-->
+                <!--android:layout_height="2dp"-->
+                <!--android:background="@android:color/black"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_marginTop="15dp"-->
+                <!--android:layout_marginBottom="15dp"/>-->
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="LOGIN"-->
+                <!--android:textStyle="bold"-->
+                <!--android:textAlignment="center"-->
+                <!--android:textSize="20sp"/>-->
+
+
+            <!--<LinearLayout-->
+                <!--android:id="@+id/loginContainer"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"/>-->
+
+
+
+        <!--</LinearLayout>-->
+
+</LinearLayout>
