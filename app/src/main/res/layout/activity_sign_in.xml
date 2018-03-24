@@ -28,6 +28,7 @@
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:text="Teacher Login"
+                android:background="@drawable/roundedbutton"
                 android:theme="@style/RaisedButtonDark" />
 
             <Button
@@ -38,7 +39,9 @@
                 android:layout_marginLeft="20dp"
                 android:gravity="center"
                 android:layout_gravity="center"
+                android:layout_marginTop="10dp"
                 android:text="Student Login"
+                android:background="@drawable/roundedbutton"
                 android:theme="@style/RaisedButtonDark" />
 
         </LinearLayout>

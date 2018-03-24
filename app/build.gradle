@@ -36,5 +36,6 @@ dependencies {
 
     compile 'com.android.support:recyclerview-v7:26.1.0'
     compile 'com.google.blockly.android:blocklylib-vertical:0.9-beta.20171003'
+    compile 'com.airbnb.android:lottie:2.2.0'
 }
 apply plugin: 'com.google.gms.google-services'
