@@ -1,0 +1,54 @@
+[{
+  "type": "stoplight",
+  "message0": "Turn %1 %2",
+  "args0": [
+    {
+      "type": "field_dropdown",
+      "name": "lightcolor",
+      "options": [
+        [
+          "red",
+          "R"
+        ],
+        [
+          "yellow",
+          "Y"
+        ],
+        [
+          "green",
+          "G"
+        ]
+      ]
+    },
+    {
+      "type": "field_dropdown",
+      "name": "lightswitch",
+      "options": [
+        [
+          "on",
+          "on"
+        ],
+        [
+          "off",
+          "off"
+        ]
+      ]
+    }
+  ],
+  "inputsInline": false,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 330,
+  "tooltip": "",
+  "helpUrl": ""
+}],
+
+{
+  "type": "start",
+  "message0": "When Run",
+  "inputsInline": false,
+  "nextStatement": null,
+  "colour": 120,
+  "tooltip": "",
+  "helpUrl": ""
+}

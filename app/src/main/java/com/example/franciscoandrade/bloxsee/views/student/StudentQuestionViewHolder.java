@@ -20,9 +20,6 @@ import static android.support.v4.content.ContextCompat.startActivity;
 public class StudentQuestionViewHolder extends RecyclerView.ViewHolder {
     private TextView studentQuestion;
 
-
-
-
     public StudentQuestionViewHolder(final View itemView) {
         super(itemView);
         studentQuestion = itemView.findViewById(R.id.questions_tv);
@@ -36,7 +33,6 @@ public class StudentQuestionViewHolder extends RecyclerView.ViewHolder {
     }
     public void onBind(String questions){
         studentQuestion.setText(questions);
-
 
     }
 }
