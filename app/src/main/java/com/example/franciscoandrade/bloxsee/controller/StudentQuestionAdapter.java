@@ -42,7 +42,6 @@ public class StudentQuestionAdapter extends RecyclerView.Adapter<StudentQuestion
 
     public void addQuestions(List<String> questions) {
         questionsList.clear();
-        notifyDataSetChanged();
         questionsList.addAll(questions);
         notifyDataSetChanged();
     }
