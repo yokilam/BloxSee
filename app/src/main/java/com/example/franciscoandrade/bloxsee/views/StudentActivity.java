@@ -119,7 +119,7 @@ public class StudentActivity extends AppCompatActivity {
                   for (int i = 1; i < 3; i++) {
 
                      for (int j = 1; j < 6; j++) {
-                         lesson= "L."+i;
+                         lesson= "L"+i;
                          if(dataSnapshot.child(lesson).child(j+"").getValue(StudentQuestions.class)!=null) {
                              studentQuestions = dataSnapshot.child(lesson).child(j + "").getValue(StudentQuestions.class);
                              question = studentQuestions.getQuestion() + " - " + lesson;
