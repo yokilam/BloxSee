@@ -1,9 +1,11 @@
 package com.example.franciscoandrade.bloxsee.views;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
@@ -14,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -23,6 +26,7 @@ import android.widget.Toast;
 import com.example.franciscoandrade.bloxsee.R;
 import com.example.franciscoandrade.bloxsee.model.Teacher;
 import com.example.franciscoandrade.bloxsee.views.teacher.TeacherMainPageActivity;
+import com.github.aakira.expandablelayout.Utils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -47,7 +51,6 @@ public class TeacherSignInFragment extends Fragment {
     private TextView signUp_Btn;
     private LinearLayout signUp_container, signIn_container;
     private String nameText, emailText, passwordText;
-    private SharedPreferences sharedPreferences;
     String passwordLogin, emailLogin;
     //1.Firebase
     private FirebaseAuth mAuth;
@@ -55,6 +58,16 @@ public class TeacherSignInFragment extends Fragment {
     private DatabaseReference ref;
     private FirebaseDatabase database;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    CheckBox remeber_checkBox;
+    //SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
+    public static final String MyPREFERENCES = "myprefs";
+    public static final  String value = "key";
+    SharedPreferences sharedpreferences;
+    SharedPreferences.Editor editor ;
+
+
+
+
 
 
 
@@ -63,9 +76,12 @@ public class TeacherSignInFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_teacher_sign_in, container, false);
+        setUpViews();
+        sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+
+
         database = FirebaseDatabase.getInstance();
         ref = database.getReference();
-        setUpViews();
         nameText = name_ET.getText().toString();
         emailText = email_ET.getText().toString();
         passwordText = password_ET.getText().toString();
@@ -88,6 +104,20 @@ public class TeacherSignInFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+
+        String email=sharedpreferences.getString("email", "");
+        String pass=sharedpreferences.getString("password", "");
+
+        if(!email.equals("") & !pass.equals("")){
+            email_edittext.setText(sharedpreferences.getString("email", ""));
+            password_edittext.setText(sharedpreferences.getString("password", ""));
+            remeber_checkBox.setChecked(true);
+        }
+    }
+
+    @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -104,7 +134,7 @@ public class TeacherSignInFragment extends Fragment {
 
     //setting all views
     private void setUpViews() {
-        signInButton = view.findViewById(R.id.SignIn);
+        signInButton = view.findViewById(R.id.signIn);
         signUp_Btn = view.findViewById(R.id.signUp_Btn);
         email_ET = view.findViewById(R.id.email_ET);
         name_ET = view.findViewById(R.id.name_ET);
@@ -116,6 +146,7 @@ public class TeacherSignInFragment extends Fragment {
         signUp_container = view.findViewById(R.id.signUp_container);
         email_edittext = view.findViewById(R.id.email_edittext);
         password_edittext = view.findViewById(R.id.password_edittext);
+        remeber_checkBox = view.findViewById(R.id.remeber_checkBox);
         mAuth = FirebaseAuth.getInstance();
     }
 
@@ -207,6 +238,7 @@ public class TeacherSignInFragment extends Fragment {
                         public void onComplete(@NonNull Task <AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Log.d(TAG, "“onComplete: It is working”");
+                                saveCredentials(emailLogin, passwordLogin);
                                 intentToTeacherMainPageActivity();
 
                                 password_edittext.setText("");
@@ -230,6 +262,20 @@ public class TeacherSignInFragment extends Fragment {
 
         }
 
+    }
+
+    private void saveCredentials(String email, String password) {
+        editor = sharedpreferences.edit();
+        if(remeber_checkBox.isChecked() ) {
+            editor.putString("email", email);
+            editor.putString("password", password);
+
+        }
+        else {
+            editor.putString("email", "");
+            editor.putString("password", "");
+        }
+        editor.apply();
     }
 
     private void intentToTeacherMainPageActivity() {
