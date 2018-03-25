@@ -89,7 +89,6 @@ public class StudentActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.student_questions_rv);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
-
         studentQuestionAdapter= new StudentQuestionAdapter(this);
         recyclerView.setAdapter(studentQuestionAdapter);
 
@@ -108,10 +107,12 @@ public class StudentActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        questionsList= new ArrayList<>();
          childEventListener= new ChildEventListener() {
              @Override
              public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                 Log.d("AVAILABLEB", "onChildAdded: "+dataSnapshot.child("lesson1").child(1 + "").getValue());
+//                 Log.d("AVAILABLEB", "onChildAdded: "+dataSnapshot.child(lesson).child(1 + "").child("question").getValue());
+//                 Log.d("AVAILABLEB", "onChildAdded: "+dataSnapshot.child(lesson).child(1 + "").child("state").getValue());
 
                  if (dataSnapshot.getKey().equals(user) ) {
                 // studentQuestions= dataSnapshot.child("lesson1").child("1").getValue(StudentQuestions.class);
@@ -119,10 +120,12 @@ public class StudentActivity extends AppCompatActivity {
                   for (int i = 1; i < 3; i++) {
 
                      for (int j = 1; j < 6; j++) {
-                         lesson= "L"+i;
+                         lesson= "lesson"+i;
+                        // Log.d("AVAILABLEB", "onChildAdded: "+studentQuestions.getAvailable());
                          if(dataSnapshot.child(lesson).child(j+"").getValue(StudentQuestions.class)!=null) {
                              studentQuestions = dataSnapshot.child(lesson).child(j + "").getValue(StudentQuestions.class);
                              question = studentQuestions.getQuestion() + " - " + lesson;
+                             Log.d("AVAILABLE", "onChildAdded: "+studentQuestions.getAvailable());
                              if (studentQuestions.getAvailable()) {
                                  Log.d("QUESTONS==", "onChildAdded: " + lesson + " - " + question);
                                  questionsList.add(question);
@@ -131,11 +134,15 @@ public class StudentActivity extends AppCompatActivity {
                      }
 
                  }
+                     studentQuestionAdapter.notifyDataSetChanged();
+                     studentQuestionAdapter.addQuestions(questionsList);
+                     studentQuestionAdapter.notifyDataSetChanged();
                      if(!questionsList.isEmpty()){
                         studentQuestionAdapter.notifyDataSetChanged();
                          studentQuestionAdapter.addQuestions(questionsList);
                          studentQuestionAdapter.notifyDataSetChanged();
                      }
+
                  }
              }
 
@@ -160,7 +167,7 @@ public class StudentActivity extends AppCompatActivity {
                      }
                      studentQuestionAdapter.notifyDataSetChanged();
                      studentQuestionAdapter.addQuestions(questionsList);
-                     studentQuestionAdapter.notifyDataSetChanged();
+
                      setUpNotification();
                  }
              }

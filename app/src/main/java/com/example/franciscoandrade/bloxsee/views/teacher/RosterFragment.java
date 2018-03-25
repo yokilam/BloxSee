@@ -229,7 +229,9 @@ public class RosterFragment extends Fragment {
 //                                studentQuestions.setQuestion("JOANNES q's");
 //                            }
                             studentQuestions.setState(state);
+                            studentQuestions.setAvailable(true);
                             lesson1.add(studentQuestions);
+
 
                         }
                         if(i==2 && dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue()!= null){

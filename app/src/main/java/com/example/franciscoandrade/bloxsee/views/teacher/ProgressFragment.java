@@ -52,18 +52,23 @@ public class ProgressFragment extends Fragment {
         teacherProgressAdapter= new TeacherProgressAdapter(getActivity());
         recyclerView.setAdapter(teacherProgressAdapter);
 
+        Log.d("VIEW", "onCreateView: ####");
+
         return view;
     }
+
+
     @Override
     public void onStart() {
         super.onStart();
+
+        Log.d("VIEW", "onCreateView: !!!");
 
         progressList= new ArrayList<>();
 
         childEventListener= new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
                 Progress progress= new Progress();
                 StudentQuestions studentQuestions= new StudentQuestions();
                 progress.setName(dataSnapshot.getKey());
@@ -73,22 +78,21 @@ public class ProgressFragment extends Fragment {
                     for (int j = 1; j < 6; j++) {
                         if (i==1 && dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue()!= null){
                             String state= dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue().toString();
-                            //Log.d("State==", "onChildAdded: "+state);
                             studentQuestions.setState(state);
                             lesson1.add(studentQuestions);
-
                         }
+
                         if(i==2 && dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue()!= null){
                             String state= dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue().toString();
                             studentQuestions.setState(state);
                             lesson2.add(studentQuestions);                        }
-//                            Log.d("ADDEEED", "onChildAdded: "+dataSnapshot.getKey()+" - "+dataSnapshot.child("lesson"+i).getKey()+" - "+dataSnapshot.child("lesson"+i).child(j+"").getKey()+" - "+dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue());
                     }
                 }
 
                 progress.setLesson1(lesson1);
                 progress.setLesson2(lesson2);
                 progressList.add(progress);
+
             }
 
             @Override
@@ -115,6 +119,8 @@ public class ProgressFragment extends Fragment {
 
         ref.child("students").addChildEventListener(childEventListener);
 
+        runTimer();
+
          Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -127,7 +133,29 @@ public class ProgressFragment extends Fragment {
             }
         }, 2000);
 
-
-
     }
+
+    private void runTimer() {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+//                for (int i = 0; i < progressList.size()-1; i++) {
+//                    Log.d("ListaaaProgress", "onStart: "+ progressList.get(i).getName()+" lesson1: "+ progressList.get(i).getLesson1().get(i)+"lesson2: "+progressList.get(i).getLesson2().get(i));
+//                }
+                teacherProgressAdapter.addProgress(progressList);
+
+            }
+        }, 2000);
+    }
+
+
+    @Override
+    public void setEnterTransition(Object transition) {
+        super.setEnterTransition(transition);
+        Log.d("ENTEERR", "setEnterTransition: ");
+    }
+
+
+
 }
