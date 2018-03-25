@@ -3,7 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="colorWhite">#FFF</color>
+    <color name="colorWhite">#fbfbfb</color>
     <color name="colorBlack">#000</color>
     <color name="editTextHint">#8b8b8b</color>
     <color name="colorChangeET">#3ab8f1</color>
@@ -28,6 +28,7 @@
 
     <color name="main_blue">#6699CC</color>
     <color name="main_green">#66CCCC</color>
+    <color name="main_red">#f1798d</color>
 
     <color name="material_orange_50">#fffff3e0</color>
     <color name="material_orange_100">#ffffe0b2</color>

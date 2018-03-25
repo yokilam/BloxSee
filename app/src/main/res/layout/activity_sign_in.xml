@@ -47,7 +47,6 @@
                     android:background="@drawable/rounded_button"
                     android:theme="@style/RaisedButtonDark" />
 
-
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
@@ -59,7 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:background="#FF6699"
+                android:background="@color/main_red"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:layout_gravity="center">
