@@ -39,6 +39,7 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
     Student studentModel;
     StudentQuestions studentQuestions;
     CheckBox questionOne, questionTwo, questionThree, questionFour, questionFive;
+    CheckBox questionOneLessonTwo, questionTwoLessonTwo, questionThreeLessonTwo, questionFourLessonTwo, questionFiveLessonTwo;
     List<Boolean> isQuestionAvailable;
     List<Boolean> listChckbox;
 
@@ -53,8 +54,18 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
         questionThree= view.findViewById(R.id.questionThree);
         questionFour= view.findViewById(R.id.questionFour);
         questionFive= view.findViewById(R.id.questionFive);
+        questionOneLessonTwo= view.findViewById(R.id.questionOneLessonTwo);
+        questionTwoLessonTwo= view.findViewById(R.id.questionTwoLessonTwo);
+        questionThreeLessonTwo= view.findViewById(R.id.questionThreeLessonTwo);
+        questionFourLessonTwo= view.findViewById(R.id.questionFourLessonTwo);
+        questionFiveLessonTwo= view.findViewById(R.id.questionFiveLessonTwo);
         send.setOnClickListener(this);
         listChckbox= new ArrayList<>();
+        listChckbox.add(true);
+        listChckbox.add(true);
+        listChckbox.add(true);
+        listChckbox.add(true);
+        listChckbox.add(true);
         listChckbox.add(true);
         listChckbox.add(true);
         listChckbox.add(true);
@@ -92,17 +103,37 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
                     Boolean q4 = Boolean.parseBoolean(dataSnapshot.child("lesson1").child("4").child("available").getValue().toString());
                     Boolean q5 = Boolean.parseBoolean(dataSnapshot.child("lesson1").child("5").child("available").getValue().toString());
 
+                    Boolean q1L2= Boolean.parseBoolean(dataSnapshot.child("lesson2").child("1").child("available").getValue().toString());
+                    Boolean q2L2= Boolean.parseBoolean(dataSnapshot.child("lesson2").child("2").child("available").getValue().toString());
+                    Boolean q3L2= Boolean.parseBoolean(dataSnapshot.child("lesson2").child("3").child("available").getValue().toString());
+                    Boolean q4L2= Boolean.parseBoolean(dataSnapshot.child("lesson2").child("4").child("available").getValue().toString());
+                    Boolean q5L2= Boolean.parseBoolean(dataSnapshot.child("lesson2").child("5").child("available").getValue().toString());
+
+
                     listChckbox.set(0, q1);
                     listChckbox.set(1, q2);
                     listChckbox.set(2, q3);
                     listChckbox.set(3, q4);
                     listChckbox.set(4, q5);
 
+                    listChckbox.set(5, q1L2);
+                    listChckbox.set(6, q2L2);
+                    listChckbox.set(7, q3L2);
+                    listChckbox.set(8, q4L2);
+                    listChckbox.set(9, q5L2);
+
+
                     questionOne.setChecked(listChckbox.get(0));
                     questionTwo.setChecked(listChckbox.get(1));
                     questionThree.setChecked(listChckbox.get(2));
                     questionFour.setChecked(listChckbox.get(3));
                     questionFive.setChecked(listChckbox.get(4));
+
+                    questionOneLessonTwo.setChecked(listChckbox.get(5));
+                    questionTwoLessonTwo.setChecked(listChckbox.get(6));
+                    questionThreeLessonTwo.setChecked(listChckbox.get(7));
+                    questionFourLessonTwo.setChecked(listChckbox.get(8));
+                    questionFiveLessonTwo.setChecked(listChckbox.get(9));
 
                 }
             }
@@ -150,12 +181,19 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
                 listChckbox.set(3, questionFour.isChecked());
                 listChckbox.set(4, questionFive.isChecked());
 
+                listChckbox.set(5,questionOneLessonTwo.isChecked());
+                listChckbox.set(6,questionTwoLessonTwo.isChecked());
+                listChckbox.set(7,questionThreeLessonTwo.isChecked());
+                listChckbox.set(8, questionFourLessonTwo.isChecked());
+                listChckbox.set(9, questionFiveLessonTwo.isChecked());
+
                 for (int i = 1; i < 6; i++) {
+                    setQuestions(i, dataSnapshot);
                     ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((i)+"").child("available").setValue(listChckbox.get((i-1)));
-                    ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((i)+"").child("question").setValue("Question1Test");
+                    //ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((i)+"").child("question").setValue("Question: "+i);
                     ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((i)+"").child("state").setValue("null");
-                    ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((i)+"").child("available").setValue(listChckbox.get((i-1)));
-                    ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((i)+"").child("question").setValue("Question2Test");
+                    ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((i)+"").child("available").setValue(listChckbox.get((i+4)));
+                    //ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((i)+"").child("question").setValue("Question: "+i);
                     ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((i)+"").child("state").setValue("null");
                 }
                 questionOne.setChecked(listChckbox.get(0));
@@ -163,6 +201,13 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
                 questionThree.setChecked(listChckbox.get(2));
                 questionFour.setChecked(listChckbox.get(3));
                 questionFive.setChecked(listChckbox.get(4));
+
+
+                questionOneLessonTwo.setChecked(listChckbox.get(5));
+                questionTwoLessonTwo.setChecked(listChckbox.get(6));
+                questionThreeLessonTwo.setChecked(listChckbox.get(7));
+                questionFourLessonTwo.setChecked(listChckbox.get(8));
+                questionFiveLessonTwo.setChecked(listChckbox.get(9));
             }
 
             @Override
@@ -187,6 +232,40 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
         };
 
         ref.child("students").addChildEventListener(childEventListener);
+    }
+
+
+    private void setQuestions(int num, DataSnapshot dataSnapshot) {
+
+        switch (num){
+            case 1:
+                ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((num)+"").child("question").setValue(num+". Move the sprite to the right");
+                ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((num)+"").child("question").setValue("Question: "+num);
+                break;
+
+            case 2:
+                ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((num)+"").child("question").setValue(num+". Move the sprite to the center ");
+                ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((num)+"").child("question").setValue("Question: "+num);
+                break;
+
+
+            case 3:
+                ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((num)+"").child("question").setValue(num+". Make your sprite move from one edge to the other edge. Repeat this motion twice.");
+                ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((num)+"").child("question").setValue("Question: "+num);
+                break;
+
+            case 4:
+                ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((num)+"").child("question").setValue("Question: "+num);
+                ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((num)+"").child("question").setValue("Question: "+num);
+                break;
+
+            case 5:
+                ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((num)+"").child("question").setValue("Question: "+num);
+                ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((num)+"").child("question").setValue("Question: "+num);
+                break;
+        }
+
+
     }
 
 }

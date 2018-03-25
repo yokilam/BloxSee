@@ -7,15 +7,16 @@
     tools:context="com.example.franciscoandrade.bloxsee.views.teacher.QuestionsFragment">
 
 
-    <Spinner
-        android:id="@+id/usersSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/question_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
@@ -51,6 +52,50 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/question_five"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lesson_two"
+            />
+
+        <CheckBox
+            android:id="@+id/questionOneLessonTwo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/question_one"/>
+
+        <CheckBox
+            android:id="@+id/questionTwoLessonTwo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/question_two"/>
+
+
+        <CheckBox
+            android:id="@+id/questionThreeLessonTwo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/question_three"/>
+        <CheckBox
+            android:id="@+id/questionFourLessonTwo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/question_four"/>
+        <CheckBox
+            android:id="@+id/questionFiveLessonTwo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/question_five"/>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/send_button"

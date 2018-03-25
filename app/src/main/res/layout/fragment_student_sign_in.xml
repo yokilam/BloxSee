@@ -118,6 +118,10 @@
         android:text="@string/student_fragment_login"
         android:theme="@style/RaisedButtonDark" />
 
-
+    <CheckBox
+        android:id="@+id/remeber_checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remember"/>
 
 </LinearLayout>
