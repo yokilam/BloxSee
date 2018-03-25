@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -61,13 +62,9 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     protected List<String> getGeneratorsJsPaths() {
         return JAVASCRIPT_GENERATORS;
     }
-//
+
     CodeGenerationRequest.CodeGeneratorCallback mCodeGeneratorCallback =
             new BlocklyGenerator(this, "LoggingTag", this);
-
-    //CodeGenerationRequest.CodeGeneratorCallback mCodeGeneratorCallback = new BlocklyGenerator(this, "LoggingTag");
-
-
     @NonNull
     @Override
     protected CodeGenerationRequest.CodeGeneratorCallback getCodeGenerationCallback() {
@@ -82,5 +79,18 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     public void sendGeneratedCode(String str) {
 
         Log.d("hijoanne", str);
+
+        if(str.contains("move")){
+            TranslateAnimation animation = new TranslateAnimation(0.0f, 400.0f,
+                    0.0f, 0.0f);
+            animation.setDuration(5000);
+            animation.setRepeatCount(5);
+            animation.setRepeatMode(2);
+
+            sprite.startAnimation(animation);
+        }
+        else{
+            Log.d("hijoanne", "fail");
+        }
     }
 }
