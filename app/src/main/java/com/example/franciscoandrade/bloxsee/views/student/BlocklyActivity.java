@@ -3,7 +3,10 @@ package com.example.franciscoandrade.bloxsee.views.student;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.franciscoandrade.bloxsee.R;
 import com.google.blockly.android.AbstractBlocklyActivity;
@@ -15,11 +18,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class BlocklyActivity extends AbstractBlocklyActivity {
+public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyListener {
 
-    private BlocklyRunFragment blocklyRunFragment = new BlocklyRunFragment();
-    private FragmentManager fragmentManager;
+    private ImageView sprite;
+    private BlocklyGenerator blocklyGenerator = new BlocklyGenerator();
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        sprite = findViewById(R.id.sprite);
+        blocklyGenerator.setListener(this);
+    }
 
     @Override
     protected View onCreateContentView(int containerId) {
@@ -51,8 +61,13 @@ public class BlocklyActivity extends AbstractBlocklyActivity {
     protected List<String> getGeneratorsJsPaths() {
         return JAVASCRIPT_GENERATORS;
     }
+//
     CodeGenerationRequest.CodeGeneratorCallback mCodeGeneratorCallback =
-            new LoggingCodeGeneratorCallback(this, "LoggingTag");
+            new BlocklyGenerator(this, "LoggingTag");
+
+    //CodeGenerationRequest.CodeGeneratorCallback mCodeGeneratorCallback = new BlocklyGenerator(this, "LoggingTag");
+
+
     @NonNull
     @Override
     protected CodeGenerationRequest.CodeGeneratorCallback getCodeGenerationCallback() {
@@ -61,5 +76,18 @@ public class BlocklyActivity extends AbstractBlocklyActivity {
     @Override
     protected void onInitBlankWorkspace() {
         getController().addVariable("item");
+    }
+
+    @Override
+    public void sendM(String str) {
+        if(str != null){
+            Toast.makeText(this, "yay!", Toast.LENGTH_SHORT).show();
+            Log.d("yay","yay");
+        }
+        else{
+            Log.d("yay","boo");
+        }
+
+
     }
 }

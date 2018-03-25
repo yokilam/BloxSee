@@ -6,5 +6,10 @@
     tools:context="com.example.franciscoandrade.bloxsee.views.student.BlocklyRunFragment"
     android:background="@android:color/black">
 
+    <ImageView
+        android:id="@+id/sprite"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/penguin"/>
 
 </FrameLayout>

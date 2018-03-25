@@ -14,7 +14,6 @@ import com.example.franciscoandrade.bloxsee.R;
  */
 public class BlocklyRunFragment extends Fragment {
 
-
     public BlocklyRunFragment() {
         // Required empty public constructor
     }
