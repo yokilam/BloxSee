@@ -42,7 +42,6 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
     //Firebase Setup
     private DatabaseReference ref;
     private FirebaseDatabase database;
-
     DatabaseReference messageRef;
     Student student;
     String animalPicked;

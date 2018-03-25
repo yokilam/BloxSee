@@ -82,4 +82,5 @@
 
     <!-- testing xml Strings -->
     <string name="hello_i_work">HELLO, IT IS WORKING</string>
+    <string name="lesson_two">Lesson 2</string>
 </resources>
