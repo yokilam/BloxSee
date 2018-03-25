@@ -1,7 +1,15 @@
 package com.example.franciscoandrade.bloxsee.views.student;
 
+import android.app.FragmentManager;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.util.Log;
+import android.view.View;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.example.franciscoandrade.bloxsee.R;
 import com.google.blockly.android.AbstractBlocklyActivity;
 import com.google.blockly.android.codegen.CodeGenerationRequest;
 import com.google.blockly.android.codegen.LoggingCodeGeneratorCallback;
@@ -11,7 +19,25 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class BlocklyActivity extends AbstractBlocklyActivity {
+public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyListener {
+
+    private ImageView sprite;
+    private BlocklyGenerator blocklyGenerator = new BlocklyGenerator();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        sprite = findViewById(R.id.sprite);
+
+    }
+
+    @Override
+    protected View onCreateContentView(int containerId) {
+        View root = getLayoutInflater().inflate(R.layout.activity_blockly, null);
+        return root;
+    }
+
     @NonNull
     @Override
     protected String getToolboxContentsXmlPath() {
@@ -36,8 +62,9 @@ public class BlocklyActivity extends AbstractBlocklyActivity {
     protected List<String> getGeneratorsJsPaths() {
         return JAVASCRIPT_GENERATORS;
     }
+
     CodeGenerationRequest.CodeGeneratorCallback mCodeGeneratorCallback =
-            new LoggingCodeGeneratorCallback(this, "LoggingTag");
+            new BlocklyGenerator(this, "LoggingTag", this);
     @NonNull
     @Override
     protected CodeGenerationRequest.CodeGeneratorCallback getCodeGenerationCallback() {
@@ -46,5 +73,24 @@ public class BlocklyActivity extends AbstractBlocklyActivity {
     @Override
     protected void onInitBlankWorkspace() {
         getController().addVariable("item");
+    }
+
+    @Override
+    public void sendGeneratedCode(String str) {
+
+        Log.d("hijoanne", str);
+
+        if(str.contains("move")){
+            TranslateAnimation animation = new TranslateAnimation(0.0f, 400.0f,
+                    0.0f, 0.0f);
+            animation.setDuration(5000);
+            animation.setRepeatCount(5);
+            animation.setRepeatMode(2);
+
+            sprite.startAnimation(animation);
+        }
+        else{
+            Log.d("hijoanne", "fail");
+        }
     }
 }
