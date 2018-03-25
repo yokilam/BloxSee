@@ -16,11 +16,11 @@ public class BlocklyGenerator implements CodeGenerationRequest.CodeGeneratorCall
     private String mTag;
     private Context mContext;
     private BlocklyListener bL;
-    private Bundle blockStr;
 
-    public BlocklyGenerator(Context context, String loggingTag) {
+    public BlocklyGenerator(Context context, String loggingTag, BlocklyListener bL) {
         mTag = loggingTag;
         mContext = context;
+        this.bL = bL;
     }
 
     public BlocklyGenerator() {
@@ -33,19 +33,9 @@ public class BlocklyGenerator implements CodeGenerationRequest.CodeGeneratorCall
         } else {
             Log.d(mTag, "code: " + generatedCode);
             Toast.makeText(mContext, generatedCode + "hihihi", Toast.LENGTH_LONG).show();
+            bL.sendGeneratedCode(generatedCode);
 
-            callListener(generatedCode);
-            blockStr.putString("generatedCode", generatedCode);
         }
-    }
-
-    public void setListener(BlocklyListener blocklyListener){
-        bL = blocklyListener;
-
-    }
-
-    public void callListener(String generatedCode){
-        bL.sendM(generatedCode);
     }
 
 }

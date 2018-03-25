@@ -28,7 +28,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         super.onCreate(savedInstanceState);
 
         sprite = findViewById(R.id.sprite);
-        blocklyGenerator.setListener(this);
+
     }
 
     @Override
@@ -63,7 +63,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     }
 //
     CodeGenerationRequest.CodeGeneratorCallback mCodeGeneratorCallback =
-            new BlocklyGenerator(this, "LoggingTag");
+            new BlocklyGenerator(this, "LoggingTag", this);
 
     //CodeGenerationRequest.CodeGeneratorCallback mCodeGeneratorCallback = new BlocklyGenerator(this, "LoggingTag");
 
@@ -79,15 +79,8 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     }
 
     @Override
-    public void sendM(String str) {
-        if(str != null){
-            Toast.makeText(this, "yay!", Toast.LENGTH_SHORT).show();
-            Log.d("yay","yay");
-        }
-        else{
-            Log.d("yay","boo");
-        }
+    public void sendGeneratedCode(String str) {
 
-
+        Log.d("hijoanne", str);
     }
 }

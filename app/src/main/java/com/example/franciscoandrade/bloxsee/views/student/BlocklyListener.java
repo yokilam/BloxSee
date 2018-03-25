@@ -5,5 +5,5 @@ package com.example.franciscoandrade.bloxsee.views.student;
  */
 
 public interface BlocklyListener {
-    void sendM(String str);
+    void sendGeneratedCode(String str);
 }
