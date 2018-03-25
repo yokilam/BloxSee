@@ -4,15 +4,19 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.example.franciscoandrade.bloxsee.R;
 
 public class SplashActivity extends AppCompatActivity {
+    ImageView gif;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        gif= findViewById(R.id.gif);
 
         Handler handler= new Handler();
         handler.postDelayed(new Runnable() {
@@ -22,7 +26,10 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        },2800);
+        },3000);
 
+        Glide.with(SplashActivity.this)
+                .load(R.drawable.bloxseefont1)
+                .into(gif);
     }
 }
