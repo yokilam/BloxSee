@@ -21,6 +21,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.franciscoandrade.bloxsee.R;
+import com.example.franciscoandrade.bloxsee.controller.teacher.PagerAdapterTeacher;
 import com.example.franciscoandrade.bloxsee.model.Progress;
 import com.example.franciscoandrade.bloxsee.model.Student;
 import com.example.franciscoandrade.bloxsee.model.StudentQuestions;
@@ -41,7 +42,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class RosterFragment extends Fragment {
+public class RosterFragment extends Fragment  {
 
     private RecyclerView recyclerView;
     private EditText studentName;
@@ -65,6 +66,7 @@ public class RosterFragment extends Fragment {
     List<StudentQuestions> lesson2;
     List<Progress> progressList;
     TeacherProgressAdapter teacherProgressAdapter;
+    PagerAdapterTeacher adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -205,6 +207,9 @@ public class RosterFragment extends Fragment {
             Toast.makeText(getActivity(), "Cant add Student!!", Toast.LENGTH_SHORT).show();
             studentName.setText("");
         }
+
+
+
     }
 
     private void setQuestions() {
@@ -278,6 +283,7 @@ public class RosterFragment extends Fragment {
     private void onClickButton(final ExpandableLayout expandableLayout) {
         expandableLayout.toggle();
     }
+
 
 
 }
