@@ -1,10 +1,13 @@
 package com.example.franciscoandrade.bloxsee.views.teacher;
 
 
+import android.content.Context;
 import android.content.SharedPreferences;
 
 import android.graphics.PorterDuff;
+import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -18,10 +21,11 @@ import android.view.MenuItem;
 
 import com.example.franciscoandrade.bloxsee.R;
 import com.example.franciscoandrade.bloxsee.controller.teacher.PagerAdapterTeacher;
+import com.example.franciscoandrade.bloxsee.model.Progress;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class TeacherMainPageActivity extends AppCompatActivity {
+public class TeacherMainPageActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
     private final String TAG = "TEACHER_EMAIL: ";
     private final String TAG_OC = "TOOLBAR_DISPLAY";
     private Toolbar topToolbar;
@@ -32,6 +36,9 @@ public class TeacherMainPageActivity extends AppCompatActivity {
     ProgressFragment progressFragment;
     QuestionsFragment questionsFragment;
     RosterFragment rosterFragment;
+    PagerAdapterTeacher adapter;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +47,7 @@ public class TeacherMainPageActivity extends AppCompatActivity {
         showToolBar(" Admin Email ", false);
         getTeacherInfo();
         topToolbar =  findViewById(R.id.toolbar);
+
         Log.d(TAG, "onCreate: " + getTitle());
 
         viewPager = findViewById(R.id.view_pager_teacher);
@@ -73,6 +81,7 @@ public class TeacherMainPageActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 if (prevMenuItem != null) {
                     prevMenuItem.setChecked(false);
+
                 }
                 else
                 {
@@ -91,7 +100,7 @@ public class TeacherMainPageActivity extends AppCompatActivity {
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        PagerAdapterTeacher adapter = new PagerAdapterTeacher(getSupportFragmentManager());
+        adapter = new PagerAdapterTeacher(getSupportFragmentManager());
         rosterFragment = new RosterFragment();
         progressFragment = new ProgressFragment();
         questionsFragment = new QuestionsFragment();
@@ -117,4 +126,26 @@ public class TeacherMainPageActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorBlack));
     }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        Log.d("PAGER==", "onPageSelected: "+position);
+        if (position==1){
+            progressFragment.teacherProgressAdapter.notifyDataSetChanged();
+
+        }
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
+
+
 }

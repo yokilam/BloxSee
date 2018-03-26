@@ -201,8 +201,6 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
                 questionThree.setChecked(listChckbox.get(2));
                 questionFour.setChecked(listChckbox.get(3));
                 questionFive.setChecked(listChckbox.get(4));
-
-
                 questionOneLessonTwo.setChecked(listChckbox.get(5));
                 questionTwoLessonTwo.setChecked(listChckbox.get(6));
                 questionThreeLessonTwo.setChecked(listChckbox.get(7));
@@ -236,7 +234,6 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
 
 
     private void setQuestions(int num, DataSnapshot dataSnapshot) {
-
         switch (num){
             case 1:
                 ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((num)+"").child("question").setValue(num+". Move the sprite to the right");
@@ -247,7 +244,6 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
                 ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((num)+"").child("question").setValue(num+". Move the sprite to the center ");
                 ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((num)+"").child("question").setValue("Question: "+num);
                 break;
-
 
             case 3:
                 ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((num)+"").child("question").setValue(num+". Make your sprite move from one edge to the other edge. Repeat this motion twice.");
@@ -264,8 +260,6 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
                 ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((num)+"").child("question").setValue("Question: "+num);
                 break;
         }
-
-
     }
 
 }
