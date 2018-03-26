@@ -26,7 +26,7 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        },3000);
+        },2800);
 
         Glide.with(SplashActivity.this)
                 .load(R.drawable.bloxseefont1)
