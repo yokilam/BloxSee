@@ -1,18 +1,25 @@
 package com.example.franciscoandrade.bloxsee.views;
 
+import android.animation.Animator;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.franciscoandrade.bloxsee.R;
 import com.example.franciscoandrade.bloxsee.views.student.BlocklyActivity;
 
@@ -26,16 +33,56 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
     TeacherSignInFragment teacherSignInFragment;
     StudentSignInFragment studentSignInFragment;
+    Animation fromBottom, fromTop;
+    LottieAnimationView lottieAnimationView;
+    LinearLayout mainContainer, studentLayout, teacherLayout;
+    ImageView bloxseeIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+        lottieAnimationView = findViewById(R.id.lottieAnimationView);
+        mainContainer= findViewById(R.id.main_content);
+        bloxseeIcon= findViewById(R.id.bloxsee_icon);
+//        studentLayout= findViewById(R.id.student_layout);
+//        teacherLayout= findViewById(R.id.teacher_layout);
+        setUpViews();
+        student.setVisibility(View.GONE);
+        teacher.setVisibility(View.GONE);
+        bloxseeIcon.setVisibility(View.GONE);
+//        lottieLayout= findViewById(R.id.lottie_layout);
+        lottieAnimationView.addAnimatorListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                lottieAnimationView.clearAnimation();
+                lottieAnimationView.setVisibility(View.GONE);
+                bloxseeIcon.setVisibility(View.VISIBLE);
+                mainContainer.setBackgroundResource(R.drawable.bloxseebackground);
+                fromBottom = AnimationUtils.loadAnimation(SignInActivity.this, R.anim.frombottom);
+                fromTop = AnimationUtils.loadAnimation(SignInActivity.this, R.anim.fromtop);
+                setUpButtonAnimation();
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
 
 //        Intent intent = new Intent(this, BlocklyActivity.class);
 //        startActivity(intent);
 
-        setUpViews();
 
         teacher.setOnClickListener(this);
         student.setOnClickListener(this);
@@ -58,6 +105,14 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 exit.setVisibility(View.GONE);
             }
         });
+    }
+
+    private void setUpButtonAnimation() {
+        Log.d("animation", "setUpButtonAnimation:==== is starting ");
+                student.setVisibility(View.VISIBLE);
+                teacher.setVisibility(View.VISIBLE);
+                teacher.setAnimation(fromBottom);
+                student.setAnimation(fromTop);
     }
 
     @SuppressLint("ClickableViewAccessibility")
