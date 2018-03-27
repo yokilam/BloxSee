@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/main_green"
     android:fitsSystemWindows="true"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <TextView
         android:id="@+id/exit"
@@ -22,31 +23,28 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="@drawable/bloxseebackground">
+            android:gravity="center"
+            >
 
-            <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/lottieAnimationView"
-                android:layout_width="500dp"
-                android:layout_height="500dp"
-                android:layout_centerInParent="true"
-                android:background="@color/main_green"
-                app:lottie_autoPlay="true"
-                app:lottie_fileName="splashred.json" />
+            <!--&lt;!&ndash;<com.airbnb.lottie.LottieAnimationView&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/lottieAnimationView"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="500dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="500dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_centerInParent="true"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:background="@color/main_green"&ndash;&gt;-->
+                <!--&lt;!&ndash;app:lottie_autoPlay="true"&ndash;&gt;-->
+                <!--&lt;!&ndash;app:lottie_fileName="splashred.json" />&ndash;&gt;-->
 
             <Button
                 android:id="@+id/studentBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/bloxsee_icon"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/rounded_button_blue"
-                android:gravity="center"
                 android:paddingLeft="30dp"
                 android:paddingRight="30dp"
                 android:text="Student"
@@ -54,11 +52,8 @@
 
             <ImageView
                 android:id="@+id/bloxsee_icon"
-                android:layout_width="250dp"
+                android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:layout_centerInParent="true"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
                 android:src="@drawable/bloxseeicon4" />
 
 
@@ -67,18 +62,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_alignEnd="@+id/studentBtn"
-                android:layout_below="@+id/bloxsee_icon"
-                android:layout_gravity="center"
                 android:background="@drawable/rounded_button"
-                android:gravity="center"
                 android:paddingLeft="30dp"
                 android:paddingRight="30dp"
                 android:text="Teacher"
                 android:theme="@style/RaisedButtonDark" />
 
 
-        </RelativeLayout>
+        </LinearLayout>
 
     </FrameLayout>
 
