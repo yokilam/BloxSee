@@ -1,5 +1,8 @@
 package com.example.franciscoandrade.bloxsee.views.student;
 
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -27,8 +30,8 @@ import java.util.List;
 public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyListener {
 
     private ImageView sprite;
-    private TranslateAnimation animation;
-    private TranslateAnimation animation2;
+    private AnimatorSet animSetXY;
+    private ArrayList<Animator> animSequenceArr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,68 +86,57 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
 
     @Override
     public void sendGeneratedCode(String str) {
-        final AnimationSet as = new AnimationSet(true);;
-        as.setFillAfter(true);
-        as.setDuration(5000);
+//        final AnimationSet as = new AnimationSet(true);;
+//        as.setFillAfter(true);
+//        as.setDuration(5000);
+        animSetXY = new AnimatorSet();
+        animSetXY.setDuration(5000);
 
-        Log.d("hijoanne", str);
         String[] removeIndentArr = str.split("\n");
-        Log.d("hihi", String.valueOf(removeIndentArr));
-        Log.d("hihi", String.valueOf(removeIndentArr.length));
+
         for(int i = 0; i<removeIndentArr.length; i++){
-            Log.d("hihi", removeIndentArr[i]);
-            Log.d("hihi", String.valueOf(removeIndentArr.length));
-
-            switch (removeIndentArr[i]){
-
+            switch(removeIndentArr[i]){
                 case "start":
                     break;
                 case "move":
-
-                    animation = new TranslateAnimation(0.0f, 100.0f,
-                             0.0f, 0.0f);
-//                    animation.setDuration(5000);
-                    //animation.setFillAfter(true);
-                    //animation.setFillEnabled(true);
-                    as.addAnimation(animation);
-//                    sprite.startAnimation(as);
-
-                    Log.d("hihi", "i'm inside move");
-
+                    ObjectAnimator animMove10 = ObjectAnimator.ofFloat(sprite, "x", 50f,20f);
+                    animSequenceArr.add(animMove10);
+                    //animSetXY.playSequentially(animMove10);
+                    Log.d("hihi", "I'm n move");
                     break;
                 case "moveup":
-                    animation2 = new TranslateAnimation(0.0f, 0.0f,
-                            0.0f,-300.0f);
-//                    animation2.setDuration(5000);
-                    //animation.setFillAfter(true);
-                    //animation.setFillEnabled(true);
-                    as.addAnimation(animation2);
-
-
-//                    sprite.startAnimation(as);
-                    break;
-                default:
-                    break;
-
+                    ObjectAnimator animMoveUp = ObjectAnimator.ofFloat(sprite, "ScaleY", 1, 0);
+                    animSequenceArr.add(animMoveUp);
+                    Log.d("hihi", "I'm n moveup");
             }
 
-
         }
-
-//        Log.d("hihi", String.valueOf(as));
-        sprite.startAnimation(as);
-//        Handler handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//
-//            }
-//        }, 5000);
-
-//        sprite.clearAnimation();
-//
-//        sprite.startAnimation(as1);
+        animSetXY.playSequentially(animSequenceArr);
+        animSetXY.start();
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
