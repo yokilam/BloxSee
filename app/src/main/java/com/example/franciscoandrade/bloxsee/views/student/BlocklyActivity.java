@@ -135,7 +135,6 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         }
 
 
-        Log.d("hihi", "==="+as.);
 
 //        Log.d("hihi", String.valueOf(as));
        // sprite.startAnimation(as);
