@@ -1,5 +1,10 @@
 package com.example.franciscoandrade.bloxsee.views.student;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -7,6 +12,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewPropertyAnimator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
@@ -116,22 +122,30 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
 //        Log.d("hihi", "Finish==="+sprite.getAnimation());
 //
 
-        TranslateAnimation animation = new TranslateAnimation(0, 50, 100, 0);
-        animation.setDuration(1000);
+        TranslateAnimation animation = new TranslateAnimation(0, 0, 100, 0);
+        TranslateAnimation animation2 = new TranslateAnimation(0, 100, 100, 100);
+        animation.setDuration(2000);
         animation.setFillAfter(false);
         animation.setAnimationListener(new MyAnimationListener());
 
-        //sprite.startAnimation(animation);
-        animation.start();
-        animation.cancel();
-        Log.d("hihi", "Finish===");
-
-        TranslateAnimation animation2 = new TranslateAnimation(0, 0    , 0, 100);
-        animation2.setDuration(5000);
+        animation2.setDuration(2000);
         animation2.setFillAfter(false);
         animation2.setAnimationListener(new MyAnimationListener());
 
-        sprite.startAnimation(animation2);
+
+        as.addAnimation(animation);
+        as.addAnimation(animation2);
+
+        //sprite.startAnimation(as);
+        //sprite.clearAnimation();
+        Log.d("hihi", "Finish===");
+
+//        TranslateAnimation animation2 = new TranslateAnimation(0, 0    , 0, 100);
+//        animation2.setDuration(5000);
+//        animation2.setFillAfter(false);
+//        animation2.setAnimationListener(new MyAnimationListener());
+//
+//        sprite.startAnimation(animation2);
 
 
 
@@ -193,6 +207,62 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
 //
 //        sprite.startAnimation(as1);
 
+
+        ObjectAnimator transAnimation= ObjectAnimator.ofFloat(sprite, "translationX", 0, 100);
+
+        transAnimation.setDuration(3000);//set duration
+       // transAnimation.start();//start animation
+
+//        ObjectAnimator animX = ObjectAnimator.ofFloat(sprite, "x", 0,100);
+//        animX.setDuration(3000);
+//        ObjectAnimator animY = ObjectAnimator.ofFloat(sprite, "y", 1000,0);
+//        animX.setDuration(3000);
+//        AnimatorSet animSetXY = new AnimatorSet();
+//        animSetXY.playTogether(animX, animY);
+//        animSetXY.start();
+
+//        sprite.animate()
+//                .withEndAction(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        ObjectAnimator animX = ObjectAnimator.ofFloat(sprite, "x", 50f);
+//                        animX.setDuration(2000);
+//                        animX.start();
+//                    }
+//                })
+//                .start();
+
+//        sprite.animate()
+//                .withEndAction(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        ObjectAnimator animY = ObjectAnimator.ofFloat(sprite, "y", 100f);
+//                        animY.setDuration(2000);
+//                        animY.start();
+//                    }
+//                })
+//                .start();
+        ObjectAnimator animX = ObjectAnimator.ofFloat(sprite, "x", 50f);
+        animX.setDuration(2000);
+        animX.setAutoCancel(true);
+        animX.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                ObjectAnimator animY = ObjectAnimator.ofFloat(sprite, "y", 100f);
+                animY.setDuration(2000);
+                animY.setAutoCancel(true);
+                animY.start();
+            }
+        });
+        animX.start();
+
+
+
+
+        Log.d("hihi", "sendGeneratedCode: TERMINADOOO");
+
+
     }
 
 
@@ -205,12 +275,14 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
 //            lp.setMargins(50, 100, 0, 0);
 //            sprite.setLayoutParams(lp);
 
-            TranslateAnimation animation3 = new TranslateAnimation(0, 100, 100, 100);
-            animation3.setDuration(1000);
-            animation3.setFillAfter(false);
-            //animation3.setAnimationListener(new MyAnimationListener());
-            animation3.start();
-            sprite.startAnimation(animation3);
+
+
+//            TranslateAnimation animation3 = new TranslateAnimation(0, 100, 100, 100);
+//            animation3.setDuration(1000);
+//            animation3.setFillAfter(false);
+//            //animation3.setAnimationListener(new MyAnimationListener());
+//            animation3.start();
+//            sprite.startAnimation(animation3);
 
 
             Log.d("hihi", "onAnimationEnd: ANIMATIONEND");
@@ -226,6 +298,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
             Log.d("hihi", "onAnimationStart: ANIMATIONSTART");
 
         }
+
 
     }
 }
