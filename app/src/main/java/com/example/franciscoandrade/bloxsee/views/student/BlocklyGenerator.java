@@ -30,9 +30,12 @@ public class BlocklyGenerator implements CodeGenerationRequest.CodeGeneratorCall
     public void onFinishCodeGeneration(final String generatedCode) {
         if (generatedCode.isEmpty()) {
             Toast.makeText(mContext, "Something went wrong with code generation.", Toast.LENGTH_LONG).show();
+            Log.d("hihi", "GOES INTO ISEMPTY");
+
         } else {
             Log.d(mTag, "code: " + generatedCode);
             Toast.makeText(mContext, generatedCode + "hihihi", Toast.LENGTH_LONG).show();
+            Log.d("hihi", "GOES INTO ISEMPTY --ELSE" );
             bL.sendGeneratedCode(generatedCode);
 
         }

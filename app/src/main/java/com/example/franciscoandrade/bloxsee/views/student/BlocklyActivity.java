@@ -4,6 +4,7 @@ import android.app.FragmentManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -83,14 +84,58 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
 
     @Override
     public void sendGeneratedCode(String str) {
-        final AnimationSet as = new AnimationSet(true);;
-        AnimationSet as1 = new AnimationSet(true);;
+         final AnimationSet as = new AnimationSet(false);
+        AnimationSet as1 = new AnimationSet(true);
 
 
         Log.d("hijoanne", str);
         String[] removeIndentArr = str.split("\n");
-        Log.d("hihi", String.valueOf(removeIndentArr));
+        Log.d("hihi", removeIndentArr[0]+"-"+removeIndentArr[1]+"-"+removeIndentArr[2]);
         Log.d("hihi", String.valueOf(removeIndentArr.length));
+
+//        animation = new TranslateAnimation(0.0f, 100.0f,
+//                0.0f, 0.0f);
+//
+//        animation2 = new TranslateAnimation(100.0f, 0.0f,
+//                0.0f,-300.0f);
+//
+//
+//
+//
+//        animation.setDuration(5000);
+//
+//        as.addAnimation(animation);
+//
+//
+//        animation2.setDuration(5000);
+//
+//        as.addAnimation(animation2);
+//        sprite.animate();
+//
+//        sprite.setAnimation(as);
+//        Log.d("hihi", "Finish==="+sprite.getAnimation());
+//
+
+        TranslateAnimation animation = new TranslateAnimation(0, 50, 100, 0);
+        animation.setDuration(1000);
+        animation.setFillAfter(false);
+        animation.setAnimationListener(new MyAnimationListener());
+
+        //sprite.startAnimation(animation);
+        animation.start();
+        animation.cancel();
+        Log.d("hihi", "Finish===");
+
+        TranslateAnimation animation2 = new TranslateAnimation(0, 0    , 0, 100);
+        animation2.setDuration(5000);
+        animation2.setFillAfter(false);
+        animation2.setAnimationListener(new MyAnimationListener());
+
+        sprite.startAnimation(animation2);
+
+
+
+        /*
         for(int i = 0; i<removeIndentArr.length; i++){
             Log.d("hihi", removeIndentArr[i]);
             Log.d("hihi", String.valueOf(removeIndentArr.length));
@@ -127,13 +172,10 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
                     break;
 
             }
-
-
-
-
-
         }
 
+
+*/
 
 
 //        Log.d("hihi", String.valueOf(as));
@@ -150,6 +192,40 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
 //        sprite.clearAnimation();
 //
 //        sprite.startAnimation(as1);
+
+    }
+
+
+    private class MyAnimationListener implements Animation.AnimationListener {
+
+        @Override
+        public void onAnimationEnd(Animation animation) {
+//            sprite.clearAnimation();
+//            Toolbar.LayoutParams lp = new Toolbar.LayoutParams(sprite.getWidth(), sprite.getHeight());
+//            lp.setMargins(50, 100, 0, 0);
+//            sprite.setLayoutParams(lp);
+
+            TranslateAnimation animation3 = new TranslateAnimation(0, 100, 100, 100);
+            animation3.setDuration(1000);
+            animation3.setFillAfter(false);
+            //animation3.setAnimationListener(new MyAnimationListener());
+            animation3.start();
+            sprite.startAnimation(animation3);
+
+
+            Log.d("hihi", "onAnimationEnd: ANIMATIONEND");
+        }
+
+        @Override
+        public void onAnimationRepeat(Animation animation) {
+            Log.d("hihi", "onAnimationRepeat: ONANIMATIONREPEAT");
+        }
+
+        @Override
+        public void onAnimationStart(Animation animation) {
+            Log.d("hihi", "onAnimationStart: ANIMATIONSTART");
+
+        }
 
     }
 }
