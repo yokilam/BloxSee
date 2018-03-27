@@ -2,11 +2,16 @@ package com.example.franciscoandrade.bloxsee.views.student;
 
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.franciscoandrade.bloxsee.R;
@@ -22,7 +27,8 @@ import java.util.List;
 public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyListener {
 
     private ImageView sprite;
-    private BlocklyGenerator blocklyGenerator = new BlocklyGenerator();
+    private TranslateAnimation animation;
+    private TranslateAnimation animation2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,20 +83,74 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
 
     @Override
     public void sendGeneratedCode(String str) {
+        final AnimationSet as = new AnimationSet(true);;
+        AnimationSet as1 = new AnimationSet(true);;
+
 
         Log.d("hijoanne", str);
+        String[] removeIndentArr = str.split("\n");
+        Log.d("hihi", String.valueOf(removeIndentArr));
+        Log.d("hihi", String.valueOf(removeIndentArr.length));
+        for(int i = 0; i<removeIndentArr.length; i++){
+            Log.d("hihi", removeIndentArr[i]);
+            Log.d("hihi", String.valueOf(removeIndentArr.length));
+            //as = new AnimationSet(true);
+            switch (removeIndentArr[i]){
 
-        if(str.contains("move")){
-            TranslateAnimation animation = new TranslateAnimation(0.0f, 400.0f,
-                    0.0f, 0.0f);
-            animation.setDuration(5000);
-            animation.setRepeatCount(5);
-            animation.setRepeatMode(2);
+                case "start":
+                    break;
+                case "move":
 
-            sprite.startAnimation(animation);
+                    animation = new TranslateAnimation(0.0f, 100.0f,
+                             0.0f, 0.0f);
+                    animation.setDuration(5000);
+                    //animation.setFillAfter(true);
+                    //animation.setFillEnabled(true);
+                    as.addAnimation(animation);
+//                    sprite.startAnimation(as);
+
+                    Log.d("hihi", "i'm inside move");
+
+                    break;
+                case "moveup":
+                    animation2 = new TranslateAnimation(0.0f, 0.0f,
+                            0.0f,-300.0f);
+                    animation2.setDuration(5000);
+                    //animation.setFillAfter(true);
+                    //animation.setFillEnabled(true);
+                    as.addAnimation(animation2);
+
+
+//                    sprite.startAnimation(as);
+                    break;
+                default:
+                    break;
+
+            }
+
+
+
+
+
         }
-        else{
-            Log.d("hijoanne", "fail");
-        }
+
+
+        Log.d("hihi", "==="+as.);
+
+//        Log.d("hihi", String.valueOf(as));
+       // sprite.startAnimation(as);
+//        Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//
+//            }
+//        }, 5000);
+
+//        sprite.clearAnimation();
+//
+//        sprite.startAnimation(as1);
+
     }
 }
