@@ -84,8 +84,8 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     @Override
     public void sendGeneratedCode(String str) {
         final AnimationSet as = new AnimationSet(true);;
-        AnimationSet as1 = new AnimationSet(true);;
-
+        as.setFillAfter(true);
+        as.setDuration(5000);
 
         Log.d("hijoanne", str);
         String[] removeIndentArr = str.split("\n");
@@ -94,7 +94,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         for(int i = 0; i<removeIndentArr.length; i++){
             Log.d("hihi", removeIndentArr[i]);
             Log.d("hihi", String.valueOf(removeIndentArr.length));
-            //as = new AnimationSet(true);
+
             switch (removeIndentArr[i]){
 
                 case "start":
@@ -103,7 +103,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
 
                     animation = new TranslateAnimation(0.0f, 100.0f,
                              0.0f, 0.0f);
-                    animation.setDuration(5000);
+//                    animation.setDuration(5000);
                     //animation.setFillAfter(true);
                     //animation.setFillEnabled(true);
                     as.addAnimation(animation);
@@ -115,7 +115,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
                 case "moveup":
                     animation2 = new TranslateAnimation(0.0f, 0.0f,
                             0.0f,-300.0f);
-                    animation2.setDuration(5000);
+//                    animation2.setDuration(5000);
                     //animation.setFillAfter(true);
                     //animation.setFillEnabled(true);
                     as.addAnimation(animation2);
@@ -129,16 +129,10 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
             }
 
 
-
-
-
         }
 
-
-        Log.d("hihi", "==="+as.);
-
 //        Log.d("hihi", String.valueOf(as));
-       // sprite.startAnimation(as);
+        sprite.startAnimation(as);
 //        Handler handler = new Handler();
 //        handler.postDelayed(new Runnable() {
 //            @Override
