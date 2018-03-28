@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="#436a91"
+    android:background="@drawable/navybackground"
     android:gravity="center"
     tools:context="com.example.franciscoandrade.bloxsee.views.teacher.AddStudentFragment">
 
@@ -55,12 +55,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="15sp"
                 android:text="@string/pick_student_password" />
 
             <Spinner
                 android:id="@+id/passwordSpinner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
+                android:backgroundTint="@color/white"
+
                 android:layout_marginBottom="20dp"/>
 
 
