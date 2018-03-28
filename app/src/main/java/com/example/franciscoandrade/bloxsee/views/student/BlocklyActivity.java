@@ -93,6 +93,9 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         animSetXY.setDuration(5000);
         ObjectAnimator animMove10 = ObjectAnimator.ofFloat(sprite, "x", sprite.getX(), sprite.getX() + 100f);
         ObjectAnimator animMoveUp = ObjectAnimator.ofFloat(sprite, "y", sprite.getY(), sprite.getY() - 100f);
+        ObjectAnimator animMoveLeft = ObjectAnimator.ofFloat(sprite, "x", sprite.getX(), sprite.getX() - 100f);
+        ObjectAnimator animMoveRight = ObjectAnimator.ofFloat(sprite, "x", sprite.getX(), sprite.getX() + 100f);
+        ObjectAnimator animMoveDown = ObjectAnimator.ofFloat(sprite, "y", sprite.getY(), sprite.getY() - 100f);
 
         String[] removeIndentArr = str.split("\n");
         Log.d("hihi", "in sendGC");
@@ -112,6 +115,16 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
                 case "moveup":
                     animSequenceArr.add(animMoveUp);
                     Log.d("hihi", "I'm in moveup");
+                    break;
+                case "moveleft":
+                    animSequenceArr.add(animMoveLeft);
+                    break;
+                case "moveright":
+                    animSequenceArr.add(animMoveRight);
+                    break;
+                case "movedown":
+                    animSequenceArr.add(animMoveDown);
+                    break;
             }
         }
         animSetXY.playSequentially(animSequenceArr);
