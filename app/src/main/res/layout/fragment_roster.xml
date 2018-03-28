@@ -114,11 +114,31 @@
 
     </LinearLayout>
 
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Students"
+            android:textSize="25sp"
+            android:textColor="@color/white"
+            android:background="@color/editTextHint"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
+            android:padding="10dp"/>
+
+        <TextView
+            android:layout_width="3dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="33dp"
+            android:background="@color/editTextHint"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_container"
@@ -126,7 +146,7 @@
             android:layout_height="match_parent"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="0dp"
             >
 
         </android.support.v7.widget.RecyclerView>
@@ -141,22 +161,24 @@
             <!--android:layout_marginBottom="20dp"/>-->
 
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|bottom"
-            android:src="@drawable/ic_add"
-            android:layout_margin="24dp"
-            app:elevation="6dp"
-            app:pressedTranslationZ="12dp"
-            app:borderWidth="0dp" />
 
 
 
-    </FrameLayout>
 
+    </LinearLayout>
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:src="@drawable/ic_add"
+        android:layout_margin="24dp"
+        app:elevation="6dp"
+        app:pressedTranslationZ="12dp"
+        app:borderWidth="0dp" />
+
+</FrameLayout>
 
 
     <!--<Button-->
