@@ -95,14 +95,6 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         });
     }
 
-    private void setUpButtonAnimation() {
-        Log.d("animation", "setUpButtonAnimation:==== is starting ");
-                student.setVisibility(View.VISIBLE);
-                teacher.setVisibility(View.VISIBLE);
-                teacher.setAnimation(fromBottom);
-                student.setAnimation(fromTop);
-    }
-
     @SuppressLint("ClickableViewAccessibility")
     public void setUpViews() {
         teacher = findViewById(R.id.teacherBtn);
