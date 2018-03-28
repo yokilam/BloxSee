@@ -46,7 +46,6 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 //      lottieAnimationView = findViewById(R.id.lottieAnimationView);
         mainContainer= findViewById(R.id.main_content);
         bloxseeIcon= findViewById(R.id.bloxsee_icon);
-//        lottieAnimationView = findViewById(R.id.lottieAnimationView);
         mainContainer= findViewById(R.id.main_content);
         bloxseeIcon= findViewById(R.id.bloxsee_icon);
 
