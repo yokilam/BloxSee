@@ -237,27 +237,27 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
         switch (num){
             case 1:
                 ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((num)+"").child("question").setValue(num+". Move the sprite to the right");
-                ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((num)+"").child("question").setValue("Question: "+num);
+                ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((num)+"").child("question").setValue(num+ ". Add a red color to the street light. ");
                 break;
 
             case 2:
                 ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((num)+"").child("question").setValue(num+". Move the sprite to the center ");
-                ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((num)+"").child("question").setValue("Question: "+num);
+                ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((num)+"").child("question").setValue(num+ ". Add a yellow color to the street light. ");
                 break;
 
             case 3:
                 ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((num)+"").child("question").setValue(num+". Make your sprite move from one edge to the other edge. Repeat this motion twice.");
-                ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((num)+"").child("question").setValue("Question: "+num);
+                ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((num)+"").child("question").setValue(num+ ". Add a green color to the street light. ");
                 break;
 
             case 4:
-                ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((num)+"").child("question").setValue("Question: "+num);
-                ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((num)+"").child("question").setValue("Question: "+num);
+                ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((num)+"").child("question").setValue(num+ ". Change the backdrop");
+                ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((num)+"").child("question").setValue(num+ ". Flash the yellow light 5 times.");
                 break;
 
             case 5:
-                ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((num)+"").child("question").setValue("Question: "+num);
-                ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((num)+"").child("question").setValue("Question: "+num);
+                ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((num)+"").child("question").setValue(num+ ". Delete the penguin sprite. Create a new sprite.");
+                ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((num)+"").child("question").setValue(num+ ". Flash the yellow light 3 times. Then flash the green light 3 times");
                 break;
         }
     }
