@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.franciscoandrade.bloxsee.R;
@@ -35,7 +36,9 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
 
     private View v;
     private Spinner spinner;
-
+    TeacherSignInFragment teacherSignInFragment;
+    android.support.v4.app.FragmentManager fragmentManager;
+    private TextView toTeacherFragment;
     private ArrayList<String> listStudents;
     private ImageView penguin, ghost, dog, cat, dragon, octopus;
     private Button studentLogInBtn;
@@ -53,6 +56,10 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_student_sign_in, container, false);
+        toTeacherFragment= v.findViewById(R.id.not_a_student);
+        fragmentManager = getActivity().getSupportFragmentManager();
+        teacherSignInFragment = new TeacherSignInFragment();
+
         spinner = v.findViewById(R.id.spinnerNames);
         penguin = v.findViewById(R.id.penguin);
         ghost = v.findViewById(R.id.ghost);
@@ -72,6 +79,7 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
     }
 
     private void imageSetClicks() {
+        toTeacherFragment.setOnClickListener(this);
         penguin.setOnClickListener(this);
         ghost.setOnClickListener(this);
         dog.setOnClickListener(this);
@@ -132,6 +140,9 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
     public void onClick(View v) {
         clearBackground();
         switch (v.getId()) {
+            case R.id.not_a_student:
+                fragmentManager.beginTransaction().add(R.id.loginContainer, teacherSignInFragment).addToBackStack("teacher").commit();
+                break;
             case R.id.penguin:
                 Toast.makeText(getActivity(), "Penguin", Toast.LENGTH_SHORT).show();
                 animalPicked = "Penguin";

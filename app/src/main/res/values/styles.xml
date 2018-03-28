@@ -12,7 +12,7 @@
 
     <style name="RaisedButtonDark" parent="Theme.AppCompat.Light">
         <item name="colorButtonNormal">@drawable/rounded_button</item>
-        <item name="colorControlHighlight">@color/colorPrimary</item>
+        <item name="colorControlHighlight">@color/main_yellow</item>
         <item name="android:textColor">@color/colorWhite</item>
     </style>
 

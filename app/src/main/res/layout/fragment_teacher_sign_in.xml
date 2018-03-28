@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF6699"
+    android:background="@drawable/teacherbackground"
     android:orientation="vertical"
     tools:context="com.example.franciscoandrade.bloxsee.views.TeacherSignInFragment">
 
@@ -70,8 +70,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:gravity="center"
-                android:text="Sign In"
-                android:theme="@style/RaisedButtonDark" />
+                android:text="Sign In" />
 
             <CheckBox
                 android:id="@+id/remeber_checkBox"
@@ -176,8 +175,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:gravity="center"
-                android:text="Sign Up"
-                android:theme="@style/RaisedButtonDark" />
+                android:text="Sign Up" />
 
 
 

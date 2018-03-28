@@ -26,9 +26,11 @@
     <color name="material_blue_300">#ff64b5f6</color>
     <color name="material_blue_400">#ff42a5f5</color>
 
-    <color name="main_blue">#6699CC</color>
-    <color name="main_green">#66CCCC</color>
-    <color name="main_red">#f1798d</color>
+    <color name="main_blue">#33ccff</color>
+    <color name="main_navy">#22285A</color>
+    <color name="main_red">#FF3333</color>
+    <color name="main_yellow">#ffc910</color>
+    <color name="main_green">#66CC66</color>
 
     <color name="material_orange_50">#fffff3e0</color>
     <color name="material_orange_100">#ffffe0b2</color>
