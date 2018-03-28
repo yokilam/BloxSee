@@ -12,8 +12,6 @@
         <include layout="@layout/blockly_unified_workspace" />
     </FrameLayout>
 
-
-
     <FrameLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -60,12 +58,4 @@
 
     </FrameLayout>
 
-<<<<<<< HEAD
-=======
-
-
-
-
-
->>>>>>> 98de12325c8ae53330dfa5b0dbb08dd41c857086
 </LinearLayout>
