@@ -1,69 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:orientation="horizontal"
-    android:layout_marginRight="10dp"
-    android:layout_marginLeft="10dp"
+    android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
-    android:layout_height="wrap_content"
-    android:background="FFCFCFCF">
+    android:background="@color/white"
+    android:orientation="horizontal">
 
-
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="FFCFCFCF">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-    <TextView
-        android:layout_width="5dp"
-        android:layout_height="match_parent"
-        android:background="#40C4FF"
-        />
+        android:background="@color/white"
+        android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:layout_height="match_parent">
 
-        <ImageView
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/dragon"/>
-        <TextView
-            android:id="@+id/student_password"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="center"
-            android:textColor="@color/editTextHint"
-            android:text="Dragon"
-            />
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="match_parent"
+
+                android:layout_marginTop="5dp"
+                android:src="@drawable/dragon" />
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/student_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/joanne_song"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/student_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Dragon"
+                    android:textSize="15sp"
+                    android:textColor="@color/editTextHint" />
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
 
     </LinearLayout>
 
-
-    <TextView
-        android:id="@+id/student_name"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:text="@string/joanne_song"
-        android:gravity="center"
-        android:layout_weight="1"
-        android:textSize="20sp"/>
-
-    </LinearLayout>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="4dp"
-            android:background="@drawable/shadow"/>
-</LinearLayout>
 
 
 </FrameLayout>
