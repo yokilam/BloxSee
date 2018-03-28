@@ -18,5 +18,4 @@
         <include layout="@layout/fragment_blockly_run"/>
     </FrameLayout>
 
-
 </LinearLayout>

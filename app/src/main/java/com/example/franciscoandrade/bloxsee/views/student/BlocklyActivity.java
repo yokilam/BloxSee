@@ -24,7 +24,6 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         sprite = findViewById(R.id.sprite);
 
     }
@@ -116,5 +115,3 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         animSetXY.start();
     }
 }
-
-
