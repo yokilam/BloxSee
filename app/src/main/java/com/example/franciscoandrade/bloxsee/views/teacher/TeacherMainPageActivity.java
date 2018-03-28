@@ -25,7 +25,7 @@ import com.example.franciscoandrade.bloxsee.model.Progress;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class TeacherMainPageActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
+public class TeacherMainPageActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener , ListenerProgress{
     private final String TAG = "TEACHER_EMAIL: ";
     private final String TAG_OC = "TOOLBAR_DISPLAY";
     private Toolbar topToolbar;
@@ -148,4 +148,14 @@ public class TeacherMainPageActivity extends AppCompatActivity implements ViewPa
     }
 
 
+    @Override
+    public void closeFragment() {
+
+        rosterFragment.closeFragment();
+    }
+
+    @Override
+    public void closeView() {
+        rosterFragment.closeFragment();
+    }
 }

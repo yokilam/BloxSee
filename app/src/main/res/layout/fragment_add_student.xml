@@ -1,0 +1,83 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#436a91"
+    android:gravity="center"
+    tools:context="com.example.franciscoandrade.bloxsee.views.teacher.AddStudentFragment">
+
+
+    <TextView
+        android:id="@+id/add_student_textview"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@id/button"
+        android:gravity="center"
+        android:padding="8dp"
+        android:textStyle="bold"
+        android:text="@string/add_student_to_roster"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/recycler_container">
+
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:theme="@style/EditTextYellow">
+
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/studentName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/enter_student_name"
+                    android:inputType="textEmailAddress" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/pick_student_password" />
+
+            <Spinner
+                android:id="@+id/passwordSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"/>
+
+
+            <Button
+                android:id="@+id/addStudent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_student_button" />
+
+
+            <Button
+                android:id="@+id/closeBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Close" />
+
+        </LinearLayout>
+
+
+</LinearLayout>

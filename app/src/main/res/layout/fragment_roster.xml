@@ -115,6 +115,7 @@
     </LinearLayout>
 
 <FrameLayout
+
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -127,30 +128,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Students"
-            android:textSize="25sp"
+            android:textSize="30sp"
             android:textColor="@color/white"
-            android:background="@color/editTextHint"
+            android:background="#436a91"
             android:textStyle="bold"
-            android:layout_marginLeft="20dp"
             android:padding="10dp"/>
 
         <TextView
             android:layout_width="3dp"
-            android:layout_height="20dp"
-            android:layout_marginLeft="33dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="8dp"
             android:background="@color/editTextHint"/>
+
+        <FrameLayout
+            android:id="@+id/addStudentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="0dp"
             android:layout_marginTop="0dp"
             >
 
         </android.support.v7.widget.RecyclerView>
 
+
+        </FrameLayout>
         <!--<android.support.design.widget.FloatingActionButton-->
             <!--android:layout_width="50dp"-->
             <!--android:layout_height="50dp"-->
@@ -168,12 +175,13 @@
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/addStudentFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:src="@drawable/ic_add"
         android:layout_margin="24dp"
+        android:backgroundTint="#436a91"
         app:elevation="6dp"
         app:pressedTranslationZ="12dp"
         app:borderWidth="0dp" />
