@@ -4,7 +4,7 @@
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_green"
+    android:background="@drawable/navybackground"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     >
@@ -22,54 +22,6 @@
         android:id="@+id/loginContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center"
-            >
-
-            <!--&lt;!&ndash;<com.airbnb.lottie.LottieAnimationView&ndash;&gt;-->
-                <!--&lt;!&ndash;android:id="@+id/lottieAnimationView"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:layout_width="500dp"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:layout_height="500dp"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:layout_centerInParent="true"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:background="@color/main_green"&ndash;&gt;-->
-                <!--&lt;!&ndash;app:lottie_autoPlay="true"&ndash;&gt;-->
-                <!--&lt;!&ndash;app:lottie_fileName="splashred.json" />&ndash;&gt;-->
-
-            <Button
-                android:id="@+id/studentBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/rounded_button_blue"
-                android:paddingLeft="30dp"
-                android:paddingRight="30dp"
-                android:text="Student"
-                android:theme="@style/RaisedButtonDark" />
-
-            <ImageView
-                android:id="@+id/bloxsee_icon"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:src="@drawable/bloxseeicon4" />
-
-
-            <Button
-                android:id="@+id/teacherBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/rounded_button"
-                android:paddingLeft="30dp"
-                android:paddingRight="30dp"
-                android:text="Teacher"
-                android:theme="@style/RaisedButtonDark" />
-
-
-        </LinearLayout>
 
     </FrameLayout>
 
