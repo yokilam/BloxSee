@@ -25,6 +25,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.content.ContentValues.TAG;
+
 public class ProgressFragment extends Fragment {
 
     private RecyclerView recyclerView;
@@ -39,6 +41,8 @@ public class ProgressFragment extends Fragment {
     List<StudentQuestions> lesson2;
     List<Progress> progressList;
     TeacherProgressAdapter teacherProgressAdapter;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -51,18 +55,14 @@ public class ProgressFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));
         teacherProgressAdapter= new TeacherProgressAdapter(getActivity());
         recyclerView.setAdapter(teacherProgressAdapter);
-
         Log.d("VIEW", "onCreateView: ####");
-
+        getData();
         return view;
     }
 
+    private void getData() {
 
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        Log.d("VIEW", "onCreateView: !!!");
+        Log.d("VIEW", "onCreateView: GETDATTAAA!!");
 
         progressList= new ArrayList<>();
 
@@ -116,22 +116,95 @@ public class ProgressFragment extends Fragment {
             }
         };
 
-
         ref.child("students").addChildEventListener(childEventListener);
-
         runTimer();
-
-         Handler handler = new Handler();
+        Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
 //                for (int i = 0; i < progressList.size()-1; i++) {
 //                    Log.d("ListaaaProgress", "onStart: "+ progressList.get(i).getName()+" lesson1: "+ progressList.get(i).getLesson1().get(i)+"lesson2: "+progressList.get(i).getLesson2().get(i));
 //                }
+                teacherProgressAdapter.notifyDataSetChanged();
                 teacherProgressAdapter.addProgress(progressList);
-
             }
         }, 2000);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+//        Log.d("VIEW", "onCreateView: !!!");
+//
+//        progressList= new ArrayList<>();
+//
+//        childEventListener= new ChildEventListener() {
+//            @Override
+//            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+//                Progress progress= new Progress();
+//                StudentQuestions studentQuestions= new StudentQuestions();
+//                progress.setName(dataSnapshot.getKey());
+//                lesson1= new ArrayList<>();
+//                lesson2= new ArrayList<>();
+//                for (int i = 1; i < 3; i++) {
+//                    for (int j = 1; j < 6; j++) {
+//                        if (i==1 && dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue()!= null){
+//                            String state= dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue().toString();
+//                            studentQuestions.setState(state);
+//                            lesson1.add(studentQuestions);
+//                        }
+//
+//                        if(i==2 && dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue()!= null){
+//                            String state= dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue().toString();
+//                            studentQuestions.setState(state);
+//                            lesson2.add(studentQuestions);                        }
+//                    }
+//                }
+//
+//                progress.setLesson1(lesson1);
+//                progress.setLesson2(lesson2);
+//                progressList.add(progress);
+//
+//            }
+//
+//            @Override
+//            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+//
+//            }
+//
+//            @Override
+//            public void onChildRemoved(DataSnapshot dataSnapshot) {
+//
+//            }
+//
+//            @Override
+//            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        };
+//
+//
+//        ref.child("students").addChildEventListener(childEventListener);
+//
+//        runTimer();
+//
+//         Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+////                for (int i = 0; i < progressList.size()-1; i++) {
+////                    Log.d("ListaaaProgress", "onStart: "+ progressList.get(i).getName()+" lesson1: "+ progressList.get(i).getLesson1().get(i)+"lesson2: "+progressList.get(i).getLesson2().get(i));
+////                }
+//                teacherProgressAdapter.addProgress(progressList);
+//
+//            }
+//        }, 2000);
 
     }
 
@@ -140,22 +213,14 @@ public class ProgressFragment extends Fragment {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-//                for (int i = 0; i < progressList.size()-1; i++) {
-//                    Log.d("ListaaaProgress", "onStart: "+ progressList.get(i).getName()+" lesson1: "+ progressList.get(i).getLesson1().get(i)+"lesson2: "+progressList.get(i).getLesson2().get(i));
-//                }
                 teacherProgressAdapter.addProgress(progressList);
-
             }
         }, 2000);
     }
-
 
     @Override
     public void setEnterTransition(Object transition) {
         super.setEnterTransition(transition);
         Log.d("ENTEERR", "setEnterTransition: ");
     }
-
-
-
 }
