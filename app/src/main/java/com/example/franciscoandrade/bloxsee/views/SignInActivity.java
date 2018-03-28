@@ -40,9 +40,25 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+<<<<<<< HEAD
+//      lottieAnimationView = findViewById(R.id.lottieAnimationView);
+        mainContainer= findViewById(R.id.main_content);
+        bloxseeIcon= findViewById(R.id.bloxsee_icon);
+
+//        Intent intent = new Intent(this, BlocklyActivity.class);
+//        startActivity(intent);
+
+=======
+
+
+//        Intent intent = new Intent(this, BlocklyActivity.class);
+//        startActivity(intent);
+
+
 //        lottieAnimationView = findViewById(R.id.lottieAnimationView);
         mainContainer= findViewById(R.id.main_content);
         bloxseeIcon= findViewById(R.id.bloxsee_icon);
+>>>>>>> d78037fac80b9bbe0741ca79b51775b1e28ff9e3
         setUpViews();
 
 //        lottieLayout= findViewById(R.id.lottie_layout);

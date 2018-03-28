@@ -1,28 +1,36 @@
 package com.example.franciscoandrade.bloxsee.views.student;
 
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
-
 import com.example.franciscoandrade.bloxsee.R;
 import com.google.blockly.android.AbstractBlocklyActivity;
 import com.google.blockly.android.codegen.CodeGenerationRequest;
 import com.google.blockly.android.codegen.LoggingCodeGeneratorCallback;
 import com.google.blockly.model.DefaultBlocks;
-
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyListener {
 
     private ImageView sprite;
-    private BlocklyGenerator blocklyGenerator = new BlocklyGenerator();
+    private AnimatorSet animSetXY;
+    private List<Animator> animSequenceArr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,23 +82,54 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     protected void onInitBlankWorkspace() {
         getController().addVariable("item");
     }
-
     @Override
     public void sendGeneratedCode(String str) {
+//        final AnimationSet as = new AnimationSet(true);;
+//        as.setFillAfter(true);
+//        as.setDuration(5000);
 
-        Log.d("hijoanne", str);
+        animSequenceArr = new ArrayList<>();
+        animSetXY = new AnimatorSet();
+        animSetXY.setDuration(5000);
+        ObjectAnimator animMove10 = ObjectAnimator.ofFloat(sprite, "x", sprite.getX(), sprite.getX() + 100f);
+        ObjectAnimator animMoveUp = ObjectAnimator.ofFloat(sprite, "y", sprite.getY(), sprite.getY() - 100f);
+        ObjectAnimator animMoveLeft = ObjectAnimator.ofFloat(sprite, "x", sprite.getX(), sprite.getX() - 100f);
+        ObjectAnimator animMoveRight = ObjectAnimator.ofFloat(sprite, "x", sprite.getX(), sprite.getX() + 100f);
+        ObjectAnimator animMoveDown = ObjectAnimator.ofFloat(sprite, "y", sprite.getY(), sprite.getY() - 100f);
 
-        if(str.contains("move")){
-            TranslateAnimation animation = new TranslateAnimation(0.0f, 400.0f,
-                    0.0f, 0.0f);
-            animation.setDuration(5000);
-            animation.setRepeatCount(5);
-            animation.setRepeatMode(2);
+        String[] removeIndentArr = str.split("\n");
+        Log.d("hihi", "in sendGC");
 
-            sprite.startAnimation(animation);
+        for(int i = 0; i<removeIndentArr.length; i++){
+            Log.d("hihi", "in forloop");
+            Log.d("hihi", removeIndentArr[i]);
+            switch(removeIndentArr[i]){
+                case "start":
+                    Log.d("hihi", "start");
+                    break;
+                case "move":
+                    Log.d("hihi", "I'm in move");
+                    animSequenceArr.add(animMove10);
+                    //animSetXY.playSequentially(animMove10);
+                    break;
+                case "moveup":
+                    animSequenceArr.add(animMoveUp);
+                    Log.d("hihi", "I'm in moveup");
+                    break;
+                case "moveleft":
+                    animSequenceArr.add(animMoveLeft);
+                    break;
+                case "moveright":
+                    animSequenceArr.add(animMoveRight);
+                    break;
+                case "movedown":
+                    animSequenceArr.add(animMoveDown);
+                    break;
+            }
         }
-        else{
-            Log.d("hijoanne", "fail");
-        }
+        animSetXY.playSequentially(animSequenceArr);
+        animSetXY.start();
     }
 }
+
+
