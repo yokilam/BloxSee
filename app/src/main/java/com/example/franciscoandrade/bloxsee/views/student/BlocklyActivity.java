@@ -16,22 +16,21 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
 import com.example.franciscoandrade.bloxsee.R;
 import com.google.blockly.android.AbstractBlocklyActivity;
 import com.google.blockly.android.codegen.CodeGenerationRequest;
 import com.google.blockly.android.codegen.LoggingCodeGeneratorCallback;
 import com.google.blockly.model.DefaultBlocks;
-
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyListener {
 
     private ImageView sprite;
     private AnimatorSet animSetXY;
-    private ArrayList<Animator> animSequenceArr;
+    private List<Animator> animSequenceArr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,60 +82,41 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     protected void onInitBlankWorkspace() {
         getController().addVariable("item");
     }
-
     @Override
     public void sendGeneratedCode(String str) {
 //        final AnimationSet as = new AnimationSet(true);;
 //        as.setFillAfter(true);
 //        as.setDuration(5000);
+
+        animSequenceArr = new ArrayList<>();
         animSetXY = new AnimatorSet();
         animSetXY.setDuration(5000);
+        ObjectAnimator animMove10 = ObjectAnimator.ofFloat(sprite, "x", sprite.getX(), sprite.getX() + 100f);
+        ObjectAnimator animMoveUp = ObjectAnimator.ofFloat(sprite, "y", sprite.getY(), sprite.getY() - 100f);
 
         String[] removeIndentArr = str.split("\n");
+        Log.d("hihi", "in sendGC");
 
         for(int i = 0; i<removeIndentArr.length; i++){
+            Log.d("hihi", "in forloop");
+            Log.d("hihi", removeIndentArr[i]);
             switch(removeIndentArr[i]){
                 case "start":
+                    Log.d("hihi", "start");
                     break;
                 case "move":
-                    ObjectAnimator animMove10 = ObjectAnimator.ofFloat(sprite, "x", 50f,20f);
+                    Log.d("hihi", "I'm in move");
                     animSequenceArr.add(animMove10);
                     //animSetXY.playSequentially(animMove10);
-                    Log.d("hihi", "I'm n move");
                     break;
                 case "moveup":
-                    ObjectAnimator animMoveUp = ObjectAnimator.ofFloat(sprite, "ScaleY", 1, 0);
                     animSequenceArr.add(animMoveUp);
-                    Log.d("hihi", "I'm n moveup");
+                    Log.d("hihi", "I'm in moveup");
             }
-
         }
         animSetXY.playSequentially(animSequenceArr);
         animSetXY.start();
-
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
