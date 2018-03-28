@@ -8,43 +8,43 @@ Blockly.JavaScript['stoplight'] = function(block) {
 
 Blockly.JavaScript['start'] = function(block) {
   // TODO: Assemble JavaScript into code variable.
-  var code = 'start ';
+  var code = 'start\n';
   return code;
 };
 
 Blockly.JavaScript['move10'] = function(block) {
   var number_name = block.getFieldValue('NAME');
   // TODO: Assemble JavaScript into code variable.
-  var code = 'move ';
+  var code = 'move\n';
   return code;
 };
 Blockly.JavaScript['moveup'] = function(block) {
   var number_name = block.getFieldValue('NAME');
   // TODO: Assemble JavaScript into code variable.
-  var code = 'moveup ';
+  var code = 'moveup\n';
   return code;
 };
 Blockly.JavaScript['movedown'] = function(block) {
   var number_name = block.getFieldValue('NAME');
   // TODO: Assemble JavaScript into code variable.
-  var code = 'movedown ';
+  var code = 'movedown\n';
   return code;
 };
 Blockly.JavaScript['moveleft'] = function(block) {
   var number_name = block.getFieldValue('NAME');
   // TODO: Assemble JavaScript into code variable.
-  var code = 'moveleft ';
+  var code = 'moveleft\n';
   return code;
 };
 Blockly.JavaScript['moveright'] = function(block) {
   var number_name = block.getFieldValue('NAME');
   // TODO: Assemble JavaScript into code variable.
-  var code = 'moveright ';
+  var code = 'moveright\n';
   return code;
 };
 Blockly.JavaScript['foreverloop'] = function(block) {
   var statements_name = Blockly.JavaScript.statementToCode(block, 'NAME');
   // TODO: Assemble JavaScript into code variable.
-  var code = 'foreverloop ';
+  var code = 'foreverloop\n';
   return code;
 };
