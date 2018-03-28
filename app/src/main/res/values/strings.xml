@@ -29,7 +29,7 @@
     <string name="send_button">Send</string>
 
     <!-- roster fragment xml Strings -->
-    <string name="add_student_to_roster">Add Student To Roster</string>
+    <string name="add_student_to_roster">Add Student</string>
     <string name="enter_student_name">Enter Student Name</string>
     <string name="pick_student_password">Pick Student Password:</string>
     <string name="add_student_button">Add Student</string>
@@ -83,11 +83,6 @@
     <!-- testing xml Strings -->
     <string name="hello_i_work">HELLO, IT IS WORKING</string>
     <string name="lesson_two">Lesson 2</string>
-
-
-
-
-
 
 
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur magna tortor, semper eu feugiat eu, vehicula vitae lacus.</string>
