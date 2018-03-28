@@ -12,8 +12,6 @@
         <include layout="@layout/blockly_unified_workspace" />
     </FrameLayout>
 
-
-
     <FrameLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -59,10 +57,5 @@
         </com.github.clans.fab.FloatingActionMenu>
 
     </FrameLayout>
-
-
-
-
-
 
 </LinearLayout>

@@ -177,5 +177,3 @@ fab32.setImageResource(R.drawable.ic_play);
         animSetXY.start();
     }
 }
-
-
