@@ -12,6 +12,7 @@ import android.support.v4.app.DialogFragment;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -37,9 +38,12 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sprite = findViewById(R.id.sprite);
-
+        Log.d("hihi", String.valueOf(getActionBar()));
+        mActionBar.hide();
 
     }
+
+
 
     @Override
     protected View onCreateContentView(int containerId) {
@@ -69,7 +73,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
                 } else {
                     text = "Menu closed";
                 }
-                Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -81,7 +85,6 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         fab22.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Fab22 Clicked", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -89,7 +92,6 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         fab32.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Fab22 Clicked", Toast.LENGTH_SHORT).show();
                 if (getController().getWorkspace().hasBlocks()) {
                     onRunCode();
                 } else {
