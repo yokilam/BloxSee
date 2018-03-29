@@ -37,7 +37,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         studentSignInFragment = new StudentSignInFragment();
         fragmentManager.beginTransaction().replace(R.id.loginContainer, studentSignInFragment).commit();
 
-//
+
 //        Intent intent = new Intent(this, BlocklyActivity.class);
 //        startActivity(intent);
 

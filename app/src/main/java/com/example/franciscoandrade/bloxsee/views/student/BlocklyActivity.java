@@ -15,6 +15,7 @@ import android.support.v4.app.DialogFragment;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
+import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -41,7 +42,7 @@ import java.util.List;
 public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyListener {
 
 
-    View root;
+    private View root;
     private ImageView sprite;
     private AnimatorSet animSetXY;
     private List<Animator> animSequenceArr;
@@ -50,28 +51,25 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     com.github.clans.fab.FloatingActionButton  fab22, fab32, fab3;
     private List<FloatingActionMenu> menus= new ArrayList<>();
 
-
-
-
-    //
     FirebaseStorage storage;
     StorageReference storageReference;
     Bitmap b;
     FrameLayout blockContainer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sprite = findViewById(R.id.sprite);
+        mActionBar.hide();
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-
 
     }
 
     @Override
     protected View onCreateContentView(int containerId) {
-         root = getLayoutInflater().inflate(R.layout.activity_blockly, null);
+        root = getLayoutInflater().inflate(R.layout.activity_blockly, null);
 
         menu_yellow= root.findViewById(R.id.menu_yellow);
 
@@ -98,7 +96,6 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
                 } else {
                     text = "Menu closed";
                 }
-                Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -110,20 +107,16 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         fab22.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Fab22 Clicked", Toast.LENGTH_SHORT).show();
                   b = Screenshot.takeScreenShotofRootView(root);
                 // image.setImageBitmap(b)
 
                 uploadImage();
-
-
             }
         });
 
         fab32.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Fab22 Clicked", Toast.LENGTH_SHORT).show();
                 if (getController().getWorkspace().hasBlocks()) {
                     onRunCode();
                 } else {
@@ -200,8 +193,6 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
                         });
             }*/
         }
-
-
 
     @NonNull
     @Override
