@@ -38,7 +38,6 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         super.onCreate(savedInstanceState);
         sprite = findViewById(R.id.sprite);
 
-//        showDialog();
 
     }
 
@@ -188,22 +187,23 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         }
         animSetXY.playSequentially(animSequenceArr);
         animSetXY.start();
+
+        checkAnswer(str);
     }
-//    void showDialog() {
-//
-//        // DialogFragment.show() will take care of adding the fragment
-//        // in a transaction.  We also want to remove any currently showing
-//        // dialog, so make our own transaction and take care of that here.
-//        FragmentManager fm = getFragmentManager();
-//        FragmentTransaction ft = fm.beginTransaction();
-//        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
-//        if (prev != null) {
-//            ft.remove(prev);
-//        }
-//        ft.addToBackStack(null);
-//
-//        // Create and show the dialog.
-//        DialogFragment newFragment = new BlocklyDialogFragment();
-//        newFragment.show(fm, "hihi", ft, "hihi");
-//    }
+
+    public boolean checkAnswer(String str){
+        String str2 = "start" + "moveright" + "movedown";
+        if(str.equals(str2)){
+            Log.d("hihi", str + "hihi");
+            Log.d("hihi", str2);
+            Toast.makeText(getApplicationContext(),"yay! you did it!", Toast.LENGTH_LONG).show();
+            return true;
+        }
+        else{
+            Toast.makeText(getApplicationContext(),"try again", Toast.LENGTH_SHORT).show();
+            Log.d("hihi", str + "hihi");
+            return false;
+        }
+    }
+
 }
