@@ -151,8 +151,9 @@ public class RosterFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 addStudentFragment= new AddStudentFragment();
-                Toast.makeText(getActivity(), "ADD STUDENT CLICKED", Toast.LENGTH_SHORT).show();
-                manager.beginTransaction().replace(R.id.addStudentContainer, addStudentFragment).addToBackStack("backToActivity").addToBackStack(null).commit();
+                manager.beginTransaction()
+                        .setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
+                        .replace(R.id.addStudentContainer, addStudentFragment).addToBackStack("backToActivity").addToBackStack(null).commit();
                 addStudentFab.setVisibility(View.GONE);
 
             }
@@ -316,7 +317,9 @@ public class RosterFragment extends Fragment {
 
 
     public void closeFragment() {
-        manager.beginTransaction().remove(addStudentFragment).commit();
+        manager.beginTransaction()
+                .setCustomAnimations(R.anim.enter, R.anim.exit)
+                .remove(addStudentFragment).commit();
         showFloatingBtn();
     }
 
