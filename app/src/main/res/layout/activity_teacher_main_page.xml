@@ -25,12 +25,19 @@
 
     </android.support.v4.view.ViewPager>
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_gravity="bottom"
+        android:src="@drawable/shadow_three"/>
+
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_nav_teacher"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:background="@android:color/holo_blue_dark"
-        app:tabTextColor="@android:color/black"
+        android:background="@android:color/white"
+        app:itemIconTint="@color/bnv_tab_item_foreground"
+        app:itemTextColor="@color/bnv_tab_item_foreground"
         android:layout_gravity="start"
         app:menu="@menu/teacher_navigation_items">
 

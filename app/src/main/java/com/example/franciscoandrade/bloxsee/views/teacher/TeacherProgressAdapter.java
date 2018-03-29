@@ -30,7 +30,7 @@ public class TeacherProgressAdapter extends RecyclerView.Adapter<TeacherProgress
 
     @Override
     public void onBindViewHolder(TeacherProgressViewHolder holder, int position) {
-        holder.onBind(progressLis.get(position));
+        holder.onBind(progressLis.get(position), context);
     }
 
     @Override

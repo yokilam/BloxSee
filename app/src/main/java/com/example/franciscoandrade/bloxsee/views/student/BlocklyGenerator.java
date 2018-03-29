@@ -23,16 +23,12 @@ public class BlocklyGenerator implements CodeGenerationRequest.CodeGeneratorCall
         this.bL = bL;
     }
 
-    public BlocklyGenerator() {
-    }
-
     @Override
     public void onFinishCodeGeneration(final String generatedCode) {
         if (generatedCode.isEmpty()) {
-            Toast.makeText(mContext, "Something went wrong with code generation.", Toast.LENGTH_LONG).show();
+            Log.d("hihi", "gC is empty");
         } else {
             Log.d(mTag, "code: " + generatedCode);
-            Toast.makeText(mContext, generatedCode + "hihihi", Toast.LENGTH_LONG).show();
             bL.sendGeneratedCode(generatedCode);
 
         }

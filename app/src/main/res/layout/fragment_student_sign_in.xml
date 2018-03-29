@@ -141,7 +141,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
-        android:text="Not a student"
+        android:text="Not a student?"
         android:layout_gravity="center"
         android:textColor="@color/main_yellow" />
 
