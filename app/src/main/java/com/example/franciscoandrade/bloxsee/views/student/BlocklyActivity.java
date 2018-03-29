@@ -6,28 +6,42 @@ import android.animation.ObjectAnimator;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.app.ProgressDialog;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.franciscoandrade.bloxsee.R;
 import com.example.franciscoandrade.bloxsee.util.Screenshot;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.blockly.android.AbstractBlocklyActivity;
 import com.google.blockly.android.codegen.CodeGenerationRequest;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyListener {
 
+
+    View root;
     private ImageView sprite;
     private AnimatorSet animSetXY;
     private List<Animator> animSequenceArr;
@@ -35,23 +49,36 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     FloatingActionMenu menu_yellow;
     com.github.clans.fab.FloatingActionButton  fab22, fab32, fab3;
     private List<FloatingActionMenu> menus= new ArrayList<>();
+
+
+
+
+    //
+    FirebaseStorage storage;
+    StorageReference storageReference;
+    Bitmap b;
+    FrameLayout blockContainer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sprite = findViewById(R.id.sprite);
+
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
 
 
     }
 
     @Override
     protected View onCreateContentView(int containerId) {
-        View root = getLayoutInflater().inflate(R.layout.activity_blockly, null);
+         root = getLayoutInflater().inflate(R.layout.activity_blockly, null);
 
         menu_yellow= root.findViewById(R.id.menu_yellow);
 
         fab22= root.findViewById(R.id.fab22);
         fab32= root.findViewById(R.id.fab32);
         fab3= root.findViewById(R.id.fab3);
+        blockContainer= findViewById(R.id.blockContainer);
 
         return root;
     }
@@ -84,6 +111,11 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Fab22 Clicked", Toast.LENGTH_SHORT).show();
+                  b = Screenshot.takeScreenShotofRootView(root);
+                // image.setImageBitmap(b)
+
+                uploadImage();
+
 
             }
         });
@@ -111,6 +143,65 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         });
 
     }
+
+    private void uploadImage() {
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        b.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] data = baos.toByteArray();
+
+        StorageReference imagesRef = storageReference.child("images/Test1.jpg");
+
+        UploadTask uploadTask = imagesRef.putBytes(data);
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle unsuccessful uploads
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+                Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                // Do what you want
+            }
+        });
+
+/*
+            if(b != null)
+            {
+                final ProgressDialog progressDialog = new ProgressDialog(this);
+                progressDialog.setTitle("Uploading...");
+                progressDialog.show();
+
+                StorageReference ref = storageReference.child("images/image5");
+                ref.putFile(b)
+                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                progressDialog.dismiss();
+                                Toast.makeText(BlocklyActivity.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                progressDialog.dismiss();
+                                Toast.makeText(BlocklyActivity.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                                double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
+                                        .getTotalByteCount());
+                                progressDialog.setMessage("Uploaded "+(int)progress+"%");
+                            }
+                        });
+            }*/
+        }
+
+
 
     @NonNull
     @Override
