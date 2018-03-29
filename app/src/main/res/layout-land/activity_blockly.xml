@@ -1,22 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
-
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/blockly_activity_student_question"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@android:color/holo_purple"
+        android:text="Question" />
 
     <include
         android:id="@+id/blockContainer"
         layout="@layout/blockly_unified_workspace"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight=".5" />
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/blockly_activity_student_question" />
 
     <FrameLayout
-        android:layout_width="0dp"
+        android:id="@+id/blockly_run"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_weight="0.5">
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/blockly_activity_student_question"
+        android:layout_toEndOf="@+id/blockContainer">
 
         <include layout="@layout/fragment_blockly_run" />
 
@@ -69,4 +79,4 @@
     </FrameLayout>
 
 
-</LinearLayout>
+</RelativeLayout>
