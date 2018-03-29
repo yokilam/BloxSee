@@ -192,10 +192,10 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     }
 
     public boolean checkAnswer(String str){
-        String str2 = "start" + "moveright" + "movedown";
-        if(str.equals(str2)){
+        String answerKey = "start" + "moveright" + "movedown";
+        if(str.equals(answerKey)){
             Log.d("hihi", str + "hihi");
-            Log.d("hihi", str2);
+            Log.d("hihi", answerKey);
             Toast.makeText(getApplicationContext(),"yay! you did it!", Toast.LENGTH_LONG).show();
             return true;
         }
