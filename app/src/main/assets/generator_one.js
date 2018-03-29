@@ -8,7 +8,7 @@ Blockly.JavaScript['stoplight'] = function(block) {
 
 Blockly.JavaScript['start'] = function(block) {
   // TODO: Assemble JavaScript into code variable.
-  var code = 'start\n';
+  var code = 'start';
   return code;
 };
 
@@ -27,7 +27,7 @@ Blockly.JavaScript['moveup'] = function(block) {
 Blockly.JavaScript['movedown'] = function(block) {
   var number_name = block.getFieldValue('NAME');
   // TODO: Assemble JavaScript into code variable.
-  var code = 'movedown\n';
+  var code = 'movedown';
   return code;
 };
 Blockly.JavaScript['moveleft'] = function(block) {
@@ -39,7 +39,7 @@ Blockly.JavaScript['moveleft'] = function(block) {
 Blockly.JavaScript['moveright'] = function(block) {
   var number_name = block.getFieldValue('NAME');
   // TODO: Assemble JavaScript into code variable.
-  var code = 'moveright\n';
+  var code = 'moveright';
   return code;
 };
 Blockly.JavaScript['foreverloop'] = function(block) {
