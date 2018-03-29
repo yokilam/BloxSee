@@ -6,7 +6,7 @@
     <color name="colorWhite">#fbfbfb</color>
     <color name="colorBlack">#000</color>
     <color name="editTextHint">#8b8b8b</color>
-    <color name="colorChangeET">#3ab8f1</color>
+    <color name="newteacherbackground.jpgcolorChangeET">#3ab8f1</color>
     <color name="colorFAB">#00bbff</color>
     <color name="bakground">#e3e3e3</color>
 
@@ -31,6 +31,12 @@
     <color name="main_red">#FF3333</color>
     <color name="main_yellow">#ffc910</color>
     <color name="main_green">#66CC66</color>
+
+
+    <color name="main_navy_opacity">#9622285a</color>
+    <color name="main_yellow_opacity">#92ffc910</color>
+    <color name="main_green_opacity">#9c66cc66</color>
+    <color name="main_white_opacity">#96fbfbfb</color>
 
     <color name="material_orange_50">#fffff3e0</color>
     <color name="material_orange_100">#ffffe0b2</color>

@@ -22,12 +22,12 @@
     </style>
 
     <style name="EditTextYellow" parent="Theme.AppCompat">
-        <item name="android:textColorHint">@color/editTextHint</item>
+        <item name="android:textColorHint">@color/white</item>
         <item name="android:textSize">15sp</item>
-        <item name="android:textColorPrimary">@color/colorChangeET</item>
-        <item name="colorAccent">@color/colorChangeET</item>
+        <item name="android:textColorPrimary">@color/main_yellow</item>
+        <item name="colorAccent">@color/main_blue</item>
         <item name="colorControlNormal">@color/editTextHint</item>
-        <item name="colorControlActivated">@color/colorChangeET</item>
+        <item name="colorControlActivated">@color/main_blue</item>
     </style>
 
 

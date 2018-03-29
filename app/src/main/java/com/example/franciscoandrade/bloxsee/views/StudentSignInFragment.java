@@ -141,41 +141,41 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
         clearBackground();
         switch (v.getId()) {
             case R.id.not_a_student:
-                fragmentManager.beginTransaction().add(R.id.loginContainer, teacherSignInFragment).addToBackStack("teacher").commit();
+                fragmentManager.beginTransaction().add(R.id.loginContainer, teacherSignInFragment).addToBackStack("teachersignin").addToBackStack("teachersignup").commit();
                 break;
             case R.id.penguin:
                 Toast.makeText(getActivity(), "Penguin", Toast.LENGTH_SHORT).show();
                 animalPicked = "Penguin";
-                penguin.setBackgroundResource(R.color.colorAccent);
+                penguin.setBackgroundResource(R.color.main_white_opacity);
                 break;
 
             case R.id.ghost:
-                ghost.setBackgroundResource(R.color.colorAccent);
+                ghost.setBackgroundResource(R.color.main_white_opacity);
                 animalPicked = "Ghost";
                 Toast.makeText(getActivity(), "ghost", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.dog:
-                dog.setBackgroundResource(R.color.colorAccent);
+                dog.setBackgroundResource(R.color.main_white_opacity);
                 animalPicked = "Dog";
                 Toast.makeText(getActivity(), "dog", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.cat:
-                cat.setBackgroundResource(R.color.colorAccent);
+                cat.setBackgroundResource(R.color.main_white_opacity);
                 animalPicked = "Cat";
                 Toast.makeText(getActivity(), "Cat", Toast.LENGTH_SHORT).show();
                 break;
 
 
             case R.id.dragon:
-                dragon.setBackgroundResource(R.color.colorAccent);
+                dragon.setBackgroundResource(R.color.main_white_opacity);
                 animalPicked = "Dragon";
                 Toast.makeText(getActivity(), "dragon", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.octopus:
-                octopus.setBackgroundResource(R.color.colorAccent);
+                octopus.setBackgroundResource(R.color.main_white_opacity);
                 animalPicked = "Octopus";
                 Toast.makeText(getActivity(), "Octopus", Toast.LENGTH_SHORT).show();
                 break;
@@ -255,12 +255,12 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
     }
 
     private void clearBackground() {
-        penguin.setBackgroundResource(R.color.colorWhite);
-        ghost.setBackgroundResource(R.color.colorWhite);
-        dog.setBackgroundResource(R.color.colorWhite);
-        cat.setBackgroundResource(R.color.colorWhite);
-        dragon.setBackgroundResource(R.color.colorWhite);
-        octopus.setBackgroundResource(R.color.colorWhite);
+        penguin.setBackgroundResource(0);
+        ghost.setBackgroundResource(0);
+        dog.setBackgroundResource(0);
+        cat.setBackgroundResource(0);
+        dragon.setBackgroundResource(0);
+        octopus.setBackgroundResource(0);
 
 
     }
