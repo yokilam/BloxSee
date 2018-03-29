@@ -38,7 +38,7 @@ public class TeacherMainPageActivity extends AppCompatActivity implements ViewPa
     RosterFragment rosterFragment;
     PagerAdapterTeacher adapter;
 
-
+    String actualPosition="1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,10 +136,8 @@ public class TeacherMainPageActivity extends AppCompatActivity implements ViewPa
     @Override
     public void onPageSelected(int position) {
         Log.d("PAGER==", "onPageSelected: "+position);
-        if (position==1){
-            progressFragment.teacherProgressAdapter.notifyDataSetChanged();
 
-        }
+        actualPosition=String.valueOf(position);
     }
 
     @Override
@@ -157,5 +155,15 @@ public class TeacherMainPageActivity extends AppCompatActivity implements ViewPa
     @Override
     public void closeView() {
         rosterFragment.closeFragment();
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        if(actualPosition.equals("1")){
+            rosterFragment.showFloatingBtn();
+        }
     }
 }

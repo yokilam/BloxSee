@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/levelTwo"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/material_deep_purple_300"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/lesson_two"
+        android:textColor="@color/colorWhite"
+        android:textSize="12sp" />
+
+    <com.github.aakira.expandablelayout.ExpandableLinearLayout
+        android:id="@+id/Two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/level"
+        android:orientation="vertical"
+        app:ael_duration="400"
+        app:ael_expanded="false">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lesson_two"
+                />
+
+            <CheckBox
+                android:id="@+id/questionOneLessonTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/question_one"/>
+
+            <CheckBox
+                android:id="@+id/questionTwoLessonTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/question_two"/>
+
+
+            <CheckBox
+                android:id="@+id/questionThreeLessonTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/question_three"/>
+            <CheckBox
+                android:id="@+id/questionFourLessonTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/question_four"/>
+            <CheckBox
+                android:id="@+id/questionFiveLessonTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/question_five"/>
+
+        </LinearLayout>
+
+
+
+    </com.github.aakira.expandablelayout.ExpandableLinearLayout>
+
+
+
+</LinearLayout>
