@@ -19,6 +19,7 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.franciscoandrade.bloxsee.R;
@@ -41,20 +42,20 @@ import java.util.List;
 
 public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyListener {
 
-
     private View root;
     private ImageView sprite;
     private AnimatorSet animSetXY;
     private List<Animator> animSequenceArr;
+    private TextView questionTV;
 
-    FloatingActionMenu menu_yellow;
-    com.github.clans.fab.FloatingActionButton  fab22, fab32, fab3;
+    private FloatingActionMenu menu_yellow;
+    private com.github.clans.fab.FloatingActionButton  fab22, fab32, fab3;
     private List<FloatingActionMenu> menus= new ArrayList<>();
 
-    FirebaseStorage storage;
-    StorageReference storageReference;
-    Bitmap b;
-    FrameLayout blockContainer;
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
+    private Bitmap b;
+    private FrameLayout blockContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,17 +71,17 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     @Override
     protected View onCreateContentView(int containerId) {
         root = getLayoutInflater().inflate(R.layout.activity_blockly, null);
+        //questionTV = root.findViewById(R.id.blockly_activity_student_question);
 
-        menu_yellow= root.findViewById(R.id.menu_yellow);
+        menu_yellow = root.findViewById(R.id.menu_yellow);
 
-        fab22= root.findViewById(R.id.fab22);
-        fab32= root.findViewById(R.id.fab32);
-        fab3= root.findViewById(R.id.fab3);
+        fab22 = root.findViewById(R.id.fab22);
+        fab32 = root.findViewById(R.id.fab32);
+        fab3 = root.findViewById(R.id.fab3);
         blockContainer= findViewById(R.id.blockContainer);
 
         return root;
     }
-
 
     @Override
     protected void onResume() {
@@ -130,7 +131,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
             @Override
             public void onClick(View v) {
                 // Bitmap b = Screenshot.takeScreenShotofRootView(image);
-               // image.setImageBitmap(b)
+                // image.setImageBitmap(b)
                 Toast.makeText(BlocklyActivity.this, "screenshot taken", Toast.LENGTH_SHORT).show();
             }
         });
@@ -159,7 +160,6 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
                 // Do what you want
             }
         });
-
 /*
             if(b != null)
             {
