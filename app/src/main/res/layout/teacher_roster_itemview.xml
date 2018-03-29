@@ -56,10 +56,16 @@
             android:background="@color/editTextHint"
             android:layout_gravity="center"/>
 
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+
         android:background="#FFF4F4F4"
         android:orientation="horizontal">
 
@@ -67,6 +73,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginBottom="10dp"
             android:orientation="vertical">
 
             <TextView
@@ -83,6 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+
                 android:text="Dragon"
                 android:textColor="#0A4C8C"
                 android:textSize="15sp" />
@@ -107,6 +115,16 @@
         </LinearLayout>
 
     </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginRight="0.5dp"
+                android:layout_marginLeft="0.5dp"
+                android:layout_gravity="bottom"
+                android:src="@drawable/shadow_two"/>
+
+        </FrameLayout>
 
 
     </LinearLayout>

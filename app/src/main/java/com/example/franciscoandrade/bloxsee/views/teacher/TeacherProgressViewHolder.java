@@ -1,5 +1,7 @@
 package com.example.franciscoandrade.bloxsee.views.teacher;
 
+import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.util.SparseBooleanArray;
@@ -20,6 +22,7 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
     private ExpandableLayoutAnimation expandableLayoutAnimation;
     private SparseBooleanArray expandState = new SparseBooleanArray();
     private Progress progress1;
+    Context context;
 
     public TeacherProgressViewHolder(View itemView) {
         super(itemView);
@@ -46,9 +49,10 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
 
     }
 
-    public void onBind(Progress progress) {
+    public void onBind(Progress progress, Context context) {
         name.setText(progress.getName());
         progress1= progress;
+        this.context=context;
     }
 
     @Override
@@ -92,9 +96,12 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
     public void changeColor(String string, TextView textView){
         if (string.equals("passed")) {
             textView.setBackgroundResource(R.color.material_red_500);
+            textView.setTextColor(context.getResources().getColor(R.color.material_red_500));
         }
         if (string.equals("failed")) {
             textView.setBackgroundResource(R.color.material_green_300);
+            textView.setTextColor(context.getResources().getColor(R.color.material_green_300    ));
+
         }
     }
 }

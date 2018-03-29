@@ -317,9 +317,13 @@ public class RosterFragment extends Fragment {
 
     public void closeFragment() {
         manager.beginTransaction().remove(addStudentFragment).commit();
-        addStudentFab.setVisibility(View.VISIBLE);
+        showFloatingBtn();
     }
 
 
+    public void showFloatingBtn(){
+        addStudentFab.setVisibility(View.VISIBLE);
+
+    }
 }
 

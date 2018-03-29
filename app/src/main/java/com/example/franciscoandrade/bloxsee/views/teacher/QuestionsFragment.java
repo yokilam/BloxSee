@@ -5,16 +5,22 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.franciscoandrade.bloxsee.R;
 import com.example.franciscoandrade.bloxsee.model.Level;
 import com.example.franciscoandrade.bloxsee.model.Student;
 import com.example.franciscoandrade.bloxsee.model.StudentQuestions;
+import com.example.franciscoandrade.bloxsee.util.ExpandableLayoutAnimation;
+import com.github.aakira.expandablelayout.ExpandableLinearLayout;
+import com.github.zagum.expandicon.ExpandIconView;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -42,6 +48,14 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
     CheckBox questionOneLessonTwo, questionTwoLessonTwo, questionThreeLessonTwo, questionFourLessonTwo, questionFiveLessonTwo;
     List<Boolean> isQuestionAvailable;
     List<Boolean> listChckbox;
+    ExpandableLinearLayout question_expandable_layout, Two;
+    ExpandableLayoutAnimation expandableLayoutAnimation;
+    private SparseBooleanArray expandState = new SparseBooleanArray();
+    LinearLayout level, levelTwo;
+    TextView  lesson3, lesson4, lesson5, lesson6, lesson7, lesson8, lesson9, lesson10;
+    ExpandableLinearLayout lesson3Expand, lesson4Expand, lesson5Expand, lesson6Expand, lesson7Expand, lesson8Expand, lesson9Expand, lesson10Expand;
+
+    ExpandIconView expand1, expand2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,7 +73,51 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
         questionThreeLessonTwo= view.findViewById(R.id.questionThreeLessonTwo);
         questionFourLessonTwo= view.findViewById(R.id.questionFourLessonTwo);
         questionFiveLessonTwo= view.findViewById(R.id.questionFiveLessonTwo);
+        question_expandable_layout= view.findViewById(R.id.question_expandable_layout);
+        levelTwo= view.findViewById(R.id.levelTwo);
+        level= view.findViewById(R.id.level);
+        Two= view.findViewById(R.id.Two);
+        lesson3= view.findViewById(R.id.lesson3);
+        lesson4= view.findViewById(R.id.lesson4);
+        lesson5= view.findViewById(R.id.lesson5);
+        lesson6= view.findViewById(R.id.lesson6);
+        lesson7= view.findViewById(R.id.lesson7);
+        lesson8= view.findViewById(R.id.lesson8);
+        lesson9= view.findViewById(R.id.lesson9);
+        lesson10= view.findViewById(R.id.lesson10);
+        expandableLayoutAnimation= new ExpandableLayoutAnimation();
+//        lesson3Expand= new ExpandableLayoutAnimation();
+//        lesson4Expand= new ExpandableLayoutAnimation();
+//        lesson5Expand= new ExpandableLayoutAnimation();
+//        lesson6Expand= new ExpandableLayoutAnimation();
+//        lesson7Expand= new ExpandableLayoutAnimation();
+//        lesson8Expand= new ExpandableLayoutAnimation();
+//        lesson9Expand= new ExpandableLayoutAnimation();
+//        lesson10Expand= new ExpandableLayoutAnimation();
+        lesson3Expand= view.findViewById(R.id.lesson3Expand);
+        lesson4Expand= view.findViewById(R.id.lesson4Expand);
+        lesson5Expand= view.findViewById(R.id.lesson5Expand);
+        lesson6Expand= view.findViewById(R.id.lesson6Expand);
+        lesson7Expand= view.findViewById(R.id.lesson7Expand);
+        lesson8Expand= view.findViewById(R.id.lesson8Expand);
+        lesson9Expand= view.findViewById(R.id.lesson9Expand);
+        lesson10Expand=view.findViewById(R.id.lesson10Expand);
+        expand1=view.findViewById(R.id.expand1);
+        expand2=view.findViewById(R.id.expand2);
+
         send.setOnClickListener(this);
+        question_expandable_layout.setOnClickListener(this);
+        Two.setOnClickListener(this);
+        levelTwo.setOnClickListener(this);
+        level.setOnClickListener(this);
+        lesson3.setOnClickListener(this);
+        lesson4.setOnClickListener(this);
+        lesson5.setOnClickListener(this);
+        lesson6.setOnClickListener(this);
+        lesson7.setOnClickListener(this);
+        lesson8.setOnClickListener(this);
+        lesson9.setOnClickListener(this);
+        lesson10.setOnClickListener(this);
         listChckbox= new ArrayList<>();
         listChckbox.add(true);
         listChckbox.add(true);
@@ -172,6 +230,90 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
+
+        switch (v.getId()){
+            case R.id.send_button:
+                Log.d("CLICK==", "onClick: ==Button");
+
+                    sendQuestions();
+                break;
+
+            case R.id.level:
+                Log.d("CLICK==", "onClick: ==level1");
+                expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
+                        (v, question_expandable_layout, R.color.material_deep_purple_100, expandState);
+
+                expand1.switchState();
+
+                break;
+
+            case R.id.levelTwo:
+                Log.d("CLICK==", "onClick: ==level2");
+                expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
+                        (v, Two, R.color.material_deep_purple_100, expandState);
+                expand2.switchState();
+                break;
+
+
+
+            case R.id.lesson3:
+                Log.d("CLICK==", "onClick: ==level2");
+                expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
+                        (v, lesson3Expand, R.color.material_deep_purple_100, expandState);
+                break;
+
+            case R.id.lesson4:
+                Log.d("CLICK==", "onClick: ==level2");
+                expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
+                        (v, lesson4Expand, R.color.material_deep_purple_100, expandState);
+                break;
+
+            case R.id.lesson5:
+                Log.d("CLICK==", "onClick: ==level2");
+                expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
+                        (v, lesson5Expand, R.color.material_deep_purple_100, expandState);
+                break;
+
+
+            case R.id.lesson6:
+                Log.d("CLICK==", "onClick: ==level2");
+                expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
+                        (v, lesson6Expand, R.color.material_deep_purple_100, expandState);
+                break;
+
+
+            case R.id.lesson7:
+                Log.d("CLICK==", "onClick: ==level2");
+                expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
+                        (v, lesson7Expand, R.color.material_deep_purple_100, expandState);
+                break;
+
+
+            case R.id.lesson8:
+                Log.d("CLICK==", "onClick: ==level2");
+                expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
+                        (v, lesson8Expand, R.color.material_deep_purple_100, expandState);
+                break;
+
+            case R.id.lesson9:
+                Log.d("CLICK==", "onClick: ==level2");
+                expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
+                        (v, lesson9Expand, R.color.material_deep_purple_100, expandState);
+                break;
+
+            case R.id.lesson10:
+                Log.d("CLICK==", "onClick: ==level2");
+                expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
+                        (v, lesson10Expand, R.color.material_deep_purple_100, expandState);
+                break;
+
+        }
+
+
+    }
+
+    private void sendQuestions() {
+
         ChildEventListener childEventListener= new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -230,6 +372,7 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
         };
 
         ref.child("students").addChildEventListener(childEventListener);
+
     }
 
 
@@ -237,6 +380,7 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
         switch (num){
             case 1:
                 ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((num)+"").child("question").setValue(num+". Move the sprite to the right");
+                ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((num)+"").child("answer").setValue("start\\n” + “moveright\\n” + “movedown\\n");
                 ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((num)+"").child("question").setValue(num+ ". Add a red color to the street light. ");
                 break;
 
