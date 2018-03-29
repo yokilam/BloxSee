@@ -19,9 +19,13 @@ import static android.support.v4.content.ContextCompat.startActivity;
 
 public class StudentQuestionViewHolder extends RecyclerView.ViewHolder {
     private TextView studentQuestion;
+    private TextView btm_line;
+    private ImageView dot_item;
 
     public StudentQuestionViewHolder(final View itemView) {
         super(itemView);
+        dot_item = itemView.findViewById(R.id.question_dot_item);
+        btm_line = itemView.findViewById(R.id.question_btm_line);
         studentQuestion = itemView.findViewById(R.id.questions_tv);
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,8 +35,11 @@ public class StudentQuestionViewHolder extends RecyclerView.ViewHolder {
             }
         });
     }
-    public void onBind(String questions){
+    public void onBind(String questions, int position, int size){
         studentQuestion.setText(questions);
+        if(position==size-1){
+            btm_line.setVisibility(View.INVISIBLE);
+        }
 
     }
 }
