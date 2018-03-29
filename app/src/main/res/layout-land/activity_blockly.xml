@@ -50,15 +50,6 @@
             fab:menu_labels_style="@style/MenuLabelsStyle"
             fab:menu_shadowColor="#444">
 
-
-            <com.github.clans.fab.FloatingActionButton
-                android:id="@+id/fab3"
-                style="@style/MenuButtonsStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_help"
-                fab:fab_label="Save" />
-
             <com.github.clans.fab.FloatingActionButton
                 android:id="@+id/fab22"
                 style="@style/MenuButtonsStyle"

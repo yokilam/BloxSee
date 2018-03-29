@@ -49,7 +49,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     private TextView questionTV;
 
     private FloatingActionMenu menu_yellow;
-    private com.github.clans.fab.FloatingActionButton  fab22, fab32, fab3;
+    private com.github.clans.fab.FloatingActionButton  fab22, fab32;
     private List<FloatingActionMenu> menus= new ArrayList<>();
 
     private FirebaseStorage storage;
@@ -77,7 +77,6 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
 
         fab22 = root.findViewById(R.id.fab22);
         fab32 = root.findViewById(R.id.fab32);
-        fab3 = root.findViewById(R.id.fab3);
         blockContainer= findViewById(R.id.blockContainer);
 
         return root;
@@ -100,10 +99,8 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
             }
         });
 
-        fab22.setImageResource(R.drawable.ic_help);
+        fab22.setImageResource(R.drawable.ic_save_black_24dp);
         fab32.setImageResource(R.drawable.ic_play);
-        fab3.setImageResource(R.drawable.ic_save_black_24dp);
-
 
         fab22.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,15 +121,6 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
                     Log.i("hihi", "No blocks in workspace. Skipping run request.");
                 }
 
-            }
-        });
-
-        fab3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Bitmap b = Screenshot.takeScreenShotofRootView(image);
-                // image.setImageBitmap(b)
-                Toast.makeText(BlocklyActivity.this, "screenshot taken", Toast.LENGTH_SHORT).show();
             }
         });
 
