@@ -28,7 +28,7 @@
         <activity
             android:name=".views.teacher.TeacherMainPageActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".views.student.BlocklyActivity"></activity>
+        <activity android:name=".views.student.BlocklyActivity" android:screenOrientation="landscape"></activity>
         <activity android:name=".views.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
