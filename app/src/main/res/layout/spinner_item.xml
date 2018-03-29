@@ -5,6 +5,6 @@
     android:layout_height="wrap_content"
     android:textColor="@color/main_blue"
     android:padding="10dp"
-    android:textStyle="italic"
+    android:dropDownHeight="100dp"
     android:fontFamily="sans-serif-medium"
     />
