@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="3dp"
         android:layout_height="8dp"
-        android:background="@color/editTextHint"
+        android:background="@color/white"
         android:layout_marginLeft="8dp"/>
 
     <LinearLayout
@@ -26,7 +26,7 @@
             <TextView
                 android:layout_width="3dp"
                 android:layout_height="20dp"
-                android:background="@color/editTextHint"
+                android:background="@color/white"
                 android:layout_gravity="center"/>
 
             <ImageView
@@ -37,13 +37,13 @@
                 android:paddingTop="-5dp"
                 android:paddingBottom="-5dp"
                 android:layout_gravity="start"
-                android:tint="#ffc910"/>
+                android:tint="#ff3333"/>
 
             <TextView
                 android:id="@+id/question_btm_line"
                 android:layout_width="3dp"
                 android:layout_height="20dp"
-                android:background="@color/editTextHint"
+                android:background="@color/white"
                 android:layout_gravity="center"/>
         </LinearLayout>
 
@@ -51,7 +51,7 @@
             android:layout_width="10dp"
             android:layout_height="4dp"
             android:gravity="center"
-            android:background="@color/editTextHint"
+            android:background="@color/white"
             android:layout_gravity="center"/>
 
         <LinearLayout
