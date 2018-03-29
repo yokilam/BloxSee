@@ -2,6 +2,7 @@ package com.example.franciscoandrade.bloxsee.views;
 
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.franciscoandrade.bloxsee.R;
+import com.example.franciscoandrade.bloxsee.views.student.BlocklyActivity;
 
 public class SignInActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -35,9 +37,9 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         studentSignInFragment = new StudentSignInFragment();
         fragmentManager.beginTransaction().replace(R.id.loginContainer, studentSignInFragment).commit();
 
-
-        //Intent intent = new Intent(this, BlocklyActivity.class);
-        //startActivity(intent);
+//
+//        Intent intent = new Intent(this, BlocklyActivity.class);
+//        startActivity(intent);
 
 //      lottieAnimationView = findViewById(R.id.lottieAnimationView);
 //

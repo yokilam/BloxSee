@@ -3,7 +3,10 @@ package com.example.franciscoandrade.bloxsee.views.teacher;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -42,7 +45,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class RosterFragment extends Fragment  {
+public class RosterFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private EditText studentName;
@@ -67,6 +70,11 @@ public class RosterFragment extends Fragment  {
     List<Progress> progressList;
     TeacherProgressAdapter teacherProgressAdapter;
     PagerAdapterTeacher adapter;
+
+
+    FloatingActionButton addStudentFab;
+    FragmentManager manager;
+    AddStudentFragment addStudentFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -125,10 +133,30 @@ public class RosterFragment extends Fragment  {
 
         ref.child("students").addChildEventListener(childEventListener);
 
-        recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(), DividerItemDecoration.VERTICAL));
+        //recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(), DividerItemDecoration.VERTICAL));
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));
 
+
+
+
+         manager= getFragmentManager();
+
+        fabClickHandle();
+
         return view;
+    }
+
+    private void fabClickHandle() {
+        addStudentFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addStudentFragment= new AddStudentFragment();
+                Toast.makeText(getActivity(), "ADD STUDENT CLICKED", Toast.LENGTH_SHORT).show();
+                manager.beginTransaction().replace(R.id.addStudentContainer, addStudentFragment).addToBackStack("backToActivity").addToBackStack(null).commit();
+                addStudentFab.setVisibility(View.GONE);
+
+            }
+        });
     }
 
     private void runExpandableLayoutLogic(View view) {
@@ -167,6 +195,7 @@ public class RosterFragment extends Fragment  {
         //Set Up Expandable Layout
         buttonLayout = (RelativeLayout) view.findViewById(R.id.button);
         expandableLayout = (ExpandableLinearLayout) view.findViewById(R.id.expandableLayout);
+        addStudentFab = view.findViewById(R.id.addStudentFab);
     }
 
     private void setSpinner() {
@@ -284,6 +313,12 @@ public class RosterFragment extends Fragment  {
         expandableLayout.toggle();
     }
 
+
+
+    public void closeFragment() {
+        manager.beginTransaction().remove(addStudentFragment).commit();
+        addStudentFab.setVisibility(View.VISIBLE);
+    }
 
 
 }

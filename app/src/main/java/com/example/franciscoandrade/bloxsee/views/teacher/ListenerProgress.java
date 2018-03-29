@@ -5,5 +5,6 @@ package com.example.franciscoandrade.bloxsee.views.teacher;
  */
 
 public interface ListenerProgress {
-    public void reload();
+    public void closeFragment();
+    public void closeView();
 }

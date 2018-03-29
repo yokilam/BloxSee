@@ -10,43 +10,28 @@
         android:id="@+id/name_progress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         android:layout_alignParentTop="true"
         android:text="@string/progress_name"
-        android:textSize="15dp" />
+        android:textSize="20dp" />
 
-    <LinearLayout
-        android:id="@+id/week"
+    <TextView
+        android:id="@+id/lesson_one"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/name_progress"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/lesson_one"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/lesson_one_iv"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/lesson_two"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/lesson_two_iv"
-            android:textSize="15sp" />
-
-
-    </LinearLayout>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="24dp"
+        android:layout_weight="1"
+        android:paddingLeft="10dp"
+        android:text="Lesson:"
+        android:textSize="15sp" />
 
     <com.github.aakira.expandablelayout.ExpandableLinearLayout
         android:id="@+id/progress_expandableLayout"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_below="@id/week"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lesson_one"
         android:orientation="vertical"
         app:ael_duration="400"
         app:ael_expanded="false">
@@ -54,67 +39,85 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="10dp">
 
             <TextView
-                android:id="@+id/question_one"
-                android:layout_width="0dp"
-                android:layout_height="65dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
+                android:id="@+id/lesson_1"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/circle_shape"
+                android:textSize="30sp"
+                android:padding="2dp"
                 android:gravity="center"
-                android:text="@string/q_one_tv" />
-
+                android:text="1" />
             <TextView
-                android:id="@+id/question_two"
-                android:layout_width="0dp"
-                android:layout_height="65dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
+                android:id="@+id/lesson_two"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/circle_shape"
+                android:textSize="30sp"
                 android:gravity="center"
-                android:text="@string/q_two_tv" />
-
+                android:padding="2dp"
+                android:text="2" />
             <TextView
-                android:id="@+id/question_three"
-                android:layout_width="0dp"
-                android:layout_height="65dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
+                android:id="@+id/lesson_three"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/circle_shape"
+                android:textSize="30dp"
                 android:gravity="center"
-                android:text="@string/q_three_tv" />
-
+                android:padding="2dp"
+                android:text="3" />
             <TextView
-                android:id="@+id/question_four"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
+                android:id="@+id/lesson_four"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/circle_shape"
+                android:textSize="30dp"
                 android:gravity="center"
-                android:text="@string/q_four_tv" />
-
+                android:padding="2dp"
+                android:text="4" />
             <TextView
-                android:id="@+id/question_five"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
+                android:id="@+id/lesson_five"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/circle_shape"
+                android:textSize="30dp"
                 android:gravity="center"
-                android:text="@string/q_five_tv" />
+                android:padding="2dp"
+                android:text="5" />
 
         </LinearLayout>
+
+    </com.github.aakira.expandablelayout.ExpandableLinearLayout>
+
+    <com.github.aakira.expandablelayout.ExpandableLinearLayout
+        android:id="@+id/progress_questions_expandableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_below="@id/progress_expandableLayout"
+        android:orientation="vertical"
+        app:ael_duration="400"
+        app:ael_expanded="false">
+            <TextView
+                android:id="@+id/q1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:text="1. question"/>
+            <TextView
+                android:id="@+id/q2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:text="2. question"/>
+            <TextView
+                android:id="@+id/q3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:text="3. question"/>
 
     </com.github.aakira.expandablelayout.ExpandableLinearLayout>
 

@@ -26,7 +26,6 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     private AnimatorSet animSetXY;
     private List<Animator> animSequenceArr;
 
-    //
     FloatingActionMenu menu_yellow;
     com.github.clans.fab.FloatingActionButton  fab22, fab32;
     private List<FloatingActionMenu> menus= new ArrayList<>();
@@ -35,23 +34,16 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         super.onCreate(savedInstanceState);
         sprite = findViewById(R.id.sprite);
 
-
-
-
-
     }
 
     @Override
     protected View onCreateContentView(int containerId) {
         View root = getLayoutInflater().inflate(R.layout.activity_blockly, null);
 
-
         menu_yellow= root.findViewById(R.id.menu_yellow);
 
         fab22= root.findViewById(R.id.fab22);
         fab32= root.findViewById(R.id.fab32);
-
-
 
         return root;
     }
@@ -67,6 +59,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
                 String text;
                 if (opened) {
                     text = "Menu opened";
+
                 } else {
                     text = "Menu closed";
                 }
@@ -74,8 +67,8 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
             }
         });
 
-fab22.setImageResource(R.drawable.ic_help);
-fab32.setImageResource(R.drawable.ic_play);
+        fab22.setImageResource(R.drawable.ic_help);
+        fab32.setImageResource(R.drawable.ic_play);
 
 
         fab22.setOnClickListener(new View.OnClickListener() {
@@ -90,6 +83,11 @@ fab32.setImageResource(R.drawable.ic_play);
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Fab22 Clicked", Toast.LENGTH_SHORT).show();
+                if (getController().getWorkspace().hasBlocks()) {
+                    onRunCode();
+                } else {
+                    Log.i("hihi", "No blocks in workspace. Skipping run request.");
+                }
 
             }
         });
