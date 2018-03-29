@@ -41,17 +41,45 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/level"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_alignParentTop="true"
-        android:background="@color/material_deep_purple_300"
-        android:gravity="center"
-        android:padding="8dp"
-        android:text="@string/level_one"
-        android:textColor="@color/colorWhite"
-        android:textSize="12sp" />
+        <LinearLayout
+            android:id="@+id/level"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/blue_background"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="48dp"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="@string/level_one"
+            android:textColor="@color/colorWhite"
+            android:textSize="12sp" />
+
+            <com.github.zagum.expandicon.ExpandIconView
+                android:id="@+id/expand1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="56dp"
+                app:eiv_animationDuration="300"
+                app:eiv_color="#000"
+                app:eiv_colorLess="@color/material_orange_400"
+                app:eiv_colorMore="#fff"
+                app:eiv_colorIntermediate="@color/material_orange_200"
+                app:eiv_roundedCorners="false"
+                app:eiv_switchColor="true"
+                app:eiv_padding="8dp"/>
+
+
+        </LinearLayout>
+
+
 
     <com.github.aakira.expandablelayout.ExpandableLinearLayout
         android:id="@+id/question_expandable_layout"
@@ -116,18 +144,42 @@
         android:layout_height="wrap_content"/>
 
 
+        <LinearLayout
+            android:id="@+id/levelTwo"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/blue_background"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dp"
+                android:layout_alignParentTop="true"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@string/lesson_two"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp" />
 
-    <TextView
-        android:id="@+id/levelTwo"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_alignParentTop="true"
-        android:background="@color/material_deep_purple_300"
-        android:gravity="center"
-        android:padding="8dp"
-        android:text="@string/lesson_two"
-        android:textColor="@color/colorWhite"
-        android:textSize="12sp" />
+            <com.github.zagum.expandicon.ExpandIconView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="56dp"
+                app:eiv_animationDuration="300"
+                app:eiv_color="#000"
+                app:eiv_colorLess="@color/material_orange_400"
+                app:eiv_colorMore="#fff"
+                app:eiv_colorIntermediate="@color/material_orange_200"
+                app:eiv_roundedCorners="false"
+                app:eiv_switchColor="true"
+                app:eiv_padding="8dp"/>
+
+        </LinearLayout>
+
 
     <com.github.aakira.expandablelayout.ExpandableLinearLayout
         android:id="@+id/Two"
@@ -192,9 +244,10 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_alignParentTop="true"
-            android:background="@color/material_deep_purple_300"
+            android:background="@color/blue_background"
             android:gravity="center"
             android:padding="8dp"
+            android:layout_marginBottom="5dp"
             android:text="Lesson 3"
             android:textColor="@color/colorWhite"
             android:textSize="12sp" />
@@ -258,10 +311,11 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_alignParentTop="true"
-            android:background="@color/material_deep_purple_300"
+            android:background="@color/blue_background"
             android:gravity="center"
             android:padding="8dp"
             android:text="Lesson 4"
+            android:layout_marginBottom="5dp"
             android:textColor="@color/colorWhite"
             android:textSize="12sp" />
 
@@ -322,10 +376,11 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_alignParentTop="true"
-            android:background="@color/material_deep_purple_300"
+            android:background="@color/blue_background"
             android:gravity="center"
             android:padding="8dp"
             android:text="Lesson 5"
+            android:layout_marginBottom="5dp"
             android:textColor="@color/colorWhite"
             android:textSize="12sp" />
 
@@ -387,10 +442,11 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_alignParentTop="true"
-            android:background="@color/material_deep_purple_300"
+            android:background="@color/blue_background"
             android:gravity="center"
             android:padding="8dp"
             android:text="Lesson 6"
+            android:layout_marginBottom="5dp"
             android:textColor="@color/colorWhite"
             android:textSize="12sp" />
 
@@ -451,8 +507,9 @@
             android:id="@+id/lesson7"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:layout_marginBottom="5dp"
             android:layout_alignParentTop="true"
-            android:background="@color/material_deep_purple_300"
+            android:background="@color/blue_background"
             android:gravity="center"
             android:padding="8dp"
             android:text="Lesson 7"
@@ -517,8 +574,9 @@
             android:id="@+id/lesson8"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:layout_marginBottom="5dp"
             android:layout_alignParentTop="true"
-            android:background="@color/material_deep_purple_300"
+            android:background="@color/blue_background"
             android:gravity="center"
             android:padding="8dp"
             android:text="Lesson 8"
@@ -584,7 +642,8 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_alignParentTop="true"
-            android:background="@color/material_deep_purple_300"
+            android:layout_marginBottom="5dp"
+            android:background="@color/blue_background"
             android:gravity="center"
             android:padding="8dp"
             android:text="Lesson 9"
@@ -649,7 +708,8 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_alignParentTop="true"
-            android:background="@color/material_deep_purple_300"
+            android:layout_marginBottom="5dp"
+            android:background="@color/blue_background"
             android:gravity="center"
             android:padding="8dp"
             android:text="Lesson 10"

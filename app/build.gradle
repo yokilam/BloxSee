@@ -41,6 +41,7 @@ dependencies {
     compile 'com.android.support:design:26.1.0'
     compile 'com.github.clans:fab:1.6.4'
     compile 'de.hdodenhof:circleimageview:2.2.0'
+    compile 'com.github.zagum:Android-ExpandIcon:1.2.1'
 
 }
 apply plugin: 'com.google.gms.google-services'

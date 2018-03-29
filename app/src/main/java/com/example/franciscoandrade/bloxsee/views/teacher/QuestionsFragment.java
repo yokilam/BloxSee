@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.franciscoandrade.bloxsee.R;
@@ -19,6 +20,7 @@ import com.example.franciscoandrade.bloxsee.model.Student;
 import com.example.franciscoandrade.bloxsee.model.StudentQuestions;
 import com.example.franciscoandrade.bloxsee.util.ExpandableLayoutAnimation;
 import com.github.aakira.expandablelayout.ExpandableLinearLayout;
+import com.github.zagum.expandicon.ExpandIconView;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -49,9 +51,11 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
     ExpandableLinearLayout question_expandable_layout, Two;
     ExpandableLayoutAnimation expandableLayoutAnimation;
     private SparseBooleanArray expandState = new SparseBooleanArray();
-    TextView level, levelTwo, lesson3, lesson4, lesson5, lesson6, lesson7, lesson8, lesson9, lesson10;
+    LinearLayout level, levelTwo;
+    TextView  lesson3, lesson4, lesson5, lesson6, lesson7, lesson8, lesson9, lesson10;
     ExpandableLinearLayout lesson3Expand, lesson4Expand, lesson5Expand, lesson6Expand, lesson7Expand, lesson8Expand, lesson9Expand, lesson10Expand;
 
+    ExpandIconView expand1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -98,6 +102,7 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
         lesson8Expand= view.findViewById(R.id.lesson8Expand);
         lesson9Expand= view.findViewById(R.id.lesson9Expand);
         lesson10Expand=view.findViewById(R.id.lesson10Expand);
+        expand1=view.findViewById(R.id.expand1);
         send.setOnClickListener(this);
         question_expandable_layout.setOnClickListener(this);
         Two.setOnClickListener(this);
@@ -235,6 +240,8 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
                 Log.d("CLICK==", "onClick: ==level1");
                 expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
                         (v, question_expandable_layout, R.color.material_deep_purple_100, expandState);
+
+                expand1.switchState();
 
                 break;
 

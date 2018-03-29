@@ -44,4 +44,8 @@
     <color name="material_green_500">#ff4caf50</color>
     <color name="material_green_600">#ff43a047</color>
 
+
+    <color name="blue_background">#436a91</color>
+
+
 </resources>
