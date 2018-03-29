@@ -101,7 +101,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
 
         fab22.setImageResource(R.drawable.ic_help);
         fab32.setImageResource(R.drawable.ic_play);
-        fab3.setImageResource(R.drawable.ic_launcher_background);
+        fab3.setImageResource(R.drawable.ic_save_black_24dp);
 
 
         fab22.setOnClickListener(new View.OnClickListener() {
