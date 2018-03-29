@@ -6,6 +6,7 @@ import android.animation.ObjectAnimator;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
@@ -16,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.franciscoandrade.bloxsee.R;
+import com.example.franciscoandrade.bloxsee.util.Screenshot;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.google.blockly.android.AbstractBlocklyActivity;
@@ -102,7 +104,9 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         fab3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Kevin put your code here!!
+                // Bitmap b = Screenshot.takeScreenShotofRootView(image);
+               // image.setImageBitmap(b)
+                Toast.makeText(BlocklyActivity.this, "screenshot taken", Toast.LENGTH_SHORT).show();
             }
         });
 
