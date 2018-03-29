@@ -3,8 +3,12 @@ package com.example.franciscoandrade.bloxsee.views.student;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.DialogFragment;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
@@ -27,12 +31,14 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     private List<Animator> animSequenceArr;
 
     FloatingActionMenu menu_yellow;
-    com.github.clans.fab.FloatingActionButton  fab22, fab32;
+    com.github.clans.fab.FloatingActionButton  fab22, fab32, fab3;
     private List<FloatingActionMenu> menus= new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sprite = findViewById(R.id.sprite);
+
+//        showDialog();
 
     }
 
@@ -44,6 +50,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
 
         fab22= root.findViewById(R.id.fab22);
         fab32= root.findViewById(R.id.fab32);
+        fab3= root.findViewById(R.id.fab3);
 
         return root;
     }
@@ -69,6 +76,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
 
         fab22.setImageResource(R.drawable.ic_help);
         fab32.setImageResource(R.drawable.ic_play);
+        fab3.setImageResource(R.drawable.ic_launcher_background);
 
 
         fab22.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +97,13 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
                     Log.i("hihi", "No blocks in workspace. Skipping run request.");
                 }
 
+            }
+        });
+
+        fab3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Kevin put your code here!!
             }
         });
 
@@ -174,4 +189,21 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         animSetXY.playSequentially(animSequenceArr);
         animSetXY.start();
     }
+//    void showDialog() {
+//
+//        // DialogFragment.show() will take care of adding the fragment
+//        // in a transaction.  We also want to remove any currently showing
+//        // dialog, so make our own transaction and take care of that here.
+//        FragmentManager fm = getFragmentManager();
+//        FragmentTransaction ft = fm.beginTransaction();
+//        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+//        if (prev != null) {
+//            ft.remove(prev);
+//        }
+//        ft.addToBackStack(null);
+//
+//        // Create and show the dialog.
+//        DialogFragment newFragment = new BlocklyDialogFragment();
+//        newFragment.show(fm, "hihi", ft, "hihi");
+//    }
 }
