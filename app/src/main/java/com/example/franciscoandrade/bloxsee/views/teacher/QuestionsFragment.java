@@ -55,7 +55,7 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
     TextView  lesson3, lesson4, lesson5, lesson6, lesson7, lesson8, lesson9, lesson10;
     ExpandableLinearLayout lesson3Expand, lesson4Expand, lesson5Expand, lesson6Expand, lesson7Expand, lesson8Expand, lesson9Expand, lesson10Expand;
 
-    ExpandIconView expand1;
+    ExpandIconView expand1, expand2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -103,6 +103,8 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
         lesson9Expand= view.findViewById(R.id.lesson9Expand);
         lesson10Expand=view.findViewById(R.id.lesson10Expand);
         expand1=view.findViewById(R.id.expand1);
+        expand2=view.findViewById(R.id.expand2);
+
         send.setOnClickListener(this);
         question_expandable_layout.setOnClickListener(this);
         Two.setOnClickListener(this);
@@ -249,6 +251,7 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
                 Log.d("CLICK==", "onClick: ==level2");
                 expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
                         (v, Two, R.color.material_deep_purple_100, expandState);
+                expand2.switchState();
                 break;
 
 
@@ -377,6 +380,7 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
         switch (num){
             case 1:
                 ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((num)+"").child("question").setValue(num+". Move the sprite to the right");
+                ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((num)+"").child("answer").setValue("start\\n” + “moveright\\n” + “movedown\\n");
                 ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((num)+"").child("question").setValue(num+ ". Add a red color to the street light. ");
                 break;
 
