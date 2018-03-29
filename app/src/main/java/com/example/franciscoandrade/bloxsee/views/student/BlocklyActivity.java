@@ -192,7 +192,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     }
 
     public boolean checkAnswer(String str){
-        String answerKey = "start" + "moveright" + "movedown";
+        String answerKey = "start\n" + "moveright\n" + "movedown\n";
         if(str.equals(answerKey)){
             Log.d("hihi", str + "hihi");
             Log.d("hihi", answerKey);
