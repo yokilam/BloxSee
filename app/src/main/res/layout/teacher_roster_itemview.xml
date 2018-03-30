@@ -25,7 +25,7 @@
 
             <TextView
                 android:layout_width="3dp"
-                android:layout_height="20dp"
+                android:layout_height="30dp"
                 android:background="@color/editTextHint"
                 android:layout_gravity="center"/>
 
@@ -73,7 +73,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
             android:orientation="vertical">
 
             <TextView
@@ -121,8 +122,9 @@
                 android:layout_height="2dp"
                 android:layout_marginRight="0.5dp"
                 android:layout_marginLeft="0.5dp"
+                android:layout_marginTop="10dp"
                 android:layout_gravity="bottom"
-                android:src="@drawable/shadow_two"/>
+                android:src="@drawable/shadow_three"/>
 
         </FrameLayout>
 

@@ -92,9 +92,9 @@
                 android:layout_marginTop="56dp"
                 app:eiv_animationDuration="300"
                 app:eiv_color="#000"
-                app:eiv_colorLess="@color/material_orange_400"
+                app:eiv_colorLess="@color/main_green"
                 app:eiv_colorMore="#fff"
-                app:eiv_colorIntermediate="@color/material_orange_200"
+                app:eiv_colorIntermediate="@color/material_green_300"
                 app:eiv_roundedCorners="false"
                 app:eiv_switchColor="true"
                 app:eiv_padding="8dp"/>
@@ -197,9 +197,9 @@
                 android:layout_marginTop="56dp"
                 app:eiv_animationDuration="300"
                 app:eiv_color="#000"
-                app:eiv_colorLess="@color/material_orange_400"
+                app:eiv_colorLess="@color/main_green"
                 app:eiv_colorMore="#fff"
-                app:eiv_colorIntermediate="@color/material_orange_200"
+                app:eiv_colorIntermediate="@color/material_green_300"
                 app:eiv_roundedCorners="false"
                 app:eiv_switchColor="true"
                 app:eiv_padding="8dp"/>

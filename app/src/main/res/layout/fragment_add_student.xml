@@ -26,7 +26,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:layout_margin="10dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/recycler_container">
@@ -35,20 +36,17 @@
         <LinearLayout
             android:id="@+id/linear"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="@+id/recycler_container">
 
 
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/studentName"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:imeOptions="flagNoExtractUi"
                 android:layout_marginRight="10dp"
                 android:theme="@style/EditTextYellow">
 
@@ -59,7 +57,7 @@
                     android:layout_height="match_parent"
                     android:imeOptions="flagNoExtractUi"
                     android:hint="@string/enter_student_name"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textCapSentences" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -80,53 +78,11 @@
                 android:text="@string/add_student_button"
                 android:theme="@style/RaisedButtonDark"/>
 
-
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="12dp"
-            android:text="@string/pick_student_password"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <Spinner
-            android:id="@+id/passwordSpinner"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="20dp"
-            android:backgroundTint="@color/white" />
-
-
-        <Button
-            android:id="@+id/addStudent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
-            android:background="@drawable/rounded_button"
-            android:textColor="@color/white"
-            android:text="@string/add_student_button" />
-
-
-        <TextView
-            android:id="@+id/closeBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
-            android:textColor="@color/main_yellow"
-            android:layout_marginTop="40dp"
-            android:textSize="18sp"
-            android:layout_gravity="center"
-            android:text="Close" />
-
     </LinearLayout>
+
+
+
+</LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/closeBtn"
@@ -141,8 +97,6 @@
         app:elevation="6dp"
         app:pressedTranslationZ="12dp"
         app:borderWidth="0dp" />
-
-
 
 
 </LinearLayout>
