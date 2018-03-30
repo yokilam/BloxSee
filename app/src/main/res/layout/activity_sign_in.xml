@@ -6,7 +6,17 @@
     android:layout_height="match_parent"
     android:background="@drawable/navybackground"
     android:fitsSystemWindows="true"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/exit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="X"
+        android:textAlignment="textEnd"
+        android:textSize="30sp"
+        android:visibility="gone" />
 
     <FrameLayout
         android:id="@+id/loginContainer"
