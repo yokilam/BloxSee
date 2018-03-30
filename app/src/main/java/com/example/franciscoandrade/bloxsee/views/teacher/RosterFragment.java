@@ -76,6 +76,8 @@ public class RosterFragment extends Fragment {
     FragmentManager manager;
     AddStudentFragment addStudentFragment;
 
+    TeacherRosterAdapter teacherRosterAdapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -90,7 +92,7 @@ public class RosterFragment extends Fragment {
         addStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addStudent();
+                //addStudent();
             }
         });
 
@@ -100,6 +102,8 @@ public class RosterFragment extends Fragment {
         student= new Student();
         studentList = new ArrayList <>();
 
+        teacherRosterAdapter= new TeacherRosterAdapter(studentList);
+
 
         ChildEventListener childEventListener= new ChildEventListener(){
             @Override
@@ -107,7 +111,7 @@ public class RosterFragment extends Fragment {
                 student=dataSnapshot.getValue(Student.class);
                 Log.d("CHILD", "onChildAdded: "+ student.getName());
                 studentList.add(student);
-                recyclerView.setAdapter(new TeacherRosterAdapter(studentList));
+                recyclerView.setAdapter(teacherRosterAdapter);
             }
 
             @Override
@@ -230,7 +234,7 @@ public class RosterFragment extends Fragment {
             Log.d("ADDED==", "addStudent: " + nameStudent);
             Log.d("ADDED==", "addStudent: " + selectedPassword);
             Student student = new Student(nameStudent, selectedPassword);
-            setQuestions();
+            //setQuestions();
             ref.child("students").child(nameStudent).setValue(student);
             studentName.setText("");
         } else {
@@ -304,7 +308,7 @@ public class RosterFragment extends Fragment {
             }
         };
 
-        ref.child("students").addChildEventListener(childEventListener);
+        //ref.child("students").addChildEventListener(childEventListener);
 
 
     }

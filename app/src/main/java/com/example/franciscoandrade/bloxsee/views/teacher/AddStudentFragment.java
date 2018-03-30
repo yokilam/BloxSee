@@ -3,6 +3,7 @@ package com.example.franciscoandrade.bloxsee.views.teacher;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -52,7 +53,7 @@ public class AddStudentFragment extends Fragment {
 
     ListenerProgress listenerProgress;
 
-    Button closeBtn;
+    FloatingActionButton closeBtn;
 
 
 
@@ -121,7 +122,9 @@ public class AddStudentFragment extends Fragment {
     private void setSpinner() {
         ArrayAdapter<String> adapter = new ArrayAdapter <String>(this.getActivity(), R.layout.spinner_item, listPassword);
         // adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         passwordSpinner.setAdapter(adapter);
+
     }
 
 
@@ -139,11 +142,9 @@ public class AddStudentFragment extends Fragment {
             Log.d("ADDED==", "addStudent: " + nameStudent);
             Log.d("ADDED==", "addStudent: " + selectedPassword);
             Student student = new Student(nameStudent, selectedPassword);
-            setQuestions();
             ref.child("students").child(nameStudent).setValue(student);
+            setQuestions();
             studentName.setText("");
-
-
             listenerProgress.closeFragment();
         } else {
             Toast.makeText(getActivity(), "Cant add Student!!", Toast.LENGTH_SHORT).show();
@@ -173,10 +174,7 @@ public class AddStudentFragment extends Fragment {
                     for (int j = 1; j < 6; j++) {
                         if (i==1 && dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue()!= null){
                             String state= dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue().toString();
-                            //Log.d("State==", "onChildAdded: "+state);
-//                            if(i==1){
-//                                studentQuestions.setQuestion("JOANNES q's");
-//                            }
+
                             studentQuestions.setState(state);
                             studentQuestions.setAvailable(true);
                             lesson1.add(studentQuestions);
@@ -188,7 +186,6 @@ public class AddStudentFragment extends Fragment {
                             studentQuestions.setState(state);
                             lesson2.add(studentQuestions);
                         }
-//                            Log.d("ADDEEED", "onChildAdded: "+dataSnapshot.getKey()+" - "+dataSnapshot.child("lesson"+i).getKey()+" - "+dataSnapshot.child("lesson"+i).child(j+"").getKey()+" - "+dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue());
                     }
                 }
 

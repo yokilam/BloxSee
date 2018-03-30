@@ -71,7 +71,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:gravity="center"
-                android:background="@color/main_green"
+                android:theme="@style/RaisedButtonDark"
                 android:text="Sign In" />
 
             <CheckBox

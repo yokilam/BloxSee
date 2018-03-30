@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:gravity="end"
 
-        android:text="QUESTIONS"
+        android:text="Questions"
         android:textSize="30sp"
         android:textColor="@color/white"
         android:background="#436a91"
@@ -86,7 +86,8 @@
             android:padding="8dp"
             android:text="@string/level_one"
             android:textColor="@color/colorWhite"
-            android:textSize="12sp" />
+            android:textSize="15sp"
+            android:textStyle="bold"/>
 
             <com.github.zagum.expandicon.ExpandIconView
                 android:id="@+id/expand1"
@@ -122,11 +123,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/lesson_one"
-                />
+
 
             <CheckBox
                 android:id="@+id/questionOne"
@@ -189,7 +186,8 @@
                 android:padding="8dp"
                 android:text="@string/lesson_two"
                 android:textColor="@color/colorWhite"
-                android:textSize="12sp" />
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
             <com.github.zagum.expandicon.ExpandIconView
                 android:id="@+id/expand2"
@@ -224,11 +222,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/lesson_two"
-                />
 
             <CheckBox
                 android:id="@+id/questionOneLessonTwo"
@@ -278,7 +271,8 @@
             android:layout_marginBottom="5dp"
             android:text="Lesson 3"
             android:textColor="@color/colorWhite"
-            android:textSize="12sp" />
+            android:textSize="15sp"
+            android:textStyle="bold"/>
 
         <com.github.aakira.expandablelayout.ExpandableLinearLayout
             android:id="@+id/lesson3Expand"
@@ -293,13 +287,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/lesson_two"
-                    />
 
                 <CheckBox
                     android:layout_width="match_parent"
@@ -813,7 +803,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_marginBottom="5dp"
-        android:background="@color/material_orange_400"
+        android:theme="@style/RaisedButtonDark"
         android:textColor="@color/white"/>
 
 
