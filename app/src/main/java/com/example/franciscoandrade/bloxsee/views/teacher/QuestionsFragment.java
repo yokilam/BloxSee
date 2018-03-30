@@ -94,6 +94,7 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
         lesson8Expand= view.findViewById(R.id.lesson8Expand);
         lesson9Expand= view.findViewById(R.id.lesson9Expand);
         lesson10Expand=view.findViewById(R.id.lesson10Expand);
+        lesson10Expand.collapse();
         expand1=view.findViewById(R.id.expand1);
         expand2=view.findViewById(R.id.expand2);
 
@@ -235,7 +236,7 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
 
                 Log.d("CLICK==", "onClick: ==level1");
                 expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
-                        (v, question_expandable_layout, R.color.material_deep_purple_100, expandState);
+                        (v, question_expandable_layout, R.color.white, expandState);
 
                 expand1.switchState();
 
@@ -244,7 +245,7 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
             case R.id.levelTwo:
                 Log.d("CLICK==", "onClick: ==level2");
                 expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
-                        (v, Two, R.color.material_deep_purple_100, expandState);
+                        (v, Two, R.color.white, expandState);
                 expand2.switchState();
                 break;
 
@@ -253,52 +254,52 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
             case R.id.lesson3:
                 Log.d("CLICK==", "onClick: ==level2");
                 expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
-                        (v, lesson3Expand, R.color.material_deep_purple_100, expandState);
+                        (v, lesson3Expand, R.color.white, expandState);
                 break;
 
             case R.id.lesson4:
                 Log.d("CLICK==", "onClick: ==level2");
                 expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
-                        (v, lesson4Expand, R.color.material_deep_purple_100, expandState);
+                        (v, lesson4Expand, R.color.white, expandState);
                 break;
 
             case R.id.lesson5:
                 Log.d("CLICK==", "onClick: ==level2");
                 expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
-                        (v, lesson5Expand, R.color.material_deep_purple_100, expandState);
+                        (v, lesson5Expand, R.color.white, expandState);
                 break;
 
 
             case R.id.lesson6:
                 Log.d("CLICK==", "onClick: ==level2");
                 expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
-                        (v, lesson6Expand, R.color.material_deep_purple_100, expandState);
+                        (v, lesson6Expand, R.color.white, expandState);
                 break;
 
 
             case R.id.lesson7:
                 Log.d("CLICK==", "onClick: ==level2");
                 expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
-                        (v, lesson7Expand, R.color.material_deep_purple_100, expandState);
+                        (v, lesson7Expand, R.color.white, expandState);
                 break;
 
 
             case R.id.lesson8:
                 Log.d("CLICK==", "onClick: ==level2");
                 expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
-                        (v, lesson8Expand, R.color.material_deep_purple_100, expandState);
+                        (v, lesson8Expand, R.color.white, expandState);
                 break;
 
             case R.id.lesson9:
                 Log.d("CLICK==", "onClick: ==level2");
                 expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
-                        (v, lesson9Expand, R.color.material_deep_purple_100, expandState);
+                        (v, lesson9Expand, R.color.white, expandState);
                 break;
 
             case R.id.lesson10:
                 Log.d("CLICK==", "onClick: ==level2");
                 expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
-                        (v, lesson10Expand, R.color.material_deep_purple_100, expandState);
+                        (v, lesson10Expand, R.color.white, expandState);
                 break;
 
         }
@@ -325,12 +326,24 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
 
                 for (int i = 1; i < 6; i++) {
                     setQuestions(i, dataSnapshot);
+                    //
                     ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((i)+"").child("available").setValue(listChckbox.get((i-1)));
                     //ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((i)+"").child("question").setValue("Question: "+i);
-                    ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((i)+"").child("state").setValue("null");
+
+                    //
                     ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((i)+"").child("available").setValue(listChckbox.get((i+4)));
                     //ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((i)+"").child("question").setValue("Question: "+i);
-                    ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((i)+"").child("state").setValue("null");
+
+
+                    if(dataSnapshot.child("lesson1").child(i+"").child("state").getValue() == null){
+                        ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child(i+"").child("state").setValue("null");
+                    }
+                    if(dataSnapshot.child("lesson2").child(i+"").child("state").getValue() == null){
+                        ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child(i+"").child("state").setValue("null");
+                    }
+
+
+
                 }
                 questionOne.setChecked(listChckbox.get(0));
                 questionTwo.setChecked(listChckbox.get(1));

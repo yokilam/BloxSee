@@ -202,7 +202,7 @@
         android:layout_gravity="end|bottom"
         android:src="@drawable/ic_add"
         android:layout_margin="24dp"
-        android:backgroundTint="@color/main_navy"
+        android:backgroundTint="@color/main_green"
         app:elevation="6dp"
         app:pressedTranslationZ="12dp"
         app:borderWidth="0dp" />
