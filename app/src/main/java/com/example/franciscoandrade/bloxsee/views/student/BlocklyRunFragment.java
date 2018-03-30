@@ -15,14 +15,12 @@ import com.example.franciscoandrade.bloxsee.R;
 public class BlocklyRunFragment extends Fragment {
 
     public BlocklyRunFragment() {
-        // Required empty public constructor
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_blockly_run, container, false);
     }
 
