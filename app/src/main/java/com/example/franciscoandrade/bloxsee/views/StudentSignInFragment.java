@@ -316,6 +316,7 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
+            adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
 
             spinner.setAdapter(adapter);
         }

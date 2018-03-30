@@ -57,7 +57,7 @@
                     android:layout_height="match_parent"
                     android:imeOptions="flagNoExtractUi"
                     android:hint="@string/enter_student_name"
-                    android:inputType="textPersonName" />
+                    android:inputType="textCapSentences" />
 
             </android.support.design.widget.TextInputLayout>
 
