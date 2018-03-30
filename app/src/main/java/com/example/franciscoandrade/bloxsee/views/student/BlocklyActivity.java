@@ -7,6 +7,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -56,6 +57,10 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     private StorageReference storageReference;
     private Bitmap b;
     private FrameLayout blockContainer;
+
+    //Joanne*** These are the values you need
+    String user;
+    String currentQuestion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -278,6 +283,11 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
             Log.d("hihi", str + "hihi");
             return false;
         }
+    }
+    public void getInfo(){
+        Intent intent = getIntent();
+        user = intent.getStringExtra("studentName");
+        currentQuestion = intent.getStringExtra("currentQuestion");
     }
 
 }

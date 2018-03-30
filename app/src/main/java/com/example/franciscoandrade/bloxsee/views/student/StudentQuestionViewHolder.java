@@ -30,7 +30,9 @@ public class StudentQuestionViewHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String currentQuestion = studentQuestion.getText().toString();
                 Intent intent = new Intent(view.getContext(), BlocklyActivity.class);
+                intent.putExtra("currentQuestion", currentQuestion);
                 view.getContext().startActivity(intent);
             }
         });

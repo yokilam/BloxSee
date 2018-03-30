@@ -97,7 +97,7 @@ public class StudentActivity extends AppCompatActivity {
     public void setStudentName() {
         Intent intent = getIntent();
         user = intent.getStringExtra("studentName");
-        studentName.setText("Welcome, " + user + " !");
+        studentName.setText("Welcome, " + user + "!");
 
     }
 
