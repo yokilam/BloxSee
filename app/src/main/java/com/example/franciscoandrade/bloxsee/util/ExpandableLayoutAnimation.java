@@ -43,4 +43,6 @@ public class ExpandableLayoutAnimation {
     private void onClickButton(final ExpandableLayout expandableLayout) {
         expandableLayout.toggle();
     }
+
+
 }

@@ -86,14 +86,6 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
         lesson9= view.findViewById(R.id.lesson9);
         lesson10= view.findViewById(R.id.lesson10);
         expandableLayoutAnimation= new ExpandableLayoutAnimation();
-//        lesson3Expand= new ExpandableLayoutAnimation();
-//        lesson4Expand= new ExpandableLayoutAnimation();
-//        lesson5Expand= new ExpandableLayoutAnimation();
-//        lesson6Expand= new ExpandableLayoutAnimation();
-//        lesson7Expand= new ExpandableLayoutAnimation();
-//        lesson8Expand= new ExpandableLayoutAnimation();
-//        lesson9Expand= new ExpandableLayoutAnimation();
-//        lesson10Expand= new ExpandableLayoutAnimation();
         lesson3Expand= view.findViewById(R.id.lesson3Expand);
         lesson4Expand= view.findViewById(R.id.lesson4Expand);
         lesson5Expand= view.findViewById(R.id.lesson5Expand);
@@ -141,6 +133,7 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
         levelList.add(new Level("Level Three", "one", "two", "three", "four", "five"));
 
         recyclerView.setAdapter(new TeacherQuestionAdapter(levelList));
+
 
         return view;
     }
@@ -240,6 +233,7 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
                 break;
 
             case R.id.level:
+
                 Log.d("CLICK==", "onClick: ==level1");
                 expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
                         (v, question_expandable_layout, R.color.white, expandState);

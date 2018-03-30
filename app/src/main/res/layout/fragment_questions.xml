@@ -23,7 +23,7 @@
         android:text="Questions"
         android:textSize="30sp"
         android:textColor="@color/white"
-        android:background="#436a91"
+        android:background="@color/main_navy"
         android:textStyle="bold"
         android:layout_marginTop="10dp"
         android:padding="10dp"/>
@@ -50,11 +50,6 @@
 
 
     </LinearLayout>
-
-
-
-
-
 
     <ScrollView
         android:layout_width="match_parent"
@@ -129,12 +124,14 @@
                 android:id="@+id/questionOne"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/main_green"
                 android:text="@string/question_one"/>
 
             <CheckBox
                 android:id="@+id/questionTwo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/main_green"
                 android:text="@string/question_two"/>
 
 
@@ -142,16 +139,19 @@
                 android:id="@+id/questionThree"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/main_green"
                 android:text="@string/question_three"/>
             <CheckBox
                 android:id="@+id/questionFour"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/main_green"
                 android:text="@string/question_four"/>
             <CheckBox
                 android:id="@+id/questionFive"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/main_green"
                 android:text="@string/question_five"/>
 
         </LinearLayout>
@@ -227,12 +227,14 @@
                 android:id="@+id/questionOneLessonTwo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/main_green"
                 android:text="@string/question_one"/>
 
             <CheckBox
                 android:id="@+id/questionTwoLessonTwo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/main_green"
                 android:text="@string/question_two"/>
 
 
@@ -240,16 +242,19 @@
                 android:id="@+id/questionThreeLessonTwo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/main_green"
                 android:text="@string/question_three"/>
             <CheckBox
                 android:id="@+id/questionFourLessonTwo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/main_green"
                 android:text="@string/question_four"/>
             <CheckBox
                 android:id="@+id/questionFiveLessonTwo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/main_green"
                 android:text="@string/question_five"/>
 
         </LinearLayout>
@@ -294,25 +299,30 @@
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/main_green"
                     android:text="@string/question_one"/>
 
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/main_green"
                     android:text="@string/question_two"/>
 
 
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/main_green"
                     android:text="@string/question_three"/>
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/main_green"
                     android:text="@string/question_four"/>
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/main_green"
                     android:text="@string/question_five"/>
 
             </LinearLayout>
@@ -355,31 +365,37 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/main_green"
                     android:text="@string/lesson_two"
                     />
 
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/main_green"
                     android:text="@string/question_one"/>
 
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/main_green"
                     android:text="@string/question_two"/>
 
 
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/main_green"
                     android:text="@string/question_three"/>
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/main_green"
                     android:text="@string/question_four"/>
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/main_green"
                     android:text="@string/question_five"/>
 
             </LinearLayout>
@@ -426,25 +442,30 @@
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/main_green"
                     android:text="@string/question_one"/>
 
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/main_green"
                     android:text="@string/question_two"/>
 
 
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/main_green"
                     android:text="@string/question_three"/>
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/main_green"
                     android:text="@string/question_four"/>
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/main_green"
                     android:text="@string/question_five"/>
 
             </LinearLayout>
@@ -492,25 +513,30 @@
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/main_green"
                     android:text="@string/question_one"/>
 
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/main_green"
                     android:text="@string/question_two"/>
 
 
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/main_green"
                     android:text="@string/question_three"/>
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/main_green"
                     android:text="@string/question_four"/>
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/main_green"
                     android:text="@string/question_five"/>
 
             </LinearLayout>

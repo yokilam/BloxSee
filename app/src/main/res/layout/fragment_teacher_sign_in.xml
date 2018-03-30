@@ -68,8 +68,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
                 android:gravity="center"
                 android:theme="@style/RaisedButtonDark"
                 android:text="Sign In" />
@@ -160,8 +160,8 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
                 android:theme="@style/EditTextYellow">
 
                 <android.support.design.widget.TextInputEditText
@@ -178,10 +178,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:gravity="center"
-                android:background="@color/main_green"
+                android:textColor="@color/white"
+                android:background="@drawable/rounded_button"
                 android:text="Sign Up" />
 
 
