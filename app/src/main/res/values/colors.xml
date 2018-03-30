@@ -16,7 +16,8 @@
     <color name="transparent">#00FFFFFF</color>
 
     <color name="material_deep_purple_50">#ffede7f6</color>
-    <color name="material_deep_purple_100">#ffd1c4e9</color>
+    <color name="material_deep_purple_100">#00d1c4e9</color>
+    <color name="material_deep_purple_100_2">#ffd1c4e9</color>
     <color name="material_deep_purple_200">#ffb39ddb</color>
     <color name="material_deep_purple_300">#ff9575cd</color>
 
@@ -51,7 +52,8 @@
     <color name="material_green_600">#ff43a047</color>
 
 
-    <color name="blue_background">#436a91</color>
+    <color name="blue_background">#22285A</color>
+    <color name="some_blue_background">#436a91</color>
 
 
 </resources>
