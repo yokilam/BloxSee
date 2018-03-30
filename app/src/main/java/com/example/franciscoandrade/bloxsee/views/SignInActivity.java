@@ -22,12 +22,12 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
     private Button teacher;
     private Button student;
-    TextView exit;
-    android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-    StudentSignInFragment studentSignInFragment;
-    Animation fromBottom, fromTop;
-    LottieAnimationView lottieAnimationView;
-    LinearLayout mainContainer;
+    private TextView exit;
+    private android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+    private StudentSignInFragment studentSignInFragment;
+    private Animation fromBottom, fromTop;
+    private LottieAnimationView lottieAnimationView;
+    private LinearLayout mainContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         studentSignInFragment = new StudentSignInFragment();
         fragmentManager.beginTransaction().replace(R.id.loginContainer, studentSignInFragment).commit();
 
-
+// don't delete my intent please
 //        Intent intent = new Intent(this, BlocklyActivity.class);
 //        startActivity(intent);
 
