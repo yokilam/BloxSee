@@ -42,7 +42,7 @@
             <TextView
                 android:id="@+id/bottomLine"
                 android:layout_width="3dp"
-                android:layout_height="20dp"
+                android:layout_height="30dp"
                 android:background="@color/editTextHint"
                 android:layout_gravity="center"/>
 
