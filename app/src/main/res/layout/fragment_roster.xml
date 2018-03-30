@@ -67,6 +67,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:text="@string/pick_student_password" />
 
                 <Spinner
@@ -79,7 +80,9 @@
                     android:id="@+id/addStudent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/add_student_button" />
+                    android:text="@string/add_student_button"
+                    android:background="@drawable/rounded_button"
+                    android:textColor="@color/white"/>
 
             </LinearLayout>
         </com.github.aakira.expandablelayout.ExpandableLinearLayout>
@@ -189,11 +192,6 @@
             <!--android:layout_marginRight="20dp"-->
             <!--android:src="@drawable/ic_add"-->
             <!--android:layout_marginBottom="20dp"/>-->
-
-
-
-
-
 
     </LinearLayout>
 

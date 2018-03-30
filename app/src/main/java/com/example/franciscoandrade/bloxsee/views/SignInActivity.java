@@ -20,7 +20,6 @@ import com.example.franciscoandrade.bloxsee.views.student.BlocklyActivity;
 
 public class SignInActivity extends AppCompatActivity  {
 
-    private TextView exit;
     private android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
     private StudentSignInFragment studentSignInFragment;
     private Animation fromBottom, fromTop;
@@ -40,9 +39,7 @@ public class SignInActivity extends AppCompatActivity  {
 //        startActivity(intent);
 
 //      lottieAnimationView = findViewById(R.id.lottieAnimationView);
-//
 
-        setUpViews();
 
 //        lottieLayout= findViewById(R.id.lottie_layout);
 //        lottieAnimationView.addAnimatorListener(new Animator.AnimatorListener() {
@@ -73,24 +70,5 @@ public class SignInActivity extends AppCompatActivity  {
 //            }
 //        });
 
-
-        exit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (studentSignInFragment.isVisible()) {
-                    fragmentManager.beginTransaction().remove(studentSignInFragment).commit();
-                }
-
-                exit.setVisibility(View.GONE);
-            }
-        });
     }
-
-    @SuppressLint("ClickableViewAccessibility")
-    public void setUpViews() {
-        exit = findViewById(R.id.exit);
-    }
-
-
 }
