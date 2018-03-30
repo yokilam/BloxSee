@@ -18,10 +18,8 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.example.franciscoandrade.bloxsee.R;
 import com.example.franciscoandrade.bloxsee.views.student.BlocklyActivity;
 
-public class SignInActivity extends AppCompatActivity implements View.OnClickListener {
+public class SignInActivity extends AppCompatActivity  {
 
-    private Button teacher;
-    private Button student;
     private TextView exit;
     private android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
     private StudentSignInFragment studentSignInFragment;
@@ -75,16 +73,11 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 //            }
 //        });
 
-//        teacher.setOnClickListener(this);
-//        student.setOnClickListener(this);
+
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-//                if (teacherSignInFragment.isVisible()) {
-//                    Toast.makeText(SignInActivity.this, "X clicked", Toast.LENGTH_SHORT).show();
-//                    fragmentManager.beginTransaction().remove(teacherSignInFragment).commit();
-//                }
                 if (studentSignInFragment.isVisible()) {
                     fragmentManager.beginTransaction().remove(studentSignInFragment).commit();
                 }
@@ -96,27 +89,8 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
     @SuppressLint("ClickableViewAccessibility")
     public void setUpViews() {
-//        teacher = findViewById(R.id.teacherBtn);
-//        student = findViewById(R.id.studentBtn);
         exit = findViewById(R.id.exit);
     }
 
 
-    @Override
-    public void onClick(View v) {
-//        switch (v.getId()) {
-//            case R.id.teacherBtn: {
-//                exit.setBackgroundColor(Color.parseColor("#FF6699"));
-//                exit.setVisibility(View.VISIBLE);
-//                fragmentManager.beginTransaction().replace(R.id.loginContainer, teacherSignInFragment).addToBackStack("backToActivity").addToBackStack(null).commit();
-//                break;
-//            }
-//            case R.id.studentBtn: {
-//                exit.setBackgroundColor(Color.parseColor("#6699CC"));
-//                exit.setVisibility(View.VISIBLE);
-//                fragmentManager.beginTransaction().replace(R.id.loginContainer, studentSignInFragment).addToBackStack("backToActivity").addToBackStack(null).commit();
-//                break;
-//            }
-//        }
-    }
 }
