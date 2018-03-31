@@ -17,11 +17,13 @@ public class StudentQuestionAdapter extends RecyclerView.Adapter<StudentQuestion
 
     private List<String> questionsList;
     private Context context;
+    private String studentName;
 
 
-    public StudentQuestionAdapter(Context context) {
+    public StudentQuestionAdapter(Context context, String studentName) {
         this.context=context;
         questionsList= new ArrayList<>();
+        this.studentName= studentName;
     }
 
     @Override
@@ -32,7 +34,7 @@ public class StudentQuestionAdapter extends RecyclerView.Adapter<StudentQuestion
 
     @Override
     public void onBindViewHolder(StudentQuestionViewHolder holder, int position) {
-        holder.onBind(questionsList.get(position), position, questionsList.size());
+        holder.onBind(questionsList.get(position), position, questionsList.size(), studentName);
     }
 
     @Override

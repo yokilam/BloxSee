@@ -71,6 +71,8 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
+        getInfo();
+
     }
 
     @Override
@@ -83,7 +85,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         fab22 = root.findViewById(R.id.fab22);
         fab32 = root.findViewById(R.id.fab32);
         blockContainer= findViewById(R.id.blockContainer);
-
+        getInfo();
         return root;
     }
 
@@ -137,7 +139,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         b.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] data = baos.toByteArray();
 
-        StorageReference imagesRef = storageReference.child("images/Test1.jpg");
+        StorageReference imagesRef = storageReference.child("images/"+user+".jpg");
 
         UploadTask uploadTask = imagesRef.putBytes(data);
         uploadTask.addOnFailureListener(new OnFailureListener() {
@@ -288,6 +290,9 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         Intent intent = getIntent();
         user = intent.getStringExtra("studentName");
         currentQuestion = intent.getStringExtra("currentQuestion");
+
+        Log.d("STUDENT", "getInfo: "+user);
+        Log.d("STUDENT", "getInfo: "+currentQuestion);
     }
 
 }
