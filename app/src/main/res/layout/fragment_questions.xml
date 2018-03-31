@@ -3,50 +3,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/teacherbackground"
+    android:orientation="vertical"
     tools:context="com.example.franciscoandrade.bloxsee.views.teacher.QuestionsFragment">
-
 
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_gravity="end"
-        android:layout_marginRight="15dp">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="end"
+        android:layout_marginRight="15dp"
+        android:orientation="vertical">
 
-        android:text="Questions"
-        android:textSize="30sp"
-        android:textColor="@color/white"
-        android:background="@color/main_navy"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:padding="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+
+            android:background="@color/main_navy"
+            android:gravity="end"
+            android:padding="10dp"
+            android:text="Questions"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="4dp"
-                android:layout_marginRight="0.5dp"
-                android:layout_marginLeft="0.5dp"
                 android:layout_gravity="top"
-                android:src="@drawable/shadow"/>
+                android:layout_marginLeft="0.5dp"
+                android:layout_marginRight="0.5dp"
+                android:src="@drawable/shadow" />
+
             <TextView
                 android:layout_width="3dp"
                 android:layout_height="10dp"
                 android:layout_gravity="end"
                 android:layout_marginRight="50dp"
-                android:background="@color/editTextHint"/>
+                android:background="@color/editTextHint" />
 
         </FrameLayout>
-
 
 
     </LinearLayout>
@@ -54,769 +55,754 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginRight="15dp"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:layout_weight="1">
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-        <LinearLayout
-            android:id="@+id/level"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="@color/blue_background"
-            android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:layout_marginBottom="5dp"
-            >
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="48dp"
-            android:layout_alignParentTop="true"
-            android:gravity="center"
-            android:padding="8dp"
-            android:text="@string/level_one"
-            android:textColor="@color/colorWhite"
-            android:textSize="15sp"
-            android:textStyle="bold"/>
-
-            <com.github.zagum.expandicon.ExpandIconView
-                android:id="@+id/expand1"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="56dp"
-                app:eiv_animationDuration="300"
-                app:eiv_color="#000"
-                app:eiv_colorLess="@color/main_green"
-                app:eiv_colorMore="#fff"
-                app:eiv_colorIntermediate="@color/material_green_300"
-                app:eiv_roundedCorners="false"
-                app:eiv_switchColor="true"
-                app:eiv_padding="8dp"/>
-
-
-        </LinearLayout>
-
-
-
-    <com.github.aakira.expandablelayout.ExpandableLinearLayout
-        android:id="@+id/question_expandable_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/level"
-        android:orientation="vertical"
-        app:ael_duration="400"
-        app:ael_expanded="false">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:id="@+id/level"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:background="@color/blue_background"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/level_one"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <com.github.zagum.expandicon.ExpandIconView
+                    android:id="@+id/expand1"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="56dp"
+                    app:eiv_animationDuration="300"
+                    app:eiv_color="#000"
+                    app:eiv_colorIntermediate="@color/material_green_300"
+                    app:eiv_colorLess="@color/main_green"
+                    app:eiv_colorMore="#fff"
+                    app:eiv_padding="8dp"
+                    app:eiv_roundedCorners="false"
+                    app:eiv_switchColor="true" />
 
 
-            <CheckBox
-                android:id="@+id/questionOne"
+            </LinearLayout>
+
+
+            <com.github.aakira.expandablelayout.ExpandableLinearLayout
+                android:id="@+id/question_expandable_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/main_green"
-                android:text="@string/question_one"/>
+                android:layout_below="@id/level"
+                android:orientation="vertical"
+                app:ael_duration="400"
+                app:ael_expanded="false">
 
-            <CheckBox
-                android:id="@+id/questionTwo"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <CheckBox
+                        android:id="@+id/questionOne"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_one" />
+
+                    <CheckBox
+                        android:id="@+id/questionTwo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_two" />
+
+
+                    <CheckBox
+                        android:id="@+id/questionThree"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_three" />
+
+                    <CheckBox
+                        android:id="@+id/questionFour"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_four" />
+
+                    <CheckBox
+                        android:id="@+id/questionFive"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_five" />
+
+                </LinearLayout>
+
+            </com.github.aakira.expandablelayout.ExpandableLinearLayout>
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/question_recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/main_green"
-                android:text="@string/question_two"/>
+                android:visibility="gone" />
 
 
-            <CheckBox
-                android:id="@+id/questionThree"
+            <LinearLayout
+                android:id="@+id/levelTwo"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:background="@color/blue_background"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/lesson_two"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <com.github.zagum.expandicon.ExpandIconView
+                    android:id="@+id/expand2"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="56dp"
+                    app:eiv_animationDuration="300"
+                    app:eiv_color="#000"
+                    app:eiv_colorIntermediate="@color/material_green_300"
+                    app:eiv_colorLess="@color/main_green"
+                    app:eiv_colorMore="#fff"
+                    app:eiv_padding="8dp"
+                    app:eiv_roundedCorners="false"
+                    app:eiv_switchColor="true" />
+
+            </LinearLayout>
+
+
+            <com.github.aakira.expandablelayout.ExpandableLinearLayout
+                android:id="@+id/Two"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/main_green"
-                android:text="@string/question_three"/>
-            <CheckBox
-                android:id="@+id/questionFour"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/main_green"
-                android:text="@string/question_four"/>
-            <CheckBox
-                android:id="@+id/questionFive"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/main_green"
-                android:text="@string/question_five"/>
-
-        </LinearLayout>
-
-    </com.github.aakira.expandablelayout.ExpandableLinearLayout>
+                android:layout_below="@id/level"
+                android:orientation="vertical"
+                app:ael_duration="400"
+                app:ael_expanded="false">
 
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/question_recyclerview"
-        android:layout_width="match_parent"
-        android:visibility="gone"
-        android:layout_height="wrap_content"/>
+                    <CheckBox
+                        android:id="@+id/questionOneLessonTwo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_one" />
+
+                    <CheckBox
+                        android:id="@+id/questionTwoLessonTwo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_two" />
 
 
-        <LinearLayout
-            android:id="@+id/levelTwo"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="@color/blue_background"
-            android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:layout_marginBottom="5dp"
-            >
+                    <CheckBox
+                        android:id="@+id/questionThreeLessonTwo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_three" />
+
+                    <CheckBox
+                        android:id="@+id/questionFourLessonTwo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_four" />
+
+                    <CheckBox
+                        android:id="@+id/questionFiveLessonTwo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_five" />
+
+                </LinearLayout>
+
+
+            </com.github.aakira.expandablelayout.ExpandableLinearLayout>
+
+
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:id="@+id/lesson3"
+                android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_alignParentTop="true"
+                android:layout_marginBottom="5dp"
+                android:background="@color/blue_background"
                 android:gravity="center"
                 android:padding="8dp"
-                android:text="@string/lesson_two"
+                android:text="Lesson 3"
                 android:textColor="@color/colorWhite"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
-            <com.github.zagum.expandicon.ExpandIconView
-                android:id="@+id/expand2"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="56dp"
-                app:eiv_animationDuration="300"
-                app:eiv_color="#000"
-                app:eiv_colorLess="@color/main_green"
-                app:eiv_colorMore="#fff"
-                app:eiv_colorIntermediate="@color/material_green_300"
-                app:eiv_roundedCorners="false"
-                app:eiv_switchColor="true"
-                app:eiv_padding="8dp"/>
+            <com.github.aakira.expandablelayout.ExpandableLinearLayout
+                android:id="@+id/lesson3Expand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/level"
+                android:orientation="vertical"
+                app:ael_duration="400"
+                app:ael_expanded="false">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_one" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_two" />
+
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_three" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_four" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_five" />
+
+                </LinearLayout>
+
+
+            </com.github.aakira.expandablelayout.ExpandableLinearLayout>
+
+
+            <TextView
+                android:id="@+id/lesson4"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="5dp"
+                android:background="@color/blue_background"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Lesson 4"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp" />
+
+            <com.github.aakira.expandablelayout.ExpandableLinearLayout
+                android:id="@+id/lesson4Expand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/level"
+                android:orientation="vertical"
+                app:ael_duration="400"
+                app:ael_expanded="false">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/lesson_two" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_one" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_two" />
+
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_three" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_four" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_five" />
+
+                </LinearLayout>
+
+
+            </com.github.aakira.expandablelayout.ExpandableLinearLayout>
+
+
+            <TextView
+                android:id="@+id/lesson5"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="5dp"
+                android:background="@color/blue_background"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Lesson 5"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp" />
+
+            <com.github.aakira.expandablelayout.ExpandableLinearLayout
+                android:id="@+id/lesson5Expand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/level"
+                android:orientation="vertical"
+                app:ael_duration="400"
+                app:ael_expanded="false">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lesson_two" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_one" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_two" />
+
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_three" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_four" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_five" />
+
+                </LinearLayout>
+
+
+            </com.github.aakira.expandablelayout.ExpandableLinearLayout>
+
+
+            <TextView
+                android:id="@+id/lesson6"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="5dp"
+                android:background="@color/blue_background"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Lesson 6"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp" />
+
+            <com.github.aakira.expandablelayout.ExpandableLinearLayout
+                android:id="@+id/lesson6Expand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/level"
+                android:orientation="vertical"
+                app:ael_duration="400"
+                app:ael_expanded="false">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lesson_two" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_one" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_two" />
+
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_three" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_four" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/main_green"
+                        android:text="@string/question_five" />
+
+                </LinearLayout>
+
+
+            </com.github.aakira.expandablelayout.ExpandableLinearLayout>
+
+
+            <TextView
+                android:id="@+id/lesson7"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="5dp"
+                android:background="@color/blue_background"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Lesson 7"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp" />
+
+            <com.github.aakira.expandablelayout.ExpandableLinearLayout
+                android:id="@+id/lesson7Expand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/level"
+                android:orientation="vertical"
+                app:ael_duration="400"
+                app:ael_expanded="false">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lesson_two" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/question_one" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/question_two" />
+
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/question_three" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/question_four" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/question_five" />
+
+                </LinearLayout>
+
+
+            </com.github.aakira.expandablelayout.ExpandableLinearLayout>
+
+
+            <TextView
+                android:id="@+id/lesson8"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="5dp"
+                android:background="@color/blue_background"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Lesson 8"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp" />
+
+            <com.github.aakira.expandablelayout.ExpandableLinearLayout
+                android:id="@+id/lesson8Expand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/level"
+                android:orientation="vertical"
+                app:ael_duration="400"
+                app:ael_expanded="false">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lesson_two" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/question_one" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/question_two" />
+
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/question_three" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/question_four" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/question_five" />
+
+                </LinearLayout>
+
+
+            </com.github.aakira.expandablelayout.ExpandableLinearLayout>
+
+
+            <TextView
+                android:id="@+id/lesson9"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="5dp"
+                android:background="@color/blue_background"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Lesson 9"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp" />
+
+            <com.github.aakira.expandablelayout.ExpandableLinearLayout
+                android:id="@+id/lesson9Expand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/level"
+                android:orientation="vertical"
+                app:ael_duration="400"
+                app:ael_expanded="false">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lesson_two" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/question_one" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/question_two" />
+
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/question_three" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/question_four" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/question_five" />
+
+                </LinearLayout>
+
+
+            </com.github.aakira.expandablelayout.ExpandableLinearLayout>
+
+
+            <TextView
+                android:id="@+id/lesson10"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="5dp"
+                android:background="@color/blue_background"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Lesson 10"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp" />
+
+            <com.github.aakira.expandablelayout.ExpandableLinearLayout
+                android:id="@+id/lesson10Expand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/level"
+                android:orientation="vertical"
+                app:ael_duration="400"
+                app:ael_expanded="false">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lesson_two" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/question_one" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/question_two" />
+
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/question_three" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/question_four" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/question_five" />
+
+                </LinearLayout>
+
+            </com.github.aakira.expandablelayout.ExpandableLinearLayout>
 
         </LinearLayout>
-
-
-    <com.github.aakira.expandablelayout.ExpandableLinearLayout
-        android:id="@+id/Two"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/level"
-        android:orientation="vertical"
-        app:ael_duration="400"
-        app:ael_expanded="false">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-
-            <CheckBox
-                android:id="@+id/questionOneLessonTwo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/main_green"
-                android:text="@string/question_one"/>
-
-            <CheckBox
-                android:id="@+id/questionTwoLessonTwo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/main_green"
-                android:text="@string/question_two"/>
-
-
-            <CheckBox
-                android:id="@+id/questionThreeLessonTwo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/main_green"
-                android:text="@string/question_three"/>
-            <CheckBox
-                android:id="@+id/questionFourLessonTwo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/main_green"
-                android:text="@string/question_four"/>
-            <CheckBox
-                android:id="@+id/questionFiveLessonTwo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/main_green"
-                android:text="@string/question_five"/>
-
-        </LinearLayout>
-
-
-
-    </com.github.aakira.expandablelayout.ExpandableLinearLayout>
-
-
-
-        <TextView
-            android:id="@+id/lesson3"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_alignParentTop="true"
-            android:background="@color/blue_background"
-            android:gravity="center"
-            android:padding="8dp"
-            android:layout_marginBottom="5dp"
-            android:text="Lesson 3"
-            android:textColor="@color/colorWhite"
-            android:textSize="15sp"
-            android:textStyle="bold"/>
-
-        <com.github.aakira.expandablelayout.ExpandableLinearLayout
-            android:id="@+id/lesson3Expand"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/level"
-            android:orientation="vertical"
-            app:ael_duration="400"
-            app:ael_expanded="false">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:orientation="vertical">
-
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/main_green"
-                    android:text="@string/question_one"/>
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/main_green"
-                    android:text="@string/question_two"/>
-
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/main_green"
-                    android:text="@string/question_three"/>
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/main_green"
-                    android:text="@string/question_four"/>
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/main_green"
-                    android:text="@string/question_five"/>
-
-            </LinearLayout>
-
-
-
-        </com.github.aakira.expandablelayout.ExpandableLinearLayout>
-
-
-
-
-        <TextView
-            android:id="@+id/lesson4"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_alignParentTop="true"
-            android:background="@color/blue_background"
-            android:gravity="center"
-            android:padding="8dp"
-            android:text="Lesson 4"
-            android:layout_marginBottom="5dp"
-            android:textColor="@color/colorWhite"
-            android:textSize="12sp" />
-
-        <com.github.aakira.expandablelayout.ExpandableLinearLayout
-            android:id="@+id/lesson4Expand"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/level"
-            android:orientation="vertical"
-            app:ael_duration="400"
-            app:ael_expanded="false">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/main_green"
-                    android:text="@string/lesson_two"
-                    />
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/main_green"
-                    android:text="@string/question_one"/>
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/main_green"
-                    android:text="@string/question_two"/>
-
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/main_green"
-                    android:text="@string/question_three"/>
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/main_green"
-                    android:text="@string/question_four"/>
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/main_green"
-                    android:text="@string/question_five"/>
-
-            </LinearLayout>
-
-
-
-        </com.github.aakira.expandablelayout.ExpandableLinearLayout>
-
-
-        <TextView
-            android:id="@+id/lesson5"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_alignParentTop="true"
-            android:background="@color/blue_background"
-            android:gravity="center"
-            android:padding="8dp"
-            android:text="Lesson 5"
-            android:layout_marginBottom="5dp"
-            android:textColor="@color/colorWhite"
-            android:textSize="12sp" />
-
-        <com.github.aakira.expandablelayout.ExpandableLinearLayout
-            android:id="@+id/lesson5Expand"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/level"
-            android:orientation="vertical"
-            app:ael_duration="400"
-            app:ael_expanded="false">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/lesson_two"
-                    />
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/main_green"
-                    android:text="@string/question_one"/>
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/main_green"
-                    android:text="@string/question_two"/>
-
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/main_green"
-                    android:text="@string/question_three"/>
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/main_green"
-                    android:text="@string/question_four"/>
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/main_green"
-                    android:text="@string/question_five"/>
-
-            </LinearLayout>
-
-
-
-        </com.github.aakira.expandablelayout.ExpandableLinearLayout>
-
-
-
-        <TextView
-            android:id="@+id/lesson6"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_alignParentTop="true"
-            android:background="@color/blue_background"
-            android:gravity="center"
-            android:padding="8dp"
-            android:text="Lesson 6"
-            android:layout_marginBottom="5dp"
-            android:textColor="@color/colorWhite"
-            android:textSize="12sp" />
-
-        <com.github.aakira.expandablelayout.ExpandableLinearLayout
-            android:id="@+id/lesson6Expand"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/level"
-            android:orientation="vertical"
-            app:ael_duration="400"
-            app:ael_expanded="false">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/lesson_two"
-                    />
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/main_green"
-                    android:text="@string/question_one"/>
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/main_green"
-                    android:text="@string/question_two"/>
-
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/main_green"
-                    android:text="@string/question_three"/>
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/main_green"
-                    android:text="@string/question_four"/>
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/main_green"
-                    android:text="@string/question_five"/>
-
-            </LinearLayout>
-
-
-
-        </com.github.aakira.expandablelayout.ExpandableLinearLayout>
-
-
-
-        <TextView
-            android:id="@+id/lesson7"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginBottom="5dp"
-            android:layout_alignParentTop="true"
-            android:background="@color/blue_background"
-            android:gravity="center"
-            android:padding="8dp"
-            android:text="Lesson 7"
-            android:textColor="@color/colorWhite"
-            android:textSize="12sp" />
-
-        <com.github.aakira.expandablelayout.ExpandableLinearLayout
-            android:id="@+id/lesson7Expand"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/level"
-            android:orientation="vertical"
-            app:ael_duration="400"
-            app:ael_expanded="false">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/lesson_two"
-                    />
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/question_one"/>
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/question_two"/>
-
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/question_three"/>
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/question_four"/>
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/question_five"/>
-
-            </LinearLayout>
-
-
-
-        </com.github.aakira.expandablelayout.ExpandableLinearLayout>
-
-
-
-
-        <TextView
-            android:id="@+id/lesson8"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginBottom="5dp"
-            android:layout_alignParentTop="true"
-            android:background="@color/blue_background"
-            android:gravity="center"
-            android:padding="8dp"
-            android:text="Lesson 8"
-            android:textColor="@color/colorWhite"
-            android:textSize="12sp" />
-
-        <com.github.aakira.expandablelayout.ExpandableLinearLayout
-            android:id="@+id/lesson8Expand"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/level"
-            android:orientation="vertical"
-            app:ael_duration="400"
-            app:ael_expanded="false">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/lesson_two"
-                    />
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/question_one"/>
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/question_two"/>
-
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/question_three"/>
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/question_four"/>
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/question_five"/>
-
-            </LinearLayout>
-
-
-
-        </com.github.aakira.expandablelayout.ExpandableLinearLayout>
-
-
-
-
-        <TextView
-            android:id="@+id/lesson9"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginBottom="5dp"
-            android:background="@color/blue_background"
-            android:gravity="center"
-            android:padding="8dp"
-            android:text="Lesson 9"
-            android:textColor="@color/colorWhite"
-            android:textSize="12sp" />
-
-        <com.github.aakira.expandablelayout.ExpandableLinearLayout
-            android:id="@+id/lesson9Expand"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/level"
-            android:orientation="vertical"
-            app:ael_duration="400"
-            app:ael_expanded="false">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/lesson_two"
-                    />
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/question_one"/>
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/question_two"/>
-
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/question_three"/>
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/question_four"/>
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/question_five"/>
-
-            </LinearLayout>
-
-
-
-        </com.github.aakira.expandablelayout.ExpandableLinearLayout>
-
-
-
-        <TextView
-            android:id="@+id/lesson10"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginBottom="5dp"
-            android:background="@color/blue_background"
-            android:gravity="center"
-            android:padding="8dp"
-            android:text="Lesson 10"
-            android:textColor="@color/colorWhite"
-            android:textSize="12sp" />
-
-        <com.github.aakira.expandablelayout.ExpandableLinearLayout
-            android:id="@+id/lesson10Expand"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/level"
-            android:orientation="vertical"
-            app:ael_duration="400"
-            app:ael_expanded="false">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/lesson_two"
-                    />
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/question_one"/>
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/question_two"/>
-
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/question_three"/>
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/question_four"/>
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/question_five"/>
-
-            </LinearLayout>
-
-
-
-        </com.github.aakira.expandablelayout.ExpandableLinearLayout>
-
-
-
-
-
-
-    </LinearLayout>
 
     </ScrollView>
 
@@ -824,15 +810,13 @@
         android:id="@+id/send_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/send_button"
-        android:layout_gravity="center"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
+        android:layout_gravity="center"
         android:layout_marginBottom="5dp"
-        android:theme="@style/RaisedButtonDark"
-        android:textColor="@color/white"/>
-
-
+        android:background="@drawable/rounded_button"
+        android:text="@string/send_button"
+        android:textColor="@color/white" />
 
 
 </LinearLayout>

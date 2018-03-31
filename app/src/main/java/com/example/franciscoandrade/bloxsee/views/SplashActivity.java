@@ -29,7 +29,7 @@ public class SplashActivity extends AppCompatActivity {
         },2800);
 
         Glide.with(SplashActivity.this)
-                .load(R.drawable.bloxseefont1)
+                .load(R.drawable.newbloxseefont)
                 .into(gif);
     }
 }
