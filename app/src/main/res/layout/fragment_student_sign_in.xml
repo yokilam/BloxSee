@@ -80,27 +80,71 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/penguin"
+            <LinearLayout
                 android:layout_width="@dimen/animal_image_width"
-                android:layout_height="@dimen/animal_image_height"
-                android:layout_marginLeft="3dp"
-                android:onClick="onClick"
-                android:background="@drawable/penguin_outline" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/penguin"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/animal_image_height"
+                    android:layout_marginLeft="3dp"
+                    android:onClick="onClick"
+                    android:background="@drawable/penguin_outline" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Penguin"
+                    android:textAlignment="center"
+                    android:textStyle="normal"
+                    android:textColor="@color/white"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="@dimen/animal_image_width"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
 
             <ImageView
                 android:id="@+id/duck"
-                android:layout_width="@dimen/animal_image_width"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/animal_image_height"
                 android:layout_marginLeft="3dp"
                 android:background="@drawable/duck_outline" />
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Duck"
+                    android:textAlignment="center"
+                    android:textStyle="normal"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="@dimen/animal_image_width"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
             <ImageView
                 android:id="@+id/dog"
-                android:layout_width="@dimen/animal_image_width"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/animal_image_height"
                 android:layout_marginLeft="3dp"
                 android:background="@drawable/dog_outline" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Dog"
+                    android:textAlignment="center"
+                    android:textStyle="normal"
+                    android:textColor="@color/white"/>
+
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -109,27 +153,67 @@
             android:gravity="center"
             android:orientation="horizontal">
 
+            <LinearLayout
+                android:layout_width="@dimen/animal_image_width"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
              <ImageView
                 android:id="@+id/monkey"
-                android:layout_width="@dimen/animal_image_width"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/animal_image_height"
                 android:layout_marginLeft="3dp"
                 android:background="@drawable/monkey_outline" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Monkey"
+                    android:textAlignment="center"
+                    android:textStyle="normal"
+                    android:textColor="@color/white"/>
 
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="@dimen/animal_image_width"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
             <ImageView
                 android:id="@+id/pig"
-                android:layout_width="@dimen/animal_image_width"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/animal_image_height"
                 android:layout_marginLeft="3dp"
                 android:background="@drawable/pig_outline" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Pig"
+                    android:textAlignment="center"
+                    android:textStyle="normal"
+                    android:textColor="@color/white"/>
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="@dimen/animal_image_width"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
             <ImageView
                 android:id="@+id/seal"
                 android:layout_width="@dimen/animal_image_width"
                 android:layout_height="@dimen/animal_image_height"
                 android:layout_marginLeft="3dp"
                 android:background="@drawable/seal_outline" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Seal"
+                    android:textAlignment="center"
+                    android:textStyle="normal"
+                    android:textColor="@color/white"/>
 
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
@@ -143,7 +227,9 @@
 
         <Button
             android:id="@+id/studentLogInBtn"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/rounded_button"
