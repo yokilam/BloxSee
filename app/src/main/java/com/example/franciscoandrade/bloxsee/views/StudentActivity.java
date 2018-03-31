@@ -33,6 +33,7 @@ import java.util.List;
 public class StudentActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TextView studentName;
+    private ImageView bloxseeAvatar;
     private static final int NOTIFICATION_ID = 555;
     private static final String NOTIFICATION_CHANNEL = "C4Q Notifications";
 
@@ -59,6 +60,8 @@ public class StudentActivity extends AppCompatActivity {
         studentQuestions= new StudentQuestions();
         setRecyclerView();
         setUpNotification();
+        bloxseeAvatar = (ImageView) findViewById(R.id.student_avatar);
+
 
     }
 
