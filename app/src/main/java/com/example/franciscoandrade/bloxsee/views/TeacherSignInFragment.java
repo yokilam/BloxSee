@@ -243,7 +243,8 @@ public class TeacherSignInFragment extends Fragment {
 
                                 password_edittext.setText("");
                                 email_edittext.setText("");
-                                saveTeacherDisplayInfo(task.getResult().getUser().getEmail());
+                                saveTeacherDisplayInfo(task.getResult().getUser().getDisplayName());
+                                Log.d(TAG, "onComplete: Display Name===" + task.getResult().getUser());
                             }
 
                             task.addOnFailureListener(new OnFailureListener() {
@@ -258,7 +259,6 @@ public class TeacherSignInFragment extends Fragment {
 
                         }
                     });
-
 
         }
 
@@ -283,10 +283,10 @@ public class TeacherSignInFragment extends Fragment {
         view.getContext().startActivity(intent);
     }
 
-    private void saveTeacherDisplayInfo(String teacherEmail) {
+    private void saveTeacherDisplayInfo(String teacherName) {
         SharedPreferences prefs = getActivity().getSharedPreferences("teacher_info", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putString("teacher_email", teacherEmail);
+        editor.putString("teacher_email", teacherName);
         Log.d(TAG, "saveTeacherDisplayInfo: " + nameText);
         editor.commit();
     }
