@@ -25,8 +25,8 @@ public class StudentQuestionViewHolder extends RecyclerView.ViewHolder {
 
     public StudentQuestionViewHolder(final View itemView) {
         super(itemView);
-        dot_item = itemView.findViewById(R.id.question_dot_item);
-        btm_line = itemView.findViewById(R.id.question_btm_line);
+        //dot_item = itemView.findViewById(R.id.question_dot_item);
+        //btm_line = itemView.findViewById(R.id.question_btm_line);
         studentQuestion = itemView.findViewById(R.id.questions_tv);
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,9 +42,9 @@ public class StudentQuestionViewHolder extends RecyclerView.ViewHolder {
     public void onBind(String questions, int position, int size, String studentName){
         studentQuestion.setText(questions);
         this.studentName=studentName;
-        if(position==size-1){
-            btm_line.setVisibility(View.INVISIBLE);
-        }
+//        if(position==size-1){
+//            btm_line.setVisibility(View.INVISIBLE);
+//        }
 
     }
 }
