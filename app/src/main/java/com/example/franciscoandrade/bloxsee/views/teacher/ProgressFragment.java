@@ -25,14 +25,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static android.content.ContentValues.TAG;
 
 public class ProgressFragment extends Fragment {
 
     private RecyclerView recyclerView;
-   // private List<Progress> progressList= new ArrayList<>();
+//    private List<Progress> progressList= new ArrayList<>();
 
 
     private DatabaseReference ref;
@@ -41,7 +43,9 @@ public class ProgressFragment extends Fragment {
 
     List<StudentQuestions> lesson1;
     List<StudentQuestions> lesson2;
-    List<Progress> progressList;
+    //List<Progress> progressList;
+    Set<Progress> progressList ;
+
     TeacherProgressAdapter teacherProgressAdapter;
 
 
@@ -73,34 +77,57 @@ public class ProgressFragment extends Fragment {
 
         Log.d("VIEW", "onCreateView: GETDATTAAA!!");
 
-        progressList= new ArrayList<>();
+        //progressList= new ArrayList<>();
+        progressList = new HashSet<Progress>();;
 
         childEventListener= new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Progress progress= new Progress();
-                StudentQuestions studentQuestions= new StudentQuestions();
+                StudentQuestions studentQuestions;
+
                 progress.setName(dataSnapshot.getKey());
                 lesson1= new ArrayList<>();
                 lesson2= new ArrayList<>();
+                Log.d("NAME=", "onChildAdded: "+dataSnapshot);
                 for (int i = 1; i < 3; i++) {
                     for (int j = 1; j < 6; j++) {
+                        studentQuestions= new StudentQuestions();
+
                         if (i==1 && dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue()!= null){
+
                             String state= dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue().toString();
+                            Log.d("STATE", "onChildAdded: "+dataSnapshot.child("lesson"+i).child(j+"").child("question").getValue().toString());
+
                             studentQuestions.setState(state);
+                            studentQuestions.setQuestion(dataSnapshot.child("lesson"+i).child(j+"").child("question").getValue().toString());
                             lesson1.add(studentQuestions);
                         }
 
                         if(i==2 && dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue()!= null){
                             String state= dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue().toString();
+                            Log.d("STATE", "onChildAdded: "+state);
+                            studentQuestions.setQuestion(dataSnapshot.child("lesson"+i).child(j+"").child("question").getValue().toString());
                             studentQuestions.setState(state);
                             lesson2.add(studentQuestions);                        }
                     }
-                }
 
+                Log.d("QS==", "onChildAdded: "+lesson1.get(0).getQuestion());
+                Log.d("QS==", "onChildAdded: "+lesson1.get(1).getQuestion());
+                Log.d("QS==", "onChildAdded: "+lesson1.get(2).getQuestion());
+                Log.d("QS==", "onChildAdded: "+lesson1.get(3).getQuestion());
+                Log.d("QS==", "onChildAdded: "+lesson1.get(4).getQuestion());
+                Log.d("QS==", "onChildAdded: "+lesson1.get(0).getState());
+                Log.d("QS==", "onChildAdded: "+lesson1.get(1).getState());
+                Log.d("QS==", "onChildAdded: "+lesson1.get(2).getState());
+                Log.d("QS==", "onChildAdded: "+lesson1.get(3).getState());
+                Log.d("QS==", "onChildAdded: "+lesson1.get(4).getState());
                 progress.setLesson1(lesson1);
                 progress.setLesson2(lesson2);
                 progressList.add(progress);
+                }
+
+
 
             }
 
