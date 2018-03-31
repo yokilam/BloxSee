@@ -65,12 +65,6 @@ public class TeacherSignInFragment extends Fragment {
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor ;
 
-
-
-
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -78,7 +72,6 @@ public class TeacherSignInFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_teacher_sign_in, container, false);
         setUpViews();
         sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-
 
         database = FirebaseDatabase.getInstance();
         ref = database.getReference();
@@ -93,12 +86,6 @@ public class TeacherSignInFragment extends Fragment {
                 startRegister();
             }
         });
-
-
-
-
-
-
 
         return view;
     }

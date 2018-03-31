@@ -71,7 +71,8 @@
                 android:layout_marginLeft="13dp"
                 android:layout_marginRight="13dp"
                 android:gravity="center"
-                android:theme="@style/RaisedButtonDark"
+                android:background="@drawable/rounded_button"
+                android:textColor="@color/white"
                 android:text="Sign In" />
 
             <CheckBox
@@ -80,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:textColor="@color/white"
-                android:buttonTint="@color/main_green"
+                android:buttonTint="@color/white"
                 android:text="Remember"/>
 
 

@@ -6,7 +6,6 @@
     android:padding="16dp"
     android:background="@drawable/teacherbackground"
     android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.franciscoandrade.bloxsee.views.teacher.ProgressFragment">
 
     <android.support.v7.widget.RecyclerView
