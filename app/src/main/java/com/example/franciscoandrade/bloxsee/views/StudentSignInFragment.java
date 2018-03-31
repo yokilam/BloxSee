@@ -2,7 +2,6 @@ package com.example.franciscoandrade.bloxsee.views;
 
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,7 +10,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -21,7 +19,6 @@ import android.widget.Toast;
 
 import com.example.franciscoandrade.bloxsee.R;
 import com.example.franciscoandrade.bloxsee.model.Student;
-import com.example.franciscoandrade.bloxsee.views.student.BlocklyActivity;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,7 +27,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class StudentSignInFragment extends Fragment implements View.OnClickListener {
 
@@ -39,8 +35,8 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
     TeacherSignInFragment teacherSignInFragment;
     android.support.v4.app.FragmentManager fragmentManager;
     private TextView toTeacherFragment;
-    private ArrayList<String> listStudents;
-    private ImageView penguin, ghost, dog, cat, dragon, octopus;
+    private ArrayList <String> listStudents;
+    private ImageView penguin, duck, dog, monkey, pig, seal;
     private Button studentLogInBtn;
     //Firebase Setup
     private DatabaseReference ref;
@@ -56,21 +52,21 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_student_sign_in, container, false);
-        toTeacherFragment= v.findViewById(R.id.not_a_student);
+        toTeacherFragment = v.findViewById(R.id.not_a_student);
         fragmentManager = getActivity().getSupportFragmentManager();
         teacherSignInFragment = new TeacherSignInFragment();
 
         spinner = v.findViewById(R.id.spinnerNames);
         penguin = v.findViewById(R.id.penguin);
-        ghost = v.findViewById(R.id.ghost);
+        duck = v.findViewById(R.id.duck);
         dog = v.findViewById(R.id.dog);
-        cat = v.findViewById(R.id.cat);
-        dragon = v.findViewById(R.id.dragon);
-        octopus = v.findViewById(R.id.octopus);
+        monkey = v.findViewById(R.id.monkey);
+        pig = v.findViewById(R.id.pig);
+        seal = v.findViewById(R.id.seal);
         studentLogInBtn = v.findViewById(R.id.studentLogInBtn);
         imageSetClicks();
         //getStudentsList();
-        listStudents = new ArrayList<>();
+        listStudents = new ArrayList <>();
         listStudents.add("Student Name");
 
         new AsyncClass().execute();
@@ -81,11 +77,11 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
     private void imageSetClicks() {
         toTeacherFragment.setOnClickListener(this);
         penguin.setOnClickListener(this);
-        ghost.setOnClickListener(this);
+        duck.setOnClickListener(this);
         dog.setOnClickListener(this);
-        cat.setOnClickListener(this);
-        dragon.setOnClickListener(this);
-        octopus.setOnClickListener(this);
+        monkey.setOnClickListener(this);
+        pig.setOnClickListener(this);
+        seal.setOnClickListener(this);
         studentLogInBtn.setOnClickListener(this);
     }
 
@@ -146,38 +142,38 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
             case R.id.penguin:
                 Toast.makeText(getActivity(), "Penguin", Toast.LENGTH_SHORT).show();
                 animalPicked = "Penguin";
-                penguin.setBackgroundResource(R.color.main_white_opacity);
+                penguin.setBackgroundResource(R.drawable.penguin_color);
                 break;
 
-            case R.id.ghost:
-                ghost.setBackgroundResource(R.color.main_white_opacity);
+            case R.id.duck:
+                duck.setBackgroundResource(R.drawable.duck_color);
                 animalPicked = "Ghost";
-                Toast.makeText(getActivity(), "ghost", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "duck", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.dog:
-                dog.setBackgroundResource(R.color.main_white_opacity);
+                dog.setBackgroundResource(R.drawable.dog_color);
                 animalPicked = "Dog";
                 Toast.makeText(getActivity(), "dog", Toast.LENGTH_SHORT).show();
                 break;
 
-            case R.id.cat:
-                cat.setBackgroundResource(R.color.main_white_opacity);
+            case R.id.monkey:
+                monkey.setBackgroundResource(R.drawable.monkey_color);
                 animalPicked = "Cat";
-                Toast.makeText(getActivity(), "Cat", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Monkey", Toast.LENGTH_SHORT).show();
                 break;
 
 
-            case R.id.dragon:
-                dragon.setBackgroundResource(R.color.main_white_opacity);
+            case R.id.pig:
+                pig.setBackgroundResource(R.drawable.pig_color);
                 animalPicked = "Dragon";
-                Toast.makeText(getActivity(), "dragon", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "pig", Toast.LENGTH_SHORT).show();
                 break;
 
-            case R.id.octopus:
-                octopus.setBackgroundResource(R.color.main_white_opacity);
+            case R.id.seal:
+                seal.setBackgroundResource(R.drawable.seal_color);
                 animalPicked = "Octopus";
-                Toast.makeText(getActivity(), "Octopus", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Seal", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.studentLogInBtn:
@@ -250,23 +246,19 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
             Log.d("STUDENT", "loginStudent: password Doesnt match");
             Toast.makeText(getActivity(), "loginStudent: password Doesnt match", Toast.LENGTH_SHORT).show();
         }
-
-
     }
 
     private void clearBackground() {
-        penguin.setBackgroundResource(0);
-        ghost.setBackgroundResource(0);
-        dog.setBackgroundResource(0);
-        cat.setBackgroundResource(0);
-        dragon.setBackgroundResource(0);
-        octopus.setBackgroundResource(0);
-
-
+        penguin.setBackgroundResource(R.drawable.penguin_outline);
+        duck.setBackgroundResource(R.drawable.duck_outline);
+        dog.setBackgroundResource(R.drawable.dog_outline);
+        monkey.setBackgroundResource(R.drawable.monkey_outline);
+        pig.setBackgroundResource(R.drawable.pig_outline);
+        seal.setBackgroundResource(R.drawable.seal_outline);
     }
 
-    private class AsyncClass extends AsyncTask<Void, Void, Void> {
-        ArrayAdapter<String> adapter;
+    private class AsyncClass extends AsyncTask <Void, Void, Void> {
+        ArrayAdapter <String> adapter;
 
         @Override
         protected Void doInBackground(Void... voids) {
@@ -309,7 +301,7 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
 
 
             ref.child("students").addChildEventListener(childEventListener);
-            adapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item, listStudents);
+            adapter = new ArrayAdapter <>(getActivity(), R.layout.spinner_item, listStudents);
             return null;
         }
 
