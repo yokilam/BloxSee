@@ -31,7 +31,8 @@
     <color name="main_navy">#22285A</color>
     <color name="main_red">#FF3333</color>
     <color name="main_yellow">#ffc910</color>
-    <color name="main_green">#66CC66</color>
+    <color name="main_green">#26A69A</color>
+    <color name="main_green2">#66CC66</color>
 
 
     <color name="main_navy_opacity">#9622285a</color>
@@ -50,6 +51,14 @@
     <color name="material_green_400">#ff66bb6a</color>
     <color name="material_green_500">#ff4caf50</color>
     <color name="material_green_600">#ff43a047</color>
+
+
+    <color name="material_teal_100">#B2DFDB</color>
+    <color name="material_teal_200">#80CBC4</color>
+    <color name="material_teal_300">#4DB6AC</color>
+    <color name="material_teal_400">#26A69A</color>
+
+
 
 
     <color name="blue_background">#22285A</color>

@@ -10,9 +10,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,6 +47,8 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
     Student student;
     String animalPicked;
     String pass;
+    LinearLayout animalRowOne, animalRowTwo;
+    boolean isColor;
 
 
     @Override
@@ -52,10 +56,50 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_student_sign_in, container, false);
-        toTeacherFragment = v.findViewById(R.id.not_a_student);
         fragmentManager = getActivity().getSupportFragmentManager();
         teacherSignInFragment = new TeacherSignInFragment();
 
+        setUpViews();
+        imageSetClicks();
+        listStudents = new ArrayList <>();
+        listStudents.add("Choose Your Name: ");
+
+        new AsyncClass().execute();
+
+        hideCharacters();
+
+
+
+
+
+
+        return v;
+    }
+
+    private void hideCharacters() {
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView <?> parent, View view, int position, long id) {
+                Log.d("SPINNER", "onCreateView: "+spinner.getSelectedItem()+ position);
+                if(position==0){
+                    animalRowOne.setVisibility(View.GONE);
+                    animalRowTwo.setVisibility(View.GONE);
+                }
+                else {
+                    animalRowOne.setVisibility(View.VISIBLE);
+                    animalRowTwo.setVisibility(View.VISIBLE);
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView <?> parent) {
+                animalRowOne.setVisibility(View.GONE);
+
+            }
+        });
+    }
+
+    private void setUpViews() {
+        toTeacherFragment = v.findViewById(R.id.not_a_student);
         spinner = v.findViewById(R.id.spinnerNames);
         penguin = v.findViewById(R.id.penguin);
         duck = v.findViewById(R.id.duck);
@@ -64,14 +108,8 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
         pig = v.findViewById(R.id.pig);
         seal = v.findViewById(R.id.seal);
         studentLogInBtn = v.findViewById(R.id.studentLogInBtn);
-        imageSetClicks();
-        //getStudentsList();
-        listStudents = new ArrayList <>();
-        listStudents.add("Student Name");
-
-        new AsyncClass().execute();
-
-        return v;
+        animalRowOne= v.findViewById(R.id.animal_row_one);
+        animalRowTwo= v.findViewById(R.id.animal_row_two);
     }
 
     private void imageSetClicks() {
@@ -84,53 +122,6 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
         seal.setOnClickListener(this);
         studentLogInBtn.setOnClickListener(this);
     }
-
-
-    private void getStudentsList() {
-//        listStudents = new ArrayList <>();
-//        database= FirebaseDatabase.getInstance();
-//        ref= database.getReference();
-//        student= new Student();
-//
-//        ChildEventListener childEventListener= new ChildEventListener() {
-//            @Override
-//            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-//                student=dataSnapshot.getValue(Student.class);
-//                Log.d("CHILD", "onChildAdded: "+ student.getName());
-//                listStudents.add(student.getName());
-//                ArrayAdapter <String> adapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_itemtwo, listStudents);
-//                // adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-//                spinner.setAdapter(adapter);
-//
-//            }
-//
-//            @Override
-//            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-//
-//            }
-//
-//            @Override
-//            public void onChildRemoved(DataSnapshot dataSnapshot) {
-//
-//            }
-//
-//            @Override
-//            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        };
-//
-//
-//        ref.child("students").addChildEventListener(childEventListener);
-
-        //setSpinner();
-    }
-
 
     @Override
     public void onClick(View v) {
@@ -187,7 +178,6 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
 
     private void loginStudent() {
         String nameStudent = spinner.getSelectedItem().toString();
-
 
         if (!TextUtils.isEmpty(animalPicked) && !nameStudent.equals(listStudents.get(0)) && spinner.getSelectedItem().toString() != null) {
             Log.d("SPINNER==", "loginStudent: Animal: READY TO LOG IN");
