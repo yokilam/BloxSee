@@ -78,10 +78,9 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     @Override
     protected View onCreateContentView(int containerId) {
         root = getLayoutInflater().inflate(R.layout.activity_blockly, null);
-        //questionTV = root.findViewById(R.id.blockly_activity_student_question);
+        questionTV = root.findViewById(R.id.blockly_activity_student_question);
 
         menu_yellow = root.findViewById(R.id.menu_yellow);
-
         fab22 = root.findViewById(R.id.fab22);
         fab32 = root.findViewById(R.id.fab32);
         blockContainer= findViewById(R.id.blockContainer);
@@ -290,6 +289,8 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         Intent intent = getIntent();
         user = intent.getStringExtra("studentName");
         currentQuestion = intent.getStringExtra("currentQuestion");
+
+        questionTV.setText(currentQuestion);
 
         Log.d("STUDENT", "getInfo: "+user);
         Log.d("STUDENT", "getInfo: "+currentQuestion);
