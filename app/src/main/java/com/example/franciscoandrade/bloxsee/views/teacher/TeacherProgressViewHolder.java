@@ -1,8 +1,10 @@
 package com.example.franciscoandrade.bloxsee.views.teacher;
 
 import android.content.Context;
+
 import android.graphics.Color;
 import android.support.v7.widget.CardView;
+
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.util.SparseBooleanArray;
@@ -33,8 +35,8 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
         super(itemView);
 
         name = itemView.findViewById(R.id.name_progress);
-        lessonOne = itemView.findViewById(R.id.lesson_one);
-        questionOne= itemView.findViewById(R.id.lesson_1);
+        lessonOne = itemView.findViewById(R.id.lessons);
+        questionOne= itemView.findViewById(R.id.lesson_one);
         questionTwo= itemView.findViewById(R.id.lesson_two);
         questionThree= itemView.findViewById(R.id.lesson_three);
         questionFour= itemView.findViewById(R.id.lesson_four);
@@ -70,7 +72,7 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
     public void onClick(View v) {
 
         switch(v.getId()){
-            case R.id.lesson_one:
+            case R.id.lessons:
                 expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
                         (v, expandableLayout, R.color.material_orange_200, expandState);
                 changeColor(progress1.getLesson1().get(0).getState(), questionOne);
@@ -83,8 +85,12 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
                 Log.d("COLORS1==", "onClick: "+progress1.getLesson1().get(2));
                 Log.d("COLORS1==", "onClick: "+progress1.getLesson1().get(3));
                 Log.d("COLORS1==", "onClick: "+progress1.getLesson1().get(4));
+
+                if(expandableLinearLayoutQuestions.isExpanded()){
+                    expandableLinearLayoutQuestions.collapse();
+                }
                 break;
-            case R.id.lesson_1:
+            case R.id.lesson_one:
                 expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation(v, expandableLinearLayoutQuestions, R.color.material_blue_100, expandState);
                 break;
             case R.id.lesson_two:

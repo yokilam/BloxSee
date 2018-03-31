@@ -2,6 +2,7 @@ package com.example.franciscoandrade.bloxsee.views.teacher;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 
 import android.graphics.PorterDuff;
@@ -17,11 +18,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.franciscoandrade.bloxsee.R;
 import com.example.franciscoandrade.bloxsee.controller.teacher.PagerAdapterTeacher;
 import com.example.franciscoandrade.bloxsee.model.Progress;
+import com.example.franciscoandrade.bloxsee.views.SignInActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -44,9 +47,9 @@ public class TeacherMainPageActivity extends AppCompatActivity implements ViewPa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher_main_page);
-        showToolBar(" Admin Email ", false);
+
+        setupToolbar();
         getTeacherInfo();
-        topToolbar =  findViewById(R.id.toolbar);
 
         Log.d(TAG, "onCreate: " + getTitle());
 
@@ -99,6 +102,23 @@ public class TeacherMainPageActivity extends AppCompatActivity implements ViewPa
         setupViewPager(viewPager);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.teacher_signout, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+        if(item.getItemId() == R.id.signout_teacher){
+            Intent intent = new Intent(TeacherMainPageActivity.this, SignInActivity.class);
+            startActivity(intent);
+        }
+        return true;
+    }
+
     private void setupViewPager(ViewPager viewPager) {
         adapter = new PagerAdapterTeacher(getSupportFragmentManager());
         rosterFragment = new RosterFragment();
@@ -116,15 +136,6 @@ public class TeacherMainPageActivity extends AppCompatActivity implements ViewPa
         String string = prefs.getString("teacher_email",
                 "");
         Log.d(TAG, "getTeacherInfo: " + string);
-    }
-
-
-    private void showToolBar(String title, boolean upButton) {
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(title);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
-        toolbar.setTitleTextColor(getResources().getColor(R.color.colorBlack));
     }
 
     @Override
@@ -164,6 +175,14 @@ public class TeacherMainPageActivity extends AppCompatActivity implements ViewPa
 
         if(actualPosition.equals("1")){
             rosterFragment.showFloatingBtn();
+        }
+    }
+
+    public void setupToolbar(){
+        topToolbar =  findViewById(R.id.toolbar);
+        setSupportActionBar(topToolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Admin Email");
         }
     }
 }
