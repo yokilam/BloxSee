@@ -1,10 +1,15 @@
 package com.example.franciscoandrade.bloxsee.views.teacher;
 
 import android.content.Context;
+
+import android.graphics.Color;
+import android.support.v7.widget.CardView;
+
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.franciscoandrade.bloxsee.R;
@@ -23,6 +28,9 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
     private Progress progress1;
     Context context;
 
+    CardView cardLessons;
+    LinearLayout questionsView;
+
     public TeacherProgressViewHolder(View itemView) {
         super(itemView);
 
@@ -33,6 +41,10 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
         questionThree= itemView.findViewById(R.id.lesson_three);
         questionFour= itemView.findViewById(R.id.lesson_four);
         questionFive= itemView.findViewById(R.id.lesson_five);
+
+
+        cardLessons= itemView.findViewById(R.id.cardLessons);
+        questionsView= itemView.findViewById(R.id.questionsView);
 
         expandableLayout = itemView.findViewById(R.id.progress_expandableLayout);
         expandableLinearLayoutQuestions = itemView.findViewById(R.id.progress_questions_expandableLayout);
@@ -45,6 +57,8 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
         questionThree.setOnClickListener(this);
         questionFour.setOnClickListener(this);
         questionFive.setOnClickListener(this);
+
+        cardLessons.setOnClickListener(this);
 
     }
 
@@ -90,6 +104,16 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
                 break;
             case R.id.lesson_five:
                 expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation(v, expandableLinearLayoutQuestions, R.color.material_blue_100, expandState);
+                break;
+
+            case R.id.cardLessons:
+
+                if (questionsView.getVisibility()==View.GONE){
+                    questionsView.setVisibility(View.VISIBLE);
+                }else {
+                    questionsView.setVisibility(View.GONE);
+                }
+
                 break;
 
         }
