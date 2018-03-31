@@ -9,6 +9,8 @@
         android:id="@+id/blockly_activity_student_question"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:padding="8dp"
+        android:textStyle="bold"
         android:background="@android:color/holo_purple"
         android:text="Question" />
 
