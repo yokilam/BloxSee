@@ -118,12 +118,13 @@
     </LinearLayout>
 
             <ImageView
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
+
                 android:layout_height="2dp"
                 android:layout_marginRight="0.5dp"
                 android:layout_marginLeft="0.5dp"
                 android:layout_marginTop="10dp"
-                android:layout_gravity="bottom"
+                android:layout_gravity="bottom|center"
                 android:src="@drawable/shadow_three"/>
 
         </FrameLayout>

@@ -21,6 +21,7 @@ public class StudentQuestionViewHolder extends RecyclerView.ViewHolder {
     private TextView studentQuestion;
     private TextView btm_line;
     private ImageView dot_item;
+    private String studentName;
 
     public StudentQuestionViewHolder(final View itemView) {
         super(itemView);
@@ -33,12 +34,14 @@ public class StudentQuestionViewHolder extends RecyclerView.ViewHolder {
                 String currentQuestion = studentQuestion.getText().toString();
                 Intent intent = new Intent(view.getContext(), BlocklyActivity.class);
                 intent.putExtra("currentQuestion", currentQuestion);
+                intent.putExtra("studentName", studentName);
                 view.getContext().startActivity(intent);
             }
         });
     }
-    public void onBind(String questions, int position, int size){
+    public void onBind(String questions, int position, int size, String studentName){
         studentQuestion.setText(questions);
+        this.studentName=studentName;
         if(position==size-1){
             btm_line.setVisibility(View.INVISIBLE);
         }

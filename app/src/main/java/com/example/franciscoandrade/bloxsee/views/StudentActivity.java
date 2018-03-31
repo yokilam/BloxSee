@@ -89,7 +89,7 @@ public class StudentActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.student_questions_rv);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
-        studentQuestionAdapter= new StudentQuestionAdapter(this);
+        studentQuestionAdapter= new StudentQuestionAdapter(this, user);
         recyclerView.setAdapter(studentQuestionAdapter);
 
     }
