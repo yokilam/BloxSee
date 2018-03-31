@@ -11,6 +11,7 @@ import com.example.franciscoandrade.bloxsee.model.Progress;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class TeacherProgressAdapter extends RecyclerView.Adapter<TeacherProgressViewHolder> {
 
@@ -38,7 +39,7 @@ public class TeacherProgressAdapter extends RecyclerView.Adapter<TeacherProgress
         return progressLis.size();
     }
 
-    public void addProgress(List<Progress> progressList) {
+    public void addProgress(Set<Progress> progressList) {
         progressLis.clear();
         notifyDataSetChanged();
         progressLis.addAll(progressList);
