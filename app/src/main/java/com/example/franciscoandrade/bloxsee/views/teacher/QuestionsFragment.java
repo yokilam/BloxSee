@@ -51,11 +51,11 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
     ExpandableLinearLayout question_expandable_layout, Two;
     ExpandableLayoutAnimation expandableLayoutAnimation;
     private SparseBooleanArray expandState = new SparseBooleanArray();
-    LinearLayout level, levelTwo;
+    LinearLayout level, levelTwo, level3, level4, level5, level6, level7, level8, level9, level10;
     TextView  lesson3, lesson4, lesson5, lesson6, lesson7, lesson8, lesson9, lesson10;
     ExpandableLinearLayout lesson3Expand, lesson4Expand, lesson5Expand, lesson6Expand, lesson7Expand, lesson8Expand, lesson9Expand, lesson10Expand;
 
-    ExpandIconView expand1, expand2;
+    ExpandIconView expand1, expand2, expand3, expand4, expand5, expand6, expand7, expand8, expand9, expand10;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -77,14 +77,14 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
         levelTwo= view.findViewById(R.id.levelTwo);
         level= view.findViewById(R.id.level);
         Two= view.findViewById(R.id.Two);
-        lesson3= view.findViewById(R.id.lesson3);
-        lesson4= view.findViewById(R.id.lesson4);
-        lesson5= view.findViewById(R.id.lesson5);
-        lesson6= view.findViewById(R.id.lesson6);
-        lesson7= view.findViewById(R.id.lesson7);
-        lesson8= view.findViewById(R.id.lesson8);
-        lesson9= view.findViewById(R.id.lesson9);
-        lesson10= view.findViewById(R.id.lesson10);
+        level3= view.findViewById(R.id.level3);
+        level4= view.findViewById(R.id.level4);
+        level5= view.findViewById(R.id.level5);
+        level6= view.findViewById(R.id.level6);
+        level7= view.findViewById(R.id.level7);
+        level8= view.findViewById(R.id.level8);
+        level9= view.findViewById(R.id.level9);
+        level10= view.findViewById(R.id.level10);
         expandableLayoutAnimation= new ExpandableLayoutAnimation();
         lesson3Expand= view.findViewById(R.id.lesson3Expand);
         lesson4Expand= view.findViewById(R.id.lesson4Expand);
@@ -97,20 +97,28 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
         lesson10Expand.collapse();
         expand1=view.findViewById(R.id.expand1);
         expand2=view.findViewById(R.id.expand2);
+        expand3=view.findViewById(R.id.expand3);
+        expand4=view.findViewById(R.id.expand4);
+        expand5=view.findViewById(R.id.expand5);
+        expand6=view.findViewById(R.id.expand6);
+        expand7=view.findViewById(R.id.expand7);
+        expand8=view.findViewById(R.id.expand8);
+        expand9=view.findViewById(R.id.expand9);
+        expand10=view.findViewById(R.id.expand10);
 
         send.setOnClickListener(this);
         question_expandable_layout.setOnClickListener(this);
         Two.setOnClickListener(this);
         levelTwo.setOnClickListener(this);
         level.setOnClickListener(this);
-        lesson3.setOnClickListener(this);
-        lesson4.setOnClickListener(this);
-        lesson5.setOnClickListener(this);
-        lesson6.setOnClickListener(this);
-        lesson7.setOnClickListener(this);
-        lesson8.setOnClickListener(this);
-        lesson9.setOnClickListener(this);
-        lesson10.setOnClickListener(this);
+        level3.setOnClickListener(this);
+        level4.setOnClickListener(this);
+        level5.setOnClickListener(this);
+        level6.setOnClickListener(this);
+        level7.setOnClickListener(this);
+        level8.setOnClickListener(this);
+        level9.setOnClickListener(this);
+        level10.setOnClickListener(this);
         listChckbox= new ArrayList<>();
         listChckbox.add(true);
         listChckbox.add(true);
@@ -251,55 +259,63 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener{
 
 
 
-            case R.id.lesson3:
+            case R.id.level3:
                 Log.d("CLICK==", "onClick: ==level2");
                 expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
                         (v, lesson3Expand, R.color.white, expandState);
+                expand3.switchState();
                 break;
 
-            case R.id.lesson4:
+            case R.id.level4:
                 Log.d("CLICK==", "onClick: ==level2");
                 expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
                         (v, lesson4Expand, R.color.white, expandState);
+                expand4.switchState();
                 break;
 
-            case R.id.lesson5:
+            case R.id.level5:
                 Log.d("CLICK==", "onClick: ==level2");
                 expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
                         (v, lesson5Expand, R.color.white, expandState);
+                expand5.switchState();
                 break;
 
 
-            case R.id.lesson6:
+            case R.id.level6:
                 Log.d("CLICK==", "onClick: ==level2");
-                expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
+               expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
                         (v, lesson6Expand, R.color.white, expandState);
+               expand6.switchState();
                 break;
 
 
-            case R.id.lesson7:
+            case R.id.level7:
                 Log.d("CLICK==", "onClick: ==level2");
                 expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
                         (v, lesson7Expand, R.color.white, expandState);
+                expand7.switchState();
                 break;
 
 
-            case R.id.lesson8:
+            case R.id.level8:
                 Log.d("CLICK==", "onClick: ==level2");
                 expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
                         (v, lesson8Expand, R.color.white, expandState);
+                expand8.switchState();
                 break;
 
-            case R.id.lesson9:
+            case R.id.level9:
                 Log.d("CLICK==", "onClick: ==level2");
                 expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
                         (v, lesson9Expand, R.color.white, expandState);
+                expand9.switchState();
                 break;
 
-            case R.id.lesson10:
+            case R.id.level10:
                 Log.d("CLICK==", "onClick: ==level2");
                 expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
                         (v, lesson10Expand, R.color.white, expandState);
+                expand10.switchState();
                 break;
 
         }

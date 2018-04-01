@@ -265,19 +265,46 @@
             </com.github.aakira.expandablelayout.ExpandableLinearLayout>
 
 
-            <TextView
-                android:id="@+id/lesson3"
+            <LinearLayout
+                android:id="@+id/level3"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
                 android:layout_marginBottom="5dp"
                 android:background="@color/blue_background"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text="Lesson 3"
-                android:textColor="@color/colorWhite"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lesson3"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="Lesson 3"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <com.github.zagum.expandicon.ExpandIconView
+                    android:id="@+id/expand3"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="56dp"
+                    app:eiv_animationDuration="300"
+                    app:eiv_color="#000"
+                    app:eiv_colorIntermediate="@color/material_green_300"
+                    app:eiv_colorLess="@color/main_green"
+                    app:eiv_colorMore="#fff"
+                    app:eiv_padding="8dp"
+                    app:eiv_roundedCorners="false"
+                    app:eiv_switchColor="true" />
+
+
+            </LinearLayout>
+
 
             <com.github.aakira.expandablelayout.ExpandableLinearLayout
                 android:id="@+id/lesson3Expand"
@@ -287,6 +314,7 @@
                 android:orientation="vertical"
                 app:ael_duration="400"
                 app:ael_expanded="false">
+
 
 
                 <LinearLayout
@@ -333,18 +361,45 @@
             </com.github.aakira.expandablelayout.ExpandableLinearLayout>
 
 
-            <TextView
-                android:id="@+id/lesson4"
+            <LinearLayout
+                android:id="@+id/level4"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
                 android:layout_marginBottom="5dp"
                 android:background="@color/blue_background"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text="Lesson 4"
-                android:textColor="@color/colorWhite"
-                android:textSize="12sp" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/level_4"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="Lesson 4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <com.github.zagum.expandicon.ExpandIconView
+                    android:id="@+id/expand4"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="56dp"
+                    app:eiv_animationDuration="300"
+                    app:eiv_color="#000"
+                    app:eiv_colorIntermediate="@color/material_green_300"
+                    app:eiv_colorLess="@color/main_green"
+                    app:eiv_colorMore="#fff"
+                    app:eiv_padding="8dp"
+                    app:eiv_roundedCorners="false"
+                    app:eiv_switchColor="true" />
+
+
+            </LinearLayout>
 
             <com.github.aakira.expandablelayout.ExpandableLinearLayout
                 android:id="@+id/lesson4Expand"
@@ -404,18 +459,45 @@
             </com.github.aakira.expandablelayout.ExpandableLinearLayout>
 
 
-            <TextView
-                android:id="@+id/lesson5"
+            <LinearLayout
+                android:id="@+id/level5"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
                 android:layout_marginBottom="5dp"
                 android:background="@color/blue_background"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text="Lesson 5"
-                android:textColor="@color/colorWhite"
-                android:textSize="12sp" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/level_5"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="Lesson 5"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <com.github.zagum.expandicon.ExpandIconView
+                    android:id="@+id/expand5"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="56dp"
+                    app:eiv_animationDuration="300"
+                    app:eiv_color="#000"
+                    app:eiv_colorIntermediate="@color/material_green_300"
+                    app:eiv_colorLess="@color/main_green"
+                    app:eiv_colorMore="#fff"
+                    app:eiv_padding="8dp"
+                    app:eiv_roundedCorners="false"
+                    app:eiv_switchColor="true" />
+
+
+            </LinearLayout>
 
             <com.github.aakira.expandablelayout.ExpandableLinearLayout
                 android:id="@+id/lesson5Expand"
@@ -474,18 +556,45 @@
             </com.github.aakira.expandablelayout.ExpandableLinearLayout>
 
 
-            <TextView
-                android:id="@+id/lesson6"
+            <LinearLayout
+                android:id="@+id/level6"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
                 android:layout_marginBottom="5dp"
                 android:background="@color/blue_background"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text="Lesson 6"
-                android:textColor="@color/colorWhite"
-                android:textSize="12sp" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/level_6"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="Lesson 6"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <com.github.zagum.expandicon.ExpandIconView
+                    android:id="@+id/expand6"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="56dp"
+                    app:eiv_animationDuration="300"
+                    app:eiv_color="#000"
+                    app:eiv_colorIntermediate="@color/material_green_300"
+                    app:eiv_colorLess="@color/main_green"
+                    app:eiv_colorMore="#fff"
+                    app:eiv_padding="8dp"
+                    app:eiv_roundedCorners="false"
+                    app:eiv_switchColor="true" />
+
+
+            </LinearLayout>
 
             <com.github.aakira.expandablelayout.ExpandableLinearLayout
                 android:id="@+id/lesson6Expand"
@@ -544,18 +653,45 @@
             </com.github.aakira.expandablelayout.ExpandableLinearLayout>
 
 
-            <TextView
-                android:id="@+id/lesson7"
+            <LinearLayout
+                android:id="@+id/level7"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
                 android:layout_marginBottom="5dp"
                 android:background="@color/blue_background"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text="Lesson 7"
-                android:textColor="@color/colorWhite"
-                android:textSize="12sp" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lesson7"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="Lesson 7"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <com.github.zagum.expandicon.ExpandIconView
+                    android:id="@+id/expand7"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="56dp"
+                    app:eiv_animationDuration="300"
+                    app:eiv_color="#000"
+                    app:eiv_colorIntermediate="@color/material_green_300"
+                    app:eiv_colorLess="@color/main_green"
+                    app:eiv_colorMore="#fff"
+                    app:eiv_padding="8dp"
+                    app:eiv_roundedCorners="false"
+                    app:eiv_switchColor="true" />
+
+
+            </LinearLayout>
 
             <com.github.aakira.expandablelayout.ExpandableLinearLayout
                 android:id="@+id/lesson7Expand"
@@ -609,18 +745,45 @@
             </com.github.aakira.expandablelayout.ExpandableLinearLayout>
 
 
-            <TextView
-                android:id="@+id/lesson8"
+            <LinearLayout
+                android:id="@+id/level8"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
                 android:layout_marginBottom="5dp"
                 android:background="@color/blue_background"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text="Lesson 8"
-                android:textColor="@color/colorWhite"
-                android:textSize="12sp" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lesson8"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="Lesson 8"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <com.github.zagum.expandicon.ExpandIconView
+                    android:id="@+id/expand8"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="56dp"
+                    app:eiv_animationDuration="300"
+                    app:eiv_color="#000"
+                    app:eiv_colorIntermediate="@color/material_green_300"
+                    app:eiv_colorLess="@color/main_green"
+                    app:eiv_colorMore="#fff"
+                    app:eiv_padding="8dp"
+                    app:eiv_roundedCorners="false"
+                    app:eiv_switchColor="true" />
+
+
+            </LinearLayout>
 
             <com.github.aakira.expandablelayout.ExpandableLinearLayout
                 android:id="@+id/lesson8Expand"
@@ -674,18 +837,45 @@
             </com.github.aakira.expandablelayout.ExpandableLinearLayout>
 
 
-            <TextView
-                android:id="@+id/lesson9"
+            <LinearLayout
+                android:id="@+id/level9"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
                 android:layout_marginBottom="5dp"
                 android:background="@color/blue_background"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text="Lesson 9"
-                android:textColor="@color/colorWhite"
-                android:textSize="12sp" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lesson9"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="Lesson 9"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <com.github.zagum.expandicon.ExpandIconView
+                    android:id="@+id/expand9"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="56dp"
+                    app:eiv_animationDuration="300"
+                    app:eiv_color="#000"
+                    app:eiv_colorIntermediate="@color/material_green_300"
+                    app:eiv_colorLess="@color/main_green"
+                    app:eiv_colorMore="#fff"
+                    app:eiv_padding="8dp"
+                    app:eiv_roundedCorners="false"
+                    app:eiv_switchColor="true" />
+
+
+            </LinearLayout>
 
             <com.github.aakira.expandablelayout.ExpandableLinearLayout
                 android:id="@+id/lesson9Expand"
@@ -739,18 +929,45 @@
             </com.github.aakira.expandablelayout.ExpandableLinearLayout>
 
 
-            <TextView
-                android:id="@+id/lesson10"
+            <LinearLayout
+                android:id="@+id/level10"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
                 android:layout_marginBottom="5dp"
                 android:background="@color/blue_background"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text="Lesson 10"
-                android:textColor="@color/colorWhite"
-                android:textSize="12sp" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lesson10"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="Lesson 10"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <com.github.zagum.expandicon.ExpandIconView
+                    android:id="@+id/expand10"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="56dp"
+                    app:eiv_animationDuration="300"
+                    app:eiv_color="#000"
+                    app:eiv_colorIntermediate="@color/material_green_300"
+                    app:eiv_colorLess="@color/main_green"
+                    app:eiv_colorMore="#fff"
+                    app:eiv_padding="8dp"
+                    app:eiv_roundedCorners="false"
+                    app:eiv_switchColor="true" />
+
+
+            </LinearLayout>
 
             <com.github.aakira.expandablelayout.ExpandableLinearLayout
                 android:id="@+id/lesson10Expand"
