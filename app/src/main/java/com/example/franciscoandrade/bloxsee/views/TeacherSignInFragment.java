@@ -268,6 +268,8 @@ public class TeacherSignInFragment extends Fragment {
     private void intentToTeacherMainPageActivity() {
         Intent intent = new Intent(view.getContext(), TeacherMainPageActivity.class);
         view.getContext().startActivity(intent);
+        getActivity().finish();
+
     }
 
     private void saveTeacherDisplayInfo(String teacherName) {

@@ -169,7 +169,7 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
 
             case R.id.studentLogInBtn:
                 loginStudent();
-                Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
                 break;
         }
 
@@ -229,6 +229,7 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
             Intent intent = new Intent(getActivity(), StudentActivity.class);
             intent.putExtra("studentName", studentName);
             startActivity(intent);
+            getActivity().finish();
             Log.d("CHECKING", "checkLoginCredentials: PASSEED");
             Toast.makeText(getActivity(), "PASSED", Toast.LENGTH_SHORT).show();
 
