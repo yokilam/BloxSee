@@ -158,6 +158,7 @@ public class RosterFragment extends Fragment {
                 manager.beginTransaction()
                         .setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
                         .replace(R.id.addStudentContainer, addStudentFragment).addToBackStack("backToActivity").addToBackStack(null).commit();
+
                 addStudentFab.setVisibility(View.GONE);
 
             }

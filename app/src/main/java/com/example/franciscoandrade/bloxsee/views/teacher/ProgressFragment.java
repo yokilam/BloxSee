@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,11 +14,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.example.franciscoandrade.bloxsee.R;
+import com.example.franciscoandrade.bloxsee.ScreenShotFragment;
 import com.example.franciscoandrade.bloxsee.model.Progress;
 import com.example.franciscoandrade.bloxsee.model.StudentQuestions;
+import com.example.franciscoandrade.bloxsee.views.student.UrlListener;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,7 +35,7 @@ import java.util.Set;
 
 import static android.content.ContentValues.TAG;
 
-public class ProgressFragment extends Fragment {
+public class ProgressFragment extends Fragment  {
 
     private RecyclerView recyclerView;
 //    private List<Progress> progressList= new ArrayList<>();
@@ -48,7 +52,10 @@ public class ProgressFragment extends Fragment {
 
     TeacherProgressAdapter teacherProgressAdapter;
 
+    FrameLayout containerScreenShot;
 
+    FragmentManager manager;
+    ScreenShotFragment screenShotFragment;
 
 
     @Override
@@ -60,6 +67,7 @@ public class ProgressFragment extends Fragment {
         database = FirebaseDatabase.getInstance();
         ref = database.getReference();
         recyclerView= view.findViewById(R.id.progress_recyclerview);
+        containerScreenShot= view.findViewById(R.id.containerScreenShot);
         //recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(), DividerItemDecoration.VERTICAL));
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));
         teacherProgressAdapter= new TeacherProgressAdapter(getActivity());
@@ -67,7 +75,8 @@ public class ProgressFragment extends Fragment {
         Log.d("VIEW", "onCreateView: ####");
         getData();
 
-
+        manager= getFragmentManager();
+        screenShotFragment= new ScreenShotFragment();
         return view;
     }
 
@@ -258,5 +267,22 @@ public class ProgressFragment extends Fragment {
     public void setEnterTransition(Object transition) {
         super.setEnterTransition(transition);
         Log.d("ENTEERR", "setEnterTransition: ");
+    }
+
+    public void openScreenShotFragment(String url){
+        Log.d("Screenshot=", "openScreenShotFragment: ");
+        manager.beginTransaction()
+                .setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
+                .replace(R.id.containerScreenShot, screenShotFragment).addToBackStack("backToActivity").addToBackStack(null).commit();
+
+        screenShotFragment.show("ISCOO=");
+
+    }
+
+
+    public void closeScreenShootFragment(){
+        manager.beginTransaction()
+                .setCustomAnimations(R.anim.enter, R.anim.exit)
+                .remove(screenShotFragment).commit();
     }
 }
