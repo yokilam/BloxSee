@@ -20,15 +20,19 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.franciscoandrade.bloxsee.R;
+import com.example.franciscoandrade.bloxsee.ScreenShotFragment;
 import com.example.franciscoandrade.bloxsee.controller.teacher.PagerAdapterTeacher;
 import com.example.franciscoandrade.bloxsee.model.Progress;
 import com.example.franciscoandrade.bloxsee.views.SignInActivity;
+import com.example.franciscoandrade.bloxsee.views.student.CloseScreenshot;
+import com.example.franciscoandrade.bloxsee.views.student.UrlListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class TeacherMainPageActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener , ListenerProgress{
+public class TeacherMainPageActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener , ListenerProgress, UrlListener, CloseScreenshot{
     private final String TAG = "TEACHER_EMAIL: ";
     private final String TAG_OC = "TOOLBAR_DISPLAY";
     private Toolbar topToolbar;
@@ -41,6 +45,7 @@ public class TeacherMainPageActivity extends AppCompatActivity implements ViewPa
     RosterFragment rosterFragment;
     PagerAdapterTeacher adapter;
 
+    ScreenShotFragment screenShotFragment;
     String actualPosition="1";
 
     @Override
@@ -100,7 +105,9 @@ public class TeacherMainPageActivity extends AppCompatActivity implements ViewPa
             }
         });
         setupViewPager(viewPager);
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -126,6 +133,7 @@ public class TeacherMainPageActivity extends AppCompatActivity implements ViewPa
         rosterFragment = new RosterFragment();
         progressFragment = new ProgressFragment();
         questionsFragment = new QuestionsFragment();
+        screenShotFragment= new ScreenShotFragment();
         adapter.addFragment(rosterFragment);
         adapter.addFragment(progressFragment);
         adapter.addFragment(questionsFragment);
@@ -186,5 +194,20 @@ public class TeacherMainPageActivity extends AppCompatActivity implements ViewPa
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("Admin Email");
         }
+    }
+
+    @Override
+    public void sendUrl(String url) {
+
+        //screenShotFragment.show(url);
+        progressFragment.openScreenShotFragment(url);
+
+        //Log.d("URL=", "sendUrl: "+url);
+    }
+
+    @Override
+    public void closeScreenshot() {
+        progressFragment.closeScreenShootFragment();
+
     }
 }

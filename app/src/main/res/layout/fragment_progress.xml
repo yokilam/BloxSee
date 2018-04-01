@@ -8,11 +8,17 @@
     android:orientation="vertical"
     tools:context="com.example.franciscoandrade.bloxsee.views.teacher.ProgressFragment">
 
+    <FrameLayout
+        android:id="@+id/containerScreenShot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/progress_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
     </android.support.v7.widget.RecyclerView>
 
+
+    </FrameLayout>
 </LinearLayout>

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.franciscoandrade.bloxsee.R;
 import com.example.franciscoandrade.bloxsee.model.Progress;
 import com.example.franciscoandrade.bloxsee.util.ExpandableLayoutAnimation;
+import com.example.franciscoandrade.bloxsee.views.student.UrlListener;
 import com.github.aakira.expandablelayout.ExpandableLinearLayout;
 
 import java.util.ArrayList;
@@ -37,6 +38,11 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
     LinearLayout option_Lesson_One, option_Lesson_Two, option_Lesson_Three, option_Lesson_Four, option_Lesson_Five;
 
     int average=100;
+    String imageName;
+    String currentStudentName;
+    String currentLesson;
+    String currentQuestion;
+    UrlListener urlListener;
 
     public TeacherProgressViewHolder(View itemView) {
         super(itemView);
@@ -84,6 +90,15 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
         option_Lesson_Three.setOnClickListener(this);
         option_Lesson_Four.setOnClickListener(this);
         option_Lesson_Five.setOnClickListener(this);
+
+
+
+        //question screenshot listener
+        q1.setOnClickListener(this);
+        q2.setOnClickListener(this);
+        q3.setOnClickListener(this);
+        q4.setOnClickListener(this);
+        q5.setOnClickListener(this);
     }
 
     public void onBind(Progress progress, Context context) {
@@ -93,6 +108,10 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
         questionsView.setVisibility(View.GONE);
         calculateAVerage();
         uncheckSelectors();
+
+        currentStudentName=progress1.getName();
+
+        urlListener=(UrlListener)context;
 
     }
 
@@ -229,14 +248,6 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
 //                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(4).getAvailable());
 //                break;
 
-
-
-
-
-
-
-
-
             case R.id.option_Lesson_One:
 
                     uncheckSelectors();
@@ -248,6 +259,7 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
                 changeColor(progress1.getLesson1().get(2).getState(), q3);
                 changeColor(progress1.getLesson1().get(3).getState(), q4);
                 changeColor(progress1.getLesson1().get(4).getState(), q5);
+                currentLesson="L1";
                 break;
 
 
@@ -262,6 +274,7 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
                 changeColor(progress1.getLesson2().get(2).getState(), q3);
                 changeColor(progress1.getLesson2().get(3).getState(), q4);
                 changeColor(progress1.getLesson2().get(4).getState(), q5);
+                currentLesson="L2";
                 break;
 
             case R.id.option_Lesson_Three:
@@ -269,6 +282,7 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
                 showHideQuestionsLayout();
                 dotSelectorThree.setColorFilter(context.getResources().getColor(R.color.main_yellow));
                 dotSelectorThree.setVisibility(View.VISIBLE);
+                //imageName+="Lesson3";
                 break;
 
 
@@ -277,7 +291,6 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
                 showHideQuestionsLayout();
                 dotSelectorFour.setColorFilter(context.getResources().getColor(R.color.main_yellow));
                 dotSelectorFour.setVisibility(View.VISIBLE);
-
                 break;
 
 
@@ -288,8 +301,41 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
                 dotSelectorFive.setVisibility(View.VISIBLE);
                 break;
 
+            case R.id.q1:
+                currentQuestion="Q1";
+                getImage(currentStudentName+currentLesson+currentQuestion);
+                break;
+
+            case R.id.q2:
+                currentQuestion="Q2";
+                getImage(currentStudentName+currentLesson+currentQuestion);
+                break;
+
+            case R.id.q3:
+                currentQuestion="Q3";
+                getImage(currentStudentName+currentLesson+currentQuestion);
+                break;
+
+            case R.id.q4:
+                currentQuestion="Q4";
+                getImage(currentStudentName+currentLesson+currentQuestion);
+                break;
+
+            case R.id.q5:
+                currentQuestion="Q5";
+                getImage(currentStudentName+currentLesson+currentQuestion);
+                break;
 
         }
+
+
+    }
+
+    private void getImage(String imageName) {
+
+        Log.d("IMAGENAME", "getImage: "+imageName);
+
+        urlListener.sendUrl(imageName);
 
     }
 
