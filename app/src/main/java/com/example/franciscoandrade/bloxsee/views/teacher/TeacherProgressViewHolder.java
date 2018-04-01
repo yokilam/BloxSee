@@ -33,6 +33,9 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
     LinearLayout questionsView;
     CardView name_Student_Card;
 
+    ImageView dotSelectorOne, dotSelectorTwo, dotSelectorThree, dotSelectorFour, dotSelectorFive;
+    LinearLayout option_Lesson_One, option_Lesson_Two, option_Lesson_Three, option_Lesson_Four, option_Lesson_Five;
+
     int average=100;
 
     public TeacherProgressViewHolder(View itemView) {
@@ -49,27 +52,64 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
         q4= itemView.findViewById(R.id.q4);
         q5= itemView.findViewById(R.id.q5);
         name_Student_Card= itemView.findViewById(R.id.name_Student_Card );
+        dotSelectorOne= itemView.findViewById(R.id.dotSelectorOne );
+        dotSelectorTwo= itemView.findViewById(R.id.dotSelectorTwo );
+        dotSelectorThree= itemView.findViewById(R.id.dotSelectorThree );
+        dotSelectorFour= itemView.findViewById(R.id.dotSelectorFour );
+        dotSelectorFive= itemView.findViewById(R.id.dotSelectorFive );
+        option_Lesson_One= itemView.findViewById(R.id.option_Lesson_One );
+        option_Lesson_Two= itemView.findViewById(R.id.option_Lesson_Two );
+        option_Lesson_Three= itemView.findViewById(R.id.option_Lesson_Three );
+        option_Lesson_Four= itemView.findViewById(R.id.option_Lesson_Four );
+        option_Lesson_Five= itemView.findViewById(R.id.option_Lesson_Five );
 
 
         cardLessons= itemView.findViewById(R.id.cardLessons);
         questionsView= itemView.findViewById(R.id.questionsView);
         expandableLayoutAnimation= new ExpandableLayoutAnimation();
 
-        questionOne.setOnClickListener(this);
-        questionTwo.setOnClickListener(this);
-        questionThree.setOnClickListener(this);
-        questionFour.setOnClickListener(this);
+//        questionOne.setOnClickListener(this);
+//        questionTwo.setOnClickListener(this);
+//        questionThree.setOnClickListener(this);
+//        questionFour.setOnClickListener(this);
         //questionFive.setOnClickListener(this);
-        cardLessons.setOnClickListener(this);
+        //cardLessons.setOnClickListener(this);
 
+
+
+
+
+        option_Lesson_One.setOnClickListener(this);
+        option_Lesson_Two.setOnClickListener(this);
+        option_Lesson_Three.setOnClickListener(this);
+        option_Lesson_Four.setOnClickListener(this);
+        option_Lesson_Five.setOnClickListener(this);
     }
 
     public void onBind(Progress progress, Context context) {
         name.setText(progress.getName());
         progress1= progress;
         this.context=context;
-
+        questionsView.setVisibility(View.GONE);
         calculateAVerage();
+        uncheckSelectors();
+
+    }
+
+    private void uncheckSelectors() {
+//        dotSelectorOne.setColorFilter(context.getResources().getColor(R.color.gray_selector));
+//        dotSelectorTwo.setColorFilter(context.getResources().getColor(R.color.gray_selector));
+//        dotSelectorThree.setColorFilter(context.getResources().getColor(R.color.gray_selector));
+//        dotSelectorFour.setColorFilter(context.getResources().getColor(R.color.gray_selector));
+//        dotSelectorFive.setColorFilter(context.getResources().getColor(R.color.gray_selector));
+
+
+        dotSelectorOne.setVisibility(View.INVISIBLE);
+        dotSelectorTwo.setVisibility(View.INVISIBLE);
+        dotSelectorThree.setVisibility(View.INVISIBLE);
+        dotSelectorFour.setVisibility(View.INVISIBLE);
+        dotSelectorFive.setVisibility(View.INVISIBLE);
+
 
     }
 
@@ -114,7 +154,7 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
     private void setColorAverage() {
 
         if(average>=80){
-            name_Student_Card.setCardBackgroundColor(Color.parseColor("#26A69A"));
+            name_Student_Card.setCardBackgroundColor(Color.parseColor("#ff66bb6a"));
         }
 
 
@@ -136,77 +176,134 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
 
 
         switch(v.getId()){
-            case R.id.lesson_1:
-//                expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
-                        //(v, expandableLayout, R.color.material_orange_200, expandState);
+//            case R.id.lesson_1:
+////                expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation
+//                        //(v, expandableLayout, R.color.material_orange_200, expandState);
+//                changeColor(progress1.getLesson1().get(0).getState(), q1);
+//                changeColor(progress1.getLesson1().get(1).getState(), q2);
+//                changeColor(progress1.getLesson1().get(2).getState(), q3);
+//                changeColor(progress1.getLesson1().get(3).getState(), q4);
+//                changeColor(progress1.getLesson1().get(4).getState(), q5);
+//                Log.d("COLORS1==", "onBind: "+progress1.getName());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().size());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(0).getQuestion());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(1).getQuestion());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(2).getQuestion());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(3).getQuestion());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(4).getQuestion());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(0).getState());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(1).getState());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(2).getState());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(3).getState());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(4).getState());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(0).getAvailable());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(1).getAvailable());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(2).getAvailable());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(3).getAvailable());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(4).getAvailable());
+//
+//
+//                break;
+//            case R.id.lesson_two:
+//                changeColor(progress1.getLesson2().get(0).getState(), q1);
+//                changeColor(progress1.getLesson2().get(1).getState(), q2);
+//                changeColor(progress1.getLesson2().get(2).getState(), q3);
+//                changeColor(progress1.getLesson2().get(3).getState(), q4);
+//                changeColor(progress1.getLesson2().get(4).getState(), q5);
+//
+//
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(0).getQuestion());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(1).getQuestion());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(2).getQuestion());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(3).getQuestion());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(4).getQuestion());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(0).getState());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(1).getState());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(2).getState());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(3).getState());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(4).getState());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(0).getAvailable());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(1).getAvailable());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(2).getAvailable());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(3).getAvailable());
+//                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(4).getAvailable());
+//                break;
+
+
+
+
+
+
+
+
+
+            case R.id.option_Lesson_One:
+
+                    uncheckSelectors();
+                    showHideQuestionsLayout();
+                    dotSelectorOne.setColorFilter(context.getResources().getColor(R.color.main_yellow));
+                    dotSelectorOne.setVisibility(View.VISIBLE);
                 changeColor(progress1.getLesson1().get(0).getState(), q1);
                 changeColor(progress1.getLesson1().get(1).getState(), q2);
                 changeColor(progress1.getLesson1().get(2).getState(), q3);
                 changeColor(progress1.getLesson1().get(3).getState(), q4);
                 changeColor(progress1.getLesson1().get(4).getState(), q5);
-                Log.d("COLORS1==", "onBind: "+progress1.getName());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().size());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(0).getQuestion());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(1).getQuestion());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(2).getQuestion());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(3).getQuestion());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(4).getQuestion());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(0).getState());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(1).getState());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(2).getState());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(3).getState());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(4).getState());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(0).getAvailable());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(1).getAvailable());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(2).getAvailable());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(3).getAvailable());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson1().get(4).getAvailable());
-
-
                 break;
-            case R.id.lesson_two:
+
+
+            case R.id.option_Lesson_Two:
+
+                uncheckSelectors();
+                showHideQuestionsLayout();
+                dotSelectorTwo.setColorFilter(context.getResources().getColor(R.color.main_yellow));
+                dotSelectorTwo.setVisibility(View.VISIBLE);
                 changeColor(progress1.getLesson2().get(0).getState(), q1);
                 changeColor(progress1.getLesson2().get(1).getState(), q2);
                 changeColor(progress1.getLesson2().get(2).getState(), q3);
                 changeColor(progress1.getLesson2().get(3).getState(), q4);
                 changeColor(progress1.getLesson2().get(4).getState(), q5);
-
-
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(0).getQuestion());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(1).getQuestion());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(2).getQuestion());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(3).getQuestion());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(4).getQuestion());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(0).getState());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(1).getState());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(2).getState());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(3).getState());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(4).getState());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(0).getAvailable());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(1).getAvailable());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(2).getAvailable());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(3).getAvailable());
-                Log.d("COLORS1==", "onBind: "+progress1.getLesson2().get(4).getAvailable());
                 break;
-//            case R.id.lesson_three:
-//                expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation(v, expandableLinearLayoutQuestions, R.color.material_blue_100, expandState);
-//                break;
-//            case R.id.lesson_four:
-//                expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation(v, expandableLinearLayoutQuestions, R.color.material_blue_100, expandState);
-//                break;
-//            case R.id.lesson_five:
-//                expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation(v, expandableLinearLayoutQuestions, R.color.material_blue_100, expandState);
-//                break;
 
-            case R.id.cardLessons:
-
-                if (questionsView.getVisibility()==View.GONE){
-                    questionsView.setVisibility(View.VISIBLE);
-                }else {
-                    questionsView.setVisibility(View.GONE);
-                }
+            case R.id.option_Lesson_Three:
+                uncheckSelectors();
+                showHideQuestionsLayout();
+                dotSelectorThree.setColorFilter(context.getResources().getColor(R.color.main_yellow));
+                dotSelectorThree.setVisibility(View.VISIBLE);
                 break;
+
+
+            case R.id.option_Lesson_Four:
+                uncheckSelectors();
+                showHideQuestionsLayout();
+                dotSelectorFour.setColorFilter(context.getResources().getColor(R.color.main_yellow));
+                dotSelectorFour.setVisibility(View.VISIBLE);
+
+                break;
+
+
+            case R.id.option_Lesson_Five:
+                uncheckSelectors();
+                showHideQuestionsLayout();
+                dotSelectorFive.setColorFilter(context.getResources().getColor(R.color.main_yellow));
+                dotSelectorFive.setVisibility(View.VISIBLE);
+                break;
+
+
         }
+
+    }
+
+    private void showHideQuestionsLayout() {
+//        if (questionsView.getVisibility()==View.GONE){
+//            questionsView.setVisibility(View.VISIBLE);
+//        }else {
+//            questionsView.setVisibility(View.GONE);
+//            uncheckSelectors();
+//        }
+
+
+        questionsView.setVisibility(View.VISIBLE);
+
 
     }
 

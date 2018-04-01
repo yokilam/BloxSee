@@ -64,6 +64,7 @@
 
     <color name="blue_background">#22285A</color>
     <color name="some_blue_background">#436a91</color>
+    <color name="gray_selector">#FFC9C9C9</color>
 
 
 </resources>

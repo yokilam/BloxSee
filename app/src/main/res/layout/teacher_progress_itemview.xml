@@ -5,6 +5,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+
+
     <LinearLayout
         android:id="@+id/questionsView"
         android:layout_width="match_parent"
@@ -17,7 +19,20 @@
         android:layout_alignParentEnd="true"
         android:layout_alignBaseline="@+id/student"
         android:layout_marginTop="40dp"
-        android:orientation="horizontal">
+        android:orientation="vertical">
+
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Questions: "-->
+            <!--/>-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
 
         <ImageView
             android:id="@+id/q1"
@@ -67,6 +82,57 @@
             />
 
 
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Q1"
+                android:textAlignment="center"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Q2"
+                android:textAlignment="center"
+                />
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Q3"
+                android:textAlignment="center"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Q4"
+                android:textAlignment="center"
+                />
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Q5"
+                android:textAlignment="center"
+                />
+        </LinearLayout>
+
     </LinearLayout>
     <RelativeLayout
         android:id="@+id/student"
@@ -89,7 +155,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:layout_gravity="bottom"
-            android:clickable="true"
+            android:clickable="false"
             android:foreground="?android:selectableItemBackground">
 
             <LinearLayout
@@ -110,55 +176,138 @@
                     android:layout_gravity="center"
                     android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/lesson_1"
+                    <LinearLayout
+                        android:id="@+id/option_Lesson_One"
                         android:layout_width="0dp"
                         android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/lesson_1"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="1"
                         android:textAlignment="center"
                         android:textSize="20sp"
                         />
 
-                    <TextView
-                        android:id="@+id/lesson_two"
+                        <ImageView
+                            android:id="@+id/dotSelectorOne"
+                            android:layout_width="8dp"
+                            android:layout_height="8dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_dot"
+                            android:tint="@color/main_yellow"/>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/option_Lesson_Two"
                         android:layout_width="0dp"
                         android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/lesson_two"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="2"
                         android:textAlignment="center"
                         android:textSize="20sp"
                         />
 
-                    <TextView
-                        android:id="@+id/lesson_three"
+                        <ImageView
+                            android:id="@+id/dotSelectorTwo"
+                            android:layout_width="8dp"
+                            android:layout_height="8dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_dot"
+                            android:tint="@color/main_yellow"/>
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:id="@+id/option_Lesson_Three"
                         android:layout_width="0dp"
                         android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/lesson_three"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="3"
                         android:textAlignment="center"
                         android:textSize="20sp"
                         />
 
+                        <ImageView
+                            android:id="@+id/dotSelectorThree"
+                            android:layout_width="8dp"
+                            android:layout_height="8dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_dot"
+                            android:tint="@color/main_yellow"/>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/option_Lesson_Four"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/lesson_four"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="4"
                         android:textAlignment="center"
                         android:textSize="20sp"
                         />
-                    <TextView
-                        android:id="@+id/lesson_five"
+
+                        <ImageView
+                            android:id="@+id/dotSelectorFour"
+                            android:layout_width="8dp"
+                            android:layout_height="8dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_dot"
+                            android:tint="@color/main_yellow"/>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/option_Lesson_Five"
                         android:layout_width="0dp"
                         android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/lesson_five"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="5"
                         android:textAlignment="center"
                         android:textSize="20sp"
                         />
+
+
+                        <ImageView
+                            android:id="@+id/dotSelectorFive"
+                            android:layout_width="8dp"
+                            android:layout_height="8dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_dot"
+                            android:tint="@color/main_yellow"/>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
