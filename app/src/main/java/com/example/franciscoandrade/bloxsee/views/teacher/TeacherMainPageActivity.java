@@ -120,9 +120,8 @@ public class TeacherMainPageActivity extends AppCompatActivity implements ViewPa
     public boolean onOptionsItemSelected(MenuItem item) {
         super.onOptionsItemSelected(item);
         if(item.getItemId() == R.id.signout_teacher){
-//            Intent intent = new Intent(TeacherMainPageActivity.this, SignInActivity.class);
-//            startActivity(intent);
-
+            Intent intent = new Intent(TeacherMainPageActivity.this, SignInActivity.class);
+            startActivity(intent);
             finish();
         }
         return true;
