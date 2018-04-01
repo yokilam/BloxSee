@@ -3,6 +3,7 @@ package com.example.franciscoandrade.bloxsee.views.student;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -11,6 +12,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.util.Log;
@@ -23,6 +26,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.franciscoandrade.bloxsee.R;
 import com.example.franciscoandrade.bloxsee.util.Screenshot;
 import com.github.clans.fab.FloatingActionButton;
@@ -46,17 +50,20 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     private View root;
     private ImageView sprite;
     private AnimatorSet animSetXY;
-    private List<Animator> animSequenceArr;
+    private List <Animator> animSequenceArr;
     private TextView questionTV;
 
     private FloatingActionMenu menu_yellow;
-    private com.github.clans.fab.FloatingActionButton  fab22, fab32;
-    private List<FloatingActionMenu> menus= new ArrayList<>();
+    private com.github.clans.fab.FloatingActionButton fab22, fab32;
+    private List <FloatingActionMenu> menus = new ArrayList <>();
 
     private FirebaseStorage storage;
     private StorageReference storageReference;
     private Bitmap b;
     private FrameLayout blockContainer;
+
+    private Dialog dialog;
+    private LottieAnimationView lottieAnimationView;
 
     //Joanne*** These are the values you need
     String user;
@@ -72,7 +79,6 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         storageReference = storage.getReference();
 
         getInfo();
-
     }
 
     @Override
@@ -83,7 +89,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         menu_yellow = root.findViewById(R.id.menu_yellow);
         fab22 = root.findViewById(R.id.fab22);
         fab32 = root.findViewById(R.id.fab32);
-        blockContainer= findViewById(R.id.blockContainer);
+        blockContainer = findViewById(R.id.blockContainer);
         getInfo();
         return root;
     }
@@ -111,7 +117,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         fab22.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                  b = Screenshot.takeScreenShotofRootView(root);
+                b = Screenshot.takeScreenShotofRootView(root);
                 // image.setImageBitmap(b)
 
                 uploadImage();
@@ -126,7 +132,6 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
                 } else {
                     Log.i("hihi", "No blocks in workspace. Skipping run request.");
                 }
-
             }
         });
 
@@ -138,7 +143,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         b.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] data = baos.toByteArray();
 
-        StorageReference imagesRef = storageReference.child("images/"+user+".jpg");
+        StorageReference imagesRef = storageReference.child("images/" + user + ".jpg");
 
         UploadTask uploadTask = imagesRef.putBytes(data);
         uploadTask.addOnFailureListener(new OnFailureListener() {
@@ -146,7 +151,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
             public void onFailure(@NonNull Exception exception) {
                 // Handle unsuccessful uploads
             }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+        }).addOnSuccessListener(new OnSuccessListener <UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
@@ -155,7 +160,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
             }
         });
 
-        }
+    }
 
     @NonNull
     @Override
@@ -165,7 +170,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
 
     @NonNull
     @Override
-    protected List<String> getBlockDefinitionsJsonPaths() {
+    protected List <String> getBlockDefinitionsJsonPaths() {
         return Arrays.asList(
                 "blocks_one.json",
                 "blocks_two.json",
@@ -173,30 +178,35 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
                 "blocks_four.json"
         );
     }
-    private static final List<String> JAVASCRIPT_GENERATORS = Arrays.asList(
+
+    private static final List <String> JAVASCRIPT_GENERATORS = Arrays.asList(
             "generator_one.js"
     );
+
     @NonNull
     @Override
-    protected List<String> getGeneratorsJsPaths() {
+    protected List <String> getGeneratorsJsPaths() {
         return JAVASCRIPT_GENERATORS;
     }
 
     CodeGenerationRequest.CodeGeneratorCallback mCodeGeneratorCallback =
             new BlocklyGenerator(this, "LoggingTag", this);
+
     @NonNull
     @Override
     protected CodeGenerationRequest.CodeGeneratorCallback getCodeGenerationCallback() {
         return mCodeGeneratorCallback;
     }
+
     @Override
     protected void onInitBlankWorkspace() {
         getController().addVariable("item");
     }
+
     @Override
     public void sendGeneratedCode(String str) {
 
-        animSequenceArr = new ArrayList<>();
+        animSequenceArr = new ArrayList <>();
         animSetXY = new AnimatorSet();
         animSetXY.setDuration(5000);
         ObjectAnimator animMove10 = ObjectAnimator.ofFloat(sprite, "x", sprite.getX(), sprite.getX() + 100f);
@@ -208,10 +218,10 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         String[] removeIndentArr = str.split("\n");
         Log.d("hihi", "in sendGC");
 
-        for(int i = 0; i<removeIndentArr.length; i++){
+        for (int i = 0; i < removeIndentArr.length; i++) {
             Log.d("hihi", "in forloop");
             Log.d("hihi", removeIndentArr[i]);
-            switch(removeIndentArr[i]){
+            switch (removeIndentArr[i]) {
                 case "start":
                     Log.d("hihi", "start");
                     break;
@@ -237,32 +247,53 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         animSetXY.playSequentially(animSequenceArr);
         animSetXY.start();
 
-        checkAnswer(str);
+        if (checkAnswer(str)) {
+            runOnAnotherThread("goodjob.json");
+        } else {
+            runOnAnotherThread("tryagain.json");
+        }
     }
 
-    public boolean checkAnswer(String str){
+    public boolean checkAnswer(String str) {
         String answerKey = "start\n" + "moveright\n" + "movedown\n";
-        if(str.equals(answerKey)){
+        if (str.equals(answerKey)) {
             Log.d("hihi", str + "hihi");
             Log.d("hihi", answerKey);
-            Toast.makeText(getApplicationContext(),"yay! you did it!", Toast.LENGTH_LONG).show();
             return true;
-        }
-        else{
-            Toast.makeText(getApplicationContext(),"try again", Toast.LENGTH_SHORT).show();
+        } else {
             Log.d("hihi", str + "hihi");
             return false;
         }
+
     }
-    public void getInfo(){
+
+    private void setUpDialog(String json) {
+        dialog = new Dialog(BlocklyActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.custom_dialog);
+        lottieAnimationView = dialog.findViewById(R.id.goodjob);
+        lottieAnimationView.setAnimation(json);
+        lottieAnimationView.playAnimation();
+        dialog.show();
+    }
+
+    public void getInfo() {
         Intent intent = getIntent();
         user = intent.getStringExtra("studentName");
         currentQuestion = intent.getStringExtra("currentQuestion");
 
         questionTV.setText(currentQuestion);
 
-        Log.d("STUDENT", "getInfo: "+user);
-        Log.d("STUDENT", "getInfo: "+currentQuestion);
+        Log.d("STUDENT", "getInfo: " + user);
+        Log.d("STUDENT", "getInfo: " + currentQuestion);
     }
 
+    public void runOnAnotherThread(final String json) {
+        Handler refresh = new Handler(Looper.getMainLooper());
+        refresh.post(new Runnable() {
+            public void run() {
+                setUpDialog(json);
+            }
+        });
+    }
 }
