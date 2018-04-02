@@ -33,6 +33,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -51,19 +54,22 @@ public class TeacherSignInFragment extends Fragment {
     private TextView signUp_Btn;
     private LinearLayout signUp_container, signIn_container;
     private String nameText, emailText, passwordText;
-    String passwordLogin, emailLogin;
+    private String passwordLogin, emailLogin;
+    private String teacherName;
     //1.Firebase
     private FirebaseAuth mAuth;
     private ProgressBar progress;
     private DatabaseReference ref;
+    private DatabaseReference teacherRef;
     private FirebaseDatabase database;
     private FirebaseAuth.AuthStateListener mAuthListener;
     CheckBox remeber_checkBox;
     //SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
     public static final String MyPREFERENCES = "myprefs";
-    public static final  String value = "key";
+    public static final String value = "key";
     SharedPreferences sharedpreferences;
-    SharedPreferences.Editor editor ;
+    SharedPreferences.Editor editor;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -72,9 +78,9 @@ public class TeacherSignInFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_teacher_sign_in, container, false);
         setUpViews();
         sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-
         database = FirebaseDatabase.getInstance();
         ref = database.getReference();
+        teacherRef = database.getReference("teacher");
         nameText = name_ET.getText().toString();
         emailText = email_ET.getText().toString();
         passwordText = password_ET.getText().toString();
@@ -94,10 +100,10 @@ public class TeacherSignInFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
-        String email=sharedpreferences.getString("email", "");
-        String pass=sharedpreferences.getString("password", "");
+        String email = sharedpreferences.getString("email", "");
+        String pass = sharedpreferences.getString("password", "");
 
-        if(!email.equals("") & !pass.equals("")){
+        if (!email.equals("") & !pass.equals("")) {
             email_edittext.setText(sharedpreferences.getString("email", ""));
             password_edittext.setText(sharedpreferences.getString("password", ""));
             remeber_checkBox.setChecked(true);
@@ -107,16 +113,12 @@ public class TeacherSignInFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
     }
 
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
-
     }
 
     //setting all views
@@ -163,9 +165,9 @@ public class TeacherSignInFragment extends Fragment {
         passwordText = password_ET.getText().toString();
         if (!TextUtils.isEmpty(nameText) && !TextUtils.isEmpty(emailText) && !TextUtils.isEmpty(passwordText)) {
             mAuth.createUserWithEmailAndPassword(emailText, passwordText)
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    .addOnCompleteListener(new OnCompleteListener <AuthResult>() {
                         @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
+                        public void onComplete(@NonNull Task <AuthResult> task) {
                             if (task.isSuccessful()) {
                                 progress.setVisibility(View.GONE);
                                 String user_id = mAuth.getCurrentUser().getUid();
@@ -200,7 +202,6 @@ public class TeacherSignInFragment extends Fragment {
         ref.child("teacher").child(name).setValue(teacher);
     }
 
-
     /**
      * Method checks if user has valid credentials
      * If user approved, user can access their account
@@ -213,25 +214,44 @@ public class TeacherSignInFragment extends Fragment {
             }
         });
     }
+
     private void signInLogic() {
         passwordLogin = password_edittext.getText().toString();
         emailLogin = email_edittext.getText().toString();
 
         if (!TextUtils.isEmpty(emailLogin) && !TextUtils.isEmpty(passwordLogin)) {
             mAuth.signInWithEmailAndPassword(emailLogin, passwordLogin)
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    .addOnCompleteListener(new OnCompleteListener <AuthResult>() {
                         @Override
 
                         public void onComplete(@NonNull Task <AuthResult> task) {
                             if (task.isSuccessful()) {
-                                Log.d(TAG, "“onComplete: It is working”");
                                 saveCredentials(emailLogin, passwordLogin);
-                                intentToTeacherMainPageActivity();
+                                /* checks the database where if the email equals to the email that the user type and sign in successfully,
+                                    then addChildEventListener to get the ref's key, which is equal to the name of the teacher.
+                                 */
+                                teacherRef.orderByChild("email").equalTo(emailLogin).addChildEventListener(new ChildEventListener() {
+                                    @Override
+                                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                        teacherName = dataSnapshot.getRef().getKey();
+                                        intentToTeacherMainPageActivity(teacherName);
+                                    }
+
+                                    @Override
+                                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
+
+                                    @Override
+                                    public void onChildRemoved(DataSnapshot dataSnapshot) {}
+
+                                    @Override
+                                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {}
+                                });
 
                                 password_edittext.setText("");
                                 email_edittext.setText("");
-                                saveTeacherDisplayInfo(task.getResult().getUser().getDisplayName());
-                                Log.d(TAG, "onComplete: Display Name===" + task.getResult().getUser());
                             }
 
                             task.addOnFailureListener(new OnFailureListener() {
@@ -243,43 +263,31 @@ public class TeacherSignInFragment extends Fragment {
                                     email_edittext.setText("");
                                 }
                             });
-
                         }
                     });
-
         }
-
     }
 
     private void saveCredentials(String email, String password) {
         editor = sharedpreferences.edit();
-        if(remeber_checkBox.isChecked() ) {
+        if (remeber_checkBox.isChecked()) {
             editor.putString("email", email);
             editor.putString("password", password);
-
-        }
-        else {
+        } else {
             editor.putString("email", "");
             editor.putString("password", "");
         }
         editor.apply();
     }
 
-    private void intentToTeacherMainPageActivity() {
+    private void intentToTeacherMainPageActivity(String teacherName) {
         Intent intent = new Intent(view.getContext(), TeacherMainPageActivity.class);
+        intent.putExtra("teacherName", teacherName);
+        Log.d("intent==", "intentToTeacherMainPageActivity: " + teacherName);
         view.getContext().startActivity(intent);
         getActivity().finish();
 
     }
-
-    private void saveTeacherDisplayInfo(String teacherName) {
-        SharedPreferences prefs = getActivity().getSharedPreferences("teacher_info", MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString("teacher_email", teacherName);
-        Log.d(TAG, "saveTeacherDisplayInfo: " + nameText);
-        editor.commit();
-    }
-
 
     /**
      * Empty Editext Text

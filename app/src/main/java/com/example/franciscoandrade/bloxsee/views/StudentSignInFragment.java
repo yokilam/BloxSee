@@ -34,7 +34,7 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
 
     private View v;
     private Spinner spinner;
-    TeacherSignInFragment teacherSignInFragment;
+    private TeacherSignInFragment teacherSignInFragment;
     android.support.v4.app.FragmentManager fragmentManager;
     private TextView toTeacherFragment;
     private ArrayList <String> listStudents;
@@ -43,13 +43,11 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
     //Firebase Setup
     private DatabaseReference ref;
     private FirebaseDatabase database;
-    DatabaseReference messageRef;
-    Student student;
-    String animalPicked;
-    String pass;
-    LinearLayout animalRowOne, animalRowTwo;
-    boolean isColor;
-
+    private DatabaseReference messageRef;
+    private Student student;
+    private String animalPicked;
+    private String pass;
+    private LinearLayout animalRowOne, animalRowTwo;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,11 +65,6 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
         new AsyncClass().execute();
 
         hideCharacters();
-
-
-
-
-
 
         return v;
     }
@@ -91,10 +84,7 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
                 }
             }
             @Override
-            public void onNothingSelected(AdapterView <?> parent) {
-                animalRowOne.setVisibility(View.GONE);
-
-            }
+            public void onNothingSelected(AdapterView <?> parent) {}
         });
     }
 
@@ -135,45 +125,36 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
                 animalPicked = "Penguin";
                 penguin.setBackgroundResource(R.drawable.penguin_color);
                 break;
-
             case R.id.duck:
                 duck.setBackgroundResource(R.drawable.duck_color);
                 animalPicked = "Ghost";
                 Toast.makeText(getActivity(), "duck", Toast.LENGTH_SHORT).show();
                 break;
-
             case R.id.dog:
                 dog.setBackgroundResource(R.drawable.dog_color);
                 animalPicked = "Dog";
                 Toast.makeText(getActivity(), "dog", Toast.LENGTH_SHORT).show();
                 break;
-
             case R.id.monkey:
                 monkey.setBackgroundResource(R.drawable.monkey_color);
                 animalPicked = "Cat";
                 Toast.makeText(getActivity(), "Monkey", Toast.LENGTH_SHORT).show();
                 break;
-
-
             case R.id.pig:
                 pig.setBackgroundResource(R.drawable.pig_color);
                 animalPicked = "Dragon";
                 Toast.makeText(getActivity(), "pig", Toast.LENGTH_SHORT).show();
                 break;
-
             case R.id.seal:
                 seal.setBackgroundResource(R.drawable.seal_color);
                 animalPicked = "Octopus";
                 Toast.makeText(getActivity(), "Seal", Toast.LENGTH_SHORT).show();
                 break;
-
             case R.id.studentLogInBtn:
                 loginStudent();
                 //Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
                 break;
         }
-
-
     }
 
     private void loginStudent() {
@@ -182,15 +163,12 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
         if (!TextUtils.isEmpty(animalPicked) && !nameStudent.equals(listStudents.get(0)) && spinner.getSelectedItem().toString() != null) {
             Log.d("SPINNER==", "loginStudent: Animal: READY TO LOG IN");
             String result = getPasswordOfUser(nameStudent, animalPicked);
-
             Log.d("LOGIN====", "loginStudent: " + result);
             Log.d("LOGIN====", "loginStudent: " + animalPicked);
-
 
             Log.d("LOGIIN==", "loginStudent: " + ref.child("students").child(nameStudent).getKey());
 
         }
-
     }
 
     private String getPasswordOfUser(String student, final String password) {
@@ -206,13 +184,9 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
                 Log.d("LOGIIN==", "loginStudent: 2222 " + dataSnapshot.getValue());
 
                 checkLoginCredentials(pass, password);
-
             }
-
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
+            public void onCancelled(DatabaseError databaseError) {}
         });
 
         Log.d("LOGIIN==", "loginStudent: 2222111 " + pass);
@@ -232,7 +206,6 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
             getActivity().finish();
             Log.d("CHECKING", "checkLoginCredentials: PASSEED");
             Toast.makeText(getActivity(), "PASSED", Toast.LENGTH_SHORT).show();
-
         } else {
             Log.d("STUDENT", "loginStudent: password Doesnt match");
             Toast.makeText(getActivity(), "loginStudent: password Doesnt match", Toast.LENGTH_SHORT).show();
