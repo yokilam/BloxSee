@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import com.example.franciscoandrade.bloxsee.R;
 import com.example.franciscoandrade.bloxsee.ScreenShotFragment;
 import com.example.franciscoandrade.bloxsee.controller.teacher.PagerAdapterTeacher;
+import com.example.franciscoandrade.bloxsee.views.SignInActivity;
 import com.example.franciscoandrade.bloxsee.views.student.CloseScreenshot;
 import com.example.franciscoandrade.bloxsee.views.student.UrlListener;
 
@@ -41,8 +42,8 @@ public class TeacherMainPageActivity extends AppCompatActivity implements ViewPa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher_main_page);
 
-        Intent intent= getIntent();
-        teacherName=intent.getStringExtra("teacherName");
+        Intent intentFromTeacherSignIn= getIntent();
+        teacherName=intentFromTeacherSignIn.getStringExtra("teacherName");
         Log.d("teacherName", "onCreate: " + teacherName);
 
         setupToolbar();
@@ -144,13 +145,11 @@ public class TeacherMainPageActivity extends AppCompatActivity implements ViewPa
     @Override
     public void onPageSelected(int position) {
         Log.d("PAGER==", "onPageSelected: "+position);
-
         actualPosition=String.valueOf(position);
     }
 
     @Override
     public void onPageScrollStateChanged(int state) {}
-
 
     @Override
     public void closeFragment() {
