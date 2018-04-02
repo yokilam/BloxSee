@@ -136,13 +136,16 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
         List<String> lesson1= new ArrayList<>();
         List<String> lesson2= new ArrayList<>();
 
+
+       if (progress1.getLesson1().size()!=0 &&progress1.getLesson2().size()!=0){
+
+
+
         for (int i = 0; i < 5; i++) {
             lesson1.add(progress1.getLesson1().get(i).getState());
 
-
             lesson2.add(progress1.getLesson1().get(i).getState());
         }
-
 
         for (int i = 0; i < 5; i++) {
             Log.d("AVERAGE=", "calculateAVerage: "+progress1.getName()+" - "+lesson1.get(i));
@@ -167,6 +170,8 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
 
 
         setColorAverage();
+
+       }
 
     }
 
@@ -254,6 +259,8 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
                     showHideQuestionsLayout();
                     dotSelectorOne.setColorFilter(context.getResources().getColor(R.color.main_yellow));
                     dotSelectorOne.setVisibility(View.VISIBLE);
+                Log.d("TIMER", "onClick: "+progress1.getLesson1().size());
+                Log.d("TIMER", "onClick: "+progress1.getLesson1().get(0).getState());
                 changeColor(progress1.getLesson1().get(0).getState(), q1);
                 changeColor(progress1.getLesson1().get(1).getState(), q2);
                 changeColor(progress1.getLesson1().get(2).getState(), q3);

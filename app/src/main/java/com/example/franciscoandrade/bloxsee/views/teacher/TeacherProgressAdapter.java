@@ -40,9 +40,9 @@ public class TeacherProgressAdapter extends RecyclerView.Adapter<TeacherProgress
     }
 
     public void addProgress(Set<Progress> progressList) {
-        progressLis.clear();
+        this.progressLis.clear();
         notifyDataSetChanged();
-        progressLis.addAll(progressList);
+        this.progressLis.addAll(progressList);
         notifyDataSetChanged();
     }
 }

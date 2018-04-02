@@ -1,22 +1,27 @@
 package com.example.franciscoandrade.bloxsee.views.teacher;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.franciscoandrade.bloxsee.R;
+import com.example.franciscoandrade.bloxsee.model.Progress;
 import com.example.franciscoandrade.bloxsee.model.Student;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class TeacherRosterAdapter extends RecyclerView.Adapter<TeacherRosterViewHolder> {
 
-    private List<Student> studentList= new ArrayList <>();
+    private List<Student> studentList;
+    private Context context;
 
-    public TeacherRosterAdapter(List <Student> studentList) {
-        this.studentList = studentList;
+    public TeacherRosterAdapter(Context context) {
+        studentList= new ArrayList <>();
+        this.context= context;
     }
 
     @Override
@@ -27,15 +32,18 @@ public class TeacherRosterAdapter extends RecyclerView.Adapter<TeacherRosterView
 
     @Override
     public void onBindViewHolder(TeacherRosterViewHolder holder, int position) {
-        holder.onBind(getStudentList().get(position), position, studentList.size());
+        holder.onBind(studentList.get(position), position, studentList.size());
     }
 
     @Override
     public int getItemCount() {
-        return getStudentList().size();
+        return studentList.size();
     }
 
-    public List <Student> getStudentList() {
-        return studentList;
+    public void addStudents(List<Student> studentList) {
+        this.studentList.clear();
+        notifyDataSetChanged();
+        this.studentList.addAll(studentList);
+        notifyDataSetChanged();
     }
 }

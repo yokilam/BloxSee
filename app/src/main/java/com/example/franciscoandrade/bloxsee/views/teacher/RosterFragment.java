@@ -102,7 +102,8 @@ public class RosterFragment extends Fragment {
         student= new Student();
         studentList = new ArrayList <>();
 
-        teacherRosterAdapter= new TeacherRosterAdapter(studentList);
+        teacherRosterAdapter= new TeacherRosterAdapter(getActivity());
+        recyclerView.setAdapter(teacherRosterAdapter);
 
 
         ChildEventListener childEventListener= new ChildEventListener(){
@@ -111,7 +112,7 @@ public class RosterFragment extends Fragment {
                 student=dataSnapshot.getValue(Student.class);
                 Log.d("CHILD", "onChildAdded: "+ student.getName());
                 studentList.add(student);
-                recyclerView.setAdapter(teacherRosterAdapter);
+                teacherRosterAdapter.addStudents(studentList);
             }
 
             @Override

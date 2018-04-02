@@ -87,11 +87,78 @@ public class ProgressFragment extends Fragment  {
         Log.d("VIEW", "onCreateView: GETDATTAAA!!");
 
         //progressList= new ArrayList<>();
-        progressList = new HashSet<Progress>();;
+        progressList = new HashSet<>();
 
         childEventListener= new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+                Log.d("ADDED", "onChildAdded: "+dataSnapshot.getKey()+dataSnapshot.getValue());
+                Progress progress= new Progress();
+                StudentQuestions studentQuestions;
+                StudentQuestions studentQuestions2;
+
+                progress.setName(dataSnapshot.getKey());
+                lesson1= new ArrayList<>();
+                lesson2= new ArrayList<>();
+                Log.d("NAME=", "onChildAdded: "+dataSnapshot);
+                for (int i = 1; i < 3; i++) {
+                    for (int j = 1; j < 6; j++) {
+                        studentQuestions= new StudentQuestions();
+                        studentQuestions2= new StudentQuestions();
+
+                        //if (i==1 && dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue()!= null){
+
+
+                                //Log.d("FAILING", "onChildAdded: "+dataSnapshot.child("lesson1").child(j-1+"").child("state").getValue());
+                                //Log.d("FAILING", "onChildAdded: "+dataSnapshot.getKey());
+                                //Log.d("FAILING", "onChildAdded: "+dataSnapshot.child("lesson1").child(j-1+"").getValue());
+                                String state= dataSnapshot.child("lesson1").child(j-1+"").child("state").getValue()+"";
+                            Log.d("STATE", "onChildAdded: "+dataSnapshot.child("lesson1").child(j-1+"").child("question").getValue().toString());
+
+                            studentQuestions.setState(state);
+                            studentQuestions.setQuestion(dataSnapshot.child("lesson"+i).child(j-1+"").child("question").getValue().toString());
+                            lesson1.add(studentQuestions);
+
+
+                        //if(i==2 && dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue()!= null){
+
+
+                            String state2= dataSnapshot.child("lesson2").child(j-1+"").child("state").getValue().toString();
+                            Log.d("STATE", "onChildAdded: "+state);
+                            studentQuestions2.setQuestion(dataSnapshot.child("lesson2").child(j-1+"").child("question").getValue().toString());
+                            studentQuestions2.setState(state2);
+                            lesson2.add(studentQuestions);
+                    }
+
+//                Log.d("QS==", "onChildAdded: "+lesson1.get(0).getQuestion());
+//                Log.d("QS==", "onChildAdded: "+lesson1.get(1).getQuestion());
+//                Log.d("QS==", "onChildAdded: "+lesson1.get(2).getQuestion());
+//                Log.d("QS==", "onChildAdded: "+lesson1.get(3).getQuestion());
+//                Log.d("QS==", "onChildAdded: "+lesson1.get(4).getQuestion());
+//                Log.d("QS==", "onChildAdded: "+lesson1.get(0).getState());
+//                Log.d("QS==", "onChildAdded: "+lesson1.get(1).getState());
+//                Log.d("QS==", "onChildAdded: "+lesson1.get(2).getState());
+//                Log.d("QS==", "onChildAdded: "+lesson1.get(3).getState());
+//                Log.d("QS==", "onChildAdded: "+lesson1.get(4).getState());
+                progress.setLesson1(lesson1);
+                progress.setLesson2(lesson2);
+                progressList.add(progress);
+                }
+
+
+                teacherProgressAdapter.notifyDataSetChanged();
+                teacherProgressAdapter.addProgress(progressList);
+                //runTimer();
+                teacherProgressAdapter.notifyDataSetChanged();
+                teacherProgressAdapter.addProgress(progressList);
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                Log.d("CHANGED", "onChildChanged: ");
+/*
                 Progress progress= new Progress();
                 StudentQuestions studentQuestions;
 
@@ -106,7 +173,7 @@ public class ProgressFragment extends Fragment  {
                         if (i==1 && dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue()!= null){
 
                             String state= dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue().toString();
-                            Log.d("STATE", "onChildAdded: "+dataSnapshot.child("lesson"+i).child(j+"").child("question").getValue().toString());
+//                            Log.d("STATE", "onChildAdded: "+dataSnapshot.child("lesson"+i).child(j+"").child("question").getValue().toString());
 
                             studentQuestions.setState(state);
                             studentQuestions.setQuestion(dataSnapshot.child("lesson"+i).child(j+"").child("question").getValue().toString());
@@ -121,59 +188,67 @@ public class ProgressFragment extends Fragment  {
                             lesson2.add(studentQuestions);                        }
                     }
 
-                Log.d("QS==", "onChildAdded: "+lesson1.get(0).getQuestion());
-                Log.d("QS==", "onChildAdded: "+lesson1.get(1).getQuestion());
-                Log.d("QS==", "onChildAdded: "+lesson1.get(2).getQuestion());
-                Log.d("QS==", "onChildAdded: "+lesson1.get(3).getQuestion());
-                Log.d("QS==", "onChildAdded: "+lesson1.get(4).getQuestion());
-                Log.d("QS==", "onChildAdded: "+lesson1.get(0).getState());
-                Log.d("QS==", "onChildAdded: "+lesson1.get(1).getState());
-                Log.d("QS==", "onChildAdded: "+lesson1.get(2).getState());
-                Log.d("QS==", "onChildAdded: "+lesson1.get(3).getState());
-                Log.d("QS==", "onChildAdded: "+lesson1.get(4).getState());
-                progress.setLesson1(lesson1);
-                progress.setLesson2(lesson2);
-                progressList.add(progress);
+//                Log.d("QS==", "onChildAdded: "+lesson1.get(0).getQuestion());
+//                Log.d("QS==", "onChildAdded: "+lesson1.get(1).getQuestion());
+//                Log.d("QS==", "onChildAdded: "+lesson1.get(2).getQuestion());
+//                Log.d("QS==", "onChildAdded: "+lesson1.get(3).getQuestion());
+//                Log.d("QS==", "onChildAdded: "+lesson1.get(4).getQuestion());
+//                Log.d("QS==", "onChildAdded: "+lesson1.get(0).getState());
+//                Log.d("QS==", "onChildAdded: "+lesson1.get(1).getState());
+//                Log.d("QS==", "onChildAdded: "+lesson1.get(2).getState());
+//                Log.d("QS==", "onChildAdded: "+lesson1.get(3).getState());
+//                Log.d("QS==", "onChildAdded: "+lesson1.get(4).getState());
+                    progress.setLesson1(lesson1);
+                    progress.setLesson2(lesson2);
+                    progressList.add(progress);
+
                 }
 
-
-
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+        teacherProgressAdapter.notifyDataSetChanged();
+        teacherProgressAdapter.addProgress(progressList);
+                    */
 
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-
+                Log.d("REMOVED", "onChildRemoved: ");
             }
 
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                Log.d("MOVED", "onChildMoved: ");
 
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+                Log.d("CANCELLED", "onCancelled: ");
 
             }
+
+
+
         };
 
         ref.child("students").addChildEventListener(childEventListener);
-        runTimer();
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-//                for (int i = 0; i < progressList.size()-1; i++) {
-//                    Log.d("ListaaaProgress", "onStart: "+ progressList.get(i).getName()+" lesson1: "+ progressList.get(i).getLesson1().get(i)+"lesson2: "+progressList.get(i).getLesson2().get(i));
-//                }
-                teacherProgressAdapter.notifyDataSetChanged();
-                teacherProgressAdapter.addProgress(progressList);
-            }
-        }, 2000);
+
+        Log.d("TIMER", "getData: BEFORE TIMER");
+//        teacherProgressAdapter.notifyDataSetChanged();
+//        teacherProgressAdapter.addProgress(progressList);
+       // runTimer();
+//        Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+
+//            public void run() {
+////                for (int i = 0; i < progressList.size()-1; i++) {
+////                    Log.d("ListaaaProgress", "onStart: "+ progressList.get(i).getName()+" lesson1: "+ progressList.get(i).getLesson1().get(i)+"lesson2: "+progressList.get(i).getLesson2().get(i));
+////                }
+//                teacherProgressAdapter.notifyDataSetChanged();
+//                teacherProgressAdapter.addProgress(progressList);
+//            }
+//        }, 2000);
     }
 
     @Override
