@@ -3,10 +3,6 @@ package com.example.franciscoandrade.bloxsee.views;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.animation.Animation;
-import android.widget.LinearLayout;
-
-import com.airbnb.lottie.LottieAnimationView;
 import com.example.franciscoandrade.bloxsee.R;
 
 public class SignInActivity extends AppCompatActivity  {
@@ -25,7 +21,6 @@ public class SignInActivity extends AppCompatActivity  {
 // don't delete my intent please
 //        Intent intent = new Intent(this, BlocklyActivity.class);
 //        startActivity(intent);
-
 
     }
 }

@@ -1,6 +1,5 @@
 package com.example.franciscoandrade.bloxsee.views;
 
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,6 +9,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -38,7 +39,7 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
     android.support.v4.app.FragmentManager fragmentManager;
     private TextView toTeacherFragment;
     private ArrayList <String> listStudents;
-    private ImageView penguin, duck, dog, monkey, pig, seal;
+    private ImageView penguin, duck, dog, monkey, pig, seal, bloxseelogo;
     private Button studentLogInBtn;
     //Firebase Setup
     private DatabaseReference ref;
@@ -48,6 +49,7 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
     private String animalPicked;
     private String pass;
     private LinearLayout animalRowOne, animalRowTwo;
+    private Animation fromTop;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,6 +60,9 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
         teacherSignInFragment = new TeacherSignInFragment();
 
         setUpViews();
+        fromTop = AnimationUtils.loadAnimation(v.getContext(), R.anim.fromtop);
+        bloxseelogo.setAnimation(fromTop);
+
         imageSetClicks();
         listStudents = new ArrayList <>();
         listStudents.add("Choose Your Name: ");
@@ -100,6 +105,7 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
         studentLogInBtn = v.findViewById(R.id.studentLogInBtn);
         animalRowOne= v.findViewById(R.id.animal_row_one);
         animalRowTwo= v.findViewById(R.id.animal_row_two);
+        bloxseelogo= v.findViewById(R.id.bloxseelogo);
     }
 
     private void imageSetClicks() {

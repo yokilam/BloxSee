@@ -1,6 +1,5 @@
 package com.example.franciscoandrade.bloxsee.views.teacher;
 
-
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,9 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.franciscoandrade.bloxsee.R;
@@ -32,74 +29,58 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class AddStudentFragment extends Fragment {
 
-    View v;
-
-    TextInputEditText studentName;
-    Spinner passwordSpinner;
-    Button addStudent;
+    private View v;
+    private TextInputEditText studentName;
+    private Spinner passwordSpinner;
+    private Button addStudent;
     private ArrayList<String> listPassword;
     private String nameStudent, selectedPassword;
     private DatabaseReference ref;
     private FirebaseDatabase database;
-    List<Progress> progressList;
+    private List<Progress> progressList;
     private ChildEventListener childEventListener;
-    List<StudentQuestions> lesson1;
-    List<StudentQuestions> lesson2;
+    private List<StudentQuestions> lesson1;
+    private List<StudentQuestions> lesson2;
     public Student student;
     private List <Student> studentList ;
 
     ListenerProgress listenerProgress;
 
-    FloatingActionButton closeBtn;
-
-
-
-
-
-
-    public AddStudentFragment() {
-        // Required empty public constructor
-    }
-
+    private FloatingActionButton closeBtn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         v=inflater.inflate(R.layout.fragment_add_student, container, false);
-        studentName=v.findViewById(R.id.studentName);
-        passwordSpinner=v.findViewById(R.id.passwordSpinner);
-        addStudent=v.findViewById(R.id.addStudent);
-        closeBtn=v.findViewById(R.id.closeBtn);
 
+        setUpViews();
         studentName.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_WORDS);
-
         listPassword();
         setSpinner();
-
         addStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addStudent();
             }
         });
-
         database = FirebaseDatabase.getInstance();
         ref = database.getReference();
         studentList = new ArrayList <>();
-
-
         closeView();
 
         return v;
     }
 
-    private void closeView() {
+    private void setUpViews() {
+        studentName=v.findViewById(R.id.studentName);
+        passwordSpinner=v.findViewById(R.id.passwordSpinner);
+        addStudent=v.findViewById(R.id.addStudent);
+        closeBtn=v.findViewById(R.id.closeBtn);
+    }
 
+    private void closeView() {
         closeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,40 +88,29 @@ public class AddStudentFragment extends Fragment {
 
             }
         });
-
     }
 
     private void listPassword() {
-
         listPassword = new ArrayList <>();
         listPassword.add("Select password");
         listPassword.add("Penguin");
-        listPassword.add("Ghost");
+        listPassword.add("Pig");
         listPassword.add("Dog");
-        listPassword.add("Cat");
-        listPassword.add("Dragon");
-        listPassword.add("Octopus");
+        listPassword.add("Duck");
+        listPassword.add("Monkey");
+        listPassword.add("Seal");
     }
-
 
     private void setSpinner() {
         ArrayAdapter<String> adapter = new ArrayAdapter <String>(this.getActivity(), R.layout.spinner_item, listPassword);
         // adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         passwordSpinner.setAdapter(adapter);
-
     }
-
 
     public void addStudent() {
         nameStudent = studentName.getText().toString();
         selectedPassword = passwordSpinner.getSelectedItem().toString();
-//        StudentQuestions studentQuestions= new StudentQuestions();
-//        studentQuestions.setQ1(false);
-//        studentQuestions.setQ2(false);
-//        studentQuestions.setQ3(false);
-//        studentQuestions.setQ4(false);
-//        studentQuestions.setQ5(false);
 
         if (!selectedPassword.equals(listPassword.get(0)) && !TextUtils.isEmpty(nameStudent)) {
             Log.d("ADDED==", "addStudent: " + nameStudent);
@@ -154,12 +124,7 @@ public class AddStudentFragment extends Fragment {
             Toast.makeText(getActivity(), "Cant add Student!!", Toast.LENGTH_SHORT).show();
             studentName.setText("");
         }
-
-
-
     }
-
-
 
     private void setQuestions() {
         progressList= new ArrayList<>();
@@ -220,14 +185,11 @@ public class AddStudentFragment extends Fragment {
         };
 
         ref.child("students").addChildEventListener(childEventListener);
-
-
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
         listenerProgress=(ListenerProgress)context;
     }
 }
