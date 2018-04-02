@@ -1,36 +1,23 @@
 package com.example.franciscoandrade.bloxsee.views.teacher;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-
-import android.graphics.PorterDuff;
-import android.os.PersistableBundle;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.example.franciscoandrade.bloxsee.R;
 import com.example.franciscoandrade.bloxsee.ScreenShotFragment;
 import com.example.franciscoandrade.bloxsee.controller.teacher.PagerAdapterTeacher;
-import com.example.franciscoandrade.bloxsee.model.Progress;
-import com.example.franciscoandrade.bloxsee.views.SignInActivity;
 import com.example.franciscoandrade.bloxsee.views.student.CloseScreenshot;
 import com.example.franciscoandrade.bloxsee.views.student.UrlListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class TeacherMainPageActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener , ListenerProgress, UrlListener, CloseScreenshot{
     private final String TAG = "TEACHER_EMAIL: ";
@@ -40,18 +27,23 @@ public class TeacherMainPageActivity extends AppCompatActivity implements ViewPa
     BottomNavigationView bottomNavigationView;
     MenuItem prevMenuItem;
 
+    ScreenShotFragment screenShotFragment;
     ProgressFragment progressFragment;
     QuestionsFragment questionsFragment;
     RosterFragment rosterFragment;
-    PagerAdapterTeacher adapter;
+    private PagerAdapterTeacher adapter;
 
-    ScreenShotFragment screenShotFragment;
-    String actualPosition="1";
+    private String actualPosition="1";
+    private String teacherName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher_main_page);
+
+        Intent intent= getIntent();
+        teacherName=intent.getStringExtra("teacherName");
+        Log.d("teacherName", "onCreate: " + teacherName);
 
         setupToolbar();
         getTeacherInfo();
@@ -105,7 +97,6 @@ public class TeacherMainPageActivity extends AppCompatActivity implements ViewPa
             }
         });
         setupViewPager(viewPager);
-
     }
 
 
@@ -149,10 +140,7 @@ public class TeacherMainPageActivity extends AppCompatActivity implements ViewPa
     }
 
     @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-
-    }
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
 
     @Override
     public void onPageSelected(int position) {
@@ -162,14 +150,11 @@ public class TeacherMainPageActivity extends AppCompatActivity implements ViewPa
     }
 
     @Override
-    public void onPageScrollStateChanged(int state) {
-
-    }
+    public void onPageScrollStateChanged(int state) {}
 
 
     @Override
     public void closeFragment() {
-
         rosterFragment.closeFragment();
     }
 
@@ -178,11 +163,9 @@ public class TeacherMainPageActivity extends AppCompatActivity implements ViewPa
         rosterFragment.closeFragment();
     }
 
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-
         if(actualPosition.equals("1")){
             rosterFragment.showFloatingBtn();
         }
@@ -192,22 +175,19 @@ public class TeacherMainPageActivity extends AppCompatActivity implements ViewPa
         topToolbar =  findViewById(R.id.toolbar);
         setSupportActionBar(topToolbar);
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Admin Email");
+            getSupportActionBar().setTitle(teacherName);
         }
     }
 
     @Override
     public void sendUrl(String url) {
-
         //screenShotFragment.show(url);
         progressFragment.openScreenShotFragment(url);
-
         //Log.d("URL=", "sendUrl: "+url);
     }
 
     @Override
     public void closeScreenshot() {
         progressFragment.closeScreenShootFragment();
-
     }
 }

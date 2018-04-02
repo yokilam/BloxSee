@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide;
 import com.example.franciscoandrade.bloxsee.R;
 
 public class SplashActivity extends AppCompatActivity {
-    ImageView gif;
+    private ImageView gif;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
