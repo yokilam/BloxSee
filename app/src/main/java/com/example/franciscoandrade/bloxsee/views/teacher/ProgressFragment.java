@@ -136,8 +136,6 @@ public class ProgressFragment extends Fragment  {
                 progressList.add(progress);
                 }
 
-
-
             }
 
             @Override
