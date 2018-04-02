@@ -10,16 +10,18 @@ public class StudentQuestions {
    private Boolean available;
    private String state;
    private String question;
+   private String answer;
 
 
 
     public StudentQuestions() {
     }
 
-    public StudentQuestions(Boolean available, String state, String question) {
+    public StudentQuestions(Boolean available, String state, String question, String answer) {
         this.available = available;
         this.state = state;
         this.question = question;
+        this.answer= answer;
     }
 
     public Boolean getAvailable() {
@@ -44,5 +46,14 @@ public class StudentQuestions {
 
     public void setQuestion(String question) {
         this.question = question;
+    }
+
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
     }
 }

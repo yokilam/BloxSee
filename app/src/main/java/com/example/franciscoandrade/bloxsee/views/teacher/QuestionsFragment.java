@@ -163,17 +163,19 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener 
 
                 if (dataSnapshot.child("lesson1").child("1").child("available").getValue() != null) {
                     Log.d("CURRENTUSER=", "onChildAdded: " + dataSnapshot.getKey());
-                    Boolean q1 = Boolean.parseBoolean(dataSnapshot.child("lesson1").child("1").child("available").getValue().toString());
-                    Boolean q2 = Boolean.parseBoolean(dataSnapshot.child("lesson1").child("2").child("available").getValue().toString());
-                    Boolean q3 = Boolean.parseBoolean(dataSnapshot.child("lesson1").child("3").child("available").getValue().toString());
-                    Boolean q4 = Boolean.parseBoolean(dataSnapshot.child("lesson1").child("4").child("available").getValue().toString());
-                    Boolean q5 = Boolean.parseBoolean(dataSnapshot.child("lesson1").child("5").child("available").getValue().toString());
+                    Log.d("FAIL", "onChildAdded: "+dataSnapshot.child("lesson1").child("0").child("available").getValue().toString());
+                    Log.d("FAIL", "onChildAdded: "+dataSnapshot.child("lesson1").child("1").child("available").getValue().toString());
+                    Boolean q1 = Boolean.parseBoolean(dataSnapshot.child("lesson1").child("0").child("available").getValue().toString());
+                    Boolean q2 = Boolean.parseBoolean(dataSnapshot.child("lesson1").child("1").child("available").getValue().toString());
+                    Boolean q3 = Boolean.parseBoolean(dataSnapshot.child("lesson1").child("2").child("available").getValue().toString());
+                    Boolean q4 = Boolean.parseBoolean(dataSnapshot.child("lesson1").child("3").child("available").getValue().toString());
+                    Boolean q5 = Boolean.parseBoolean(dataSnapshot.child("lesson1").child("4").child("available").getValue().toString());
 
-                    Boolean q1L2 = Boolean.parseBoolean(dataSnapshot.child("lesson2").child("1").child("available").getValue().toString());
-                    Boolean q2L2 = Boolean.parseBoolean(dataSnapshot.child("lesson2").child("2").child("available").getValue().toString());
-                    Boolean q3L2 = Boolean.parseBoolean(dataSnapshot.child("lesson2").child("3").child("available").getValue().toString());
-                    Boolean q4L2 = Boolean.parseBoolean(dataSnapshot.child("lesson2").child("4").child("available").getValue().toString());
-                    Boolean q5L2 = Boolean.parseBoolean(dataSnapshot.child("lesson2").child("5").child("available").getValue().toString());
+                    Boolean q1L2 = Boolean.parseBoolean(dataSnapshot.child("lesson2").child("0").child("available").getValue().toString());
+                    Boolean q2L2 = Boolean.parseBoolean(dataSnapshot.child("lesson2").child("1").child("available").getValue().toString());
+                    Boolean q3L2 = Boolean.parseBoolean(dataSnapshot.child("lesson2").child("2").child("available").getValue().toString());
+                    Boolean q4L2 = Boolean.parseBoolean(dataSnapshot.child("lesson2").child("3").child("available").getValue().toString());
+                    Boolean q5L2 = Boolean.parseBoolean(dataSnapshot.child("lesson2").child("4").child("available").getValue().toString());
 
                     listChckbox.set(0, q1);
                     listChckbox.set(1, q2);
@@ -234,6 +236,7 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener 
             case R.id.send_button:
                 Log.d("CLICK==", "onClick: ==Button");
                 sendQuestions();
+
                 break;
             case R.id.level:
                 Log.d("CLICK==", "onClick: ==level1");
@@ -315,13 +318,13 @@ public class QuestionsFragment extends Fragment implements View.OnClickListener 
                 listChckbox.set(8, questionFourLessonTwo.isChecked());
                 listChckbox.set(9, questionFiveLessonTwo.isChecked());
 
-                for (int i = 1; i < 6; i++) {
-                    setQuestions(i, dataSnapshot);
+                for (int i = 0; i < 5; i++) {
+                   // setQuestions(i, dataSnapshot);
                     //
-                    ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((i) + "").child("available").setValue(listChckbox.get((i - 1)));
+                    ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((i) + "").child("available").setValue(listChckbox.get((i)));
                     //ref.child("students").child(dataSnapshot.getKey()).child("lesson1").child((i)+"").child("question").setValue("Question: "+i);
 
-                    ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((i) + "").child("available").setValue(listChckbox.get((i + 4)));
+                    ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((i) + "").child("available").setValue(listChckbox.get((i + 5)));
                     //ref.child("students").child(dataSnapshot.getKey()).child("lesson2").child((i)+"").child("question").setValue("Question: "+i);
 
                     if (dataSnapshot.child("lesson1").child(i + "").child("state").getValue() == null) {
