@@ -67,14 +67,14 @@ public class ScreenShotFragment extends Fragment {
 
 
     public void show(String url) {
-        Log.d("LOAD=", "showImage: ");
-        download();
+        Log.d("LOAD=", "showImage: "+url);
+        download(url);
     }
 
-    private void download() {
+    private void download(String url) {
         ByteArrayOutputStream baos= new ByteArrayOutputStream();
         byte[]data=baos.toByteArray();
-        String path= "images/Joanne.jpg";
+        String path= "images/"+url+".jpg";
         storageRef=storage.getReference(path);
         Log.d("REFERENCE==", "download: "+storageRef);
 
