@@ -133,7 +133,7 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
                 break;
             case R.id.duck:
                 duck.setBackgroundResource(R.drawable.duck_color);
-                animalPicked = "Ghost";
+                animalPicked = "Duck";
                 Toast.makeText(getActivity(), "duck", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.dog:
@@ -143,17 +143,17 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
                 break;
             case R.id.monkey:
                 monkey.setBackgroundResource(R.drawable.monkey_color);
-                animalPicked = "Cat";
+                animalPicked = "Monkey";
                 Toast.makeText(getActivity(), "Monkey", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.pig:
                 pig.setBackgroundResource(R.drawable.pig_color);
-                animalPicked = "Dragon";
+                animalPicked = "Pig";
                 Toast.makeText(getActivity(), "pig", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.seal:
                 seal.setBackgroundResource(R.drawable.seal_color);
-                animalPicked = "Octopus";
+                animalPicked = "Seal";
                 Toast.makeText(getActivity(), "Seal", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.studentLogInBtn:
@@ -173,7 +173,6 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
             Log.d("LOGIN====", "loginStudent: " + animalPicked);
 
             Log.d("LOGIIN==", "loginStudent: " + ref.child("students").child(nameStudent).getKey());
-
         }
     }
 
@@ -244,31 +243,20 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
                     Log.d("CHILDren==", "onChildAdded: " + student.getName());
                     Log.d("CHILD==", "onChildAdded: " + student.getName());
                     // adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-
-
                 }
 
                 @Override
-                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-                }
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
 
                 @Override
-                public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                }
+                public void onChildRemoved(DataSnapshot dataSnapshot) {}
 
                 @Override
-                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-                }
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
 
                 @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
+                public void onCancelled(DatabaseError databaseError) {}
             };
-
 
             ref.child("students").addChildEventListener(childEventListener);
             adapter = new ArrayAdapter <>(getActivity(), R.layout.spinner_item, listStudents);
@@ -279,10 +267,8 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
-
             spinner.setAdapter(adapter);
         }
-
     }
 }
 
