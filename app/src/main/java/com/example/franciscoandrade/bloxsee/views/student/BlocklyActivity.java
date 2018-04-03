@@ -247,11 +247,16 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         animSetXY.playSequentially(animSequenceArr);
         animSetXY.start();
 
-        if (checkAnswer(str)) {
-            runOnAnotherThread("goodjob.json");
-        } else {
-            runOnAnotherThread("tryagain.json");
-        }
+        checkAnswer(str);
+//        if (checkAnswer(str)) {
+//
+//            Log.d("answerCheckedTrue", "sendGeneratedCode: ");
+//            //runOnAnotherThread("goodjob.json");
+//        } else {
+//            Log.d("answerCheckedFalse", "sendGeneratedCode: ");
+//
+//            //runOnAnotherThread("tryagain.json");
+//        }
     }
 
     public boolean checkAnswer(String str) {
@@ -289,11 +294,19 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     }
 
     public void runOnAnotherThread(final String json) {
-        Handler refresh = new Handler(Looper.getMainLooper());
-        refresh.post(new Runnable() {
-            public void run() {
-                setUpDialog(json);
-            }
-        });
+//        Handler refresh = new Handler(Looper.getMainLooper());
+//        refresh.post(new Runnable() {
+//            public void run() {
+//                setUpDialog(json);
+//            }
+//        });
+
+        Log.d("ANIMATION==", "runOnAnotherThread: ");
+
     }
+
+
+
 }
+
+
