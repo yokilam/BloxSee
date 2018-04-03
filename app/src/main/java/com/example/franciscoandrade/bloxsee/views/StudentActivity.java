@@ -122,7 +122,7 @@ public class StudentActivity extends AppCompatActivity {
                      questionsList= new ArrayList<>();
                   for (int i = 1; i < 3; i++) {
 
-                     for (int j = 1; j < 6; j++) {
+                     for (int j = 0; j < 5; j++) {
                          lesson= "lesson"+i;
                         // Log.d("AVAILABLEB", "onChildAdded: "+studentQuestions.getAvailable());
                          if(dataSnapshot.child(lesson).child(j+"").getValue(StudentQuestions.class)!=null) {
@@ -157,10 +157,12 @@ public class StudentActivity extends AppCompatActivity {
                      questionsList= new ArrayList<>();
                      for (int i = 1; i < 3; i++) {
 
-                         for (int j = 1; j < 6; j++) {
+                         for (int j = 0; j < 5; j++) {
                              lesson= "lesson"+i;
+                             Log.d("QUESTIONS", "onChildChanged: "+dataSnapshot.child("lesson1").child(j+"").child("question").getValue());
                              studentQuestions= dataSnapshot.child(lesson).child(j+"").getValue(StudentQuestions.class);
-                             question=studentQuestions.getQuestion()+" - "+lesson;
+                             question=dataSnapshot.child(lesson).child(j+"").child("question").getValue()+" - "+lesson;
+                             //question=dataSnapshot.child("lesson1").child(j+"").child("question").getValue()+" - "+lesson;
                              if(studentQuestions.getAvailable()){
                                  Log.d("QUESTONS==", "onChildAdded: "+lesson+" - "+question);
                                  questionsList.add(question);
