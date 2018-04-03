@@ -248,9 +248,11 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         animSetXY.start();
 
         if (checkAnswer(str)) {
-            runOnAnotherThread("goodjob.json");
+            setUpDialog("goodjob.json");
+//            runOnAnotherThread("goodjob.json");
         } else {
-            runOnAnotherThread("tryagain.json");
+            setUpDialog("goodjob.json");
+//            runOnAnotherThread("tryagain.json");
         }
     }
 
@@ -295,5 +297,21 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
                 setUpDialog(json);
             }
         });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (dialog!= null && dialog.isShowing()) {
+            dialog.cancel();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (dialog!= null && dialog.isShowing()) {
+            dialog.cancel();
+        }
     }
 }
