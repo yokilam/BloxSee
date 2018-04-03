@@ -1,7 +1,5 @@
 package com.example.franciscoandrade.bloxsee.views.teacher;
 
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,10 +9,6 @@ import com.example.franciscoandrade.bloxsee.R;
 import com.example.franciscoandrade.bloxsee.model.Student;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-
-/**
- * Created by joannesong on 3/15/18.
- */
 
 public class TeacherRosterViewHolder extends RecyclerView.ViewHolder {
     private TextView studentName;
@@ -48,44 +42,25 @@ public class TeacherRosterViewHolder extends RecyclerView.ViewHolder {
 
         switch (student.getPassword()) {
             case "Penguin":
-                profile_image.setImageResource(R.drawable.penguin);
-
+                profile_image.setImageResource(R.drawable.penguin_color);
                 break;
-
-            case "Ghost":
-                profile_image.setImageResource(R.drawable.ghost);
-
+            case "Duck":
+                profile_image.setImageResource(R.drawable.duck_color);
                 break;
-
-
             case "Dog":
-                profile_image.setImageResource(R.drawable.dog);
-
+                profile_image.setImageResource(R.drawable.dog_color);
                 break;
-
-
-            case "Cat":
-                profile_image.setImageResource(R.drawable.cat);
-
+            case "Monkey":
+                profile_image.setImageResource(R.drawable.monkey_color);
                 break;
-
-            case "Dragon":
-                profile_image.setImageResource(R.drawable.dragon);
-
+            case "Pig":
+                profile_image.setImageResource(R.drawable.pig_color);
                 break;
-
-            case "Octopus":
-                profile_image.setImageResource(R.drawable.octopus);
-
+            case "Seal":
+                profile_image.setImageResource(R.drawable.seal_color);
                 break;
             default:
-
-
                 break;
-
-
         }
-
-
     }
 }
