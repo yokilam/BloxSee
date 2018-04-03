@@ -72,7 +72,7 @@ public class RosterFragment extends Fragment {
     PagerAdapterTeacher adapter;
 
 
-    FloatingActionButton addStudentFab;
+    Button addStudentFab;
     FragmentManager manager;
     AddStudentFragment addStudentFragment;
 
@@ -104,6 +104,7 @@ public class RosterFragment extends Fragment {
 
         teacherRosterAdapter= new TeacherRosterAdapter(getActivity());
         recyclerView.setAdapter(teacherRosterAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));
 
 
         ChildEventListener childEventListener= new ChildEventListener(){
@@ -113,6 +114,7 @@ public class RosterFragment extends Fragment {
                 Log.d("CHILD", "onChildAdded: "+ student.getName());
                 studentList.add(student);
                 teacherRosterAdapter.addStudents(studentList);
+                teacherRosterAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -139,10 +141,6 @@ public class RosterFragment extends Fragment {
         ref.child("students").addChildEventListener(childEventListener);
 
         //recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(), DividerItemDecoration.VERTICAL));
-        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));
-
-
-
 
          manager= getFragmentManager();
 
@@ -248,72 +246,72 @@ public class RosterFragment extends Fragment {
 
     }
 
-    private void setQuestions() {
-        progressList= new ArrayList<>();
-
-        childEventListener= new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
-                Progress progress= new Progress();
-                StudentQuestions studentQuestions= new StudentQuestions();
-                progress.setName(dataSnapshot.getKey());
-                lesson1= new ArrayList<>();
-                lesson2= new ArrayList<>();
-
-                for (int i = 1; i < 3; i++) {
-                    for (int j = 1; j < 6; j++) {
-                        if (i==1 && dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue()!= null){
-                            String state= dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue().toString();
-                            //Log.d("State==", "onChildAdded: "+state);
-//                            if(i==1){
-//                                studentQuestions.setQuestion("JOANNES q's");
-//                            }
-                            studentQuestions.setState(state);
-                            studentQuestions.setAvailable(true);
-                            lesson1.add(studentQuestions);
-
-
-                        }
-                        if(i==2 && dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue()!= null){
-                            String state= dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue().toString();
-                            studentQuestions.setState(state);
-                            lesson2.add(studentQuestions);
-                        }
-//                            Log.d("ADDEEED", "onChildAdded: "+dataSnapshot.getKey()+" - "+dataSnapshot.child("lesson"+i).getKey()+" - "+dataSnapshot.child("lesson"+i).child(j+"").getKey()+" - "+dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue());
-                    }
-                }
-
-                progress.setLesson1(lesson1);
-                progress.setLesson2(lesson2);
-                progressList.add(progress);
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        };
-
-        //ref.child("students").addChildEventListener(childEventListener);
-
-
-    }
+//    private void setQuestions() {
+//        progressList= new ArrayList<>();
+//
+//        childEventListener= new ChildEventListener() {
+//            @Override
+//            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+//
+//                Progress progress= new Progress();
+//                StudentQuestions studentQuestions= new StudentQuestions();
+//                progress.setName(dataSnapshot.getKey());
+//                lesson1= new ArrayList<>();
+//                lesson2= new ArrayList<>();
+//
+//                for (int i = 1; i < 3; i++) {
+//                    for (int j = 1; j < 6; j++) {
+//                        if (i==1 && dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue()!= null){
+//                            String state= dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue().toString();
+//                            //Log.d("State==", "onChildAdded: "+state);
+////                            if(i==1){
+////                                studentQuestions.setQuestion("JOANNES q's");
+////                            }
+//                            studentQuestions.setState(state);
+//                            studentQuestions.setAvailable(true);
+//                            lesson1.add(studentQuestions);
+//
+//
+//                        }
+//                        if(i==2 && dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue()!= null){
+//                            String state= dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue().toString();
+//                            studentQuestions.setState(state);
+//                            lesson2.add(studentQuestions);
+//                        }
+////                            Log.d("ADDEEED", "onChildAdded: "+dataSnapshot.getKey()+" - "+dataSnapshot.child("lesson"+i).getKey()+" - "+dataSnapshot.child("lesson"+i).child(j+"").getKey()+" - "+dataSnapshot.child("lesson"+i).child(j+"").child("state").getValue());
+//                    }
+//                }
+//
+//                progress.setLesson1(lesson1);
+//                progress.setLesson2(lesson2);
+//                progressList.add(progress);
+//            }
+//
+//            @Override
+//            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+//
+//            }
+//
+//            @Override
+//            public void onChildRemoved(DataSnapshot dataSnapshot) {
+//
+//            }
+//
+//            @Override
+//            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        };
+//
+//        //ref.child("students").addChildEventListener(childEventListener);
+//
+//
+//    }
 
     //Starts animation to expand the layout
     private void onClickButton(final ExpandableLayout expandableLayout) {
