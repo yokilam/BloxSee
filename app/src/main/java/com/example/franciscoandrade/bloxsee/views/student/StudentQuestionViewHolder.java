@@ -4,12 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.franciscoandrade.bloxsee.R;
 import com.example.franciscoandrade.bloxsee.model.Questions;
+    import com.example.franciscoandrade.bloxsee.model.StudentInfo;
 import com.example.franciscoandrade.bloxsee.views.StudentActivity;
 
 import static android.support.v4.content.ContextCompat.startActivity;
@@ -43,13 +45,18 @@ public class StudentQuestionViewHolder extends RecyclerView.ViewHolder implement
 //            }
 //        });
     }
-    public void onBind(String questions, int position, int size, String studentName, Context context){
-        studentQuestion.setText(questions);
+    public void onBind(StudentInfo studentInfo, int position, int size, String studentName, Context context){
+        String sIQuestion = studentInfo.getQuestion();
+        String sILesson = studentInfo.getLesson();
+        String sIQuestionNum = studentInfo.getQuestionNum();
+
+        Log.d("sihihi",sIQuestion);
+        Log.d("sihihi",sILesson);
+        Log.d("sihihi",sIQuestionNum);
+
+        studentQuestion.setText(sIQuestion);
         this.studentName=studentName;
         this.context= context;
-//        if(position==size-1){
-//            btm_line.setVisibility(View.INVISIBLE);
-//        }
 
         cardViewQuestions.setOnClickListener(this);
 
@@ -62,6 +69,8 @@ public class StudentQuestionViewHolder extends RecyclerView.ViewHolder implement
             case R.id.cardViewQuestions:
 
                 String currentQuestion = studentQuestion.getText().toString();
+
+                //Log.d("mehihihi", )
                 Intent intent = new Intent(context, BlocklyActivity.class);
                 intent.putExtra("currentQuestion", currentQuestion);
                 intent.putExtra("studentName", studentName);

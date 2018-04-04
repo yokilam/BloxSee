@@ -283,15 +283,28 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     }
 
     public void getInfo() {
+
         Intent intent = getIntent();
         user = intent.getStringExtra("studentName");
         currentQuestion = intent.getStringExtra("currentQuestion");
+        snapShotLesson = intent.getStringExtra("SnapShotL");
+        snapShotQuestion = intent.getStringExtra("SnapShotQ");
 
         questionTV.setText(currentQuestion);
+
+        snapShotName = user  + snapShotLesson  + snapShotQuestion;
+
+        Log.d("SSHIHI", snapShotName);
 
         Log.d("STUDENT", "getInfo: " + user);
         Log.d("STUDENT", "getInfo: " + currentQuestion);
     }
+
+//        questionTV.setText(currentQuestion);
+//
+//        Log.d("STUDENT", "getInfo: " + user);
+//        Log.d("STUDENT", "getInfo: " + currentQuestion);
+//    }
 
     public void runOnAnotherThread(final String json) {
 //        Handler refresh = new Handler(Looper.getMainLooper());

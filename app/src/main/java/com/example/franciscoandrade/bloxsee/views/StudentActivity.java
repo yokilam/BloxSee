@@ -11,14 +11,12 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.franciscoandrade.bloxsee.R;
 import com.example.franciscoandrade.bloxsee.controller.StudentQuestionAdapter;
-import com.example.franciscoandrade.bloxsee.model.Questions;
-import com.example.franciscoandrade.bloxsee.model.Student;
+import com.example.franciscoandrade.bloxsee.model.StudentInfo;
 import com.example.franciscoandrade.bloxsee.model.StudentQuestions;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -41,7 +39,8 @@ public class StudentActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private StudentQuestions studentQuestions;
     private ChildEventListener childEventListener;
-    List<String> questionsList;
+    List<StudentInfo> studentInfoList;
+    StudentInfo sI;
     String question;
     String lesson;
     StudentQuestionAdapter studentQuestionAdapter;
@@ -119,10 +118,13 @@ public class StudentActivity extends AppCompatActivity {
 
                  if (dataSnapshot.getKey().equals(user) ) {
                 // studentQuestions= dataSnapshot.child("lesson1").child("1").getValue(StudentQuestions.class);
-                     questionsList= new ArrayList<>();
+                     studentInfoList = new ArrayList<>();
+                     sI = new StudentInfo();
+                     String studentL;
+                     String studentQ;
                   for (int i = 1; i < 3; i++) {
 
-                     for (int j = 0; j < 5; j++) {
+                     for (int j = 1; j < 5; j++) {
                          lesson= "lesson"+i;
                         // Log.d("AVAILABLEB", "onChildAdded: "+studentQuestions.getAvailable());
                          if(dataSnapshot.child(lesson).child(j+"").getValue(StudentQuestions.class)!=null) {
@@ -131,18 +133,29 @@ public class StudentActivity extends AppCompatActivity {
                              Log.d("AVAILABLE", "onChildAdded: "+studentQuestions.getAvailable());
                              if (studentQuestions.getAvailable()) {
                                  Log.d("QUESTONS==", "onChildAdded: " + lesson + " - " + question);
-                                 questionsList.add(question);
+                                 studentL = String.valueOf(i);
+                                 studentQ = String.valueOf(j);
+
+                                 Log.d("mememe", studentL);
+                                 Log.d("mememe", studentQ);
+
+                                 sI.setQuestionNum(studentQ);
+                                 sI.setLesson(studentL);
+                                 sI.setQuestion(question);
+                                 sI.setName(user);
+
+                                 studentInfoList.add(sI);
                              }
                          }
                      }
 
                  }
                      studentQuestionAdapter.notifyDataSetChanged();
-                     studentQuestionAdapter.addQuestions(questionsList);
+                     studentQuestionAdapter.addQuestions(studentInfoList);
                      studentQuestionAdapter.notifyDataSetChanged();
-                     if(!questionsList.isEmpty()){
+                     if(!studentInfoList.isEmpty()){
                         studentQuestionAdapter.notifyDataSetChanged();
-                         studentQuestionAdapter.addQuestions(questionsList);
+                         studentQuestionAdapter.addQuestions(studentInfoList);
                          studentQuestionAdapter.notifyDataSetChanged();
                      }
 
@@ -154,7 +167,7 @@ public class StudentActivity extends AppCompatActivity {
 
                  if (dataSnapshot.getKey().equals(user) ) {
                      // studentQuestions= dataSnapshot.child("lesson1").child("1").getValue(StudentQuestions.class);
-                     questionsList= new ArrayList<>();
+                     studentInfoList = new ArrayList<>();
                      for (int i = 1; i < 3; i++) {
 
                          for (int j = 0; j < 5; j++) {
@@ -165,13 +178,13 @@ public class StudentActivity extends AppCompatActivity {
                              //question=dataSnapshot.child("lesson1").child(j+"").child("question").getValue()+" - "+lesson;
                              if(studentQuestions.getAvailable()){
                                  Log.d("QUESTONS==", "onChildAdded: "+lesson+" - "+question);
-                                 questionsList.add(question);
+                                 studentInfoList.add(sI);
                              }
                          }
 
                      }
                      studentQuestionAdapter.notifyDataSetChanged();
-                     studentQuestionAdapter.addQuestions(questionsList);
+                     studentQuestionAdapter.addQuestions(studentInfoList);
 
                      setUpNotification();
                  }
