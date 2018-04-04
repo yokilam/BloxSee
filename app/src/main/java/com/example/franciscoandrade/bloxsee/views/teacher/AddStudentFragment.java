@@ -86,18 +86,8 @@ public class AddStudentFragment extends Fragment {
         lesson1= new ArrayList<>();
         lesson2= new ArrayList<>();
 
-
         fillLessonOne();
         fillLessonTwo();
-
-
-
-
-
-
-
-
-
 
     }
 
@@ -108,13 +98,13 @@ public class AddStudentFragment extends Fragment {
         lesson2q4= new StudentQuestions();
         lesson2q5= new StudentQuestions();
 
-        lesson2q1.setQuestion("1. Add a red color to the street light. ");
+        lesson2q1.setQuestion("L2Q1, Add a red color to the street light.");
         lesson2q1.setAvailable(false);
         lesson2q1.setState("null");
         lesson2q1.setAnswer("");
 
 
-        lesson2q2.setQuestion("2. Add a yellow color to the street light. ");
+        lesson2q2.setQuestion("L2Q2, Add a yellow color to the street light.");
         lesson2q2.setAvailable(false);
         lesson2q2.setState("null");
         lesson2q2.setAnswer("");

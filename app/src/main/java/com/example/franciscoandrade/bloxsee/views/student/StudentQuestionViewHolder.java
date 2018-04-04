@@ -4,12 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.franciscoandrade.bloxsee.R;
 import com.example.franciscoandrade.bloxsee.model.Questions;
+import com.example.franciscoandrade.bloxsee.model.StudentInfo;
+import com.example.franciscoandrade.bloxsee.model.StudentQuestions;
 import com.example.franciscoandrade.bloxsee.views.StudentActivity;
 
 import static android.support.v4.content.ContextCompat.startActivity;
@@ -19,37 +22,28 @@ import static android.support.v4.content.ContextCompat.startActivity;
  */
 
 public class StudentQuestionViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    private StudentQuestions studentQuestions;
+    private StudentInfo studentInfo;
     private TextView studentQuestion;
-    private TextView btm_line;
-    private ImageView dot_item;
     private String studentName;
+    private String studentQ;
+    private String studentL;
     CardView cardViewQuestions;
     Context context;
 
     public StudentQuestionViewHolder(final View itemView) {
         super(itemView);
-        //dot_item = itemView.findViewById(R.id.question_dot_item);
-        //btm_line = itemView.findViewById(R.id.question_btm_line);
+
         studentQuestion = itemView.findViewById(R.id.questions_tv);
         cardViewQuestions = itemView.findViewById(R.id.cardViewQuestions);
-//        itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String currentQuestion = studentQuestion.getText().toString();
-//                Intent intent = new Intent(view.getContext(), BlocklyActivity.class);
-//                intent.putExtra("currentQuestion", currentQuestion);
-//                intent.putExtra("studentName", studentName);
-//                view.getContext().startActivity(intent);
-//            }
-//        });
+
     }
-    public void onBind(String questions, int position, int size, String studentName, Context context){
-        studentQuestion.setText(questions);
-        this.studentName=studentName;
-        this.context= context;
-//        if(position==size-1){
-//            btm_line.setVisibility(View.INVISIBLE);
-//        }
+    public void onBind(StudentInfo studentInfo, int position, int size, String studentName, Context context){
+        String studentQ = studentInfo.getQuestion();
+        this.studentInfo = studentInfo;
+
+        studentQuestion.setText(studentQ);
+        this.context = context;
 
         cardViewQuestions.setOnClickListener(this);
 
@@ -62,13 +56,22 @@ public class StudentQuestionViewHolder extends RecyclerView.ViewHolder implement
             case R.id.cardViewQuestions:
 
                 String currentQuestion = studentQuestion.getText().toString();
+                studentName = studentInfo.getName();
+                studentQ = studentInfo.getQuestionNum();
+                studentL = studentInfo.getLesson();
+
                 Intent intent = new Intent(context, BlocklyActivity.class);
                 intent.putExtra("currentQuestion", currentQuestion);
                 intent.putExtra("studentName", studentName);
+                intent.putExtra("SnapShotL",studentL);
+                intent.putExtra("SnapShotQ", studentQ);
                 context.startActivity(intent);
+
+                Log.d("hihi", String.valueOf(studentInfo.getQuestion()));
+                Log.d("hihi", String.valueOf(studentInfo.getName()));
+                Log.d("hihi", String.valueOf(studentInfo.getLesson()));
+
                 break;
-
-
 
         }
 

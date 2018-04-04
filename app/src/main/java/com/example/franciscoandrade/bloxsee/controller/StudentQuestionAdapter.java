@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.example.franciscoandrade.bloxsee.R;
 import com.example.franciscoandrade.bloxsee.model.Questions;
+import com.example.franciscoandrade.bloxsee.model.StudentInfo;
 import com.example.franciscoandrade.bloxsee.views.student.StudentQuestionViewHolder;
 
 import java.util.ArrayList;
@@ -15,15 +16,15 @@ import java.util.List;
 
 public class StudentQuestionAdapter extends RecyclerView.Adapter<StudentQuestionViewHolder> {
 
-    private List<String> questionsList;
+    private List<StudentInfo> questionsList;
     private Context context;
     private String studentName;
-
 
     public StudentQuestionAdapter(Context context, String studentName) {
         this.context=context;
         questionsList= new ArrayList<>();
         this.studentName= studentName;
+
     }
 
     @Override
@@ -42,7 +43,7 @@ public class StudentQuestionAdapter extends RecyclerView.Adapter<StudentQuestion
         return questionsList.size();
     }
 
-    public void addQuestions(List<String> questions) {
+    public void addQuestions(List<StudentInfo> questions) {
         questionsList.clear();
         questionsList.addAll(questions);
         notifyDataSetChanged();
