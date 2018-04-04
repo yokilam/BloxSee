@@ -82,7 +82,6 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         storageReference = storage.getReference();
 
         getInfo();
-
     }
 
     @Override
@@ -285,5 +284,21 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
                 setUpDialog(json);
             }
         });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (dialog!= null && dialog.isShowing()) {
+            dialog.cancel();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (dialog!= null && dialog.isShowing()) {
+            dialog.cancel();
+        }
     }
 }
