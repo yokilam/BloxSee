@@ -32,12 +32,13 @@
 
         <include layout="@layout/fragment_blockly_run" />
 
-        <com.github.clans.fab.FloatingActionMenu
-            android:id="@+id/menu_yellow"
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/play_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
+            android:src="@drawable/ic_play"
             android:layout_gravity="bottom|end"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
@@ -52,23 +53,7 @@
             fab:menu_labels_style="@style/MenuLabelsStyle"
             fab:menu_shadowColor="#444">
 
-            <com.github.clans.fab.FloatingActionButton
-                android:id="@+id/fab22"
-                style="@style/MenuButtonsStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_help"
-                fab:fab_label="Save" />
-
-            <com.github.clans.fab.FloatingActionButton
-                android:id="@+id/fab32"
-                style="@style/MenuButtonsStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_play"
-                fab:fab_label="Play" />
-
-        </com.github.clans.fab.FloatingActionMenu>
+        </com.github.clans.fab.FloatingActionButton>
     </FrameLayout>
 
 
