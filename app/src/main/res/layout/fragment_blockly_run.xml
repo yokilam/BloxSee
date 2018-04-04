@@ -7,8 +7,9 @@
 
     <ImageView
         android:id="@+id/sprite"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/penguin" />
+        android:layout_width="100dp"
+        android:layout_gravity="center"
+        android:layout_height="100dp"
+        android:src="@drawable/monkey_color" />
 
 </FrameLayout>

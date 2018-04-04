@@ -127,34 +127,34 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
                 fragmentManager.beginTransaction().add(R.id.loginContainer, teacherSignInFragment).addToBackStack("teachersignin").addToBackStack("teachersignup").commit();
                 break;
             case R.id.penguin:
-                Toast.makeText(getActivity(), "Penguin", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "Penguin", Toast.LENGTH_SHORT).show();
                 animalPicked = "Penguin";
                 penguin.setBackgroundResource(R.drawable.penguin_color);
                 break;
             case R.id.duck:
                 duck.setBackgroundResource(R.drawable.duck_color);
                 animalPicked = "Duck";
-                Toast.makeText(getActivity(), "duck", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "duck", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.dog:
                 dog.setBackgroundResource(R.drawable.dog_color);
                 animalPicked = "Dog";
-                Toast.makeText(getActivity(), "dog", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "dog", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.monkey:
                 monkey.setBackgroundResource(R.drawable.monkey_color);
                 animalPicked = "Monkey";
-                Toast.makeText(getActivity(), "Monkey", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "Monkey", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.pig:
                 pig.setBackgroundResource(R.drawable.pig_color);
                 animalPicked = "Pig";
-                Toast.makeText(getActivity(), "pig", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "pig", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.seal:
                 seal.setBackgroundResource(R.drawable.seal_color);
                 animalPicked = "Seal";
-                Toast.makeText(getActivity(), "Seal", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "Seal", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.studentLogInBtn:
                 loginStudent();
@@ -171,7 +171,6 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
             String result = getPasswordOfUser(nameStudent, animalPicked);
             Log.d("LOGIN====", "loginStudent: " + result);
             Log.d("LOGIN====", "loginStudent: " + animalPicked);
-
             Log.d("LOGIIN==", "loginStudent: " + ref.child("students").child(nameStudent).getKey());
         }
     }
