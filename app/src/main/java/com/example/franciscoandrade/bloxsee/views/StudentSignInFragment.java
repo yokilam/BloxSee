@@ -48,8 +48,8 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
     private Student student;
     private String animalPicked;
     private String pass;
-    private LinearLayout animalRowOne, animalRowTwo;
-    private Animation fromTop;
+    private LinearLayout animalRowOne, animalRowTwo, edittext;
+    private Animation fromTop, fromBottom, edittext_fromBottom, edittext_fromTop;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,6 +61,10 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
 
         setUpViews();
         fromTop = AnimationUtils.loadAnimation(v.getContext(), R.anim.fromtop);
+        fromBottom= AnimationUtils.loadAnimation(v.getContext(), R.anim.frombottom);
+        edittext_fromBottom= AnimationUtils.loadAnimation(v.getContext(), R.anim.edittext_frombottom);
+        edittext_fromTop= AnimationUtils.loadAnimation(v.getContext(), R.anim.edittext_fromtop);
+        edittext.setAnimation(edittext_fromTop);
         bloxseelogo.setAnimation(fromTop);
 
         imageSetClicks();
@@ -82,10 +86,14 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
                 if(position==0){
                     animalRowOne.setVisibility(View.GONE);
                     animalRowTwo.setVisibility(View.GONE);
+//                    edittext.setAnimation(edittext_fromBottom);
                 }
                 else {
+                    edittext.setAnimation(edittext_fromBottom);
                     animalRowOne.setVisibility(View.VISIBLE);
                     animalRowTwo.setVisibility(View.VISIBLE);
+                    animalRowOne.setAnimation(fromBottom);
+                    animalRowTwo.setAnimation(fromBottom);
                 }
             }
             @Override
@@ -105,6 +113,7 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
         studentLogInBtn = v.findViewById(R.id.studentLogInBtn);
         animalRowOne= v.findViewById(R.id.animal_row_one);
         animalRowTwo= v.findViewById(R.id.animal_row_two);
+        edittext= v.findViewById(R.id.edit_text_layout);
         bloxseelogo= v.findViewById(R.id.bloxseelogo);
     }
 
