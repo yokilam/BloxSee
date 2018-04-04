@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import com.example.franciscoandrade.bloxsee.views.student.CloseScreenshot;
 import com.github.chrisbanes.photoview.PhotoView;
@@ -18,6 +19,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
@@ -38,6 +40,8 @@ public class ScreenShotFragment extends Fragment {
 
     CloseScreenshot closeScreenshot;
 
+    ProgressBar progress;
+
     public ScreenShotFragment() {
         // Required empty public constructor
     }
@@ -50,6 +54,8 @@ public class ScreenShotFragment extends Fragment {
 
         imageContainer= v.findViewById(R.id.imageContainer);
         exitScreenShoot= v.findViewById(R.id.exitScreenShoot);
+        progress= v.findViewById(R.id.progress);
+        progress.setVisibility(View.VISIBLE);
 
         exitScreenShoot.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +85,7 @@ public class ScreenShotFragment extends Fragment {
         Log.d("REFERENCE==", "download: "+storageRef);
 
 
+
         storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -87,12 +94,24 @@ public class ScreenShotFragment extends Fragment {
                 // Got the download URL for 'users/me/profile.png'
                 Picasso.with(getActivity())
                         .load(uri.toString())
-                        .into(imageContainer);
+                        .into(imageContainer, new Callback() {
+                            @Override
+                            public void onSuccess() {
+                                progress.setVisibility(View.GONE);
+                            }
+
+                            @Override
+                            public void onError() {
+
+                            }
+                        });
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
                 // Handle any errors
+                imageContainer.setImageResource(R.drawable.no_image_available);
+                progress.setVisibility(View.GONE);
             }
         });
 
