@@ -77,20 +77,20 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        sprite = findViewById(R.id.sprite);
         mActionBar.hide();
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
-        //getInfo();
+        getInfo();
+
     }
 
     @Override
     protected View onCreateContentView(int containerId) {
         root = getLayoutInflater().inflate(R.layout.activity_blockly, null);
         questionTV = root.findViewById(R.id.blockly_activity_student_question);
-
+        sprite = root.findViewById(R.id.sprite);
         menu_yellow = root.findViewById(R.id.menu_yellow);
         fab22 = root.findViewById(R.id.fab22);
         fab32 = root.findViewById(R.id.fab32);
@@ -118,8 +118,8 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
 
         fab22.setImageResource(R.drawable.ic_save_black_24dp);
         fab32.setImageResource(R.drawable.ic_play);
-
         fab22.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 b = Screenshot.takeScreenShotofRootView(root);
