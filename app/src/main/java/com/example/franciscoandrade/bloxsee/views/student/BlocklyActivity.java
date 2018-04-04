@@ -346,10 +346,14 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 
 =======
+=======
+
+>>>>>>> 60a09b38b902f2a90d5762c23b5c9f55766cbd80
     @Override
     protected void onPause() {
         super.onPause();
@@ -365,5 +369,8 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
             dialog.cancel();
         }
     }
+<<<<<<< HEAD
 >>>>>>> 20ce43874b3abd46ad12dd9f0fbf2c66e950cc2f
+=======
+>>>>>>> 60a09b38b902f2a90d5762c23b5c9f55766cbd80
 }
