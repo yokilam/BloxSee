@@ -65,6 +65,11 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     private Dialog dialog;
     private LottieAnimationView lottieAnimationView;
 
+    private String snapShotLesson;
+    private String snapShotQuestion;
+
+    private String snapShotName;
+
     //Joanne*** These are the values you need
     String user;
     String currentQuestion;
@@ -78,7 +83,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
-        getInfo();
+        //getInfo();
     }
 
     @Override
@@ -118,8 +123,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
             @Override
             public void onClick(View v) {
                 b = Screenshot.takeScreenShotofRootView(root);
-                // image.setImageBitmap(b)
-
+                //image.setImageBitmap(b)
                 uploadImage();
             }
         });
@@ -128,6 +132,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
             @Override
             public void onClick(View v) {
                 if (getController().getWorkspace().hasBlocks()) {
+                    Log.d("runcode", "uhoh");
                     onRunCode();
                 } else {
                     Log.i("hihi", "No blocks in workspace. Skipping run request.");
@@ -143,7 +148,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         b.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] data = baos.toByteArray();
 
-        StorageReference imagesRef = storageReference.child("images/" + user + ".jpg");
+        StorageReference imagesRef = storageReference.child("images/" + snapShotName + ".jpg");
 
         UploadTask uploadTask = imagesRef.putBytes(data);
         uploadTask.addOnFailureListener(new OnFailureListener() {
@@ -159,6 +164,8 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
                 // Do what you want
             }
         });
+
+        Toast.makeText(getApplicationContext(),"save", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -280,11 +287,18 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     }
 
     public void getInfo() {
+
         Intent intent = getIntent();
         user = intent.getStringExtra("studentName");
         currentQuestion = intent.getStringExtra("currentQuestion");
+        snapShotLesson = intent.getStringExtra("SnapShotL");
+        snapShotQuestion = intent.getStringExtra("SnapShotQ");
 
         questionTV.setText(currentQuestion);
+
+        snapShotName = user  + snapShotLesson  + snapShotQuestion;
+
+        Log.d("SSHIHI", snapShotName);
 
         Log.d("STUDENT", "getInfo: " + user);
         Log.d("STUDENT", "getInfo: " + currentQuestion);

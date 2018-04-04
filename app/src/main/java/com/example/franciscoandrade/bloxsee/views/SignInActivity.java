@@ -1,9 +1,11 @@
 package com.example.franciscoandrade.bloxsee.views;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import com.example.franciscoandrade.bloxsee.R;
+import com.example.franciscoandrade.bloxsee.views.student.BlocklyActivity;
 
 public class SignInActivity extends AppCompatActivity  {
 

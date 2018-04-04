@@ -350,7 +350,7 @@ public class ProgressFragment extends Fragment  {
                 .setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
                 .replace(R.id.containerScreenShot, screenShotFragment).addToBackStack("backToActivity").addToBackStack(null).commit();
 
-        screenShotFragment.show("ISCOO=");
+        screenShotFragment.show(url);
 
     }
 

@@ -19,6 +19,7 @@ import com.example.franciscoandrade.bloxsee.R;
 import com.example.franciscoandrade.bloxsee.controller.StudentQuestionAdapter;
 import com.example.franciscoandrade.bloxsee.model.Questions;
 import com.example.franciscoandrade.bloxsee.model.Student;
+import com.example.franciscoandrade.bloxsee.model.StudentInfo;
 import com.example.franciscoandrade.bloxsee.model.StudentQuestions;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -41,13 +42,18 @@ public class StudentActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private StudentQuestions studentQuestions;
     private ChildEventListener childEventListener;
-    List<String> questionsList;
-    String question;
-    String lesson;
-    StudentQuestionAdapter studentQuestionAdapter;
+    private List<StudentInfo> questionsList;
+    private String question;
+    private String lesson;
+    private StudentQuestionAdapter studentQuestionAdapter;
+
+    String name;
+    String lessonNum;
+    String questionNum;
 
     //this string will contain the curren name of the logged in user
-    String user;
+    private String user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +98,7 @@ public class StudentActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.student_questions_rv);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
-        studentQuestionAdapter= new StudentQuestionAdapter(this, user);
+        studentQuestionAdapter = new StudentQuestionAdapter(this, user);
         recyclerView.setAdapter(studentQuestionAdapter);
 
     }
@@ -113,25 +119,38 @@ public class StudentActivity extends AppCompatActivity {
          childEventListener= new ChildEventListener() {
              @Override
              public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                 Log.d("AVAILABLEB", "onChildAdded: "+dataSnapshot.child("lesson1").child(1 + "").getValue());
-//                 Log.d("AVAILABLEB", "onChildAdded: "+dataSnapshot.child(lesson).child(1 + "").child("question").getValue());
-//                 Log.d("AVAILABLEB", "onChildAdded: "+dataSnapshot.child(lesson).child(1 + "").child("state").getValue());
+                 Log.d("AVAILABLEB", "onChildAdded: "+dataSnapshot.getKey()+" - "+dataSnapshot.getValue());
 
                  if (dataSnapshot.getKey().equals(user) ) {
-                // studentQuestions= dataSnapshot.child("lesson1").child("1").getValue(StudentQuestions.class);
-                     questionsList= new ArrayList<>();
+                     questionsList = new ArrayList<>();
                   for (int i = 1; i < 3; i++) {
 
                      for (int j = 0; j < 5; j++) {
-                         lesson= "lesson"+i;
-                        // Log.d("AVAILABLEB", "onChildAdded: "+studentQuestions.getAvailable());
-                         if(dataSnapshot.child(lesson).child(j+"").getValue(StudentQuestions.class)!=null) {
+                         lesson = "lesson" + i;
+
+                         if(dataSnapshot.child(lesson).child( j+"").getValue(StudentQuestions.class)!=null) {
                              studentQuestions = dataSnapshot.child(lesson).child(j + "").getValue(StudentQuestions.class);
                              question = studentQuestions.getQuestion() + " - " + lesson;
-                             Log.d("AVAILABLE", "onChildAdded: "+studentQuestions.getAvailable());
+
+                             Log.d("dataSS", "value" + String.valueOf(dataSnapshot.getValue()));
+                             Log.d("dataSS", "key" + String.valueOf(dataSnapshot.getKey()));
+
+
+                             Log.d("AVAILABLE", "onChildAdded: "+ studentQuestions.getAvailable());
                              if (studentQuestions.getAvailable()) {
+                                 StudentInfo sI = new StudentInfo();
+
+                                 name = user;
+                                 lessonNum = "L" + String.valueOf(i);
+                                 questionNum = "Q" + String.valueOf(j+1);
+
+                                 sI.setLesson(lessonNum);
+                                 sI.setQuestion(question);
+                                 sI.setName(name);
+                                 sI.setQuestionNum(questionNum);
+
                                  Log.d("QUESTONS==", "onChildAdded: " + lesson + " - " + question);
-                                 questionsList.add(question);
+                                 questionsList.add(sI);
                              }
                          }
                      }
@@ -142,7 +161,7 @@ public class StudentActivity extends AppCompatActivity {
                      studentQuestionAdapter.notifyDataSetChanged();
                      if(!questionsList.isEmpty()){
                         studentQuestionAdapter.notifyDataSetChanged();
-                         studentQuestionAdapter.addQuestions(questionsList);
+                        studentQuestionAdapter.addQuestions(questionsList);
                          studentQuestionAdapter.notifyDataSetChanged();
                      }
 
@@ -157,15 +176,13 @@ public class StudentActivity extends AppCompatActivity {
                      questionsList= new ArrayList<>();
                      for (int i = 1; i < 3; i++) {
 
-                         for (int j = 0; j < 5; j++) {
+                         for (int j = 1; j < 6; j++) {
                              lesson= "lesson"+i;
-                             Log.d("QUESTIONS", "onChildChanged: "+dataSnapshot.child("lesson1").child(j+"").child("question").getValue());
-                             studentQuestions= dataSnapshot.child(lesson).child(j+"").getValue(StudentQuestions.class);
-                             question=dataSnapshot.child(lesson).child(j+"").child("question").getValue()+" - "+lesson;
-                             //question=dataSnapshot.child("lesson1").child(j+"").child("question").getValue()+" - "+lesson;
+                             studentQuestions = dataSnapshot.child(lesson).child(j+"").getValue(StudentQuestions.class);
+                             question =studentQuestions.getQuestion()+" - "+lesson;
                              if(studentQuestions.getAvailable()){
                                  Log.d("QUESTONS==", "onChildAdded: "+lesson+" - "+question);
-                                 questionsList.add(question);
+                                 //questionsList.add(question);
                              }
                          }
 
