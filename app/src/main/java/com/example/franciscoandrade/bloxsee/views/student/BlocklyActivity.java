@@ -103,7 +103,6 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
 
 
         getInfo();
-
     }
 
     @Override
@@ -346,7 +345,25 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         });
     }
 
+<<<<<<< HEAD
 
 
 
+=======
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (dialog!= null && dialog.isShowing()) {
+            dialog.cancel();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (dialog!= null && dialog.isShowing()) {
+            dialog.cancel();
+        }
+    }
+>>>>>>> 20ce43874b3abd46ad12dd9f0fbf2c66e950cc2f
 }
