@@ -21,6 +21,7 @@ import com.example.franciscoandrade.bloxsee.model.Questions;
 import com.example.franciscoandrade.bloxsee.model.Student;
 import com.example.franciscoandrade.bloxsee.model.StudentInfo;
 import com.example.franciscoandrade.bloxsee.model.StudentQuestions;
+import com.example.franciscoandrade.bloxsee.views.teacher.TeacherMainPageActivity;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -50,6 +51,7 @@ public class StudentActivity extends AppCompatActivity {
     String name;
     String lessonNum;
     String questionNum;
+    TextView signOutStudent;
 
     //this string will contain the curren name of the logged in user
     private String user;
@@ -60,6 +62,7 @@ public class StudentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
         studentName = findViewById(R.id.student_name);
+        signOutStudent = findViewById(R.id.signOutStudent);
         setStudentName();
         database = FirebaseDatabase.getInstance();
         ref = database.getReference();
@@ -68,6 +71,20 @@ public class StudentActivity extends AppCompatActivity {
         setUpNotification();
         bloxseeAvatar = (ImageView) findViewById(R.id.student_avatar);
 
+        signOut();
+
+    }
+
+    private void signOut() {
+
+        signOutStudent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StudentActivity.this, SignInActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
 
