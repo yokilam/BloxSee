@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.util.Log;
@@ -72,6 +73,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     //Joanne*** These are the values you need
     String user;
     String currentQuestion;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +82,25 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
+
+        //getInfo();
+
+
+        if(savedInstanceState!=null){
+            user= savedInstanceState.getString("studentName");
+            currentQuestion= savedInstanceState.getString("currentQuestion");
+            snapShotLesson= savedInstanceState.getString("SnapShotL");
+            snapShotQuestion= savedInstanceState.getString("SnapShotQ");
+
+        }
+        else {
+            intent = getIntent();
+            user = intent.getStringExtra("studentName");
+            currentQuestion = intent.getStringExtra("currentQuestion");
+            snapShotLesson = intent.getStringExtra("SnapShotL");
+            snapShotQuestion = intent.getStringExtra("SnapShotQ");
+        }
+
 
         getInfo();
     }
@@ -115,6 +136,26 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
             }
         });
 
+
+        user = intent.getStringExtra("studentName");
+        currentQuestion = intent.getStringExtra("currentQuestion");
+        snapShotLesson = intent.getStringExtra("SnapShotL");
+        snapShotQuestion = intent.getStringExtra("SnapShotQ");
+
+    }
+
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        Log.d("SAVEINSTANCE", "onSaveInstanceState: "+user);
+        Log.d("SAVEINSTANCE", "onSaveInstanceState: "+currentQuestion);
+        Log.d("SAVEINSTANCE", "onSaveInstanceState: "+snapShotLesson);
+        Log.d("SAVEINSTANCE", "onSaveInstanceState: "+snapShotQuestion);
+        outState.putString("studentName", user);
+        outState.putString("currentQuestion", currentQuestion);
+        outState.putString("SnapShotL", snapShotLesson);
+        outState.putString("SnapShotQ", snapShotQuestion);
+        super.onSaveInstanceState(outState, outPersistentState);
     }
 
     private void uploadImage() {
@@ -186,11 +227,11 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     }
 
     @Override
-    public void sendGeneratedCode(String str) {
+    public void sendGeneratedCode(final String str) {
 
         animSequenceArr = new ArrayList <>();
         animSetXY = new AnimatorSet();
-        animSetXY.setDuration(5000);
+        animSetXY.setDuration(2000);
         ObjectAnimator animMove10 = ObjectAnimator.ofFloat(sprite, "x", sprite.getX(), sprite.getX() + 100f);
         ObjectAnimator animMoveUp = ObjectAnimator.ofFloat(sprite, "y", sprite.getY(), sprite.getY() - 100f);
         ObjectAnimator animMoveLeft = ObjectAnimator.ofFloat(sprite, "x", sprite.getX(), sprite.getX() - 100f);
@@ -229,11 +270,34 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         animSetXY.playSequentially(animSequenceArr);
         animSetXY.start();
 
-        if (checkAnswer(str)) {
-            runOnAnotherThread("goodjob.json");
-        } else {
-            runOnAnotherThread("tryagain.json");
-        }
+        animSetXY.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                if (checkAnswer(str) ) {
+                    runOnAnotherThread("goodjob.json");
+                } else {
+                    runOnAnotherThread("tryagain.json");
+                }
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
+
+
+
     }
 
     public boolean checkAnswer(String str) {
@@ -261,11 +325,6 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
 
     public void getInfo() {
 
-        Intent intent = getIntent();
-        user = intent.getStringExtra("studentName");
-        currentQuestion = intent.getStringExtra("currentQuestion");
-        snapShotLesson = intent.getStringExtra("SnapShotL");
-        snapShotQuestion = intent.getStringExtra("SnapShotQ");
 
         questionTV.setText(currentQuestion);
 
@@ -285,6 +344,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
             }
         });
     }
+
 
     @Override
     protected void onPause() {
