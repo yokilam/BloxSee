@@ -82,7 +82,6 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         storageReference = storage.getReference();
 
         getInfo();
-
     }
 
     @Override
@@ -231,11 +230,9 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         animSetXY.start();
 
         if (checkAnswer(str)) {
-            setUpDialog("goodjob.json");
-//            runOnAnotherThread("goodjob.json");
+            runOnAnotherThread("goodjob.json");
         } else {
-            setUpDialog("goodjob.json");
-//            runOnAnotherThread("tryagain.json");
+            runOnAnotherThread("tryagain.json");
         }
     }
 
