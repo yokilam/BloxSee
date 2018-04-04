@@ -12,8 +12,6 @@ public class StudentQuestions {
    private String question;
    private String answer;
 
-
-
     public StudentQuestions() {
     }
 
@@ -56,4 +54,8 @@ public class StudentQuestions {
     public void setAnswer(String answer) {
         this.answer = answer;
     }
+
 }
+
+
+

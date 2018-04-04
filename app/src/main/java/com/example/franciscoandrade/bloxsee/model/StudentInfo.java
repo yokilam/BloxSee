@@ -1,7 +1,7 @@
 package com.example.franciscoandrade.bloxsee.model;
 
 /**
- * Created by joannesong on 4/3/18.
+ * Created by joannesong on 4/2/18.
  */
 
 public class StudentInfo {
@@ -13,11 +13,19 @@ public class StudentInfo {
     public StudentInfo() {
     }
 
-    public StudentInfo(String lesson, String question, String name, String questionNum) {
+    public StudentInfo(String name, String lesson, String question, String questionNum) {
+        this.name = name;
         this.lesson = lesson;
         this.question = question;
         this.questionNum = questionNum;
-        this.question = question;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLesson() {
@@ -34,14 +42,6 @@ public class StudentInfo {
 
     public void setQuestion(String question) {
         this.question = question;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getQuestionNum() {

@@ -65,6 +65,11 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     private Dialog dialog;
     private LottieAnimationView lottieAnimationView;
 
+    private String snapShotLesson;
+    private String snapShotQuestion;
+
+    private String snapShotName;
+
     //Joanne*** These are the values you need
     String user;
     String currentQuestion;
@@ -78,7 +83,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
-        getInfo();
+        //getInfo();
     }
 
     @Override
@@ -118,8 +123,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
             @Override
             public void onClick(View v) {
                 b = Screenshot.takeScreenShotofRootView(root);
-                // image.setImageBitmap(b)
-
+                //image.setImageBitmap(b)
                 uploadImage();
             }
         });
@@ -128,6 +132,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
             @Override
             public void onClick(View v) {
                 if (getController().getWorkspace().hasBlocks()) {
+                    Log.d("runcode", "uhoh");
                     onRunCode();
                 } else {
                     Log.i("hihi", "No blocks in workspace. Skipping run request.");
@@ -143,7 +148,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         b.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] data = baos.toByteArray();
 
-        StorageReference imagesRef = storageReference.child("images/" + user + ".jpg");
+        StorageReference imagesRef = storageReference.child("images/" + snapShotName + ".jpg");
 
         UploadTask uploadTask = imagesRef.putBytes(data);
         uploadTask.addOnFailureListener(new OnFailureListener() {
@@ -159,6 +164,8 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
                 // Do what you want
             }
         });
+
+        Toast.makeText(getApplicationContext(),"save", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -247,16 +254,11 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         animSetXY.playSequentially(animSequenceArr);
         animSetXY.start();
 
-        checkAnswer(str);
-//        if (checkAnswer(str)) {
-//
-//            Log.d("answerCheckedTrue", "sendGeneratedCode: ");
-//            //runOnAnotherThread("goodjob.json");
-//        } else {
-//            Log.d("answerCheckedFalse", "sendGeneratedCode: ");
-//
-//            //runOnAnotherThread("tryagain.json");
-//        }
+        if (checkAnswer(str)) {
+            runOnAnotherThread("goodjob.json");
+        } else {
+            runOnAnotherThread("tryagain.json");
+        }
     }
 
     public boolean checkAnswer(String str) {
@@ -300,26 +302,12 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         Log.d("STUDENT", "getInfo: " + currentQuestion);
     }
 
-//        questionTV.setText(currentQuestion);
-//
-//        Log.d("STUDENT", "getInfo: " + user);
-//        Log.d("STUDENT", "getInfo: " + currentQuestion);
-//    }
-
     public void runOnAnotherThread(final String json) {
-//        Handler refresh = new Handler(Looper.getMainLooper());
-//        refresh.post(new Runnable() {
-//            public void run() {
-//                setUpDialog(json);
-//            }
-//        });
-
-        Log.d("ANIMATION==", "runOnAnotherThread: ");
-
+        Handler refresh = new Handler(Looper.getMainLooper());
+        refresh.post(new Runnable() {
+            public void run() {
+                setUpDialog(json);
+            }
+        });
     }
-
-
-
 }
-
-

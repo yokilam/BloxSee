@@ -11,11 +11,14 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.franciscoandrade.bloxsee.R;
 import com.example.franciscoandrade.bloxsee.controller.StudentQuestionAdapter;
+import com.example.franciscoandrade.bloxsee.model.Questions;
+import com.example.franciscoandrade.bloxsee.model.Student;
 import com.example.franciscoandrade.bloxsee.model.StudentInfo;
 import com.example.franciscoandrade.bloxsee.model.StudentQuestions;
 import com.google.firebase.database.ChildEventListener;
@@ -39,14 +42,18 @@ public class StudentActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private StudentQuestions studentQuestions;
     private ChildEventListener childEventListener;
-    List<StudentInfo> studentInfoList;
-    StudentInfo sI;
-    String question;
-    String lesson;
-    StudentQuestionAdapter studentQuestionAdapter;
+    private List<StudentInfo> questionsList;
+    private String question;
+    private String lesson;
+    private StudentQuestionAdapter studentQuestionAdapter;
+
+    String name;
+    String lessonNum;
+    String questionNum;
 
     //this string will contain the curren name of the logged in user
-    String user;
+    private String user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +98,7 @@ public class StudentActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.student_questions_rv);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
-        studentQuestionAdapter= new StudentQuestionAdapter(this, user);
+        studentQuestionAdapter = new StudentQuestionAdapter(this, user);
         recyclerView.setAdapter(studentQuestionAdapter);
 
     }
@@ -112,50 +119,49 @@ public class StudentActivity extends AppCompatActivity {
          childEventListener= new ChildEventListener() {
              @Override
              public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                 Log.d("AVAILABLEB", "onChildAdded: "+dataSnapshot.child("lesson1").child(1 + "").getValue());
-//                 Log.d("AVAILABLEB", "onChildAdded: "+dataSnapshot.child(lesson).child(1 + "").child("question").getValue());
-//                 Log.d("AVAILABLEB", "onChildAdded: "+dataSnapshot.child(lesson).child(1 + "").child("state").getValue());
+                 Log.d("AVAILABLEB", "onChildAdded: "+dataSnapshot.getKey()+" - "+dataSnapshot.getValue());
 
                  if (dataSnapshot.getKey().equals(user) ) {
-                // studentQuestions= dataSnapshot.child("lesson1").child("1").getValue(StudentQuestions.class);
-                     studentInfoList = new ArrayList<>();
-                     sI = new StudentInfo();
-                     String studentL;
-                     String studentQ;
+                     questionsList = new ArrayList<>();
                   for (int i = 1; i < 3; i++) {
 
-                     for (int j = 1; j < 5; j++) {
-                         lesson= "lesson"+i;
-                        // Log.d("AVAILABLEB", "onChildAdded: "+studentQuestions.getAvailable());
-                         if(dataSnapshot.child(lesson).child(j+"").getValue(StudentQuestions.class)!=null) {
+                     for (int j = 0; j < 5; j++) {
+                         lesson = "lesson" + i;
+
+                         if(dataSnapshot.child(lesson).child( j+"").getValue(StudentQuestions.class)!=null) {
                              studentQuestions = dataSnapshot.child(lesson).child(j + "").getValue(StudentQuestions.class);
                              question = studentQuestions.getQuestion() + " - " + lesson;
-                             Log.d("AVAILABLE", "onChildAdded: "+studentQuestions.getAvailable());
+
+                             Log.d("dataSS", "value" + String.valueOf(dataSnapshot.getValue()));
+                             Log.d("dataSS", "key" + String.valueOf(dataSnapshot.getKey()));
+
+
+                             Log.d("AVAILABLE", "onChildAdded: "+ studentQuestions.getAvailable());
                              if (studentQuestions.getAvailable()) {
-                                 Log.d("QUESTONS==", "onChildAdded: " + lesson + " - " + question);
-                                 studentL = String.valueOf(i);
-                                 studentQ = String.valueOf(j);
+                                 StudentInfo sI = new StudentInfo();
 
-                                 Log.d("mememe", studentL);
-                                 Log.d("mememe", studentQ);
+                                 name = user;
+                                 lessonNum = "L" + String.valueOf(i);
+                                 questionNum = "Q" + String.valueOf(j+1);
 
-                                 sI.setQuestionNum(studentQ);
-                                 sI.setLesson(studentL);
+                                 sI.setLesson(lessonNum);
                                  sI.setQuestion(question);
-                                 sI.setName(user);
+                                 sI.setName(name);
+                                 sI.setQuestionNum(questionNum);
 
-                                 studentInfoList.add(sI);
+                                 Log.d("QUESTONS==", "onChildAdded: " + lesson + " - " + question);
+                                 questionsList.add(sI);
                              }
                          }
                      }
 
                  }
                      studentQuestionAdapter.notifyDataSetChanged();
-                     studentQuestionAdapter.addQuestions(studentInfoList);
+                     studentQuestionAdapter.addQuestions(questionsList);
                      studentQuestionAdapter.notifyDataSetChanged();
-                     if(!studentInfoList.isEmpty()){
+                     if(!questionsList.isEmpty()){
                         studentQuestionAdapter.notifyDataSetChanged();
-                         studentQuestionAdapter.addQuestions(studentInfoList);
+                        studentQuestionAdapter.addQuestions(questionsList);
                          studentQuestionAdapter.notifyDataSetChanged();
                      }
 
@@ -167,24 +173,22 @@ public class StudentActivity extends AppCompatActivity {
 
                  if (dataSnapshot.getKey().equals(user) ) {
                      // studentQuestions= dataSnapshot.child("lesson1").child("1").getValue(StudentQuestions.class);
-                     studentInfoList = new ArrayList<>();
+                     questionsList= new ArrayList<>();
                      for (int i = 1; i < 3; i++) {
 
-                         for (int j = 0; j < 5; j++) {
+                         for (int j = 1; j < 6; j++) {
                              lesson= "lesson"+i;
-                             Log.d("QUESTIONS", "onChildChanged: "+dataSnapshot.child("lesson1").child(j+"").child("question").getValue());
-                             studentQuestions= dataSnapshot.child(lesson).child(j+"").getValue(StudentQuestions.class);
-                             question=dataSnapshot.child(lesson).child(j+"").child("question").getValue()+" - "+lesson;
-                             //question=dataSnapshot.child("lesson1").child(j+"").child("question").getValue()+" - "+lesson;
+                             studentQuestions = dataSnapshot.child(lesson).child(j+"").getValue(StudentQuestions.class);
+                             question =studentQuestions.getQuestion()+" - "+lesson;
                              if(studentQuestions.getAvailable()){
                                  Log.d("QUESTONS==", "onChildAdded: "+lesson+" - "+question);
-                                 studentInfoList.add(sI);
+                                 //questionsList.add(question);
                              }
                          }
 
                      }
                      studentQuestionAdapter.notifyDataSetChanged();
-                     studentQuestionAdapter.addQuestions(studentInfoList);
+                     studentQuestionAdapter.addQuestions(questionsList);
 
                      setUpNotification();
                  }
