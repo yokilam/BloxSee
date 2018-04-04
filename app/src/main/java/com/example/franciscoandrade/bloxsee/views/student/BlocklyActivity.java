@@ -53,8 +53,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     private List <Animator> animSequenceArr;
     private TextView questionTV;
 
-    private FloatingActionMenu menu_yellow;
-    private com.github.clans.fab.FloatingActionButton fab22, fab32;
+    private com.github.clans.fab.FloatingActionButton playFab;
     private List <FloatingActionMenu> menus = new ArrayList <>();
 
     private FirebaseStorage storage;
@@ -91,9 +90,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         root = getLayoutInflater().inflate(R.layout.activity_blockly, null);
         questionTV = root.findViewById(R.id.blockly_activity_student_question);
         sprite = root.findViewById(R.id.sprite);
-        menu_yellow = root.findViewById(R.id.menu_yellow);
-        fab22 = root.findViewById(R.id.fab22);
-        fab32 = root.findViewById(R.id.fab32);
+        playFab = root.findViewById(R.id.play_fab);
         blockContainer = findViewById(R.id.blockContainer);
         getInfo();
         return root;
@@ -102,41 +99,20 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     @Override
     protected void onResume() {
         super.onResume();
-        menus.add(menu_yellow);
-        menu_yellow.setOnMenuToggleListener(new FloatingActionMenu.OnMenuToggleListener() {
-            @Override
-            public void onMenuToggle(boolean opened) {
-                String text;
-                if (opened) {
-                    text = "Menu opened";
 
-                } else {
-                    text = "Menu closed";
-                }
-            }
-        });
-
-        fab22.setImageResource(R.drawable.ic_save_black_24dp);
-        fab32.setImageResource(R.drawable.ic_play);
-        fab22.setOnClickListener(new View.OnClickListener() {
+        playFab.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 b = Screenshot.takeScreenShotofRootView(root);
                 //image.setImageBitmap(b)
-                uploadImage();
-            }
-        });
-
-        fab32.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
                 if (getController().getWorkspace().hasBlocks()) {
                     Log.d("runcode", "uhoh");
                     onRunCode();
                 } else {
                     Log.i("hihi", "No blocks in workspace. Skipping run request.");
                 }
+                uploadImage();
             }
         });
 
