@@ -255,11 +255,11 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         animSetXY.start();
 
         if (checkAnswer(str)) {
-            setUpDialog("goodjob.json");
-//            runOnAnotherThread("goodjob.json");
+//            setUpDialog("goodjob.json");
+            runOnAnotherThread("goodjob.json");
         } else {
-            setUpDialog("goodjob.json");
-//            runOnAnotherThread("tryagain.json");
+//            setUpDialog("goodjob.json");
+            runOnAnotherThread("tryagain.json");
         }
     }
 
