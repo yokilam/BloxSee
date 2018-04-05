@@ -189,26 +189,53 @@ public class StudentActivity extends AppCompatActivity {
              public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
                  if (dataSnapshot.getKey().equals(user) ) {
-                     // studentQuestions= dataSnapshot.child("lesson1").child("1").getValue(StudentQuestions.class);
-                     questionsList= new ArrayList<>();
+                     questionsList = new ArrayList<>();
                      for (int i = 1; i < 3; i++) {
 
-                         for (int j = 1; j < 6; j++) {
-                             lesson= "lesson"+i;
-                             studentQuestions = dataSnapshot.child(lesson).child(j+"").getValue(StudentQuestions.class);
-                             question =studentQuestions.getQuestion()+" - "+lesson;
-                             if(studentQuestions.getAvailable()){
-                                 Log.d("QUESTONS==", "onChildAdded: "+lesson+" - "+question);
-                                 //questionsList.add(question);
+                         for (int j = 0; j < 5; j++) {
+                             lesson = "lesson" + i;
+
+                             if(dataSnapshot.child(lesson).child( j+"").getValue(StudentQuestions.class)!=null) {
+                                 studentQuestions = dataSnapshot.child(lesson).child(j + "").getValue(StudentQuestions.class);
+                                 question = studentQuestions.getQuestion() + " - " + lesson;
+
+                                 Log.d("dataSS", "value" + String.valueOf(dataSnapshot.getValue()));
+                                 Log.d("dataSS", "key" + String.valueOf(dataSnapshot.getKey()));
+
+
+                                 Log.d("AVAILABLE", "onChildAdded: "+ studentQuestions.getAvailable());
+                                 if (studentQuestions.getAvailable()) {
+                                     StudentInfo sI = new StudentInfo();
+
+                                     name = user;
+                                     lessonNum = "L" + String.valueOf(i);
+                                     questionNum = "Q" + String.valueOf(j+1);
+
+                                     sI.setLesson(lessonNum);
+                                     sI.setQuestion(question);
+                                     sI.setName(name);
+                                     sI.setQuestionNum(questionNum);
+
+                                     Log.d("QUESTONS==", "onChildAdded: " + lesson + " - " + question);
+                                     questionsList.add(sI);
+                                 }
                              }
                          }
 
                      }
                      studentQuestionAdapter.notifyDataSetChanged();
                      studentQuestionAdapter.addQuestions(questionsList);
+                     studentQuestionAdapter.notifyDataSetChanged();
+                     if(!questionsList.isEmpty()){
+                         studentQuestionAdapter.notifyDataSetChanged();
+                         studentQuestionAdapter.addQuestions(questionsList);
+                         studentQuestionAdapter.notifyDataSetChanged();
+                     }
 
                      setUpNotification();
                  }
+
+
              }
 
              @Override
