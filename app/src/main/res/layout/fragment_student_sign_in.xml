@@ -25,7 +25,6 @@
             android:background="@drawable/whitebloxseefont"
             android:tint="@color/main_white_opacity" />
 
-
     </LinearLayout>
 
     <LinearLayout
@@ -208,8 +207,8 @@
                 </LinearLayout>
 
             </LinearLayout>
-        </LinearLayout>
 
+        </LinearLayout>
 
     </LinearLayout>
 
