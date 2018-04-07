@@ -92,4 +92,26 @@
     <string name="navigation_drawer_open">Navigation open</string>
     <string name="navigation_drawer_close">Navigation close</string>
 
+
+    <!--LESSSON 1-->
+    <string name="L1_Q1">Move the sprite to the right</string>
+    <string name="L1_Q2">Move the sprite to the center </string>
+    <string name="L1_Q3">Make your sprite move from one edge to the other edge. Repeat this motion twice.</string>
+    <string name="L1_Q4">Change the backdrop</string>
+    <string name="L1_Q5">Delete the penguin sprite. Create a new sprite.</string>
+
+
+    <!--LESSSON 2-->
+    <string name="L2_Q1">Add a red color to the street light.</string>
+    <string name="L2_Q2">Add a yellow color to the street light.</string>
+    <string name="L2_Q3">Add a green color to the street light.</string>
+    <string name="L2_Q4">Flash the yellow light 5 times.</string>
+    <string name="L2_Q5">Flash the yellow light 3 times. Then flash the green light 3 times</string>
+
+
+
+
+
+
+
 </resources>
