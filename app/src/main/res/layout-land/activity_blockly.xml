@@ -30,6 +30,13 @@
         android:layout_below="@+id/blockly_activity_student_question"
         android:layout_toEndOf="@+id/blockContainer">
 
+        <ImageView
+            android:id="@+id/square"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:src="@drawable/square"/>
+
         <include layout="@layout/fragment_blockly_run" />
 
         <com.github.clans.fab.FloatingActionButton
