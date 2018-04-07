@@ -94,7 +94,8 @@
 
 
     <!--LESSSON 1-->
-    <string name="L1_Q1">Move the sprite to the right</string>
+    <string name="L1_Q1">Drag blocks onto the screen to have the sprite draw over the black lines in the picture</string>
+
     <string name="L1_Q2">Move the sprite to the center </string>
     <string name="L1_Q3">Make your sprite move from one edge to the other edge. Repeat this motion twice.</string>
     <string name="L1_Q4">Change the backdrop</string>

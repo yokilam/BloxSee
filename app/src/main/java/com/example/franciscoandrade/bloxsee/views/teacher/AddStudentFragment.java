@@ -149,7 +149,7 @@ public class AddStudentFragment extends Fragment {
         lesson1q1.setQuestion("1. " + getResources().getString(R.string.L1_Q1));
         lesson1q1.setAvailable(false);
         lesson1q1.setState("null");
-        lesson1q1.setAnswer("start\\n” + “moveright\\n” + “movedown\\n");
+        lesson1q1.setAnswer("start\n" + "loop\n");
 
 
         lesson1q2.setQuestion("2. " + getResources().getString(R.string.L1_Q2));
