@@ -12,6 +12,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -68,6 +70,7 @@ public class StudentActivity extends AppCompatActivity {
         ref = database.getReference();
         studentQuestions= new StudentQuestions();
         setRecyclerView();
+        runLayoutAnimation(recyclerView);
         setUpNotification();
         bloxseeAvatar = (ImageView) findViewById(R.id.student_avatar);
 
@@ -117,6 +120,7 @@ public class StudentActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         studentQuestionAdapter = new StudentQuestionAdapter(this, user);
         recyclerView.setAdapter(studentQuestionAdapter);
+
 
     }
 
@@ -255,6 +259,7 @@ public class StudentActivity extends AppCompatActivity {
          };
 
         ref.child("students").addChildEventListener(childEventListener);
+        runLayoutAnimation(recyclerView);
 
     }
 
@@ -262,5 +267,22 @@ public class StudentActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         ref.child("students").removeEventListener(childEventListener);
+    }
+
+    private void runLayoutAnimation(final RecyclerView recyclerView) {
+        final Context context = recyclerView.getContext();
+        final LayoutAnimationController controller =
+                AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_fall_down);
+
+        recyclerView.setLayoutAnimation(controller);
+        recyclerView.getAdapter().notifyDataSetChanged();
+        recyclerView.scheduleLayoutAnimation();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("Resume==", "onResume: im on resume");
+        runLayoutAnimation(recyclerView);
     }
 }

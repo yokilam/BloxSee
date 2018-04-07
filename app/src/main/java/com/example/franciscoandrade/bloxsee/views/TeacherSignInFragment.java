@@ -52,7 +52,7 @@ public class TeacherSignInFragment extends Fragment {
     private TextInputEditText email_edittext, password_edittext;
     private Button signUp;
     private TextView signUp_Btn;
-    private LinearLayout signUp_container, signIn_container;
+    private LinearLayout signUp_container, signIn_container, noAccount;
     private String nameText, emailText, passwordText;
     private String passwordLogin, emailLogin;
     private String teacherName;
@@ -115,7 +115,6 @@ public class TeacherSignInFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -133,6 +132,7 @@ public class TeacherSignInFragment extends Fragment {
         progress = view.findViewById(R.id.progress);
         signIn_container = view.findViewById(R.id.signIn_container);
         signUp_container = view.findViewById(R.id.signUp_container);
+        noAccount= view.findViewById(R.id.no_account);
         email_edittext = view.findViewById(R.id.email_edittext);
         password_edittext = view.findViewById(R.id.password_edittext);
         remeber_checkBox = view.findViewById(R.id.remeber_checkBox);
@@ -149,6 +149,7 @@ public class TeacherSignInFragment extends Fragment {
             public void onClick(View v) {
                 signIn_container.setVisibility(View.GONE);
                 signUp_container.setVisibility(View.VISIBLE);
+                noAccount.setVisibility(View.INVISIBLE);
                 progress.setVisibility(View.GONE);
             }
         });
