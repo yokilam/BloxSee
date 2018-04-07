@@ -69,7 +69,7 @@ public class StudentSignInFragment extends Fragment implements View.OnClickListe
 
         imageSetClicks();
         listStudents = new ArrayList <>();
-        listStudents.add("Choose Your Name: ");
+        listStudents.add("Choose your name: ");
 
         new AsyncClass().execute();
 

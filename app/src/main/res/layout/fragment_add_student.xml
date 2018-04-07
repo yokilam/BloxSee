@@ -48,7 +48,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:theme="@style/EditTextYellow">
+                android:theme="@style/EditTextYellow"
+                android:textColorHint="@color/white">
 
 
                 <android.support.design.widget.TextInputEditText
@@ -76,7 +77,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/add_student_button"
-                android:theme="@style/RaisedButtonDark"/>
+                android:textColor="@color/white"
+                android:background="@drawable/rounded_button"/>
 
     </LinearLayout>
 
