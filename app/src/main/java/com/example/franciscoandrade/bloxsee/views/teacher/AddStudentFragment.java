@@ -98,13 +98,12 @@ public class AddStudentFragment extends Fragment {
         lesson2q4= new StudentQuestions();
         lesson2q5= new StudentQuestions();
 
-        lesson2q1.setQuestion("L2Q1, Add a red color to the street light.");
+        lesson2q1.setQuestion("1. Add a red color to the street light.");
         lesson2q1.setAvailable(false);
         lesson2q1.setState("null");
         lesson2q1.setAnswer("");
 
-
-        lesson2q2.setQuestion("L2Q2, Add a yellow color to the street light.");
+        lesson2q2.setQuestion("2. Add a yellow color to the street light.");
         lesson2q2.setAvailable(false);
         lesson2q2.setState("null");
         lesson2q2.setAnswer("");
@@ -115,13 +114,10 @@ public class AddStudentFragment extends Fragment {
         lesson2q3.setState("null");
         lesson2q3.setAnswer("");
 
-
-
         lesson2q4.setQuestion("4. Flash the yellow light 5 times.");
         lesson2q4.setAvailable(false);
         lesson2q4.setState("null");
         lesson2q4.setAnswer("");
-
 
         lesson2q5.setQuestion("5. Flash the yellow light 3 times. Then flash the green light 3 times");
         lesson2q5.setAvailable(false);
@@ -134,7 +130,6 @@ public class AddStudentFragment extends Fragment {
         lesson2.add(lesson2q4);
         lesson2.add(lesson2q5);
         progress.setLesson2(lesson2);
-
 
     }
 
@@ -149,34 +144,27 @@ public class AddStudentFragment extends Fragment {
         lesson1q1.setQuestion("1. Move the sprite to the right");
         lesson1q1.setAvailable(false);
         lesson1q1.setState("null");
-        lesson1q1.setAnswer("start\\n” + “moveright\\n” + “movedown\\n");
-
+        lesson1q1.setAnswer("start\\n” + “moveright\\n");
 
         lesson1q2.setQuestion("2. Move the sprite to the center ");
         lesson1q2.setAvailable(false);
         lesson1q2.setState("null");
-        lesson1q2.setAnswer("");
-
+        lesson1q2.setAnswer("start\n” + “moveright\n” + “movedown\n");
 
         lesson1q3.setQuestion("3. Make your sprite move from one edge to the other edge. Repeat this motion twice.");
         lesson1q3.setAvailable(false);
         lesson1q3.setState("null");
-        lesson1q3.setAnswer("");
-
-
+        lesson1q3.setAnswer(" start\\n” + “moveright\\n”+ “moveleft\\n");
 
         lesson1q4.setQuestion("4. Change the backdrop");
         lesson1q4.setAvailable(false);
         lesson1q4.setState("null");
         lesson1q4.setAnswer("");
 
-
         lesson1q5.setQuestion("5. Delete the penguin sprite. Create a new sprite.");
         lesson1q5.setAvailable(false);
         lesson1q5.setState("null");
         lesson1q5.setAnswer("");
-
-
 
         lesson1.add(lesson1q1);
         lesson1.add(lesson1q2);
@@ -199,7 +187,6 @@ public class AddStudentFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 listenerProgress.closeView();
-
             }
         });
     }
@@ -243,7 +230,6 @@ public class AddStudentFragment extends Fragment {
     }
 
     private void setQuestionsAndANswers(String student, Student studentObject) {
-
 
 //                ref.child("students").child(student).child("lesson1").child("1").child("question").setValue( "1. Move the sprite to the right");
 //                ref.child("students").child(student).child("lesson1").child("1").child("answer").setValue("start\\n” + “moveright\\n” + “movedown\\n");
