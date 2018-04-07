@@ -362,10 +362,14 @@ public class TeacherProgressViewHolder extends RecyclerView.ViewHolder implement
 
     public void changeColor(String string, ImageView imageView){
         if (string.equals("passed")) {
-            imageView.setColorFilter(context.getResources().getColor(R.color.main_blue));
+            imageView.setColorFilter(context.getResources().getColor(R.color.material_green_600));
         }
         if (string.equals("failed")) {
             imageView.setColorFilter(context.getResources().getColor(R.color.material_red_500));
+        }
+
+        if (string.equals("null")) {
+            imageView.setColorFilter(context.getResources().getColor(R.color.white));
         }
     }
 }
