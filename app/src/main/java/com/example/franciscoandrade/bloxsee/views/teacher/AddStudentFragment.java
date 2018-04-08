@@ -132,7 +132,6 @@ public class AddStudentFragment extends Fragment {
         progress.setLesson2(lesson2);
 
     }
-
     private void fillLessonOne() {
 
         lesson1q1= new StudentQuestions();

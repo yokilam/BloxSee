@@ -25,7 +25,7 @@ public class ToolboxCategoryFragment extends CategorySelectorFragment{
 
     private static final String TAG = "CategorySelectorFragment";
 
-    protected CategoryView mCategoryView;
+    protected BlocklyCategoryView mCategoryView;
     protected WorkspaceHelper mHelper;
     protected BlocklyController mController;
 
@@ -55,7 +55,7 @@ public class ToolboxCategoryFragment extends CategorySelectorFragment{
                              Bundle savedInstanceState) {
         int layout = mScrollOrientation == OrientationHelper.VERTICAL
                 ? com.google.blockly.android.R.layout.default_category_start : com.google.blockly.android.R.layout.default_category_horizontal;
-        mCategoryView = (CategoryView) inflater.inflate(layout, null);
+        mCategoryView = (BlocklyCategoryView) inflater.inflate(layout, null);
         mCategoryView.setLabelRotation(mLabelRotation);
         mCategoryView.setScrollOrientation(mScrollOrientation);
         return mCategoryView;
