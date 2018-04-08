@@ -1,5 +1,25 @@
 [
   {
+    "type": "forloop",
+    "message0": "repeat %1 %2",
+    "args0": [
+      {
+        "type": "field_number",
+        "name": "NAME",
+        "value": 0
+      },
+      {
+        "type": "input_statement",
+        "name": "forloop"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 20,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
     "type": "foreverloop",
     "message0": "forever %1",
     "args0": [

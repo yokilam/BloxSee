@@ -101,7 +101,6 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
             snapShotQuestion = intent.getStringExtra("SnapShotQ");
         }
 
-
         getInfo();
     }
 
