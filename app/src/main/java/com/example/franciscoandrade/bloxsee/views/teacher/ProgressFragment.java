@@ -108,7 +108,7 @@ public class ProgressFragment extends Fragment  {
                 Log.d("CHANGED", "onChildChanged: ");
 
 
-                progressLoad(dataSnapshot);
+                //progressLoad(dataSnapshot);
 
 
 /*

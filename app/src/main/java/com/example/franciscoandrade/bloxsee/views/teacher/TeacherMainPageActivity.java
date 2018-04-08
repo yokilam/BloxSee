@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.franciscoandrade.bloxsee.R;
 import com.example.franciscoandrade.bloxsee.ScreenShotFragment;
@@ -112,12 +113,21 @@ public class TeacherMainPageActivity extends AppCompatActivity implements ViewPa
     public boolean onOptionsItemSelected(MenuItem item) {
         super.onOptionsItemSelected(item);
         if(item.getItemId() == R.id.signout_teacher){
-            Intent intent = new Intent(TeacherMainPageActivity.this, SignInActivity.class);
-            startActivity(intent);
-            finish();
+
+            signOut();
         }
         return true;
     }
+
+    private void signOut() {
+
+        Intent intent = new Intent(TeacherMainPageActivity.this, SignInActivity.class);
+        startActivity(intent);
+        Toast.makeText(this, "You have been Logged Out", Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
+
 
     private void setupViewPager(ViewPager viewPager) {
         adapter = new PagerAdapterTeacher(getSupportFragmentManager());
@@ -167,6 +177,9 @@ public class TeacherMainPageActivity extends AppCompatActivity implements ViewPa
         if(actualPosition.equals("1")){
             rosterFragment.showFloatingBtn();
         }
+
+
+        signOut();
     }
 
     public void setupToolbar(){
@@ -188,4 +201,7 @@ public class TeacherMainPageActivity extends AppCompatActivity implements ViewPa
     public void closeScreenshot() {
         progressFragment.closeScreenShootFragment();
     }
+
+
+
 }
