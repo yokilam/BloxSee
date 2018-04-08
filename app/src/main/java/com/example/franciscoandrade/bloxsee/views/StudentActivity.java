@@ -129,7 +129,7 @@ public class StudentActivity extends AppCompatActivity {
 
         Notification notification = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL)
                 .setSmallIcon(R.drawable.bloxseenewicon)
-                .setColor(getResources().getColor(R.color.colorPrimary))
+                .setColor(getResources().getColor(R.color.white))
                 .setContentTitle("New Question Added!")
                 .setContentText("A new question is posted!")
                 .setContentIntent(pendingIntent)
