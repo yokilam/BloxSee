@@ -36,7 +36,7 @@ public class StudentQuestionViewHolder extends RecyclerView.ViewHolder implement
 
         studentQuestion = itemView.findViewById(R.id.questions_tv);
         questionNumber= itemView.findViewById(R.id.question_number);
-        cardViewQuestions = itemView.findViewById(R.id.cardViewQuestions);
+        cardViewQuestions = itemView.findViewById(R.id.cardViewQuestionsStudent);
 
     }
     public void onBind(StudentInfo studentInfo, int position, int size, String studentName, Context context){
@@ -56,12 +56,14 @@ public class StudentQuestionViewHolder extends RecyclerView.ViewHolder implement
     public void onClick(View v) {
 
         switch (v.getId()){
-            case R.id.cardViewQuestions:
+            case R.id.cardViewQuestionsStudent:
 
                 String currentQuestion = studentQuestion.getText().toString();
                 studentName = studentInfo.getName();
-                studentQ = studentInfo.getQuestionNum();
-                studentL = studentInfo.getLesson();
+                studentQ = "Q"+studentInfo.getQuestionNum();
+                studentL = "L"+studentInfo.getLesson();
+                Log.d("TEST=", String.valueOf(studentQ));
+                Log.d("TEST=", String.valueOf(studentL));
 
                 Intent intent = new Intent(context, BlocklyActivity.class);
                 intent.putExtra("currentQuestion", currentQuestion);
@@ -70,9 +72,9 @@ public class StudentQuestionViewHolder extends RecyclerView.ViewHolder implement
                 intent.putExtra("SnapShotQ", studentQ);
                 context.startActivity(intent);
 
-                Log.d("hihi", String.valueOf(studentInfo.getQuestion()));
-                Log.d("hihi", String.valueOf(studentInfo.getName()));
-                Log.d("hihi", String.valueOf(studentInfo.getLesson()));
+//                Log.d("hihi", String.valueOf(studentInfo.getQuestion()));
+//                Log.d("hihi", String.valueOf(studentInfo.getName()));
+//                Log.d("hihi", String.valueOf(studentInfo.getLesson()));
 
                 break;
 
