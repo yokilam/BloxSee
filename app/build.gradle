@@ -47,6 +47,5 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.4.0'
     implementation 'com.github.chrisbanes:PhotoView:2.0.0'
     compile 'com.android.support:cardview-v7:26.1.0'
-    implementation project(':blockseelib')
 }
 apply plugin: 'com.google.gms.google-services'
