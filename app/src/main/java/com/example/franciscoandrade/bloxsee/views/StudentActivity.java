@@ -201,11 +201,13 @@ public class StudentActivity extends AppCompatActivity {
                                     sI.setName(name);
                                     sI.setQuestionNum(questionNum);
 
-                                    if (lessonNum.equals(String.valueOf(1))) {
+                                    if (sI.getLesson().equals("1")) {
                                         Log.d("lessonNum", lessonNum);
                                         questionListOne.add(sI);
-                                    } else {
+                                    } else if(sI.getLesson().equals("2")){
                                         questionsList.add(sI);
+                                        Log.d("lessonNum", lessonNum);
+
                                     }
                                     Log.d("QUESTONS==", "onChildAdded: " + lesson + " - " + question);
 
@@ -220,22 +222,22 @@ public class StudentActivity extends AppCompatActivity {
                     studentQuestionAdapterLessonOne.addQuestions(questionListOne);
                     studentQuestionAdapterLessonOne.notifyDataSetChanged();
 
-                    if (!questionsList.isEmpty()) {
+
 //                        bloxseeAvatar.setAnimation(fromBottom);
 //                        studentLayout.setAnimation(fromBottom);
 //                        bloxseeAvatar.setVisibility(View.GONE);
                         lessonTwo.setVisibility(View.VISIBLE);
-                        studentQuestionAdapter.notifyDataSetChanged();
-                        studentQuestionAdapter.addQuestions(questionsList);
-                        studentQuestionAdapter.notifyDataSetChanged();
+//                        studentQuestionAdapter.notifyDataSetChanged();
+//                        studentQuestionAdapter.addQuestions(questionsList);
+//                        studentQuestionAdapter.notifyDataSetChanged();
                     } else if (!questionListOne.isEmpty()) {
 //                        bloxseeAvatar.setAnimation(fromBottom);
 //                        studentLayout.setAnimation(fromBottom);
 //                        bloxseeAvatar.setVisibility(View.GONE);
                         lessonOne.setVisibility(View.VISIBLE);
-                        studentQuestionAdapterLessonOne.notifyDataSetChanged();
-                        studentQuestionAdapterLessonOne.addQuestions(questionListOne);
-                        studentQuestionAdapterLessonOne.notifyDataSetChanged();
+//                        studentQuestionAdapterLessonOne.notifyDataSetChanged();
+//                        studentQuestionAdapterLessonOne.addQuestions(questionListOne);
+//                        studentQuestionAdapterLessonOne.notifyDataSetChanged();
                     } else {
 //                        bloxseeAvatar.setVisibility(View.VISIBLE);
 //                        bloxseeAvatar.setAnimation(fromTop);
@@ -289,10 +291,10 @@ public class StudentActivity extends AppCompatActivity {
                         }
 
                     }
-                    studentQuestionAdapter.notifyDataSetChanged();
+                    //studentQuestionAdapter.notifyDataSetChanged();
                     studentQuestionAdapter.addQuestions(questionsList);
                     studentQuestionAdapter.notifyDataSetChanged();
-                    studentQuestionAdapterLessonOne.notifyDataSetChanged();
+                    //studentQuestionAdapterLessonOne.notifyDataSetChanged();
                     studentQuestionAdapterLessonOne.addQuestions(questionListOne);
                     studentQuestionAdapterLessonOne.notifyDataSetChanged();
 

@@ -35,7 +35,7 @@ public class StudentQuestionViewHolder extends RecyclerView.ViewHolder implement
         super(itemView);
 
         studentQuestion = itemView.findViewById(R.id.questions_tv);
-        questionNumber= itemView.findViewById(R.id.question_number);
+        questionNumber= itemView.findViewById(R.id.qNumber);
         cardViewQuestions = itemView.findViewById(R.id.cardViewQuestionsStudent);
 
     }
