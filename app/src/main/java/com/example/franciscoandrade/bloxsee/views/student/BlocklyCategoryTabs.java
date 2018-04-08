@@ -327,7 +327,7 @@ public class BlocklyCategoryTabs extends RecyclerView {
     /**
      * ViewHolder for the display name of a category in the toolbox.
      */
-    private static class TabLabelHolder extends RecyclerView.ViewHolder {
+    private  class TabLabelHolder extends RecyclerView.ViewHolder {
         public final RotatedViewGroup mRotator;
         public final View mLabel;
 
