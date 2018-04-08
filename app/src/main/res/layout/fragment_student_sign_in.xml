@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/navybackgroundlight"
+    android:fitsSystemWindows="true"
     android:orientation="vertical"
+
     tools:context="com.example.franciscoandrade.bloxsee.views.StudentSignInFragment">
 
     <LinearLayout
@@ -11,7 +13,7 @@
         android:layout_height="0dp"
         android:layout_marginEnd="30dp"
         android:layout_marginStart="30dp"
-        android:layout_weight="0.35"
+        android:layout_weight="0.45"
         android:gravity="bottom"
         android:orientation="vertical">
 
@@ -24,7 +26,6 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/whitebloxseefont"
             android:tint="@color/main_white_opacity" />
-
 
     </LinearLayout>
 
@@ -66,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="7dp"
-                android:text="Choose Your Assigned Character"
+                android:text="Choose your assigned character"
                 android:textColor="@color/white"
                 android:textSize="15sp" />
 
@@ -208,8 +209,8 @@
                 </LinearLayout>
 
             </LinearLayout>
-        </LinearLayout>
 
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -232,9 +233,9 @@
 
         <TextView
             android:id="@+id/not_a_student"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_width="130dp"
+            android:layout_height="48dp"
+            android:gravity="center"
             android:layout_marginTop="22dp"
             android:text="Not a student?"
             android:textColor="@color/main_yellow" />

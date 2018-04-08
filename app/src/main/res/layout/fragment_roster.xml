@@ -178,6 +178,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="0dp"
             android:layout_marginTop="0dp"
+            android:layoutAnimation="@anim/layout_animation_fall_down"
             >
 
         </android.support.v7.widget.RecyclerView>

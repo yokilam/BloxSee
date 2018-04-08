@@ -1,6 +1,7 @@
 package com.example.franciscoandrade.bloxsee.views.teacher;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -16,6 +17,8 @@ import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -56,7 +59,7 @@ public class RosterFragment extends Fragment {
     private SparseBooleanArray expandState = new SparseBooleanArray();
     public RelativeLayout buttonLayout;
     public ExpandableLinearLayout expandableLayout;
-    private List <Student> studentList ;
+    private List <Student> studentList;
     public Student student;
     ExpandableLayoutAnimation expandableLayoutAnimation;
 
@@ -65,9 +68,9 @@ public class RosterFragment extends Fragment {
     private DatabaseReference ref;
     private FirebaseDatabase database;
     private ChildEventListener childEventListener;
-    List<StudentQuestions> lesson1;
-    List<StudentQuestions> lesson2;
-    List<Progress> progressList;
+    List <StudentQuestions> lesson1;
+    List <StudentQuestions> lesson2;
+    List <Progress> progressList;
     TeacherProgressAdapter teacherProgressAdapter;
     PagerAdapterTeacher adapter;
 
@@ -83,7 +86,7 @@ public class RosterFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_roster, container, false);
         setUpViews(view);
-        expandableLayoutAnimation= new ExpandableLayoutAnimation();
+        expandableLayoutAnimation = new ExpandableLayoutAnimation();
 
         runExpandableLayoutLogic(view);
         listPassword();
@@ -99,22 +102,27 @@ public class RosterFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         ref = database.getReference();
-        student= new Student();
+        student = new Student();
         studentList = new ArrayList <>();
+        int resId = R.anim.layout_animation_fall_down;
+        LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(view.getContext(), resId);
 
-        teacherRosterAdapter= new TeacherRosterAdapter(getActivity());
+        teacherRosterAdapter = new TeacherRosterAdapter(getActivity());
         recyclerView.setAdapter(teacherRosterAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));
 
+        Log.d("which is faster", "onCreateView: ======= ");
 
-        ChildEventListener childEventListener= new ChildEventListener(){
+
+        ChildEventListener childEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                student=dataSnapshot.getValue(Student.class);
-                Log.d("CHILD", "onChildAdded: "+ student.getName());
+                student = dataSnapshot.getValue(Student.class);
+                Log.d("CHILD", "onChildAdded: " + student.getName());
                 studentList.add(student);
                 teacherRosterAdapter.addStudents(studentList);
                 teacherRosterAdapter.notifyDataSetChanged();
+
             }
 
             @Override
@@ -140,11 +148,10 @@ public class RosterFragment extends Fragment {
 
         ref.child("students").addChildEventListener(childEventListener);
 
-        //recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(), DividerItemDecoration.VERTICAL));
-
-         manager= getFragmentManager();
+        manager = getFragmentManager();
 
         fabClickHandle();
+        recyclerView.setLayoutAnimation(animation);
 
         return view;
     }
@@ -153,7 +160,7 @@ public class RosterFragment extends Fragment {
         addStudentFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addStudentFragment= new AddStudentFragment();
+                addStudentFragment = new AddStudentFragment();
                 manager.beginTransaction()
                         .setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
                         .replace(R.id.addStudentContainer, addStudentFragment).addToBackStack("backToActivity").addToBackStack(null).commit();
@@ -165,7 +172,7 @@ public class RosterFragment extends Fragment {
     }
 
     private void runExpandableLayoutLogic(View view) {
-        expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation(view, expandableLayout,R.color.material_red_300, expandState );
+        expandableLayoutAnimation.changeExpandableLayoutColorAndAnimation(view, expandableLayout, R.color.material_red_300, expandState);
         //set Listener when the expandable layout expands
         expandableLayout.setListener(new ExpandableLayoutListenerAdapter() {
             @Override
@@ -243,7 +250,6 @@ public class RosterFragment extends Fragment {
         }
 
 
-
     }
 
 //    private void setQuestions() {
@@ -319,7 +325,6 @@ public class RosterFragment extends Fragment {
     }
 
 
-
     public void closeFragment() {
         manager.beginTransaction()
                 .setCustomAnimations(R.anim.enter, R.anim.exit)
@@ -328,9 +333,26 @@ public class RosterFragment extends Fragment {
     }
 
 
-    public void showFloatingBtn(){
+    public void showFloatingBtn() {
         addStudentFab.setVisibility(View.VISIBLE);
 
+    }
+
+    private void runLayoutAnimation(final RecyclerView recyclerView) {
+        final Context context = recyclerView.getContext();
+        final LayoutAnimationController controller =
+                AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_fall_down);
+
+        recyclerView.setLayoutAnimation(controller);
+        recyclerView.getAdapter().notifyDataSetChanged();
+        recyclerView.scheduleLayoutAnimation();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("AM I RESUME", "onResume: YA");
+        runLayoutAnimation(recyclerView);
     }
 }
 

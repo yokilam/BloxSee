@@ -56,17 +56,29 @@
             android:background="@color/editTextHint"
             android:layout_gravity="center"/>
 
-        <FrameLayout
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardLessons"
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:layout_height="wrap_content"
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:elevation="10dp"
+            card_view:cardCornerRadius="8dp"
+            android:layout_gravity="bottom"
+            android:clickable="false"
+            android:foreground="?android:selectableItemBackground">
+
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
 
-    <LinearLayout
+            <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:background="@color/main_navy_opacity"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -82,7 +94,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:textColor="@color/white"
+                android:textColor="@color/some_blue_background"
                 android:text="@string/joanne_song"
                 android:textSize="20sp" />
 
@@ -110,8 +122,8 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/dragon"
-                app:civ_border_color="@color/white"
-                app:civ_border_width="1dp" />
+                app:civ_border_color="@color/some_blue_background"
+                app:civ_border_width="3dp" />
 
         </LinearLayout>
 
@@ -128,6 +140,8 @@
 
         </FrameLayout>
 
+
+        </android.support.v7.widget.CardView>
     </LinearLayout>
 
 </LinearLayout>

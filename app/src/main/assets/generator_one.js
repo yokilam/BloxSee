@@ -42,9 +42,9 @@ Blockly.JavaScript['moveright'] = function(block) {
   var code = 'moveright\n';
   return code;
 };
-Blockly.JavaScript['foreverloop'] = function(block) {
+Blockly.JavaScript['loop'] = function(block) {
   var statements_name = Blockly.JavaScript.statementToCode(block, 'NAME');
   // TODO: Assemble JavaScript into code variable.
-  var code = 'foreverloop\n';
+  var code = 'loop\n';
   return code;
 };

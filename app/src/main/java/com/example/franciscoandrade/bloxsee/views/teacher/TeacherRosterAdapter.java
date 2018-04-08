@@ -33,6 +33,7 @@ public class TeacherRosterAdapter extends RecyclerView.Adapter<TeacherRosterView
     @Override
     public void onBindViewHolder(TeacherRosterViewHolder holder, int position) {
         holder.onBind(studentList.get(position), position, studentList.size());
+
     }
 
     @Override
@@ -46,4 +47,5 @@ public class TeacherRosterAdapter extends RecyclerView.Adapter<TeacherRosterView
         this.studentList.addAll(studentList);
         notifyDataSetChanged();
     }
+
 }

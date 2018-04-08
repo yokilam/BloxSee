@@ -24,17 +24,18 @@ import static android.support.v4.content.ContextCompat.startActivity;
 public class StudentQuestionViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     private StudentQuestions studentQuestions;
     private StudentInfo studentInfo;
-    private TextView studentQuestion;
+    private TextView studentQuestion, questionNumber;
     private String studentName;
     private String studentQ;
     private String studentL;
-    CardView cardViewQuestions;
-    Context context;
+    private CardView cardViewQuestions;
+    private Context context;
 
     public StudentQuestionViewHolder(final View itemView) {
         super(itemView);
 
         studentQuestion = itemView.findViewById(R.id.questions_tv);
+        questionNumber= itemView.findViewById(R.id.question_number);
         cardViewQuestions = itemView.findViewById(R.id.cardViewQuestions);
 
     }
@@ -42,7 +43,9 @@ public class StudentQuestionViewHolder extends RecyclerView.ViewHolder implement
         String studentQ = studentInfo.getQuestion();
         this.studentInfo = studentInfo;
 
-        studentQuestion.setText(studentQ);
+        questionNumber.setText(studentInfo.getQuestionNum());
+        String question= studentQ.substring(3);
+        studentQuestion.setText(question);
         this.context = context;
 
         cardViewQuestions.setOnClickListener(this);
