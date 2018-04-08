@@ -21,6 +21,7 @@ import android.view.animation.LayoutAnimationController;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.franciscoandrade.bloxsee.R;
 import com.example.franciscoandrade.bloxsee.controller.StudentQuestionAdapter;
@@ -111,6 +112,7 @@ public class StudentActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(StudentActivity.this, SignInActivity.class);
                 startActivity(intent);
+                Toast.makeText(StudentActivity.this, "You have been Logged Out", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -356,5 +358,13 @@ public class StudentActivity extends AppCompatActivity {
         Log.d("Resume==", "onResume: im on resume");
         runLayoutAnimation(recyclerView);
         runLayoutAnimation(recyclerViewOne);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(StudentActivity.this, SignInActivity.class);
+        startActivity(intent);
+        Toast.makeText(StudentActivity.this, "You have been Logged Out", Toast.LENGTH_SHORT).show();
+        finish();
     }
 }
