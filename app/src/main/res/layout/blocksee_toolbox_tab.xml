@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <ImageView
+        android:id="@+id/tab_image"
+        android:src="@drawable/penguin"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <TextView
+        android:id="@+id/tab_text"
+        android:layout_width="150dp"
+        android:gravity="center_horizontal"
+        android:layout_height="match_parent"
+        android:textSize="25sp"
+        android:textColor="@color/white"
+        android:background="@color/main_red"
+        android:padding="8dp"
+        android:maxLines="2"
+        android:singleLine="true"
+        android:text="hi" />
+</LinearLayout>
