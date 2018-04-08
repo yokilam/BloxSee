@@ -8,16 +8,19 @@
     <TextView
         android:id="@+id/blockly_activity_student_question"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:padding="8dp"
+        android:textSize="24dp"
+        android:textColor="@color/white"
+        android:layout_height="80dp"
+        android:paddingTop="15dp"
+        android:paddingLeft="30dp"
         android:textStyle="bold"
-        android:background="@android:color/holo_purple"
+        android:background="@drawable/navybackgroundlight"
         android:text="Question" />
 
     <include
         android:id="@+id/blockContainer"
         layout="@layout/blockly_unified_workspace"
-        android:layout_width="350dp"
+        android:layout_width="450dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/blockly_activity_student_question" />
@@ -32,8 +35,8 @@
 
         <ImageView
             android:id="@+id/square"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="450dp"
+            android:layout_height="450dp"
             android:layout_gravity="center"
             android:src="@drawable/square"/>
 

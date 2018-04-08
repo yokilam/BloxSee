@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="7dp"
-                android:text="Choose Your Assigned Character"
+                android:text="Choose your assigned character"
                 android:textColor="@color/white"
                 android:textSize="15sp" />
 

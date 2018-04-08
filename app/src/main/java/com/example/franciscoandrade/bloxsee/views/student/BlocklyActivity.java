@@ -296,8 +296,6 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
             }
         });
 
-
-
     }
 
     public boolean checkAnswer(String str) {
