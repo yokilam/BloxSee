@@ -3,6 +3,7 @@ package com.example.franciscoandrade.bloxsee.views.student;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
@@ -270,7 +271,21 @@ public class BlocklyCategoryTabs extends RecyclerView {
             switch(labelText){
                 case "Start":
                     tabImage.setImageResource(R.drawable.ic_play_arrow_white_24dp);
+                    label.setBackgroundColor(Color.RED);
                     break;
+                case "Color":
+                    tabImage.setImageResource(R.drawable.ic_color_lens_black_24dp);
+                    label.setBackgroundColor(Color.RED);
+                    break;
+                case "Motions":
+                    tabImage.setImageResource(R.drawable.ic_directions_run_black_24dp);
+                    label.setBackgroundColor(Color.RED);
+                    break;
+                case "Control":
+                    tabImage.setImageResource(R.drawable.ic_videogame_asset_black_24dp);
+                    label.setBackgroundColor(Color.RED);
+                    break;
+
 
             }
         }
@@ -323,6 +338,8 @@ public class BlocklyCategoryTabs extends RecyclerView {
             mRotator = (RotatedViewGroup) itemView;
             mLabel = label;
             mRotator.addView(mLabel);
+
+            label.setBackgroundColor(Color.CYAN);
         }
     }
 }
