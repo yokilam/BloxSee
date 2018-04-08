@@ -27,7 +27,7 @@
     </category>
 
     <category name="Motions" colour="210">
-        <block type="move10">
+        <block type="move">
 
         </block>
         <block type="moveleft">
@@ -47,6 +47,9 @@
     <category name="Control" colour="210">
 
         <block type="foreverloop">
+
+        </block>
+        <block type="forloop">
 
         </block>
 

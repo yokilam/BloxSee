@@ -143,7 +143,6 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
 
     }
 
-
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
         Log.d("SAVEINSTANCE", "onSaveInstanceState: "+user);

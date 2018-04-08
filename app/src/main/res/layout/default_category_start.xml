@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.franciscoandrade.bloxsee.views.student.BlocklyCategoryView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content">
+    <com.example.franciscoandrade.bloxsee.views.student.BlocklyCategoryTabs
+        android:id="@+id/category_tabs"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+</com.example.franciscoandrade.bloxsee.views.student.BlocklyCategoryView>

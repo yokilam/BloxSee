@@ -12,7 +12,7 @@ Blockly.JavaScript['start'] = function(block) {
   return code;
 };
 
-Blockly.JavaScript['move10'] = function(block) {
+Blockly.JavaScript['move'] = function(block) {
   var number_name = block.getFieldValue('NAME');
   // TODO: Assemble JavaScript into code variable.
   var code = 'move\n';
