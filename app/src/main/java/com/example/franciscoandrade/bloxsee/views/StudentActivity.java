@@ -222,25 +222,14 @@ public class StudentActivity extends AppCompatActivity {
                     studentQuestionAdapterLessonOne.addQuestions(questionListOne);
                     studentQuestionAdapterLessonOne.notifyDataSetChanged();
 
+                    if (!questionsList.isEmpty()) {
 
-//                        bloxseeAvatar.setAnimation(fromBottom);
-//                        studentLayout.setAnimation(fromBottom);
-//                        bloxseeAvatar.setVisibility(View.GONE);
                         lessonTwo.setVisibility(View.VISIBLE);
-//                        studentQuestionAdapter.notifyDataSetChanged();
-//                        studentQuestionAdapter.addQuestions(questionsList);
-//                        studentQuestionAdapter.notifyDataSetChanged();
+
                     } else if (!questionListOne.isEmpty()) {
-//                        bloxseeAvatar.setAnimation(fromBottom);
-//                        studentLayout.setAnimation(fromBottom);
-//                        bloxseeAvatar.setVisibility(View.GONE);
                         lessonOne.setVisibility(View.VISIBLE);
-//                        studentQuestionAdapterLessonOne.notifyDataSetChanged();
-//                        studentQuestionAdapterLessonOne.addQuestions(questionListOne);
-//                        studentQuestionAdapterLessonOne.notifyDataSetChanged();
+
                     } else {
-//                        bloxseeAvatar.setVisibility(View.VISIBLE);
-//                        bloxseeAvatar.setAnimation(fromTop);
                         lessonOne.setVisibility(View.GONE);
                         lessonTwo.setVisibility(View.GONE);
                     }
