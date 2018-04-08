@@ -21,6 +21,13 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="AppTheme.NoActionBarTwo" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
     <style name="EditTextYellow" parent="Theme.AppCompat">
         <item name="android:textColorHint">@color/main_navy</item>
         <item name="android:textSize">18sp</item>
