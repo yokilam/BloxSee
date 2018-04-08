@@ -246,7 +246,7 @@ public class BlocklyCategoryTabs extends RecyclerView {
         @Override
         public View onCreateLabel() {
             return  LayoutInflater.from(getContext())
-                    .inflate(com.google.blockly.android.R.layout.default_toolbox_tab, null);
+                    .inflate(R.layout.blocksee_toolbox_tab, null);
         }
 
         /**
