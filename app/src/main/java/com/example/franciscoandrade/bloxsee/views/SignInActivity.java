@@ -30,8 +30,8 @@ public class SignInActivity extends AppCompatActivity  {
         fragmentManager.beginTransaction().replace(R.id.loginContainer, studentSignInFragment).commit();
 
 // don't delete my intent please
-        Intent intent = new Intent(this, BlocklyActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, BlocklyActivity.class);
+//        startActivity(intent);
 
     }
 }
