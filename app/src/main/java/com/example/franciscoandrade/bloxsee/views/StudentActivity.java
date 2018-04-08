@@ -191,8 +191,8 @@ public class StudentActivity extends AppCompatActivity {
 
                                     name = user;
 //
-                                    lessonNum ="L"+ String.valueOf(i);
-                                    questionNum = "Q"+String.valueOf(j + 1);
+                                    lessonNum = String.valueOf(i);
+                                    questionNum = String.valueOf(j + 1);
 
                                     Log.d("QUESTION==", question + " lessonNum " + i + "questionNum: " + questionNum);
 
