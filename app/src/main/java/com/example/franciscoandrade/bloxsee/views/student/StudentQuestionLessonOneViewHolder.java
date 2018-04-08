@@ -6,55 +6,47 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.franciscoandrade.bloxsee.R;
-import com.example.franciscoandrade.bloxsee.model.Questions;
 import com.example.franciscoandrade.bloxsee.model.StudentInfo;
-import com.example.franciscoandrade.bloxsee.model.StudentQuestions;
-import com.example.franciscoandrade.bloxsee.views.StudentActivity;
-
-import static android.support.v4.content.ContextCompat.startActivity;
 
 /**
- * Created by Kevintoro on 3/18/18.
+ * Created by yokilam on 4/7/18.
  */
 
-public class StudentQuestionViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    private StudentQuestions studentQuestions;
+public class StudentQuestionLessonOneViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+
     private StudentInfo studentInfo;
     private TextView studentQuestion, questionNumber;
+    private CardView cardViewQuestions;
     private String studentName;
     private String studentQ;
     private String studentL;
-    private CardView cardViewQuestions;
     private Context context;
 
-    public StudentQuestionViewHolder(final View itemView) {
+    public StudentQuestionLessonOneViewHolder(View itemView) {
         super(itemView);
-
         studentQuestion = itemView.findViewById(R.id.questions_tv);
         questionNumber= itemView.findViewById(R.id.question_number);
         cardViewQuestions = itemView.findViewById(R.id.cardViewQuestions);
-
     }
-    public void onBind(StudentInfo studentInfo, int position, int size, String studentName, Context context){
+
+    public void onBind(StudentInfo studentInfo, int position, int size, String studentName, Context context) {
         String studentQ = studentInfo.getQuestion();
         this.studentInfo = studentInfo;
 
         questionNumber.setText(studentInfo.getQuestionNum());
         String question= studentQ.substring(3);
+        Log.d("viewholder==", "onBind:" + question);
         studentQuestion.setText(question);
         this.context = context;
 
         cardViewQuestions.setOnClickListener(this);
-
     }
 
     @Override
     public void onClick(View v) {
-
         switch (v.getId()){
             case R.id.cardViewQuestions:
 
@@ -77,6 +69,5 @@ public class StudentQuestionViewHolder extends RecyclerView.ViewHolder implement
                 break;
 
         }
-
     }
 }
