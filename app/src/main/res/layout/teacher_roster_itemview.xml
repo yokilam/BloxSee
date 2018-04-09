@@ -7,8 +7,8 @@
     <TextView
         android:layout_width="3dp"
         android:layout_height="8dp"
-        android:background="@color/editTextHint"
-        android:layout_marginLeft="8dp"/>
+        android:layout_marginLeft="8dp"
+        android:background="@color/editTextHint" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,23 +18,23 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="0.03"
-            android:layout_marginLeft="5dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="0.03"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="3dp"
                 android:layout_height="30dp"
-                android:background="@color/editTextHint"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:background="@color/editTextHint" />
 
             <ImageView
                 android:id="@+id/dot_item"
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
-                android:paddingBottom="-5dp"
                 android:layout_gravity="start"
+                android:paddingBottom="-5dp"
                 android:paddingTop="-5dp"
                 android:src="@drawable/ic_dot"
                 android:tint="#436a91" />
@@ -43,8 +43,8 @@
                 android:id="@+id/bottomLine"
                 android:layout_width="3dp"
                 android:layout_height="30dp"
-                android:background="@color/editTextHint"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:background="@color/editTextHint" />
 
         </LinearLayout>
 
@@ -52,96 +52,96 @@
         <TextView
             android:layout_width="10dp"
             android:layout_height="2dp"
-            android:gravity="center"
-            android:background="@color/editTextHint"
-            android:layout_gravity="center"/>
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/cardLessons"
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:elevation="10dp"
-            card_view:cardCornerRadius="8dp"
-            android:layout_gravity="bottom"
-            android:clickable="false"
-            android:foreground="?android:selectableItemBackground">
-
-
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-            <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/student_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/some_blue_background"
-                android:text="@string/joanne_song"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/student_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-
-                android:text="Dragon"
-                android:textColor="@color/main_yellow_opacity"
-                android:textSize="15sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_gravity="center"
-            android:layout_weight="0.3">
+            android:background="@color/editTextHint"
+            android:gravity="center" />
 
-            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/profile_image"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/dragon"
-                app:civ_border_color="@color/some_blue_background"
-                app:civ_border_width="3dp" />
+        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/cardLessons"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:clickable="false"
+            android:elevation="10dp"
+            android:foreground="?android:selectableItemBackground"
+            card_view:cardCornerRadius="8dp">
 
-        </LinearLayout>
 
-    </LinearLayout>
+            <!--<FrameLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@color/colorBlack">-->
 
-            <ImageView
-                android:layout_width="300dp"
-                android:layout_height="2dp"
-                android:layout_marginRight="0.5dp"
-                android:layout_marginLeft="0.5dp"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="bottom|center"
-                android:src="@drawable/shadow_three"/>
 
-        </FrameLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@color/main_navy_opacity"
+                    >
 
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/student_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="@string/joanne_song"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/student_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="Dragon"
+                            android:textColor="@color/main_yellow_opacity"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.3"
+                        android:gravity="center">
+
+                        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/profile_image"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/dragon"
+                            app:civ_border_color="@color/white"
+                            app:civ_border_width="3dp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="300dp"
+                    android:layout_height="2dp"
+                    android:layout_gravity="bottom|center"
+                    android:layout_marginLeft="0.5dp"
+                    android:layout_marginRight="0.5dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/shadow_three" />
+
+            <!--</FrameLayout>-->
 
         </android.support.v7.widget.CardView>
+
     </LinearLayout>
 
 </LinearLayout>
