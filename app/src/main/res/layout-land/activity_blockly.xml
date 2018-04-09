@@ -43,6 +43,29 @@
         <include layout="@layout/fragment_blockly_run" />
 
         <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/robot_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/robot"
+            android:scaleType="centerInside"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="80dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            fab:menu_animationDelayPerItem="0"
+            fab:menu_colorNormal="#FFB805"
+            fab:menu_colorPressed="#F2AB00"
+            fab:menu_colorRipple="#D99200"
+            fab:menu_labels_hideAnimation="@anim/jump_to_down"
+            fab:menu_labels_showAnimation="@anim/jump_from_down"
+            fab:menu_labels_style="@style/MenuLabelsStyle"
+            fab:menu_shadowColor="#444">
+
+        </com.github.clans.fab.FloatingActionButton>
+        <com.github.clans.fab.FloatingActionButton
             android:id="@+id/play_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
