@@ -55,3 +55,17 @@ Blockly.JavaScript['forloop'] = function(block) {
   var code = 'forloop;\n';
   return code;
 };
+Blockly.JavaScript['repeat'] = function(block) {
+  var number_name = block.getFieldValue('NAME');
+  var statements_repeat = Blockly.JavaScript.statementToCode(block, 'repeat');
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'repeat\n';
+  return code;
+  };
+
+Blockly.JavaScript['turn_angles'] = function(block) {
+  var angle_90 = block.getFieldValue('90');
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'turn_angles\n';
+  return code;
+};

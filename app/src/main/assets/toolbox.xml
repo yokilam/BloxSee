@@ -30,6 +30,11 @@
         <block type="move">
 
         </block>
+
+        <block type="turn_angles">
+
+        </block>
+
         <block type="moveleft">
 
         </block>
@@ -43,8 +48,14 @@
 
         </block>
 
+
+
     </category>
-    <category name="Control" colour="210">
+    <category name="Control" colour="260">
+
+        <block type="repeat">
+
+        </block>
 
         <block type="foreverloop">
 
