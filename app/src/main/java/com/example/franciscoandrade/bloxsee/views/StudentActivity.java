@@ -152,7 +152,6 @@ public class StudentActivity extends AppCompatActivity {
         studentQuestionAdapter = new StudentQuestionAdapter(this, user);
         recyclerView.setAdapter(studentQuestionAdapter);
         recyclerViewOne.setAdapter(studentQuestionAdapterLessonOne);
-
     }
 
     public void setStudentName() {
@@ -349,7 +348,6 @@ public class StudentActivity extends AppCompatActivity {
         final Context context = recyclerView.getContext();
         final LayoutAnimationController controller =
                 AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_fall_down);
-
         recyclerView.setLayoutAnimation(controller);
         recyclerView.getAdapter().notifyDataSetChanged();
         recyclerView.scheduleLayoutAnimation();

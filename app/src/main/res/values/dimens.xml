@@ -2,4 +2,6 @@
 <resources>
     <dimen name="animal_image_width">95dp</dimen>
     <dimen name="animal_image_height">95dp</dimen>
+    <dimen name="animal_image_width_large">150dp</dimen>
+    <dimen name="animal_image_height_large">150dp</dimen>
 </resources>
