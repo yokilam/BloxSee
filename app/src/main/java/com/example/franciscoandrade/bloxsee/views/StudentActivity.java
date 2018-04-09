@@ -89,7 +89,7 @@ public class StudentActivity extends AppCompatActivity {
         ref = database.getReference();
         studentQuestions = new StudentQuestions();
         setRecyclerView();
-        setUpNotification();
+        //setUpNotification();
         signOut();
         fromTop = AnimationUtils.loadAnimation(this, R.anim.logo_from_top);
         fromBottom= AnimationUtils.loadAnimation(this, R.anim.logo_from_bottom);
@@ -128,8 +128,8 @@ public class StudentActivity extends AppCompatActivity {
         PendingIntent pendingIntent = PendingIntent.getActivity(this, requestID, intent, flags);
 
         Notification notification = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL)
-                .setSmallIcon(R.drawable.ic_launcher_background)
-                .setColor(getResources().getColor(R.color.colorPrimary))
+                .setSmallIcon(R.drawable.bloxseenewicon)
+                .setColor(getResources().getColor(R.color.white))
                 .setContentTitle("New Question Added!")
                 .setContentText("A new question is posted!")
                 .setContentIntent(pendingIntent)
@@ -312,8 +312,11 @@ public class StudentActivity extends AppCompatActivity {
                         lessonTwo.setVisibility(View.GONE);
                     }
 
-                    setUpNotification();
+
                 }
+
+
+                setUpNotification();
             }
 
             @Override

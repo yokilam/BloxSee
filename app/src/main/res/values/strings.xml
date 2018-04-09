@@ -26,7 +26,7 @@
     <string name="question_three">Question 3</string>
     <string name="question_four">Question 4</string>
     <string name="question_five">Question 5</string>
-    <string name="send_button">Send</string>
+    <string name="send_button">Assign Questions</string>
 
     <!-- roster fragment xml Strings -->
     <string name="add_student_to_roster">Add Student</string>

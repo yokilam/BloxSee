@@ -8,9 +8,13 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -42,9 +46,11 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyListener {
 
@@ -75,9 +81,18 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     String currentQuestion;
     Intent intent;
 
+
+    //BLuettoth
+    private boolean isBtConnected = false;
+    BluetoothAdapter myBluetooth = null;
+    static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+    String address="20:13:10:25:40:47";
+    BluetoothSocket btSocket = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new ConnectBT().execute();
         mActionBar.hide();
 
         storage = FirebaseStorage.getInstance();
@@ -127,7 +142,10 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
                 //image.setImageBitmap(b)
                 if (getController().getWorkspace().hasBlocks()) {
                     Log.d("runcode", "uhoh");
+                    //sends signal to arduino
                     onRunCode();
+
+                    //moveCar();
                 } else {
                     Log.i("hihi", "No blocks in workspace. Skipping run request.");
                 }
@@ -142,6 +160,24 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         snapShotQuestion = intent.getStringExtra("SnapShotQ");
 
     }
+
+    private void moveCar() {
+
+        if (btSocket!=null)
+        {
+            try
+            {
+                btSocket.getOutputStream().write("5".toString().getBytes());
+            }
+            catch (IOException e)
+            {
+                msg("Error");
+            }
+        }
+
+
+    }
+
 
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
@@ -315,6 +351,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
             Log.d("hihi", str + "hihi");
             return false;
         }
+
     }
 
     private void setUpDialog(String json) {
@@ -328,6 +365,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     }
 
     public void getInfo() {
+
 
         questionTV.setText(currentQuestion);
 
@@ -348,6 +386,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         });
     }
 
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -363,5 +402,53 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
             dialog.cancel();
         }
     }
+
+    private class ConnectBT extends AsyncTask<Void, Void, Void> { // UI thread
+        private boolean ConnectSuccess = true; //if it's here, it's almost connected
+
+        @Override
+        protected void onPreExecute() {
+            //progress = ProgressDialog.show(ledControl.this, "Connecting...", "Please wait!!!");  //show a progress dialog
+        }
+
+        @Override
+        protected Void doInBackground(Void... devices) //while the progress dialog is shown, the connection is done in background
+        {
+            try {
+                if (btSocket == null || !isBtConnected) {
+                    myBluetooth = BluetoothAdapter.getDefaultAdapter();//get the mobile bluetooth device
+                    BluetoothDevice dispositivo = myBluetooth.getRemoteDevice(address);//connects to the device's address and checks if it's available
+                    btSocket = dispositivo.createInsecureRfcommSocketToServiceRecord(myUUID);//create a RFCOMM (SPP) connection
+                    BluetoothAdapter.getDefaultAdapter().cancelDiscovery();
+                    btSocket.connect();//start connection
+                }
+            } catch (IOException e) {
+                ConnectSuccess = false;//if the try failed, you can check the exception here
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) //after the doInBackground, it checks if everything went fine
+        {
+            super.onPostExecute(result);
+
+            if (!ConnectSuccess) {
+                msg("Connection Failed. Is it a SPP Bluetooth? Try again.");
+                //finish();
+            } else {
+                msg("Connected.");
+                isBtConnected = true;
+            }
+            //progress.dismiss();
+        }
+    }
+
+
+    // fast way to call Toast
+    private void msg(String s) {
+        Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+    }
+
 
 }

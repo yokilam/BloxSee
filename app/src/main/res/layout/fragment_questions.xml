@@ -1031,6 +1031,8 @@
         android:layout_centerInParent="true"
         android:layout_gravity="center"
         android:layout_marginBottom="5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
         android:background="@drawable/rounded_button"
         android:text="@string/send_button"
         android:textColor="@color/white" />
