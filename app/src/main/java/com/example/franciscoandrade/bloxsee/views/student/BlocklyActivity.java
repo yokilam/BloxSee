@@ -145,7 +145,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
                     //sends signal to arduino
                     onRunCode();
 
-                    moveCar();
+                    //moveCar();
                 } else {
                     Log.i("hihi", "No blocks in workspace. Skipping run request.");
                 }
