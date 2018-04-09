@@ -142,6 +142,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
                 //image.setImageBitmap(b)
                 if (getController().getWorkspace().hasBlocks()) {
                     Log.d("runcode", "uhoh");
+                    //sends signal to arduino
                     onRunCode();
 
                     moveCar();
@@ -425,7 +426,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
 
             if (!ConnectSuccess) {
                 msg("Connection Failed. Is it a SPP Bluetooth? Try again.");
-                finish();
+                //finish();
             } else {
                 msg("Connected.");
                 isBtConnected = true;
