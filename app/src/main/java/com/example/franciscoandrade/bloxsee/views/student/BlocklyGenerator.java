@@ -28,7 +28,7 @@ public class BlocklyGenerator implements CodeGenerationRequest.CodeGeneratorCall
         if (generatedCode.isEmpty()) {
             Log.d("hihi", "gC is empty");
         } else {
-            Log.d(mTag, "code: " + generatedCode);
+            Log.d("Joannecode", generatedCode);
             bL.sendGeneratedCode(generatedCode);
 
         }

@@ -27,9 +27,14 @@
     </category>
 
     <category name="Motions" colour="210">
-        <block type="move10">
+        <block type="move">
 
         </block>
+
+        <block type="turn_angles">
+
+        </block>
+
         <block type="moveleft">
 
         </block>
@@ -43,10 +48,19 @@
 
         </block>
 
+
+
     </category>
-    <category name="Control" colour="210">
+    <category name="Control" colour="260">
+
+        <block type="repeat">
+
+        </block>
 
         <block type="foreverloop">
+
+        </block>
+        <block type="forloop">
 
         </block>
 

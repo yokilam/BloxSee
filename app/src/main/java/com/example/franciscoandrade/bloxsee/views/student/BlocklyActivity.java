@@ -263,11 +263,13 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     @Override
     public void sendGeneratedCode(final String str) {
 
+        Log.d("Joannecode", "bActivity: " + str);
+
         animSequenceArr = new ArrayList <>();
         animSetXY = new AnimatorSet();
         animSetXY.setDuration(2000);
         ObjectAnimator animMove10 = ObjectAnimator.ofFloat(sprite, "x", sprite.getX(), sprite.getX() + 100f);
-        ObjectAnimator animMoveUp = ObjectAnimator.ofFloat(sprite, "y", sprite.getY(), sprite.getY() - 555f);
+        ObjectAnimator animMoveUp = ObjectAnimator.ofFloat(sprite, "y", sprite.getY(), sprite.getY() - 300f);
         ObjectAnimator animMoveLeft = ObjectAnimator.ofFloat(sprite, "x", sprite.getX(), sprite.getX() - 555f);
         ObjectAnimator animMoveRight = ObjectAnimator.ofFloat(sprite, "x", sprite.getX(), sprite.getX() + 555f);
         ObjectAnimator animMoveDown = ObjectAnimator.ofFloat(sprite, "y", sprite.getY(), sprite.getY() + 555f);
@@ -299,9 +301,16 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
                 case "movedown":
                     animSequenceArr.add(animMoveDown);
                     break;
+                case "repeat":
+                    animSequenceArr.add(animMoveDown);
+                    animSequenceArr.add(animMoveRight);
+                    animSequenceArr.add(animMoveUp);
+                    animSequenceArr.add(animMoveLeft);
+                    break;
             }
         }
         animSetXY.playSequentially(animSequenceArr);
+        //Toast.makeText(this, animSequenceArr.toString(), Toast.LENGTH_SHORT).show();
         animSetXY.start();
 
         animSetXY.addListener(new Animator.AnimatorListener() {
@@ -333,7 +342,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     }
 
     public boolean checkAnswer(String str) {
-        String answerKey = "start\n" + "moveright\n" + "movedown\n";
+        String answerKey = "start\n" + "repeat\n";
         if (str.equals(answerKey)) {
             Log.d("hihi", str + "hihi");
             Log.d("hihi", answerKey);

@@ -19,7 +19,7 @@
 
     <include
         android:id="@+id/blockContainer"
-        layout="@layout/blockly_unified_workspace"
+        layout="@layout/student_blockly_unified_workspace"
         android:layout_width="450dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
