@@ -18,10 +18,6 @@ import com.google.blockly.android.ui.Rotation;
 import com.google.blockly.android.ui.WorkspaceHelper;
 import com.google.blockly.model.BlocklyCategory;
 
-/**
- * Created by joannesong on 4/5/18.
- */
-
 public class ToolboxCategoryFragment extends CategorySelectorFragment{
 
     private static final String TAG = "CategorySelectorFragment";
