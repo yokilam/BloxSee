@@ -74,7 +74,8 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     private String snapShotLesson;
     private String snapShotQuestion;
 
-    private String snapShotName;
+    private String snapShotName, spriteAnswerKey;
+
 
     //Joanne*** These are the values you need
     String user;
@@ -219,7 +220,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
             }
         });
 
-        Toast.makeText(getApplicationContext(),"save", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),"save", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -268,12 +269,17 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     public void sendGeneratedCode(final String str) {
 
         Log.d("Joannecode", "bActivity: " + str);
+        spriteAnswerKey = str;
 
         animSequenceArr = new ArrayList <>();
         animSetXY = new AnimatorSet();
         animSetXY.setDuration(2000);
         ObjectAnimator animMove10 = ObjectAnimator.ofFloat(sprite, "x", sprite.getX(), sprite.getX() + 100f);
-        ObjectAnimator animMoveUp = ObjectAnimator.ofFloat(sprite, "y", 160f
+        ObjectAnimator animMoveUp2 = ObjectAnimator.ofFloat(sprite, "y", sprite.getY(), sprite.getX() - 555f);
+        ObjectAnimator animMoveDown2 = ObjectAnimator.ofFloat(sprite, "y", sprite.getY(), sprite.getX() + 555f);
+        ObjectAnimator animMoveLeft2 = ObjectAnimator.ofFloat(sprite, "x", sprite.getX(), sprite.getX() - 555f);
+        ObjectAnimator animMoveRight2 = ObjectAnimator.ofFloat(sprite, "x", sprite.getX(), sprite.getX() + 555f);
+        ObjectAnimator animMoveUp = ObjectAnimator.ofFloat(sprite, "y", 140f
                 + 555f, sprite.getY());
         ObjectAnimator animMoveLeft = ObjectAnimator.ofFloat(sprite, "x", sprite.getX() + 555f, sprite.getX());
         ObjectAnimator animMoveRight = ObjectAnimator.ofFloat(sprite, "x", sprite.getX(), sprite.getX() + 555f);
@@ -294,17 +300,17 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
                     animSequenceArr.add(animMove10);
                     break;
                 case "moveup":
-                    animSequenceArr.add(animMoveUp);
+                    animSequenceArr.add(animMoveUp2);
                     Log.d("hihi", "I'm in moveup");
                     break;
                 case "moveleft":
-                    animSequenceArr.add(animMoveLeft);
+                    animSequenceArr.add(animMoveLeft2);
                     break;
                 case "moveright":
-                    animSequenceArr.add(animMoveRight);
+                    animSequenceArr.add(animMoveRight2);
                     break;
                 case "movedown":
-                    animSequenceArr.add(animMoveDown);
+                    animSequenceArr.add(animMoveDown2);
                     break;
                 case "repeat":
                     Log.d("hihiJoanne", removeIndentArr[i]);
@@ -328,7 +334,8 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                if (checkAnswer(str) ) {
+                String answerKey = "start\n" + "repeat\n";
+                if (checkAnswer(spriteAnswerKey) ) {
                     runOnAnotherThread("goodjob.json");
                 } else {
                     runOnAnotherThread("tryagain.json");
@@ -350,12 +357,13 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
 
     public boolean checkAnswer(String str) {
         String answerKey = "start\n" + "repeat\n";
+        Log.d("Joanneneedsthis", str);
         if (str.equals(answerKey)) {
             Log.d("hihi", str + "hihi");
             Log.d("hihi", answerKey);
             return true;
         } else {
-            Log.d("hihi", str + "hihi");
+            Log.d("hihi", "fucked: " + str + "hihi");
             return false;
         }
 
@@ -441,8 +449,9 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
             super.onPostExecute(result);
 
             if (!ConnectSuccess) {
-                msg("Connection Failed. Is it a SPP Bluetooth? Try again.");
+                msg("Bluetooth Connection Failed. Try again.");
                 //finish();
+                Log.d("failed","failed connection");
             } else {
                 msg("Connected.");
                 isBtConnected = true;
