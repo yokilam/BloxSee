@@ -60,7 +60,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     private List <Animator> animSequenceArr;
     private TextView questionTV;
 
-    private com.github.clans.fab.FloatingActionButton playFab;
+    private com.github.clans.fab.FloatingActionButton playFab, robotFab;
     private List <FloatingActionMenu> menus = new ArrayList <>();
 
     private FirebaseStorage storage;
@@ -92,7 +92,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new ConnectBT().execute();
+        //new ConnectBT().execute();
         mActionBar.hide();
 
         storage = FirebaseStorage.getInstance();
@@ -125,6 +125,7 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         questionTV = root.findViewById(R.id.blockly_activity_student_question);
         sprite = root.findViewById(R.id.sprite);
         playFab = root.findViewById(R.id.play_fab);
+        robotFab = root.findViewById(R.id.robot_fab);
         blockContainer = findViewById(R.id.blockContainer);
         getInfo();
         return root;
@@ -139,17 +140,20 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
             @Override
             public void onClick(View v) {
                 b = Screenshot.takeScreenShotofRootView(root);
-                //image.setImageBitmap(b)
                 if (getController().getWorkspace().hasBlocks()) {
                     Log.d("runcode", "uhoh");
                     //sends signal to arduino
                     onRunCode();
-
-                    //moveCar();
                 } else {
                     Log.i("hihi", "No blocks in workspace. Skipping run request.");
                 }
                 uploadImage();
+            }
+        });
+        robotFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveCar();
             }
         });
 
@@ -269,8 +273,9 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
         animSetXY = new AnimatorSet();
         animSetXY.setDuration(2000);
         ObjectAnimator animMove10 = ObjectAnimator.ofFloat(sprite, "x", sprite.getX(), sprite.getX() + 100f);
-        ObjectAnimator animMoveUp = ObjectAnimator.ofFloat(sprite, "y", sprite.getY(), sprite.getY() - 300f);
-        ObjectAnimator animMoveLeft = ObjectAnimator.ofFloat(sprite, "x", sprite.getX(), sprite.getX() - 555f);
+        ObjectAnimator animMoveUp = ObjectAnimator.ofFloat(sprite, "y", 160f
+                + 555f, sprite.getY());
+        ObjectAnimator animMoveLeft = ObjectAnimator.ofFloat(sprite, "x", sprite.getX() + 555f, sprite.getX());
         ObjectAnimator animMoveRight = ObjectAnimator.ofFloat(sprite, "x", sprite.getX(), sprite.getX() + 555f);
         ObjectAnimator animMoveDown = ObjectAnimator.ofFloat(sprite, "y", sprite.getY(), sprite.getY() + 555f);
 
@@ -302,8 +307,10 @@ public class BlocklyActivity extends AbstractBlocklyActivity implements BlocklyL
                     animSequenceArr.add(animMoveDown);
                     break;
                 case "repeat":
+                    Log.d("hihiJoanne", removeIndentArr[i]);
                     animSequenceArr.add(animMoveDown);
                     animSequenceArr.add(animMoveRight);
+                    Log.d("sprite", String.valueOf(sprite.getY()));
                     animSequenceArr.add(animMoveUp);
                     animSequenceArr.add(animMoveLeft);
                     break;

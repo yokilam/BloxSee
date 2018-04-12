@@ -7,9 +7,9 @@
 
     <ImageView
         android:id="@+id/sprite"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginLeft="200dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="120dp"
         android:layout_marginTop="80dp"
         android:src="@drawable/monkey_color" />
 
